@@ -18,6 +18,8 @@ if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
     $_SESSION['username'] = $username;
     $_SESSION['estado'] = 1;
     $_SESSION['cedula'] = $cedula;
+    $_SESSION['id'] = $datos['id_alumno'];
+
     echo "1";
 } else {
     echo "$contrasena";

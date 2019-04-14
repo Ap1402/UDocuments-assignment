@@ -5,68 +5,11 @@ session_start();
 $errores = array();
 $datos = array();
 
-
-//$cedula = trim($_POST['cedula']);
-
-$estado_civil = filter_var($_POST['estado_civil'], FILTER_SANITIZE_NUMBER_INT);
-
-//nacimiento
-
-$fecha_nacimiento = $_POST['fecha_nacimiento'];
-$pais_nac = filter_var($_POST['pais'], FILTER_SANITIZE_STRING);
-$estado_nac = filter_var($_POST['estado'], FILTER_SANITIZE_STRING);
-$ciudad_nac = filter_var($_POST['ciudad'], FILTER_SANITIZE_STRING);
-$municipio_nac = filter_var($_POST['municipio'], FILTER_SANITIZE_STRING);
-
-//discapacidad
-
-//$discapacidad = filter_var($_POST['tipo_discapacidad'], FILTER_SANITIZE_STRING);
-
-//turno y carrera
-
-$turno = filter_var($_POST['turno'], FILTER_SANITIZE_NUMBER_INT);
-$carrera = filter_var($_POST['carrera'], FILTER_SANITIZE_STRING);
-
-
-//dirección hab
-
-$postal = filter_var($_POST['nac_postal'], FILTER_SANITIZE_NUMBER_INT);
-$estado = filter_var($_POST['nac_estado'], FILTER_SANITIZE_STRING);
-$ciudad = filter_var($_POST['nac_ciudad'], FILTER_SANITIZE_STRING);
-$municipio = filter_var($_POST['nac_municipio'], FILTER_SANITIZE_STRING);
-
-
-// Telefono 
-
-$hab_tel = filter_var($_POST['habitacion'], FILTER_SANITIZE_NUMBER_INT);
-$mov_tel = filter_var($_POST['movil'], FILTER_SANITIZE_NUMBER_INT);
-$trab_tel = filter_var($_POST['trabajo'], FILTER_SANITIZE_NUMBER_INT);
-
-
-// Dirección trabajo
-
-$postal_trabajo = filter_var($_POST['t_postal'], FILTER_SANITIZE_NUMBER_INT);
-$estado_trabajo = filter_var($_POST['t_estado'], FILTER_SANITIZE_STRING);
-$ciudad_trabajo = filter_var($_POST['t_ciudad'], FILTER_SANITIZE_STRING);
-$municipio_trabajo = filter_var($_POST['t_municipio'], FILTER_SANITIZE_STRING);
-
-// emergencia
-
-$e_nombre = filter_var($_POST['e_nombre'], FILTER_SANITIZE_STRING);
-$e_hab_tel = filter_var($_POST['e_local'], FILTER_SANITIZE_NUMBER_INT);
-$e_mov_tel = filter_var($_POST['e_movil'], FILTER_SANITIZE_NUMBER_INT);
-$parentesco = filter_var($_POST['parentesco'], FILTER_SANITIZE_STRING);
-
-//Datos titulo
-
-$i_nombre = filter_var($_POST['i_nombre'], FILTER_SANITIZE_STRING);
-$i_egreso = filter_var($_POST['i_egreso'], FILTER_SANITIZE_NUMBER_INT);
-$i_codigo = filter_var($_POST['i_codigo'], FILTER_SANITIZE_NUMBER_INT);
-$i_estado = filter_var($_POST['i_estado'], FILTER_SANITIZE_STRING);
-$tipo_inst = filter_var($_POST['tipo_inst'], FILTER_SANITIZE_NUMBER_INT);
-
+include ('getDatosForm.php');
 
 $cedula = $_SESSION['cedula'];
+$id = $_SESSION['id'];
+
 /* $sql = "SELECT * FROM `alumnos` WHERE cedula='" . $cedula . "'";
 
 $result = mysqli_query($conexion, $sql); */
@@ -76,18 +19,40 @@ $result = mysqli_query($conexion, $sql); */
     $datos['errores'] = $errores;
 }
  */
+
+ //Actualizacion de datos tabla alumno
 $fecha= date("Y-m-d");
+
 $sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
 "estado_civil='$estado_civil',". 
-"carrera='$carrera', ciudad_nac='$ciudad_nac',". 
+"carrera='$carrera', pais_nac='$pais_nac',ciudad_nac='$ciudad_nac',". 
 "estado_nac='$estado_nac', municipio_nac='$municipio_nac',". 
 "parientename='$e_nombre', parentesco='$parentesco',". 
 "ultActualizacion='$fecha' WHERE cedula='$cedula'";
 
-//$sql ="UPDATE alumnos SET estado_civil='hola' WHERE cedula='$cedula'";
 $result = mysqli_query($conexion, $sql);
 
-echo "1";
+if (mysqli_affected_rows($conexion) ==0){
+    $errores['noafectado']= "No se ha modificado ningún registro";
+};
+
+
+// ver si existen telefonos si existen se actualizan sino se crea en TABLA TELEFONOS
+$actualizarTLF = "INSERT INTO telefonos (alumno, num_movil, num_habitacion, num_trabajo, num_habitacion_pariente, num_movil_pariente) VALUES('$id','$mov_tel','$hab_tel','$trab_tel','$e_hab_tel','$e_mov_tel') ON DUPLICATE KEY UPDATE num_movil='$mov_tel', num_habitacion='$hab_tel', num_trabajo='$trab_tel',num_movil_pariente='$e_mov_tel', num_habitacion_pariente='$e_hab_tel'";
+$result = mysqli_query($conexion, $actualizarTLF); 
+
+
+// ver si existen direcciones si existen se actualizan sino se crea en TABLA DIRECCIONES
+$actualizarDIREC = "INSERT INTO direcciones (alumno, estado, ciudad, municipio, postal_trabajo, estado_trabajo, municipio_trabajo, ciudad_trabajo)". 
+"VALUES('$id','$estado','$ciudad','$municipio','$postal_trabajo','$estado_trabajo','$municipio_trabajo','$ciudad_trabajo') ON DUPLICATE KEY UPDATE estado='$estado',".
+"ciudad='$ciudad', municipio='$municipio',postal_trabajo='$postal_trabajo', estado_trabajo='$estado_trabajo',". 
+"municipio_trabajo='$municipio_trabajo',ciudad_trabajo='$ciudad_trabajo'";
+
+$result = mysqli_query($conexion, $actualizarDIREC); 
+
+
+
+
 /* if (empty($errores)) {
     $fecha= date("Y-m-d");
 
@@ -102,6 +67,6 @@ echo "1";
 } */
 
 //dar respuesta:
-//echo json_encode($datos);
+echo json_encode($errores);
 
 ?>
