@@ -12,11 +12,12 @@ $datos = mysqli_fetch_array($resultado);
 
 $userBD = $datos['username'];
 $passwordBD = $datos['contrasena'];
-
+$cedula =$datos['cedula'];
 if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
     session_start();
     $_SESSION['username'] = $username;
     $_SESSION['estado'] = 1;
+    $_SESSION['cedula'] = $cedula;
     echo "1";
 } else {
     echo "$contrasena";

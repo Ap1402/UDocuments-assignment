@@ -1,5 +1,6 @@
 <?php
 include '../conexion.php';
+session_start();
 
 $errores = array();
 $datos = array();
@@ -19,7 +20,7 @@ $municipio_nac = filter_var($_POST['municipio'], FILTER_SANITIZE_STRING);
 
 //discapacidad
 
-$discapacidad = filter_var($_POST['tipo_discapacidad'], FILTER_SANITIZE_STRING);
+//$discapacidad = filter_var($_POST['tipo_discapacidad'], FILTER_SANITIZE_STRING);
 
 //turno y carrera
 
@@ -65,19 +66,29 @@ $i_estado = filter_var($_POST['i_estado'], FILTER_SANITIZE_STRING);
 $tipo_inst = filter_var($_POST['tipo_inst'], FILTER_SANITIZE_NUMBER_INT);
 
 
+$cedula = $_SESSION['cedula'];
+/* $sql = "SELECT * FROM `alumnos` WHERE cedula='" . $cedula . "'";
 
-// A decidir si se prohibira el registro a cedulas repetidas o a usuarios
-$sql = "SELECT * FROM  alumnos WHERE cedula='$cedula'";
-$result = mysqli_query($conexion, $sql);
-$check = mysqli_num_rows($result);
+$result = mysqli_query($conexion, $sql); */
 
 /* if ($check == 1) {
     $errores['cedula'] = "Cedula ya registrada";
     $datos['errores'] = $errores;
 }
  */
+$fecha= date("Y-m-d");
+$sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
+"estado_civil='$estado_civil',". 
+"carrera='$carrera', ciudad_nac='$ciudad_nac',". 
+"estado_nac='$estado_nac', municipio_nac='$municipio_nac',". 
+"parientename='$e_nombre', parentesco='$parentesco',". 
+"ultActualizacion='$fecha' WHERE cedula='$cedula'";
 
-if (empty($errores)) {
+//$sql ="UPDATE alumnos SET estado_civil='hola' WHERE cedula='$cedula'";
+$result = mysqli_query($conexion, $sql);
+
+echo "1";
+/* if (empty($errores)) {
     $fecha= date("Y-m-d");
 
     $insertar = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,ultActualizacion) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha')";
@@ -88,9 +99,9 @@ if (empty($errores)) {
 } else {
     $datos['exito'] = false;
     $datos['errores'] = $errores;
-}
+} */
 
 //dar respuesta:
-echo json_encode($datos);
+//echo json_encode($datos);
 
 ?>
