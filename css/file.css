@@ -1,0 +1,31 @@
+.form-control {
+ height: 60%;
+}
+
+/* Start Estilos del input[type=file]*/
+
+.label-file {
+ font-size: 0.8rem;
+ border-radius: 10rem;
+ margin-left: 0.9em;
+ margin-right: 0.9rem;
+ padding-top: 1rem;
+ padding-bottom: 2rem;
+ padding-left: 1rem;
+}
+
+.label-file::after {
+ position: absolute;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ z-index: 3;
+ display: block;
+ height: 3rem;
+ padding: 1rem 2rem;
+ color: #6e707e;
+ content: "Browse";
+ border-radius: 0 10rem 10rem 0;
+}
+
+/* End Estilos del input[type=file]*/

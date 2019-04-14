@@ -1,0 +1,26 @@
+.bg-login-image,
+.bg-register-image,
+.bg-password-image {
+ background: linear-gradient(90deg, rgba(11, 150, 206, 0.8), rgba(255, 255, 255, 0.8)) !important;
+ background-position: center;
+ background-repeat: no-repeat;
+}
+
+.bg-register-image {
+ background: linear-gradient(90deg, rgba(24, 221, 83, 0.8), rgba(255, 255, 255, 0.8)) !important;
+}
+
+.bg-password-image {
+ background: linear-gradient(90deg,rgba(238, 31, 24, 0.87), rgba(255, 255, 255, 0.8)) !important;
+}
+
+/* Padding-y no permite la visibilidad del texto e impide introducir valores al input[type=number]*/
+input[type=number] {
+ border: 1px solid #d1d3e2;
+ background-color: #ffffff;
+ font-size: 0.8rem;
+ border-radius: 10rem;
+ padding-right: 1rem;
+ padding-left: 1rem;
+ height: 3rem;
+}
