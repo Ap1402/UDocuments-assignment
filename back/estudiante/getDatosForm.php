@@ -71,7 +71,7 @@ $parentesco = filter_var($_POST['parentesco'], FILTER_SANITIZE_STRING);
 
 $i_nombre = filter_var($_POST['i_nombre'], FILTER_SANITIZE_STRING);
 $i_egreso = filter_var($_POST['i_egreso'], FILTER_SANITIZE_NUMBER_INT);
-$i_codigo = filter_var($_POST['i_codigo'], FILTER_SANITIZE_NUMBER_INT);
+$i_codigo = filter_var($_POST['i_codigo'], FILTER_SANITIZE_STRING);
 $i_estado = filter_var($_POST['i_estado'], FILTER_SANITIZE_STRING);
 $tipo_inst = filter_var($_POST['tipo_inst'], FILTER_SANITIZE_NUMBER_INT);
 

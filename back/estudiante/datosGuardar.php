@@ -1,5 +1,6 @@
 <?php
 include '../conexion.php';
+
 session_start();
 
 $errores = array();
@@ -10,17 +11,9 @@ include ('getDatosForm.php');
 $cedula = $_SESSION['cedula'];
 $id = $_SESSION['id'];
 
-/* $sql = "SELECT * FROM `alumnos` WHERE cedula='" . $cedula . "'";
-
-$result = mysqli_query($conexion, $sql); */
-
-/* if ($check == 1) {
-    $errores['cedula'] = "Cedula ya registrada";
-    $datos['errores'] = $errores;
-}
- */
 
  //Actualizacion de datos tabla alumno
+
 $fecha= date("Y-m-d");
 
 $sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
@@ -28,14 +21,9 @@ $sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
 "carrera='$carrera', pais_nac='$pais_nac',ciudad_nac='$ciudad_nac',". 
 "estado_nac='$estado_nac', municipio_nac='$municipio_nac',". 
 "parientename='$e_nombre', parentesco='$parentesco',". 
-"ultActualizacion='$fecha' WHERE cedula='$cedula'";
+"ultActualizacion='$fecha', nombreInst='$i_nombre', anoEgreso='$i_egreso', codigoInst='$i_codigo', estadoInst='$i_estado', tipoInst='$tipo_inst' WHERE cedula='$cedula'";
 
 $result = mysqli_query($conexion, $sql);
-
-if (mysqli_affected_rows($conexion) ==0){
-    $errores['noafectado']= "No se ha modificado ningún registro";
-};
-
 
 // ver si existen telefonos si existen se actualizan sino se crea en TABLA TELEFONOS
 $actualizarTLF = "INSERT INTO telefonos (alumno, num_movil, num_habitacion, num_trabajo, num_habitacion_pariente, num_movil_pariente) VALUES('$id','$mov_tel','$hab_tel','$trab_tel','$e_hab_tel','$e_mov_tel') ON DUPLICATE KEY UPDATE num_movil='$mov_tel', num_habitacion='$hab_tel', num_trabajo='$trab_tel',num_movil_pariente='$e_mov_tel', num_habitacion_pariente='$e_hab_tel'";
