@@ -9,7 +9,7 @@ function ejecutarAjaxLog(event){
 
     $.ajax({
         type: 'POST',
-        url : './back/login.php',
+        url : './back/estudiante/login.php',
         data :formData,
         encode: true,
         cache: false,

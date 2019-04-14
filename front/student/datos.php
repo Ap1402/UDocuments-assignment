@@ -15,23 +15,6 @@
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
           <br>
 
-          <div class="form-group row">
-            <div class="col-sm-6 autocomplete">
-              <input type="text" id="nacionalidad" name="nacionalidad" class="form-control form-control-user"
-                placeholder="Nacionalidad" pattern="Venezolana | Extranjera" minlength="4" required>
-              <div class="invalid-feedback">
-                Por favor introduzca una nacionalidad válida.
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <input type="number" id="cedula" name="cedula" class="form-control" placeholder="Cédula" step="1"
-                min="3000000" max="99999999" required>
-              <div class="invalid-feedback">
-                Por favor introduzca un número de cédula válido.
-              </div>
-            </div>
-          </div>
-
 
           <div class="form-group row">
             <div class="col-sm-6 mb-sm-0">

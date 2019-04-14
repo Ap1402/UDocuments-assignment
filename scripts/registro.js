@@ -15,7 +15,7 @@ function ejecutarAjax(event){
     };
     $.ajax({
         type: 'POST',
-        url : 'back/registro.php',
+        url : './back/estudiante/registro.php',
         data :datosEnviados,
         dataType: 'json',
         encode: true

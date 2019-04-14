@@ -10,7 +10,7 @@ $(document).ready(function () {
     
         $.ajax({
             type: 'POST',
-            url : './back/datosGuardar.php',
+            url : './back/estudiante/datosGuardar.php',
             data :formData,
             encode: true,
             cache: false,

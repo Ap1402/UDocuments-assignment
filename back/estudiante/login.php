@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include '../conexion.php';
 $username = trim($_POST['usernameLog']);
 $contrasena = trim($_POST['contrasenaLog']);
 
@@ -21,3 +21,5 @@ if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
 } else {
     echo "$contrasena";
 }
+
+?>
