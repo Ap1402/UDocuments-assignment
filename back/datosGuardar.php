@@ -26,8 +26,8 @@ $p_nombre = filter_var($_POST['p_nombre'], FILTER_SANITIZE_STRING);
 
 
 //turno y carrera
-$p_nombre = filter_var($_POST['p_nombre'], FILTER_SANITIZE_STRING);
-$p_nombre = filter_var($_POST['p_nombre'], FILTER_SANITIZE_STRING);
+$turno = filter_var($_POST['turno'], FILTER_SANITIZE_NUMBER_INT);
+$carrera = filter_var($_POST['carrera'], FILTER_SANITIZE_STRING);
 
 
 //dirección hab
@@ -44,7 +44,7 @@ $mov_tel = filter_var($_POST['movil'], FILTER_SANITIZE_NUMBER_INT);
 $trab_tel = filter_var($_POST['trabajo'], FILTER_SANITIZE_NUMBER_INT);
 
 
-//
+// 
 
 
 $username = trim($_POST['username']);

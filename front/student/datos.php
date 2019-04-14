@@ -32,39 +32,6 @@
             </div>
           </div>
 
-          <div class="form-group row">
-            <div class="col-sm-6 mb-sm-0">
-              <input type="text" id="p_nombre" name="p_nombre" class="form-control form-control-user"
-                placeholder="Primer nombre" minlength="2" required>
-              <div class="invalid-feedback">
-                Por favor introduzca un nombre válido.
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
-                placeholder="Segundo nombre" required>
-              <div class="invalid-feedback">
-                Por favor introduzca un nombre válido.
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-sm-6 mb-sm-0">
-              <input type="text" id="p_apellido" name="p_apellido" class="form-control form-control-user"
-                placeholder="Primer apellido" minlength="2" required>
-              <div class="invalid-feedback">
-                Por favor introduzca un apellido válido.
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <input type="text" id="s_apellido" name="s_apellido" class="form-control form-control-user"
-                placeholder="Segundo apellido" minlength="2" required>
-              <div class="invalid-feedback">
-                Por favor introduzca un apellido válido.
-              </div>
-            </div>
-          </div>
 
           <div class="form-group row">
             <div class="col-sm-6 mb-sm-0">
@@ -128,7 +95,7 @@
 
           <br>
           <div class="text-center">
-            <h5 class="text-gray-900 mb-4">Etnia</h5>
+            <h5 class="text-gray-900 mb-4">Discapacidad</h5>
           </div>
           <hr class="sidebar-divider">
           <br>
@@ -151,22 +118,33 @@
           <hr class="sidebar-divider">
           <br>
           <div class="form-group row">
+            <div class="col-sm-6 autocomplete" >
+            <select id="carrera" name="carrera" class="form-control" required>
+            <option disabled selected>Selecciona una opción</option>
+            <?php 
+              include '../../back/conexion.php';
+
+              $sql = "SELECT * FROM carreras WHERE estatus=1";
+              $result = mysqli_query($conexion, $sql);
+              $resultArray = array();
+              if ($result->num_rows > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value=". $row["codigo"] .">".$row["nombre"]."</option>";
+                $resultArray[]=array("codigo"=>$row["codigo"],"nombre"=>$row["nombre"],"manana"=>$row["manana"],"tarde"=>$row["tarde"],"noche"=>$row["noche"]);
+                };
+              
+              };
+            ?> 
+            </select>
+            </div>
             <div class="col-sm-6">
             <select id="turno" name="turno" class="form-control" required>
-                <option value="1">Mañana</option>
-                <option value="2">Tarde</option>
-                <option value="3">Noche</option>
+            <option disabled="disabled">Selecciona una carrera</option>
+
               </select>
               <div class="invalid-feedback">
                 Por favor introduzca una opcion válida.
               </div>
-            </div>
-            <div class="col-sm-6 autocomplete" >
-              <input type="text" id="carrera" name="carrera" class="form-control form-control-user"
-                placeholder="Carrera" minlength="4" required>
-              <div class="invalid-feedback">
-Por favor introduzca una carrera valida             
- </div>
             </div>
           </div>
 
@@ -246,15 +224,6 @@ Por favor introduzca una carrera valida
             </div>
           </div>
 
-          <div class="form-group row">
-            <div class="col">
-            <input type="email" id="correo" name="correo" class="form-control form-control-user" placeholder="Correo"
-              required>
-            <div class="invalid-feedback">
-              Por favor introduzca un correo válido.
-            </div>
-            </div>
-          </div>
 
           <br>
           <div class="text-center">
@@ -314,7 +283,7 @@ Por favor introduzca una carrera valida
                 Por favor introduzca un nombre válido.
               </div>
             </div>
-            <div class="col-sm-6">
+          <div class="col-sm-6">
               <input type="text" id="parentesco" name="parentesco" class="form-control form-control-user"
                 placeholder="Parentesco" required>
               <div class="invalid-feedback">
@@ -433,6 +402,32 @@ $("#discapacidad").change(function(){
         };
     });
 });
+</script>
 
+<script>
+$(document).ready(function () {
+
+  var carreras = <?php echo json_encode($resultArray) ?>;
+
+  $("#carrera").change(function(){
+
+    var codigo = $("#carrera").val();
+    var nuevasopciones="";
+
+    console.log(carreras[codigo-1]);
+
+    if(carreras[codigo-1]["manana"]==1){
+      nuevasopciones+="<option value='1'>Mañana</option>";
+    }
+    if(carreras[codigo-1]["tarde"]==1){
+      nuevasopciones+="<option value='2'>Tarde</option>";
+    }
+    if(carreras[codigo-1]["noche"]==1){
+      nuevasopciones+="<option value='3'>Noche</option>";
+    }
+
+    $("select#turno").html(nuevasopciones);
+  });
+});
 
 </script>
