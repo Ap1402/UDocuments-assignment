@@ -4,6 +4,12 @@
 
 /* Start Estilos del input[type=file]*/
 
+
+input[type="file"i] {
+ padding: 1rem 2rem;
+ border-radius: 10rem !important;
+}
+/* 
 .label-file {
  font-size: 0.8rem;
  border-radius: 10rem;
@@ -17,15 +23,18 @@
 .label-file::after {
  position: absolute;
  top: 0;
- right: 0;
  bottom: 0;
  z-index: 3;
  display: block;
  height: 3rem;
+ width: 8rem;
  padding: 1rem 2rem;
  color: #6e707e;
  content: "Browse";
  border-radius: 0 10rem 10rem 0;
-}
+ text-align: center !important;
+} */
+
+
 
 /* End Estilos del input[type=file]*/

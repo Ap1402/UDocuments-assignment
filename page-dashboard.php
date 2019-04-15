@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,9 +25,23 @@
 
 </head>
 
-<!-- SIDEBAR -->
-<?php include 'SIDEBAR.PHP'?>
+<body id="page-top">
 
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <?php require_once('front/general/sidebar.php'); ?>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <?php require_once 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -43,13 +57,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Universidad José Antonio Páez 2019</span>
-          </div>
-        </div>
-      </footer>
+      <?php require_once 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -64,25 +72,8 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cerrar sesión</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="<?php echo $salir ?>">Cerrar sesión</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php require_once('front/general/modal-logout.php'); ?>
+  <!-- End of Logout Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -98,8 +89,6 @@
   <script src="vendor/chart.js/Chart.min.js"></script>
 
   <div id="enlaces-charts"></div>
-
-  <script src="js/front/sidebar.js"></script>
 </body>
 
 </html>

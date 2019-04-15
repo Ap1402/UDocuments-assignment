@@ -4,7 +4,7 @@
 		<div class="text-center">
 			<h1 class="h4 text-gray-900 mb-4">Crear una cuenta!</h1>
 		</div>
-		<form id="registroForm" method="POST" class="user needs-validation" validate>
+		<form id="registroForm" method="POST" class="user needs-validation" novalidate>
 			<div class="alert alert-success" role="alert" id="exito" hidden></div>
 			<div class="form-group row">
 				<div class="col-sm-6">

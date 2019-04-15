@@ -21,7 +21,8 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/autocomplete.css" rel="stylesheet">
+  	<link href="css/file.css" rel="stylesheet">
+	<link href="css/file-upload.css" rel="stylesheet">
 
 </head>
 
@@ -46,7 +47,10 @@
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
-        <div id="page-table" class="container-fluid">
+        <div id="page-docs" class="container-fluid">
+
+          <!-- front/student/documentos.php -->
+          <?php require_once 'front/student/docs.php'; ?>
 
 
         </div>
@@ -90,7 +94,9 @@
 
   <div id="enlaces-charts"></div>
 
-  <script src="js/front/page-table.js"></script>
+  <script src="js/front/page-documentos.js"></script>
+
+  <script src="js/front/file-upload.js"></script>
 
 </body>
 
