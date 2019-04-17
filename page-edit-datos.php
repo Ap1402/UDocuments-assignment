@@ -21,8 +21,7 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-
-  	<link href="css/file.css" rel="stylesheet">
+  <link href="css/autocomplete.css" rel="stylesheet">
 
 </head>
 
@@ -47,9 +46,10 @@
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
-        <div id="page-documentos" class="container-fluid">
+        <div id="page-edit-datos" class="container-fluid">
 
-          <!-- front/student/documentos.php -->
+          <!-- front/student/edit-datos.php -->
+
 
         </div>
         <!-- /.Contenido Variable - Todo lo demas es fijo -->
@@ -87,7 +87,7 @@
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
 
-  <script src="js/front/page-documentos.js"></script>
+  <script src="js/front/page-edit-datos.js"></script>
 
 </body>
 

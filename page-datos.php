@@ -86,11 +86,6 @@
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <div id="enlaces-charts"></div>
-
   <script src="js/front/page-datos.js"></script>
 
 </body>

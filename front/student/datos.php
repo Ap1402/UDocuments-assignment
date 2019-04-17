@@ -127,7 +127,7 @@
             </div>
             <div class="col-sm-6 my-auto">
             <select id="turno" name="turno" class="form-control" required>
-            <option disabled="disabled" selected value="">Selecciona una carrera</option>
+            <option disabled="disabled" selected value="">Seleccionar turno</option>
 
               </select>
               <div class="invalid-feedback">
@@ -323,7 +323,7 @@
           <div class="form-group row">
             <div class="col-sm-6 my-auto">
               <input type="number" id="i_egreso" name="i_egreso" class="form-control" placeholder="Año de egreso"
-                minlength="1930" required>
+                minlength="1930" max="<?php echo date('Y') ?>" required>
               <div class="invalid-feedback">
                 Por favor introduzca un año de egreso válido.
               </div>
@@ -348,7 +348,7 @@
             </div>
             <div class="col-sm-6 my-auto">
               <select id="tipo_inst" name="tipo_inst" class="form-control" required>
-                <option disabled selected value="">Tipo de intitución</option>
+                <option disabled selected value="">Tipo de institución</option>
                 <option value="1">Privada</option>
                 <option value="2">Pública</option>
               </select>
