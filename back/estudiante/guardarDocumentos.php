@@ -1,4 +1,5 @@
 <?php
+include '../conexion.php';
 
 if($_FILES["archivo"]["error"]>0){
 		echo "Error al cargar archivo";	
@@ -8,8 +9,8 @@ if($_FILES["archivo"]["error"]>0){
 		$limite_kb = 10000;
 		
 		if(in_array($_FILES["archivo"]["type"], $permitidos) && $_FILES["archivo"]["size"] <= $limite_kb * 1024){
-			$id_insert='1234';
-			$ruta = '../datos/'.$id_insert.'/';
+			$id_insert=$_SESSION['id']."-".$_SESSION['cedula'];
+			$ruta = '../DOCUMENTOS/'.$id_insert.'/';
 			$archivo = $ruta.$_FILES["archivo"]["name"];
 			
 			if(!file_exists($ruta)){
@@ -37,4 +38,4 @@ if($_FILES["archivo"]["error"]>0){
 		
     }
     
-    ?>
+?>
