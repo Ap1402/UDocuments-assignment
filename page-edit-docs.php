@@ -22,7 +22,7 @@
 
   <link href="css/style.css" rel="stylesheet">
 
-  	<link href="css/file.css" rel="stylesheet">
+  	<link href="css/file-upload.css" rel="stylesheet">
 
 </head>
 
@@ -89,6 +89,8 @@
   <script src="js/sb-admin-2.js"></script>
 
   <script src="js/front/page-edit-docs.js"></script>
+
+  <script src="js/front/file-upload-edit.js"></script>
 
 </body>
 

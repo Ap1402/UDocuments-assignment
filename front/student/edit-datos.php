@@ -562,7 +562,7 @@ $cedula = '';
           <br>
 
           <button id="editDat" type="submit" class="btn btn-primary btn-user btn-block">
-Guardar          
+Guardar Cambios         
 </button>
 
         </form>

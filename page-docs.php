@@ -21,7 +21,6 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-  	<link href="css/file.css" rel="stylesheet">
 	<link href="css/file-upload.css" rel="stylesheet">
 
 </head>
@@ -89,12 +88,7 @@
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <div id="enlaces-charts"></div>
-
-  <script src="js/front/page-documentos.js"></script>
+  <!-- <script src="js/front/page-docs.js"></script> -->
 
   <script src="js/front/file-upload.js"></script>
 
