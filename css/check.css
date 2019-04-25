@@ -1,0 +1,22 @@
+.preview-images {
+ margin-left: 1rem;
+ text-align: center;
+ padding-bottom: .5rem;
+}
+
+.preview-images .thumbnail {
+ width: 6rem;
+ height: 6rem;
+ padding-left: 1.5rem;
+ display: inline-block;
+ border: none;
+ background-size: cover;
+ position: relative;
+ filter: grayscale(50%);
+ transition: 1s;
+}
+
+.preview-images .thumbnail:hover {
+ filter: grayscale(0);
+ transform: scale(1.1)
+}

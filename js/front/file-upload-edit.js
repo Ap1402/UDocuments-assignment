@@ -1,5 +1,3 @@
-// Lo unico diferente de este archivo al js/front/file-upload-edit.js 
-// es que en lugar borrar las preview de las imagenes las mantine :D
 (function () {
 
 	'use strict'
@@ -22,14 +20,14 @@
 				body: formData
 			})
 				.then(function (response) {
-					return response.json();
+					return response.json();					
 				})
 				.then(function (data) {
 					// Cargar estas lineas
 
 					preload.classList.remove('activate-preload');
 					var success = document.getElementById(`success-${input[0].id}`);
-					var num_files = success.dataset.upload;
+					var num_files = success.dataset.upload;					
 					console.log(num_files);
 					num_files = parseInt(num_files) + parseInt(data.count);
 					success.dataset.upload = `${num_files}`;
@@ -45,19 +43,43 @@
 		});
 
 		var createThumbnail = function (file, iterator, thumbnail_id) {
-			var thumbnail = document.createElement('div');
-			thumbnail.classList.add('thumbnail', thumbnail_id);
-			thumbnail.dataset.id = thumbnail_id;
+			var thumbnail = document.createElement('div');	
+			var urlimg = URL.createObjectURL(file.files[iterator]);
 
-			thumbnail.setAttribute('style', `background-image: url(${URL.createObjectURL(file.files[iterator])})`);
+			thumbnail.classList.add('thumbnail', thumbnail_id);
+			thumbnail.dataset.id = thumbnail_id;			
+
+			thumbnail.setAttribute('style', `background-image: url(${urlimg})`);			
+			
 			document.getElementById(`preview-images-${input[0].id}`).appendChild(thumbnail);
-			createCloseButton(thumbnail_id);
+			createCloseButton(thumbnail_id, urlimg);
 		}
 
-		var createCloseButton = function (thumbnail_id) {
+		var createCloseButton = function (thumbnail_id, urlimg) {
 			var closeButton = document.createElement('div');
+			var zoom = document.createElement('a');
+			var zoomicon = document.createElement('i');
+			var download = document.createElement('a');
+			var downloadicon = document.createElement('i');
+
 			closeButton.classList.add('close-button');
 			closeButton.innerText = 'x';
+
+			zoom.dataset.lightbox = `gallery${input[0].id}`;
+			zoom.dataset.title = input[0].id;
+
+			zoom.setAttribute('href', urlimg);
+			zoomicon.classList.add('fas', 'fa-eye');
+			zoom.appendChild(zoomicon);
+
+			download.setAttribute('href', urlimg);			
+			downloadicon.classList.add('fas', 'fa-download');
+			download.setAttribute('download', input[0].id);
+			download.appendChild(downloadicon);
+
+			closeButton.appendChild(zoom);
+			closeButton.appendChild(download);
+
 			document.getElementsByClassName(thumbnail_id)[0].appendChild(closeButton);
 		}
 

@@ -21,16 +21,15 @@
 				body: formData
 			})
 				.then(function (response) {
-					return response.json();
+					return response.json();					
 				})
 				.then(function (data) {
 					// Cargar estas lineas
 					// sirven para decir cuantos archivos se subieron con exito
-
+					
 					preload.classList.remove('activate-preload');
 					var success = document.getElementById(`success-${input[0].id}`);
 					var num_files = success.dataset.upload;
-					console.log(num_files);
 					num_files = parseInt(num_files) + parseInt(data.count);
 					success.dataset.upload = `${num_files}`;
 					success.innerText = `Se subieron ${num_files} con exito.`;
@@ -80,7 +79,7 @@
 
 		var cargarImagenes = function (e, file, formData, file_id) {
 			// Restricciones de Tamaño, Numero de archivos
-			var size_max = 3000000; // 3Mb
+			var size_max = 3000000;
 
 			// Ayuda a restringir que no se creen mas de number_file_max
 			// estos son los div que se van creando cuando se agrega una imagen

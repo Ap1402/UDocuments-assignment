@@ -21,8 +21,8 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-
-  	<link href="css/file.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/lightbox.css">
+  <link href="css/check.css" rel="stylesheet">
 
 </head>
 
@@ -47,7 +47,7 @@
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
-        <div id="page-documentos" class="container-fluid">
+        <div id="page-check" class="container-fluid">
 
           <!-- front/student/documentos.php -->
 
@@ -87,7 +87,9 @@
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
 
-  <script src="js/front/page-documentos.js"></script>
+  <script src="js/front/page-check.js"></script>
+
+  <script src="js/lightbox-plus-jquery.js"></script>
 
 </body>
 

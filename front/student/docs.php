@@ -6,7 +6,7 @@
         <div class="text-center">
           <h1 class="h4 text-gray-900 mb-4">Documentos del alumno</h1>
         </div>
-        <form id="docsForm" method"POST" class="user needs-validation" novalidate>
+        <form id="docsForm" method="POST" class="user needs-validation" novalidate>
 
           <br>
           <div class="alert alert-success" role="alert" id="exito" hidden></div>

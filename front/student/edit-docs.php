@@ -1,21 +1,22 @@
 <!--
   Oye, sera que se puede mandar una variable que permita editar solo si no ha sido chequeado por control de estudios?
   porque hay veces que uno se equivoca y quiere modificar algunas cosas
-  esto optimizaria tiempo, porque sino va a tener que estar diciendole al de control de estudios que se 
+  esto optimizaria tiempo, porque sino va a tener que estar diciendole al de control de estudios que se
   equivoco en tal parte que si lo puede corregir o que se yo.
 -->
 <?php
 $admin = 0; // probando que sea admin para restringir la edicion de algunos campos
-$check_foto = 1; // verificar si fue o no chequeado por control de estudios
-$check_cedula = 1;
-$check_fondo = 1;
+$check_foto = 0; // verificar si fue o no chequeado por control de estudios
+$check_cedula = 0;
+$check_fondo = 0;
 $check_notas = 0;
-$check_partida = 1;
+$check_partida = 0;
 $check_rusnies = 0;
-$check_metodo = 1;
+$check_metodo = 0;
 
 // Iniciando valores
-$cedula = '';
+$cedula = '22222222';
+$path = 'front/storage/nirvana.jpg';
 
 ?>
 <!-- Formulario Editar Documentos -->
@@ -24,11 +25,20 @@ $cedula = '';
     <div class="card-body">
       <div class="p-4">
         <div class="text-center">
-          <h1 class="h4 text-gray-900 mb-4">Documentos del alumno</h1>
+          <h1 class="h4 text-gray-900 mb-4">Editar documentos</h1>
         </div>
-        <form id="documentosEditForm" method"POST" class="user needs-validation" novalidate>
 
-          <br>
+        <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
+
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Advertencia!</strong>
+            Todos los cambios realizados en este formulario se hacen de manera <strong>permanente!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              &times;
+            </button>
+          </div>
+
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
           <!--
 					Los archivos relacionados estan:
@@ -52,13 +62,20 @@ $cedula = '';
                 </div>
                 <div id="preview-images-foto" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
+
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo $foto ?>')">
-                    <div class="close-button"
-                      <?php echo ($admin == 1 || $check_foto == 0) ? '' : 'hidden' ?>>
-                      x
+                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
+                    <div class="close-button-db" <?php echo ($admin == 1 || $check_foto == 0) ? '' : 'hidden' ?>>
+                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                        <i class="fas fa-eye"></i>
+                      </a>
+                      <a href="front/storage/nirvana.jpg" download="<?php echo $cedula ?>">
+                        <i class="fas fa-download"></i>
+                      </a>
                     </div>
                   </div>
+
                 </div>
               </div>
 
@@ -84,13 +101,15 @@ $cedula = '';
                 </div>
                 <div id="preview-images-cedula" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
-                  <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo $cedula ?>')">
-                    <div class="close-button"
-                      <?php echo ($admin == 1 || $check_cedula == 0) ? '' : 'hidden' ?>>
-                      x
+                    <div class=" thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
+                      style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
+                      <div class="close-button-db" <?php echo ($admin == 1 || $check_cedula == 0) ? '' : 'hidden' ?>>
+                        <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                        <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                          <i class="fas fa-eye"></i>
+                        </a>
+                      </div>
                     </div>
-                  </div>
 
                 </div>
               </div>
@@ -119,10 +138,12 @@ $cedula = '';
                 <div id="preview-images-fondo" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo $fondo ?>')">
-                    <div class="close-button"
-                      <?php echo ($admin == 1 || $check_fondo == 0) ? '' : 'hidden' ?>>
-                      x
+                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
+                    <div class="close-button-db" <?php echo ($admin == 1 || $check_fondo == 0) ? '' : 'hidden' ?>>
+                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                        <i class="fas fa-eye"></i>
+                      </a>
                     </div>
                   </div>
 
@@ -154,10 +175,12 @@ $cedula = '';
                 <div id="preview-images-notas" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo $notas ?>')">
-                    <div class="close-button"
-                      <?php echo ($admin == 1 || $check_notas == 0) ? '' : 'hidden' ?>>
-                      x
+                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
+                    <div class="close-button-db" <?php echo ($admin == 1 || $check_notas == 0) ? '' : 'hidden' ?>>
+                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                        <i class="fas fa-eye"></i>
+                      </a>
                     </div>
                   </div>
 
@@ -188,10 +211,12 @@ $cedula = '';
                 <div id="preview-images-partida" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo $partida ?>')">
-                    <div class="close-button"
-                      <?php echo ($admin == 1 || $check_partida == 0) ? '' : 'hidden' ?>>
-                      x
+                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
+                    <div class="close-button-db" <?php echo ($admin == 1 || $check_partida == 0) ? '' : 'hidden' ?>>
+                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                        <i class="fas fa-eye"></i>
+                      </a>
                     </div>
                   </div>
 
@@ -222,10 +247,12 @@ $cedula = '';
                 <div id="preview-images-rusnies" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo $rusnies ?>')">
-                    <div class="close-button"
-                      <?php echo ($admin == 1 || $check_rusnies == 0) ? '' : 'hidden' ?>>
-                      x
+                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
+                    <div class="close-button-db" <?php echo ($admin == 1 || $check_rusnies == 0) ? '' : 'hidden' ?>>
+                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                        <i class="fas fa-eye"></i>
+                      </a>
                     </div>
                   </div>
 
@@ -258,10 +285,12 @@ $cedula = '';
                 <div id="preview-images-metodo" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo $foto ?>')">
-                    <div class="close-button"
-                      <?php echo ($admin == 1 || $check_metodo == 0) ? '' : 'hidden' ?>>
-                      x
+                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
+                    <div class="close-button-db" <?php echo ($admin == 1 || $check_metodo == 0) ? '' : 'hidden' ?>>
+                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                        <i class="fas fa-eye"></i>
+                      </a>
                     </div>
                   </div>
 
@@ -282,11 +311,11 @@ $cedula = '';
           <!-- <button type="submit" class="publish">Subir</button> -->
           <a data-toggle="modal" data-target="#cambiosModal">
             <button id="permisoModal" class="btn btn-primary btn-user btn-block">
-            Guardar cambios
-          </button>
-          <button id="enviarDocs" type="submit" hidden></button>
+              Guardar archivos nuevos
+            </button>
+            <button id="enviarDocs" type="submit" hidden></button>
           </a>
-          
+
 
           <br>
           <div class="alert alert-danger" role="alert" id="resultado" hidden></div>
