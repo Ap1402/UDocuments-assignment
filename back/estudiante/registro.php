@@ -29,8 +29,10 @@ if ($check == 1) {
 if (empty($errores)) {
     $fecha= date("Y-m-d");
 
-    $insertar = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,ultActualizacion) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha')";
-    $result = mysqli_query($conexion, $insertar);
+
+       $instDoc = "INSERT INTO documentos (foto) VALUES('aa')";
+    $result = mysqli_query($conexion, $instDoc);
+
 
     $datos['exito'] = true;
     $datos['mensaje'] = 'Usuario registrado correctamente';

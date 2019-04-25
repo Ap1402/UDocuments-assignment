@@ -92,6 +92,94 @@
 
   <script src="js/front/file-upload.js"></script>
 
+<script>
+$(document).ready(function () {
+
+  $("#seleccion").change(function(){
+
+    var num = $("#seleccion").val();
+    var elemento = $("[name=file]");
+
+    if(num==1){
+      elemento.attr("id","cedula");
+      var elem = $("[name=preview]");
+      elem.attr("id","preview-images-cedula");
+
+      var elem2 = $("[name=success]");
+      elem2.attr("id","success-cedula");
+      $("input").prop('multiple',false);
+
+    }
+
+    if(num==2){
+      elemento.attr("id","foto");
+      var elem = $("[name=preview]");
+      elem.attr("id","preview-images-foto");
+
+      var elem2 = $("[name=success]");
+      elem2.attr("id","success-foto");
+
+      $("input").prop('multiple',false);
+    }
+    if(num==3){
+      elemento.attr("id","notas");
+      var elem = $("[name=preview]");
+      elem.attr("id","preview-images-notas");
+
+      var elem2 = $("[name=success]");
+      elem2.attr("id","success-notas");
+
+      $("input").prop('multiple',true);
+
+    }
+    if(num==4){
+      elemento.attr("id","fondo");
+      var elem = $("[name=preview]");
+      elem.attr("id","preview-images-fondo");
+
+      var elem2 = $("[name=success]");
+      elem2.attr("id","success-fondo");
+
+      $("input").prop('multiple',false);
+    }
+
+    if(num==5){
+      elemento.attr("id","rusnies");
+      var elem = $("[name=preview]");
+      elem.attr("id","preview-images-rusnies");
+
+      var elem2 = $("[name=success]");
+      elem2.attr("id","success-rusnies");
+
+      $("input").prop('multiple',true);
+    }
+
+    if(num==6){
+      elemento.attr("id","partida");
+      var elem = $("[name=preview]");
+      elem.attr("id","preview-images-partida");
+
+      var elem2 = $("[name=success]");
+      elem2.attr("id","success-partida");
+
+      $("input").prop('multiple',false);
+    }
+
+    if(num==7){
+      elemento.attr("id","metodo");
+      var elem = $("[name=preview]");
+      elem.attr("id","preview-images-metodo");
+
+      var elem2 = $("[name=success]");
+      elem2.attr("id","success-metodo");
+
+      $("input").prop('multiple',true);
+    }
+  });
+});
+
+</script>
+
 </body>
 
 </html>

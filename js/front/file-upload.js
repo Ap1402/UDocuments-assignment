@@ -16,7 +16,7 @@
 			preload.classList.add('activate-preload');
 
 			// Cuando cargues el Ajax
-			fetch('./front/server.php', {
+			fetch('./back/server.php', {
 				method: 'POST',
 				body: formData
 			})
@@ -40,9 +40,8 @@
 				.catch(function (err) {
 					console.log(err);
 				});
-
 		});
-
+///----------------------------------------------------------------------------------------
 		var createThumbnail = function (file, iterator, thumbnail_id) {
 			var thumbnail = document.createElement('div');
 			thumbnail.classList.add('thumbnail', thumbnail_id);
@@ -105,7 +104,9 @@
 							//crea el div (preview de la imagen)
 							createThumbnail(file, i, thumbnail_id);
 							// agregael id con el archivo al formData
-							formData.append(thumbnail_id, file.files[i]);
+
+							console.log(file_id);
+							formData.append(file_id, file.files[i]);
 							// actualiza el numero de div(imagenes) creadas
 							count_div = $(`#preview-images-${file_id}`).children('div').length + 1;
 						} else {
