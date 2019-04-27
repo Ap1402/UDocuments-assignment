@@ -53,6 +53,3 @@
     </div>
   </div>
 </div>
-
-<script src="js/front/form-validation.js"></script>
-<script src="scripts/login.js"></script>

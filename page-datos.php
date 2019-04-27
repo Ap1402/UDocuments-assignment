@@ -31,7 +31,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require_once('front/general/sidebar.php'); ?>
+    <?php require('front/general/sidebar.php'); ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -41,14 +41,14 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require_once 'front/general/navbar.php'; ?>
+        <?php require 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-datos" class="container-fluid">
 
-          <!-- front/student/documentos.php -->
+          <!-- front/student/datos.php -->
 
         </div>
         <!-- /.Contenido Variable - Todo lo demas es fijo -->
@@ -58,7 +58,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require_once 'front/general/footer.php'; ?>
+      <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -73,7 +73,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require_once('front/general/modal-logout.php'); ?>
+  <?php require('front/general/modal-logout.php'); ?>
   <!-- End of Logout Modal-->
 
   <!-- Bootstrap core JavaScript-->

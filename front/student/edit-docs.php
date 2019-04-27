@@ -15,9 +15,9 @@ $check_rusnies = 0;
 $check_metodo = 0;
 
 // Iniciando valores
-$cedula = '12345678';
+$cedula = '21217885';
 // rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-$path_image = 'back/Documentos/'.$cedula.'/rusnies_1_04-27-19023025.jpg';
+$path_image = 'back/Documentos/'.$cedula.'/cedula_0_04-28-19001051.jpg';
 $file_id = 'rusnies';
 
 ?>
@@ -83,7 +83,7 @@ $file_id = 'rusnies';
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
                     style="background-image: url('<?php echo $path_image ?>')">
                     <div class="close-button-db">
-                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
+                      <span data-path='<?php echo $path_image ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
                       <a href="<?php echo $path_image ?>" data-lightbox="gallery" data-title="<?php echo $file_id ?>">
                         <i class="fas fa-eye"></i>
                       </a>
@@ -152,4 +152,3 @@ $file_id = 'rusnies';
   </div>
 </div>
 <!-- Page level custom scripts -->
-<script src="js/front/form-validation.js"></script>

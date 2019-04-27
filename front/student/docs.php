@@ -1,4 +1,4 @@
-<!-- DataTales Example -->
+<!-- Formulario Documentos -->
 <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
   <div class="card shadow mb-4">
     <div class="card-body">

@@ -5,7 +5,7 @@
   equivoco en tal parte que si lo puede corregir o que se yo.
 -->
 <?php
-include ('../../back/admin/backCheck.php');
+include ('back/admin/backCheck.php');
 
 ?>
 <!-- Formulario Check Documentos -->
@@ -312,5 +312,3 @@ include ('../../back/admin/backCheck.php');
     </div>
   </div>
 </div>
-<!-- Page level custom scripts -->
-<script src="js/front/form-validation.js"></script>

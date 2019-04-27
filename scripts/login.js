@@ -1,6 +1,22 @@
 $(document).ready(function () {
 
-$('#loginForm').on('submit',ejecutarAjaxLog);
+// $('#loginForm').on('submit',ejecutarAjaxLog);
+
+    // ----------------- Form Validation -------------------
+
+    'use strict';
+
+    $('#loginForm')[0].addEventListener('submit', function (event) {
+        if ($('#loginForm')[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            ejecutarAjaxLog(event);
+        }
+        $('#loginForm')[0].classList.add('was-validated');
+    }, false);
+
+    // ----------------- /Form Validation -------------------
 
 
 function ejecutarAjaxLog(event){

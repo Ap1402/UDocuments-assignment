@@ -50,6 +50,7 @@
       <div id="page-registro" class="row justify-content-center">
 
        <!-- front/access/form-registro.php -->
+       <?php require 'front/access/form-registro.php' ?>
 
       </div>
 
@@ -64,7 +65,7 @@
  </div>
 
  <!-- Footer -->
- <?php require_once 'front/general/footer.php'; ?>
+ <?php require 'front/general/footer.php'; ?>
  <!-- End of Footer -->
 
  <!-- Bootstrap core JavaScript-->
@@ -77,7 +78,7 @@
  <!-- Custom scripts for all pages-->
  <script src="js/sb-admin-2.min.js"></script>
 
- <script src="js/front/page-registro.js"></script>
+<script src="scripts/registro.js"></script>
 
 </body>
 

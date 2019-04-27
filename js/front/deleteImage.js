@@ -1,6 +1,6 @@
 'use strict'
 
-$(document).on('click', 'span', function (e) {
+$(document).on('click', '.close-button-db span', function (e) {
 
   var target = this;
   // console.log(target.dataset.path);

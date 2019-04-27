@@ -52,6 +52,8 @@
             <div id="page-forgot" class="row justify-content-center">
 
               <!-- front/access/form-forgot.php -->
+              <?php require 'front/access/form-forgot.php'?>
+
 
             </div>
 
@@ -78,8 +80,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
-  <script src="js/front/page-forgot.js"></script>
 
 </body>
 

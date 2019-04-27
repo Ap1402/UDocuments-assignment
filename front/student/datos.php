@@ -14,11 +14,11 @@
 
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
           <br>
-          
+
 
           <div class="form-group row">
             <div class="col-sm-6 my-auto">
-                <select id="estado_civil" name="estado_civil" class="form-control" required>
+              <select id="estado_civil" name="estado_civil" class="form-control" required>
                 <option disabled selected value="">Estado civil</option>
                 <option value="1">Casado</option>
                 <option value="2">Soltero</option>
@@ -86,7 +86,7 @@
 
           <div class="form-group row">
             <div class="col-12 my-auto">
-            <select id="discapacidad" name="discapacidad" class="form-control" required>
+              <select id="discapacidad" name="discapacidad" class="form-control" required>
                 <option value="1">No</option>
                 <option value="2">Sí</option>
               </select>
@@ -101,15 +101,15 @@
 
             </div>
           </div>
-          
+
           <br>
           <hr class="sidebar-divider">
           <br>
           <div class="form-group row">
-            <div class="col-sm-6 my-auto" >
-            <select id="carrera" name="carrera" class="form-control" required>
-            <option disabled selected value="">Carrera</option>
-            <?php 
+            <div class="col-sm-6 my-auto">
+              <select id="carrera" name="carrera" class="form-control" required>
+                <option disabled selected value="">Carrera</option>
+                <?php 
               include '../../back/conexion.php';
 
               $sql = "SELECT * FROM carreras WHERE estatus=1";
@@ -122,12 +122,12 @@
                 };
               
               };
-            ?> 
-            </select>
+            ?>
+              </select>
             </div>
             <div class="col-sm-6 my-auto">
-            <select id="turno" name="turno" class="form-control" required>
-            <option disabled="disabled" selected value="">Seleccionar turno</option>
+              <select id="turno" name="turno" class="form-control" required>
+                <option disabled="disabled" selected value="">Seleccionar turno</option>
 
               </select>
               <div class="invalid-feedback">
@@ -271,7 +271,7 @@
                 Por favor introduzca un nombre válido.
               </div>
             </div>
-          <div class="col-sm-6 my-auto">
+            <div class="col-sm-6 my-auto">
               <input type="text" id="parentesco" name="parentesco" class="form-control form-control-user"
                 placeholder="Parentesco" required>
               <div class="invalid-feedback">
@@ -296,9 +296,6 @@
               </div>
             </div>
           </div>
-
-
-
 
 
           <br>
@@ -355,8 +352,6 @@
             </div>
           </div>
 
-
-
           <br>
 
           <div class="alert alert-danger" role="alert" id="resultado" hidden>
@@ -364,8 +359,8 @@
           <br>
 
           <button id="enviarDat" type="submit" class="btn btn-primary btn-user btn-block">
-Guardar          
-</button>
+            Guardar
+          </button>
 
         </form>
       </div>
@@ -373,49 +368,48 @@ Guardar
   </div>
 </div>
 <!-- Page level custom scripts -->
-<script src="js/front/form-validation.js"></script>
 <script src="scripts/datos.js"></script>
 
 
 
-<script> 
-$(document).ready(function () {
-$("#discapacidad").change(function(){
-        var selectedOpt = $(this).val();
-        if(selectedOpt==2){
-          var html="<input type='text' id='tipo_discapacidad' name='tipo_discapacidad' class='form-control form-control-user' placeholder='Tipo discapacidad' minlength='4' required><div class='invalid-feedback'>Por favor introduzca un Tipo de discapacidad válida.</div>";
-          $("#tipo_disc").prepend(html);
-        }else{
-          $("#tipo_discapacidad").remove();
-        };
+<script>
+  $(document).ready(function () {
+    $("#discapacidad").change(function () {
+      var selectedOpt = $(this).val();
+      if (selectedOpt == 2) {
+        var html =
+          "<input type='text' id='tipo_discapacidad' name='tipo_discapacidad' class='form-control form-control-user' placeholder='Tipo discapacidad' minlength='4' required><div class='invalid-feedback'>Por favor introduzca un Tipo de discapacidad válida.</div>";
+        $("#tipo_disc").prepend(html);
+      } else {
+        $("#tipo_discapacidad").remove();
+      };
     });
-});
+  });
 </script>
 
 <script>
-$(document).ready(function () {
+  $(document).ready(function () {
 
-  var carreras = <?php echo json_encode($resultArray) ?>;
+    var carreras = <?php echo json_encode($resultArray) ?>;
 
-  $("#carrera").change(function(){
+    $("#carrera").change(function () {
 
-    var codigo = $("#carrera").val();
-    var nuevasopciones="";
+      var codigo = $("#carrera").val();
+      var nuevasopciones = "";
 
-    console.log(carreras[codigo-1]);
+      console.log(carreras[codigo - 1]);
 
-    if(carreras[codigo-1]["manana"]==1){
-      nuevasopciones+="<option value='1'>Mañana</option>";
-    }
-    if(carreras[codigo-1]["tarde"]==1){
-      nuevasopciones+="<option value='2'>Tarde</option>";
-    }
-    if(carreras[codigo-1]["noche"]==1){
-      nuevasopciones+="<option value='3'>Noche</option>";
-    }
+      if (carreras[codigo - 1]["manana"] == 1) {
+        nuevasopciones += "<option value='1'>Mañana</option>";
+      }
+      if (carreras[codigo - 1]["tarde"] == 1) {
+        nuevasopciones += "<option value='2'>Tarde</option>";
+      }
+      if (carreras[codigo - 1]["noche"] == 1) {
+        nuevasopciones += "<option value='3'>Noche</option>";
+      }
 
-    $("select#turno").html(nuevasopciones);
+      $("select#turno").html(nuevasopciones);
+    });
   });
-});
-
 </script>

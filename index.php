@@ -54,6 +54,7 @@
             <div id="page-login" class="row justify-content-center">
 
               <!-- front/access/form-login.php -->
+              <?php require ('front/access/form-login.php'); ?>
 
             </div>
 
@@ -68,7 +69,7 @@
   </div>
 
   <!-- Footer -->
-  <?php require_once 'front/general/footer.php'; ?>
+  <?php require 'front/general/footer.php'; ?>
   <!-- End of Footer -->
 
   <!-- Bootstrap core JavaScript-->
@@ -80,8 +81,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  
+  <script src="scripts/login.js"></script>
 
-  <script src="js/front/page-login.js"></script>
 </body>
 
 </html>

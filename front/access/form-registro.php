@@ -83,6 +83,5 @@
 		</div>
 	</div>
 </div>
-<script src="js/front/form-validation.js"></script>
-<script src="scripts/registro.js"></script>
+
 

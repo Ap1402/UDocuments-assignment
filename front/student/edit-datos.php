@@ -13,7 +13,7 @@ $cedula = '';
 
 ?>
 
-<!-- Formulario Datos -->
+<!-- Formulario Editar Datos -->
 <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
   <div class="card shadow mb-4">
     <div class="card-body">
@@ -571,8 +571,7 @@ Guardar cambios
   </div>
 </div>
 <!-- Page level custom scripts -->
-<script src="js/front/form-validation.js"></script>
-<script src="scripts/datos.js"></script>
+<!-- <script src="scripts/datos.js"></script> -->
 
 <script> 
 $(document).ready(function () {

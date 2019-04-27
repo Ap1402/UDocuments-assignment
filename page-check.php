@@ -32,7 +32,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require_once('front/general/sidebar.php'); ?>
+    <?php require('front/general/sidebar.php'); ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -42,15 +42,17 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require_once 'front/general/navbar.php'; ?>
+        <?php require 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
-        <?php require ('front/admin/busquedaCheck.php'); ?>
+        
         <div id="page-check" class="container-fluid">
-
+          
+          <?php require ('front/admin/busquedaCheck.php'); ?>
           <!-- front/student/documentos.php -->
+          <?php require ('front/admin/check.php'); ?>
 
         </div>
         <!-- /.Contenido Variable - Todo lo demas es fijo -->
@@ -60,7 +62,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require_once 'front/general/footer.php'; ?>
+      <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -75,7 +77,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require_once('front/general/modal-logout.php'); ?>
+  <?php require('front/general/modal-logout.php'); ?>
   <!-- End of Logout Modal-->
 
   <!-- Bootstrap core JavaScript-->
@@ -87,8 +89,6 @@
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
-
-  <script src="js/front/page-check.js"></script>
 
   <script src="js/lightbox-plus-jquery.js"></script>
 

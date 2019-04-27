@@ -1,6 +1,23 @@
 $(document).ready(function () {
 
-    $('#datosForm').on('submit',ejecutarAjaxLog);
+    // $('#datosForm').on('submit',ejecutarAjaxLog);
+
+    // ----------------- Form Validation -------------------
+
+    'use strict';
+
+    $('#datosForm')[0].addEventListener('submit', function (event) {
+        if ($('#datosForm')[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            ejecutarAjaxLog(event);
+        }
+        $('#datosForm')[0].classList.add('was-validated');
+    }, false);
+
+    // ----------------- /Form Validation -------------------
+
     
     
     function ejecutarAjaxLog(event){
