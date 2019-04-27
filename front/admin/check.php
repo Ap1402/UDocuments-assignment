@@ -5,26 +5,7 @@
   equivoco en tal parte que si lo puede corregir o que se yo.
 -->
 <?php
-$check_foto = 0; // verificar si fue o no chequeado por control de estudios
-$check_cedula = 0;
-$check_fondo = 1;
-$check_notas = 0;
-$check_partida = 1;
-$check_rusnies = 0;
-$check_metodo = 0;
-
-// Iniciando valores
-$cedula = '12345678';
-// rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-$path_image = 'back/Documentos/'.$cedula.'/rusnies_1_04-27-19023025.jpg';
-$path_foto = $path_image;
-$path_cedula = $path_image;
-$path_notas = $path_image;
-$path_fondo= $path_image;
-$path_rusnies = $path_image;
-$path_partida = $path_image;
-$path_metodo = $path_image;
-
+include ('../../back/admin/backCheck.php');
 
 ?>
 <!-- Formulario Check Documentos -->

@@ -30,8 +30,12 @@ if (empty($errores)) {
     $fecha= date("Y-m-d");
 
 
-       $instDoc = "INSERT INTO documentos (foto) VALUES('aa')";
+    $instDoc = "INSERT INTO documentos (foto) VALUES('aa')";
     $result = mysqli_query($conexion, $instDoc);
+    $lastid = mysqli_insert_id($conexion); 
+
+    $instAlumn = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,ultActualizacion,documento) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha','$lastid')";
+    $result = mysqli_query($conexion, $instAlumn);
 
 
     $datos['exito'] = true;

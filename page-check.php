@@ -47,6 +47,7 @@
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
+        <?php require ('front/admin/busquedaCheck.php'); ?>
         <div id="page-check" class="container-fluid">
 
           <!-- front/student/documentos.php -->
