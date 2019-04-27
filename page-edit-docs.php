@@ -22,8 +22,8 @@
 
   <link href="css/style.css" rel="stylesheet">
   <link href="css/file-upload.css" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/lightbox.css">
-  <link href="css/check.css" rel="stylesheet">
 
 
 </head>
@@ -52,6 +52,7 @@
         <div id="page-edit-docs" class="container-fluid">
 
           <!-- front/student/edit-docs.php -->
+          <?php require_once 'front/student/docs.php'; ?>
 
 
         </div>
@@ -90,8 +91,7 @@
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
 
-  <script src="js/front/page-edit-docs.js"></script>
-
+  <!-- <script src="js/front/page-edit-docs.js"></script> -->
   <script src="js/front/file-upload-edit.js"></script>
 
   <script src="js/front/deleteImage.js"></script>

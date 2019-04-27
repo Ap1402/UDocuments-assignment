@@ -16,14 +16,14 @@ $(document).on('click', 'span', function (e) {
   var filenameWithExtension = file_path.replace(/^.*[\\\/]/, '');
 
   // Expone nombre-archivo.png
-  // console.log(filenameWithExtension);
+  console.log(filenameWithExtension);
 
   var deleteImage = function (filenameWithExtension, cedula, target) {
     var r = confirm("Esta seguro que desea eliminar este archivo?. Tenga en cuenta que este cambio es ¡PERMANENTE!. ");
     if (r == true) {
       $.ajax({
         type: 'POST',
-        url: './front/deleteImage.php',
+        url: './back/deleteImage.php',
         data: {
           'file': filenameWithExtension,
           'cedula': cedula

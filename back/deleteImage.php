@@ -4,8 +4,8 @@
    $cedula = trim($_POST['cedula']);
 
    // Armando la ruta completa del archivo a eliminar
-   // $file_path = dirname(__FILE__).'\\'.'storage'.'\\'.$cedula.'\\'.$file;
-   $file_path = dirname(__FILE__) . '\\' . 'storage' . '\\' . $file;
+   $file_path = dirname(__FILE__).'\\'.'Documentos'.'\\'.$cedula.'\\'.$file;
+   // $file_path = dirname(__FILE__) . '\\' . 'storage' . '\\' . $file;
 
    // Eliminando el archivo
    unlink($file_path);

@@ -8,15 +8,17 @@
 $admin = 0; // probando que sea admin para restringir la edicion de algunos campos
 $check_foto = 0; // verificar si fue o no chequeado por control de estudios
 $check_cedula = 0;
-$check_fondo = 0;
+$check_fondo = 1;
 $check_notas = 0;
-$check_partida = 0;
+$check_partida = 1;
 $check_rusnies = 0;
 $check_metodo = 0;
 
 // Iniciando valores
-$cedula = '22222222';
-$path = 'front/storage/nirvana.jpg';
+$cedula = '12345678';
+// rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
+$path_image = 'back/Documentos/'.$cedula.'/rusnies_1_04-27-19023025.jpg';
+$file_id = 'rusnies';
 
 ?>
 <!-- Formulario Editar Documentos -->
@@ -28,16 +30,30 @@ $path = 'front/storage/nirvana.jpg';
           <h1 class="h4 text-gray-900 mb-4">Editar documentos</h1>
         </div>
 
+        <br>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>Advertencia!</strong>
+          Todos los cambios realizados en este formulario se hacen de manera <strong>permanente!</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            &times;
+          </button>
+        </div>
+        <br>
+
+        <select id="seleccion" name="seleccion" class="form-control">
+          <option disabled selected value="">Elija el documento a editar</option>
+          <option <?php echo ($admin == 1 || $check_cedula == 0) ? '' : 'hidden' ?> value="1">Cedula</option>
+          <option <?php echo ($admin == 1 || $check_foto == 0) ? '' : 'hidden' ?> value="2">Foto</option>
+          <option <?php echo ($admin == 1 || $check_notas == 0) ? '' : 'hidden' ?> value="3">Notas</option>
+          <option <?php echo ($admin == 1 || $check_fondo == 0) ? '' : 'hidden' ?> value="4">Fondo</option>
+          <option <?php echo ($admin == 1 || $check_rusnies == 0) ? '' : 'hidden' ?> value="5">Rusnies</option>
+          <option <?php echo ($admin == 1 || $check_partida == 0) ? '' : 'hidden' ?> value="6">Partida</option>
+          <option <?php echo ($admin == 1 || $check_metodo == 0) ? '' : 'hidden' ?> value="7">Método</option>
+        </select>
+
         <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
 
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <i class="fas fa-exclamation-triangle"></i>
-            <strong>Advertencia!</strong>
-            Todos los cambios realizados en este formulario se hacen de manera <strong>permanente!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              &times;
-            </button>
-          </div>
 
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
           <!--
@@ -57,20 +73,21 @@ $path = 'front/storage/nirvana.jpg';
             <div class="container-input">
               <div class="wrap-file">
                 <div class="content-icon-camera">
-                  <input type="file" id="foto" name="foto[]" accept="image/*" class="input-file">
+                  <input type="file" id="file" name="file" accept="image/*" class="input-file"
+                    data-id="<?php echo $file_id ?>">
                   <div class="icon-camera"></div>
                 </div>
-                <div id="preview-images-foto" class="preview-images">
+                <div id="preview-images" class="preview-images">
                   <!-- Repetir con todas las rutas cargadas -->
 
                   <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
-                    <div class="close-button-db" <?php echo ($admin == 1 || $check_foto == 0) ? '' : 'hidden' ?>>
+                    style="background-image: url('<?php echo $path_image ?>')">
+                    <div class="close-button-db">
                       <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
-                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
+                      <a href="<?php echo $path_image ?>" data-lightbox="gallery" data-title="<?php echo $file_id ?>">
                         <i class="fas fa-eye"></i>
                       </a>
-                      <a href="front/storage/nirvana.jpg" download="<?php echo $cedula ?>">
+                      <a href="<?php echo $path_image ?>" download="<?php echo ($cedula.date('m-d-yHis')) ?>">
                         <i class="fas fa-download"></i>
                       </a>
                     </div>
@@ -81,230 +98,14 @@ $path = 'front/storage/nirvana.jpg';
 
             </div>
 
-            <h5 id="success-foto" class="success text-center pt-1" data-upload="0"></h5>
+            <h5 id="success" class="success text-center pt-1" data-upload="0"></h5>
 
           </div>
           <!-- End of Foto -->
 
-          <!-- Cedula -->
-          <div class="wrapper-file">
-            <br>
-            <div class="text-center">
-              <h5 class="text-gray-900">Cedula</h5>
-            </div>
-            <br>
-            <div class="container-input">
-              <div class="wrap-file">
-                <div class="content-icon-camera">
-                  <input type="file" id="cedula" name="cedula[]" accept="image/*" class="input-file">
-                  <div class="icon-camera"></div>
-                </div>
-                <div id="preview-images-cedula" class="preview-images">
-                  <!-- Repetir con todas las rutas cargadas -->
-                    <div class=" thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                      style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
-                      <div class="close-button-db" <?php echo ($admin == 1 || $check_cedula == 0) ? '' : 'hidden' ?>>
-                        <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
-                        <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
-                          <i class="fas fa-eye"></i>
-                        </a>
-                      </div>
-                    </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            <h5 id="success-cedula" class="success text-center pt-1" data-upload="0"></h5>
-
+          <div id="preload" class="preload">
+            <img src="img/images/preload.gif" alt="preload">
           </div>
-          <!-- End of Cedula -->
-
-          <!-- Fondo -->
-          <div class="wrapper-file">
-            <br>
-            <div class="text-center">
-              <h5 class="text-gray-900">Fondo negro(titulo)</h5>
-            </div>
-            <br>
-
-            <div class="container-input">
-              <div class="wrap-file">
-                <div class="content-icon-camera">
-                  <input type="file" id="fondo" name="fondo[]" accept="image/*" class="input-file">
-                  <div class="icon-camera"></div>
-                </div>
-                <div id="preview-images-fondo" class="preview-images">
-                  <!-- Repetir con todas las rutas cargadas -->
-                  <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
-                    <div class="close-button-db" <?php echo ($admin == 1 || $check_fondo == 0) ? '' : 'hidden' ?>>
-                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
-                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            <h5 id="success-fondo" class="success text-center pt-1" data-upload="0"></h5>
-
-          </div>
-          <!-- End of Fondo -->
-
-
-          <!-- Notas -->
-          <div class="wrapper-file">
-            <br>
-            <div class="text-center">
-              <h5 class="text-gray-900">Notas certificadas (1er a 5to)</h5>
-            </div>
-
-            <br>
-            <div class="container-input">
-              <div class="wrap-file">
-                <div class="content-icon-camera">
-                  <input type="file" id="notas" name="notas[]" accept="image/*" class="input-file" multiple>
-                  <div class="icon-camera"></div>
-                </div>
-                <div id="preview-images-notas" class="preview-images">
-                  <!-- Repetir con todas las rutas cargadas -->
-                  <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
-                    <div class="close-button-db" <?php echo ($admin == 1 || $check_notas == 0) ? '' : 'hidden' ?>>
-                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
-                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            <h5 id="success-notas" class="success text-center pt-1" data-upload="0"></h5>
-
-          </div>
-          <!-- End of Notas -->
-
-          <!-- Partida de nacimiento -->
-          <div class="wrapper-file">
-            <br>
-            <div class="text-center">
-              <h5 class="text-gray-900">Partida de nacimiento</h5>
-            </div>
-            <br>
-
-            <div class="container-input">
-              <div class="wrap-file">
-                <div class="content-icon-camera">
-                  <input type="file" id="partida" name="partida[]" accept="image/*" class="input-file" multiple>
-                  <div class="icon-camera"></div>
-                </div>
-                <div id="preview-images-partida" class="preview-images">
-                  <!-- Repetir con todas las rutas cargadas -->
-                  <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
-                    <div class="close-button-db" <?php echo ($admin == 1 || $check_partida == 0) ? '' : 'hidden' ?>>
-                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
-                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            <h5 id="success-partida" class="success text-center pt-1" data-upload="0"></h5>
-
-          </div>
-          <!-- End of Partida de nacimiento -->
-
-          <!-- Resultado Rusnies -->
-          <div class="wrapper-file">
-            <br>
-            <div class="text-center">
-              <h5 class="text-gray-900">Resultado RUSNIES</h5>
-            </div>
-            <br>
-
-            <div class="container-input">
-              <div class="wrap-file">
-                <div class="content-icon-camera">
-                  <input type="file" id="rusnies" name="rusnies[]" accept="image/*" class="input-file" multiple>
-                  <div class="icon-camera"></div>
-                </div>
-                <div id="preview-images-rusnies" class="preview-images">
-                  <!-- Repetir con todas las rutas cargadas -->
-                  <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
-                    <div class="close-button-db" <?php echo ($admin == 1 || $check_rusnies == 0) ? '' : 'hidden' ?>>
-                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
-                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            <h5 id="success-rusnies" class="success text-center pt-1" data-upload="0"></h5>
-
-          </div>
-          <!-- End of Resultado Rusnies -->
-
-          <!-- Metodo de ingreso -->
-          <div class="wrapper-file">
-            <br>
-            <div class="text-center">
-              <h5 class="text-gray-900">Metodo de ingreso</h5>
-              <small>Aprobacion de ingreso directo, tramitacion de
-                equivalencias o certificado de salud (Solo odontologia)</small>
-            </div>
-            <br>
-
-            <div class="container-input">
-              <div class="wrap-file">
-                <div class="content-icon-camera">
-                  <input type="file" id="metodo" name="metodo[]" accept="image/*" class="input-file" multiple>
-                  <div class="icon-camera"></div>
-                </div>
-                <div id="preview-images-metodo" class="preview-images">
-                  <!-- Repetir con todas las rutas cargadas -->
-                  <div class="thumbnail" data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                    style="background-image: url('<?php echo 'front/storage/nirvana.jpg' ?>')">
-                    <div class="close-button-db" <?php echo ($admin == 1 || $check_metodo == 0) ? '' : 'hidden' ?>>
-                      <span data-path='<?php echo $path ?>' data-cedula='<?php echo $cedula ?>'>&times;</span>
-                      <a href="front/storage/nirvana.jpg" data-lightbox="galleryfoto" data-title="foto">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-            <div id="preload" class="preload">
-              <img src="img/images/preload.gif" alt="preload">
-            </div>
-            <h5 id="success-metodo" class="success text-center pt-1" data-upload="0"></h5>
-
-          </div>
-          <!-- End of Metodo de ingreso -->
 
           <br>
           <br>
