@@ -52,7 +52,7 @@
         <div id="page-edit-docs" class="container-fluid">
 
           <!-- front/student/edit-docs.php -->
-          <?php require_once 'front/student/docs.php'; ?>
+          <?php require_once 'front/student/edit-docs.php'; ?>
 
 
         </div>
