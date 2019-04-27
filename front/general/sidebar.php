@@ -54,7 +54,7 @@
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+      <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
        aria-controls="collapseOne">
        <i class="fas fa-fw fa-cog"></i>
        <span>Modificar</span>
@@ -78,7 +78,7 @@
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+      <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
        aria-controls="collapseTwo">
        <i class="fas fa-fw fa-cog"></i>
        <span>Inscripcion</span>
@@ -93,7 +93,7 @@
 
      <!-- Nav Item - Utilities Collapse Menu -->
      <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+      <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseUtilities"
        aria-expanded="true" aria-controls="collapseUtilities">
        <i class="fas fa-fw fa-wrench"></i>
        <span>Utilities</span>
@@ -117,7 +117,7 @@
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+      <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
        aria-controls="collapsePages">
        <i class="fas fa-fw fa-folder"></i>
        <span>Pages</span>
@@ -149,7 +149,7 @@
 
      <!-- Nav Item - Logout -->
      <li class="nav-item">
-      <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+      <a class="nav-link" data-toggle="modal" data-target="#logoutModal">
        <i class="fas fa-sign-out-alt"></i>
        <span>Cerrar Sesión</span></a>
      </li>
