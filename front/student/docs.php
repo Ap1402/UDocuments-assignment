@@ -1,3 +1,44 @@
+<?php 
+
+$num_foto = 0;
+$num_cedula = 0;
+$num_fondo = 0;
+$num_notas = 0;
+$num_partida = 0;
+$num_rusnies = 0;
+$num_metodo = 0;
+
+
+$all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $num_partida > 0 && $num_rusnies > 0 &&
+$num_metodo;
+
+// Hacer si todos los documentos se cargaron
+if ($all) {
+?>
+<!-- Modal -->
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalCenterTitle">Mensaje</h5>
+    </div>
+    <label for="continuar">
+      <div class="modal-body">
+        Todos los documentos han sido cargados con exito!. Sera redirigido a su perfil.
+        <br>
+        Seleccione el boton "Continuar".
+      </div>
+    </label>
+    <div class="modal-footer">
+      <button type="button" id="continuar" class="btn btn-primary"
+        onclick="window.location.replace('page-perfil.php');">Continuar</button>
+    </div>
+  </div>
+</div>
+<?php
+}
+?>
+
+
 <!-- Formulario Documentos -->
 <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
   <div class="card shadow mb-4">
@@ -7,15 +48,16 @@
           <h1 class="h4 text-gray-900 mb-4">Documentos del alumno</h1>
         </div>
 
+
         <select id="seleccion" name="seleccion" class="form-control">
           <option disabled selected value="">Elija el documento a subir</option>
-          <option value="1">Cedula</option>
-          <option value="2">Foto</option>
-          <option value="3">Notas</option>
-          <option value="4">Fondo</option>
-          <option value="5">Rusnies</option>
-          <option value="6">Partida</option>
-          <option value="7">Método</option>
+          <?php echo ($num_cedula != 0) ? '' : '<option value="1">Cedula</option>' ?>
+          <?php echo ($num_foto != 0) ? '' : '<option value="2">Foto</option>' ?>
+          <?php echo ($num_notas != 0) ? '' : '<option value="3">Notas</option>' ?>
+          <?php echo ($num_fondo != 0) ? '' : '<option value="4">Fondo</option>' ?>
+          <?php echo ($num_rusnies != 0) ? '' : '<option value="5">Rusnies</option>' ?>
+          <?php echo ($num_partida != 0) ? '' : '<option value="6">Partida</option>' ?>
+          <?php echo ($num_metodo != 0) ? '' : '<option value="7">Método</option>' ?>
 
 
         </select>

@@ -1,11 +1,17 @@
 <div id="prueba">
     <div class="col-sm-12 col-lg-10 mx-auto">
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4 border-bottom-primary">
             <div class="card-body">
 
-                <form action="index.php" onsubmit="return buscar()">
-                    <label>Buscar</label> <input type="text" id="q" name="q" onKeyUp="return buscar()">
-                    <input type="submit" value="Buscar" id="boton">
+                <form action="index.php" onsubmit="return buscar()" class="mx-auto my-2 my-md-0 col-sm-12 col-md-6">
+                    <div class="input-group">
+                        <input type="text" id="q" name="q" onKeyUp="return buscar()" class="form-control bg-light border-0 small" placeholder="Buscar alumno" aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button type="submit" value="Buscar" id="boton" class="btn btn-primary">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>                            
+                        </div>
+                    </div>
                     <span id="loading"></span>
                 </form>
 

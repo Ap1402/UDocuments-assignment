@@ -13,7 +13,7 @@ include ('back/admin/backCheck.php');
 <div class="col-sm-12 col-lg-10 mx-auto">
   <div class="card shadow mb-4">
     <div class="card-body">
-      <div class="p-4">
+      <div class="p-3">
         <div class="text-center">
           <h1 class="h4 text-gray-900 mb-4">Validar <small class="text-muted"> documentos del alumno</small></h1>
         </div>
@@ -26,12 +26,12 @@ include ('back/admin/backCheck.php');
           <!-- Foto -->
           <div class="form-group row">
 
-            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto pl-3">
+            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
               <div class="custom-control custom-switch">
                 <input type="checkbox" <?php echo ($check_foto == 0) ? '' : 'checked' ?> class="custom-control-input"
                   id="check_foto">
                 <label class="custom-control-label" for="check_foto">
-                  <h5 class="text-gray-900 pl-3">Foto reciente tipo carnet</h5>
+                  <h5 class="text-gray-900 pl-1">Foto reciente tipo carnet</h5>
                 </label>
               </div>
             </div>
@@ -64,11 +64,11 @@ include ('back/admin/backCheck.php');
           <!-- Cedula -->
           <div class="form-group row">
 
-            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto pl-3">
+            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
               <div class="custom-control custom-switch">
                 <input type="checkbox" <?php echo ($check_cedula == 0) ? '' : 'checked' ?> class="custom-control-input" id="check_cedula">
                 <label class="custom-control-label" for="check_cedula">
-                  <h5 class="text-gray-900 pl-3">Cedula</h5>
+                  <h5 class="text-gray-900 pl-1">Cedula</h5>
                 </label>
               </div>
             </div>
@@ -102,12 +102,12 @@ include ('back/admin/backCheck.php');
           <!-- Notas -->
           <div class="form-group row">
 
-            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto pl-3">
+            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
               <div class="custom-control custom-switch">
                 <input type="checkbox" <?php echo ($check_notas == 0) ? '' : 'checked' ?> class="custom-control-input"
                   id="check_notas">
                 <label class="custom-control-label" for="check_notas">
-                  <h5 class="text-gray-900 pl-3">Notas certificadas de bachillerato (1er a 5to)</h5>
+                  <h5 class="text-gray-900 pl-1">Notas certificadas de bachillerato (1er a 5to)</h5>
                 </label>
               </div>
             </div>
@@ -142,12 +142,12 @@ include ('back/admin/backCheck.php');
           <!-- Fondo -->
           <div class="form-group row">
 
-            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto pl-3">
+            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
               <div class="custom-control custom-switch">
                 <input type="checkbox" <?php echo ($check_fondo == 0) ? '' : 'checked' ?> class="custom-control-input"
                   id="check_fondo">
                 <label class="custom-control-label" for="check_fondo">
-                  <h5 class="text-gray-900 pl-3">Titulo de bachillerato autenticado</h5>
+                  <h5 class="text-gray-900 pl-1">Titulo de bachillerato autenticado</h5>
                 </label>
               </div>
             </div>
@@ -182,12 +182,12 @@ include ('back/admin/backCheck.php');
           <!-- Rusnies -->
           <div class="form-group row">
 
-            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto pl-3">
+            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
               <div class="custom-control custom-switch">
                 <input type="checkbox" <?php echo ($check_rusnies == 0) ? '' : 'checked' ?> class="custom-control-input"
                   id="check_rusnies">
                 <label class="custom-control-label" for="check_rusnies">
-                  <h5 class="text-gray-900 pl-3">Resultado del RUSNIES</h5>
+                  <h5 class="text-gray-900 pl-1">Resultado del RUSNIES</h5>
                 </label>
               </div>
             </div>
@@ -222,12 +222,12 @@ include ('back/admin/backCheck.php');
           <!-- Partida -->
           <div class="form-group row">
 
-            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto pl-3">
+            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
               <div class="custom-control custom-switch">
                 <input type="checkbox" <?php echo ($check_partida == 0) ? '' : 'checked' ?> class="custom-control-input"
                   id="check_partida">
                 <label class="custom-control-label" for="check_partida">
-                  <h5 class="text-gray-900 pl-3">Partida de nacimiento</h5>
+                  <h5 class="text-gray-900 pl-1">Partida de nacimiento</h5>
                 </label>
               </div>
             </div>
@@ -260,12 +260,12 @@ include ('back/admin/backCheck.php');
           <!-- Metodo -->
           <div class="form-group row">
 
-            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto pl-3">
+            <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
               <div class="custom-control custom-switch">
                 <input type="checkbox" <?php echo ($check_metodo == 0) ? '' : 'checked' ?> class="custom-control-input"
                   id="check_metodo">
                 <label class="custom-control-label" for="check_metodo">
-                  <h5 class="text-gray-900">Metodo de ingreso</h5>
+                  <h5 class="text-gray-900 pl-1">Metodo de ingreso</h5>
                   <small>Aprobacion de ingreso directo, tramitacion de
                     equivalencias o certificado de salud (Solo odontologia)</small>
                 </label>

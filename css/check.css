@@ -1,7 +1,6 @@
 .preview-images {
- margin-left: 1rem;
+ padding-left: .5rem;
  text-align: center;
- padding-bottom: .5rem;
 }
 
 .preview-images .thumbnail {
@@ -43,8 +42,7 @@
  right: 2px;
  border-radius: 10rem;
  cursor: pointer;
- transition: .8s;
- 
+ transition: .8s; 
 }
 
 .preview-images .thumbnail .close-button-db a + a {
