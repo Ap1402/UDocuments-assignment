@@ -63,8 +63,6 @@ if ($all) {
         </select>
 
         <form id="docsForm" method="POST" class="user needs-validation" novalidate>
-
-          <br>
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
 
           <!--

@@ -21,7 +21,7 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/autocomplete.css" rel="stylesheet">
+  <link href="css/table.css" rel="stylesheet">
 
 </head>
 
@@ -41,12 +41,14 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require_once 'front/general/navbar.php'; ?>
+        <?php require 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-table" class="container-fluid">
+
+          <?php require 'front/admin/table.php'; ?>
 
 
         </div>
@@ -57,7 +59,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require_once 'front/general/footer.php'; ?>
+      <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -90,7 +92,13 @@
 
   <div id="enlaces-charts"></div>
 
-  <script src="js/front/page-table.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/front/table.js"></script>
 
 </body>
 

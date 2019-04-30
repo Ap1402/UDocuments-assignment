@@ -11,11 +11,14 @@
 }
 
 .bg-password-image {
- background: linear-gradient(90deg,rgba(238, 31, 24, 0.87), rgba(255, 255, 255, 0.8)) !important;
+ background: linear-gradient(90deg, rgba(238, 31, 24, 0.87), rgba(255, 255, 255, 0.8)) !important;
 }
 
 /* Padding-y no permite la visibilidad del texto e impide introducir valores al input[type=number]*/
-input[type=number] {
+input[type=number],
+input[type=text],
+input[type=email],
+input[type=search] {
  border: 1px solid #d1d3e2;
  background-color: #ffffff;
  font-size: 0.8rem;
@@ -23,6 +26,17 @@ input[type=number] {
  padding-right: 1rem;
  padding-left: 1rem;
  height: 3rem;
+}
+
+.informacion {
+ border: 1px solid #d1d3e2;
+ background-color: #ffffff;
+ font-size: 0.8rem;
+ border-radius: 10rem;
+ padding-right: 1rem;
+ padding-left: 1rem;
+ height: 3rem;
+ width: 100%;
 }
 
 select {

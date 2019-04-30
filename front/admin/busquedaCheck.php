@@ -5,14 +5,18 @@
 
                 <form action="index.php" onsubmit="return buscar()" class="mx-auto my-2 my-md-0 col-sm-12 col-md-6">
                     <div class="input-group">
-                        <input type="text" id="q" name="q" onKeyUp="return buscar()" class="form-control bg-light border-0 small" placeholder="Buscar alumno" aria-label="Search" aria-describedby="basic-addon2">
+                        <input type="text" id="q" name="q" onKeyUp="return buscar()"
+                            class="form-control bg-light border-0 small" placeholder="Buscar alumno" aria-label="Search"
+                            aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button type="submit" value="Buscar" id="boton" class="btn btn-primary">
                                 <i class="fas fa-search fa-sm"></i>
-                            </button>                            
+                            </button>
                         </div>
                     </div>
-                    <span id="loading"></span>
+                    <div id="preload" class="preload">
+                        <img src="img/images/preload.gif" alt="preload">
+                    </div>
                 </form>
 
 

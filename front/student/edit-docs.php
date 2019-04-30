@@ -53,8 +53,6 @@ $file_id = 'rusnies';
         </select>
 
         <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
-
-
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
           <!--
 					Los archivos relacionados estan:

@@ -46,7 +46,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
 
   <!-- Heading -->
   <div class="sidebar-heading">
-    Administrador
+    Control
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
@@ -74,8 +74,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Utilities:</h6>
-        <a class="collapse-item" href="page-utilities-border.php">Borders</a>
-        <a class="collapse-item" href="page-utilities-animation.php">Animations</a>
+        <a class="collapse-item" href="page-crear-admin.php">Crear admin</a>
       </div>
     </div>
   </li>
@@ -114,7 +113,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
   <li class="nav-item">
     <a id="table" class="nav-link" href="page-table.php">
       <i class="fas fa-fw fa-table"></i>
-      <span>Tables</span></a>
+      <span>Alumnos</span></a>
   </li>
 
   <?php } ?>

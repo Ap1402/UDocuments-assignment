@@ -1,11 +1,11 @@
 <?php
 
-$check_foto = 0; // verificar si fue o no chequeado por control de estudios
+$check_foto = 1; // verificar si fue o no chequeado por control de estudios
 $check_cedula = 0;
 $check_fondo = 1;
 $check_notas = 0;
 $check_partida = 1;
-$check_rusnies = 0;
+$check_rusnies = 1;
 $check_metodo = 0;
 
 // -------- Porcentaje de Documentos
@@ -30,38 +30,294 @@ $path_partida = $path_image;
 $path_rusnies = $path_image;
 $path_metodo = $path_image;
 
+$ultActualizacion = date('Y-m-d');
+
+$p_nombre = 'Textotexto';
+$s_nombre = 'Textotexto';
+$p_apellido = 'Textotexto';
+$s_apellido = 'Textotexto';
+
 ?>
 
 <!-- Formulario Check Documentos -->
 <div class="col-sm-12 col-lg-10 mx-auto">
+  <!-- Header Status de Documentos -->
+  <div class="card border-left-primary h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center px-2">
+        <div class="col pr-2">
+          <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">Información del alumno</div>
+          <div class="row no-gutters align-items-center">
+            <div class="col-auto">
+              <div class="h5 mb-0 pr-3 font-weight-bold text-gray-800">Ultima actualización: </div>
+            </div>
+            <div class="col">
+              <?php echo $ultActualizacion ?>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto">
+          <a href="page-edit-datos.php" data-toggle="tooltip" data-placement="top" title="Editar información">
+            <i class="fas fa-user-edit fa-2x text-gray-300"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Header Status de Documentos -->
+
+  <!-- Tabla de Status de Documentos -->
+  <div class="card border-left-primary shadow mb-4">
+    <div class="card-body">
+      <div class="p-4">
+
+        <div class="form-group row">
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Primer nombre</label><br>
+            <input type="text" value="<?php echo $p_nombre ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Segundo nombre</label><br>
+            <input type="text" value="<?php echo $s_nombre ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Primer apellido</label><br>
+            <input type="text" value="<?php echo $p_apellido ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Segundo apellido</label><br>
+            <input type="text" value="<?php echo $s_apellido ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+            <label class="pl-2 pt-2">Correo</label><br>
+            <input type="text" value="<?php echo $correo ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-8 col-xl-6">
+            <label class="pl-2 pt-2">Nombre de usuario</label><br>
+            <input type="text" value="<?php echo $username ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Cédula</label><br>
+            <input type="text" value="<?php echo $cedula ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Estado civil</label><br>
+            <input type="text" value="<?php echo $estado_civil ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Fecha de nacimiento</label><br>
+            <input type="text" value="<?php echo $fecha_nacimiento ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <label class="pl-2 pt-2">Discapacidad</label><br>
+            <input type="text" value="<?php echo $discapacidad.'/'.$tipo_disc ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <label class="pl-2 pt-2">Teléfono de habitación</label><br>
+            <input type="text" value="<?php echo $habitacion ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <label class="pl-2 pt-2">Teléfono móvil</label><br>
+            <input type="text" value="<?php echo $movil ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <label class="pl-2 pt-2">Teléfono de trabajo</label><br>
+            <input type="text" value="<?php echo $trabajo ?>" class="form-control" disabled>
+          </div>
+
+        </div>
+
+
+        <br>
+        <div class="text-center">
+          <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>
+        </div>
+        <hr class="sidebar-divider">
+        <br>
+
+        <div class="form-group row">
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">País</label><br>
+            <input type="text" value="<?php echo $pais ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Estado</label><br>
+            <input type="text" value="<?php echo $estado ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Ciudad</label><br>
+            <input type="text" value="<?php echo $ciudad ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Municipio</label><br>
+            <input type="text" value="<?php echo $municipio ?>" class="form-control" disabled>
+          </div>
+        </div>
+
+
+        <br>
+        <div class="text-center">
+          <h5 class="text-gray-900 mb-4">Dirección de habitación</h5>
+        </div>
+        <hr class="sidebar-divider">
+        <br>
+
+        <div class="form-group row">
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Estado</label><br>
+            <input type="text" value="<?php echo $nac_estado ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Ciudad</label><br>
+            <input type="text" value="<?php echo $nac_ciudad ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Municipio</label><br>
+            <input type="text" value="<?php echo $nac_municipio ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Zona postal</label><br>
+            <input type="text" value="<?php echo $nac_postal ?>" class="form-control" disabled>
+          </div>
+        </div>
+
+        <br>
+        <div class="text-center">
+          <h5 class="text-gray-900 mb-4">Dirección de trabajo</h5>
+        </div>
+        <hr class="sidebar-divider">
+        <br>
+
+        <div class="form-group row">
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Estado</label><br>
+            <input type="text" value="<?php echo $t_estado ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Ciudad</label><br>
+            <input type="text" value="<?php echo $t_ciudad ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Municipio</label><br>
+            <input type="text" value="<?php echo $t_municipio ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Zona postal</label><br>
+            <input type="text" value="<?php echo $t_postal ?>" class="form-control" disabled>
+          </div>
+        </div>
+
+        <br>
+        <div class="text-center">
+          <h5 class="text-gray-900 mb-4">Contacto en caso de emergencia</h5>
+        </div>
+        <hr class="sidebar-divider">
+        <br>
+
+        <div class="form-group row">
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Nombre y apellido</label><br>
+            <input type="text" value="<?php echo $e_nombre ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Parentesco</label><br>
+            <input type="text" value="<?php echo $parentesco ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Teléfono local</label><br>
+            <input type="text" value="<?php echo $e_local ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6 col-xl-3">
+            <label class="pl-2 pt-2">Teléfono móvil</label><br>
+            <input type="text" value="<?php echo $e_movil ?>" class="form-control" disabled>
+          </div>
+        </div>
+
+        <br>
+        <div class="text-center">
+          <h5 class="text-gray-900 mb-4">Datos título de bachiller</h5>
+        </div>
+        <hr class="sidebar-divider">
+        <br>
+
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <label class="pl-2 pt-2">Nombre de la institución (no abreviar)</label><br>
+            <input type="text" value="<?php echo $i_nombre ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="pl-2 pt-2">Año de egreso</label><br>
+            <input type="text" value="<?php echo $i_egreso ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="pl-2 pt-2">Código de la institución</label><br>
+            <input type="text" value="<?php echo $i_codigo ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="pl-2 pt-2">Estado</label><br>
+            <input type="text" value="<?php echo $i_estado ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="pl-2 pt-2">Tipo de institución</label><br>
+            <input type="text" value="<?php echo $tipo_inst ?>" class="form-control" disabled>
+          </div>
+        </div>
+
+        <br>
+        <div class="text-center">
+          <h5 class="text-gray-900 mb-4">Carrera</h5>
+        </div>
+        <hr class="sidebar-divider">
+        <br>
+
+        <div class="form-group row">
+          <div class="col-sm-12 col-md-6">
+            <label class="pl-2 pt-2">Carrera</label><br>
+            <input type="text" value="<?php echo $carrera ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="pl-2 pt-2">Turno</label><br>
+            <input type="text" value="<?php echo $turno ?>" class="form-control" disabled>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- /Tabla de Status de Documentos -->
+
+  <!-- Header Status de Documentos -->
 
   <div class="card border-left-info h-100 py-2">
     <div class="card-body">
-      <div class="row no-gutters align-items-center px-3">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Estatus de Documentos</div>
+      <div class="row no-gutters align-items-center px-2">
+        <div class="col pr-2">
+          <div class="text-sm font-weight-bold text-info text-uppercase mb-1">Estatus de Documentos</div>
           <div class="row no-gutters align-items-center">
             <div class="col-auto">
-              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $porcentaje ?>%</div>
+              <div class="h5 mb-0 pr-3 font-weight-bold text-gray-800"><?php echo $porcentaje ?>%</div>
             </div>
             <div class="col">
               <div class="progress progress-sm mr-2">
-                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $porcentaje ?>%" aria-valuenow="<?php echo $porcentaje ?>"
-                  aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $porcentaje ?>%"
+                  aria-valuenow="<?php echo $porcentaje ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-auto">
-          <span><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></span>
-          
+          <a href="page-edit-docs.php" data-toggle="tooltip" data-placement="top" title="Editar documentos">
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+          </a>
         </div>
       </div>
     </div>
   </div>
+  <!-- /Header Status de Documentos -->
 
 
-  <div class="card shadow mb-4">
+  <!-- Tabla de Status de Documentos -->
+  <div class="card border-left-info shadow mb-4">
     <div class="card-body">
       <div class="px-3 py-2">
         <!-- Foto -->
@@ -69,7 +325,9 @@ $path_metodo = $path_image;
 
           <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
             <h5 class="text-gray-900 row">
-              <div class="col-2"><i class="fas fa-<?php echo ($check_foto == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i></div>
+              <div class="col-2"><i
+                  class="fas fa-<?php echo ($check_foto == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+              </div>
               <div class="col-10 text-justify">Foto reciente tipo carnet</div>
             </h5>
           </div>
@@ -103,7 +361,9 @@ $path_metodo = $path_image;
 
           <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
             <h5 class="text-gray-900 row">
-              <div class="col-2"><i class="fas fa-<?php echo ($check_cedula == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i></div>
+              <div class="col-2"><i
+                  class="fas fa-<?php echo ($check_cedula == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+              </div>
               <div class="col-10 text-justify">Cedula</div>
             </h5>
           </div>
@@ -138,7 +398,9 @@ $path_metodo = $path_image;
 
           <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
             <h5 class="text-gray-900 row">
-              <div class="col-2"><i class="fas fa-<?php echo ($check_notas == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i></div>
+              <div class="col-2"><i
+                  class="fas fa-<?php echo ($check_notas == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+              </div>
               <div class="col-10 text-justify">Notas certificadas de bachillerato (1er a 5to)</div>
             </h5>
           </div>
@@ -174,7 +436,9 @@ $path_metodo = $path_image;
 
           <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
             <h5 class="text-gray-900 row">
-              <div class="col-2"><i class="fas fa-<?php echo ($check_fondo == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i></div>
+              <div class="col-2"><i
+                  class="fas fa-<?php echo ($check_fondo == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+              </div>
               <div class="col-10 text-justify">Titulo de bachillerato autenticado</div>
             </h5>
           </div>
@@ -208,7 +472,9 @@ $path_metodo = $path_image;
 
           <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
             <h5 class="text-gray-900 row">
-              <div class="col-2"><i class="fas fa-<?php echo ($check_rusnies == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i></div>
+              <div class="col-2"><i
+                  class="fas fa-<?php echo ($check_rusnies == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+              </div>
               <div class="col-10 text-justify">Resultado del RUSNIES</div>
             </h5>
           </div>
@@ -244,7 +510,9 @@ $path_metodo = $path_image;
 
           <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
             <h5 class="text-gray-900 row">
-              <div class="col-2"><i class="fas fa-<?php echo ($check_partida == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i></div>
+              <div class="col-2"><i
+                  class="fas fa-<?php echo ($check_partida == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+              </div>
               <div class="col-10 text-justify">Partida de nacimiento</div>
             </h5>
           </div>
@@ -277,9 +545,13 @@ $path_metodo = $path_image;
 
           <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
             <h5 class="text-gray-900 row">
-              <div class="col-2"><i class="fas fa-<?php echo ($check_metodo == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i></div>
-              <div class="col-10 text-justify">Metodo de ingreso <small>Aprobacion de ingreso directo, tramitacion de
-                equivalencias o certificado de salud (Solo odontologia)</small></div>
+              <div class="col-2"><i
+                  class="fas fa-<?php echo ($check_metodo == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+              </div>
+              <div class="col-10 text-justify">Metodo de ingreso <br>
+                <small>Aprobacion de ingreso directo, tramitacion de
+                  equivalencias o certificado de salud (Solo odontologia)</small>
+                </div>
             </h5>
           </div>
 
@@ -305,11 +577,9 @@ $path_metodo = $path_image;
         </div>
         <!-- End Metodo -->
 
-        <br>
-        <hr class="sidebar-divider">
-        <br>
-
       </div>
     </div>
   </div>
+  <!-- /Tabla de Status de Documentos -->
+
 </div>

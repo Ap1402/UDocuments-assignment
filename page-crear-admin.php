@@ -45,10 +45,9 @@
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
-        <div id="page-edit-datos" class="container-fluid">
+        <div id="page-crear-admin" class="container-fluid">
 
-          <!-- front/student/edit-datos.php -->
-
+          <!-- front/admin/crear-admin.php -->
 
         </div>
         <!-- /.Contenido Variable - Todo lo demas es fijo -->
@@ -86,7 +85,7 @@
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
 
-  <script src="js/front/page-edit-datos.js"></script>
+  <script src="js/front/page-crear-admin.js"></script>
 
 </body>
 

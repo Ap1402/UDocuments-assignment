@@ -1,3 +1,15 @@
+.preload {
+ padding-top: 20px;
+ text-align: center;
+ display: none;
+}
+
+.activate-preload {
+ padding-top: 20px;
+ text-align: center;
+ display: block;
+}
+
 .preview-images {
  padding-left: .5rem;
  text-align: center;
