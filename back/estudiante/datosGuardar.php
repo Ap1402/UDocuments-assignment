@@ -21,7 +21,7 @@ $sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
 "carrera='$carrera', pais_nac='$pais_nac',ciudad_nac='$ciudad_nac',". 
 "estado_nac='$estado_nac', municipio_nac='$municipio_nac',". 
 "parientename='$e_nombre', parentesco='$parentesco',". 
-"ultActualizacion='$fecha', nombreInst='$i_nombre', anoEgreso='$i_egreso', codigoInst='$i_codigo', estadoInst='$i_estado', tipoInst='$tipo_inst' WHERE cedula='$cedula'";
+"ultActualizacion='$fecha', nombreInst='$i_nombre', anoEgreso='$i_egreso', codigoInst='$i_codigo', estadoInst='$i_estado', tipoInst='$tipo_inst', turno='$turno' WHERE cedula='$cedula'";
 
 $result = mysqli_query($conexion, $sql);
 

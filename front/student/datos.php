@@ -329,16 +329,11 @@
 
 <script>
   $(document).ready(function () {
-
     var carreras = <?php echo json_encode($resultArray) ?>;
-
     $("#carrera").change(function () {
-
       var codigo = $("#carrera").val();
       var nuevasopciones = "";
-
       console.log(carreras[codigo - 1]);
-
       if (carreras[codigo - 1]["manana"] == 1) {
         nuevasopciones += "<option value='1'>Mañana</option>";
       }
@@ -348,7 +343,6 @@
       if (carreras[codigo - 1]["noche"] == 1) {
         nuevasopciones += "<option value='3'>Noche</option>";
       }
-
       $("select#turno").html(nuevasopciones);
     });
   });

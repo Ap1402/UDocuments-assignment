@@ -19,6 +19,7 @@ if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
     $_SESSION['estado'] = 1;
     $_SESSION['cedula'] = $cedula;
     $_SESSION['id'] = $datos['id_alumno'];
+    $_SESSION['nivel']=0;
 
     echo "1";
 } else {

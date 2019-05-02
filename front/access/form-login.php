@@ -20,7 +20,7 @@
       <!-- Password -->
       <div class="form-group">
         <div class="col">
-        <input type="password" id="contrasenaLog" name="contrasenaLog" minlength="8"
+        <input type="password" id="contrasenaLog" name="contrasenaLog" minlength="4"
           class="form-control form-control-user" placeholder="Contraseña" required>
         <div class="invalid-feedback">
           La contraseña debe tener al menos 8 carateres
