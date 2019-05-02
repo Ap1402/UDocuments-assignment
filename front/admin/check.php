@@ -6,7 +6,7 @@
 -->
 <?php
 include ('back/admin/backCheck.php');
-
+$nombre_solicitud = "SolicitudSolicitud";
 ?>
 <!-- Formulario Check Documentos -->
 
@@ -264,8 +264,7 @@ include ('back/admin/backCheck.php');
                   id="check_metodo">
                 <label class="custom-control-label" for="check_metodo">
                   <h5 class="text-gray-900 text-justify pl-4">Metodo de ingreso <br>
-                  <small>Aprobacion de ingreso directo, tramitacion de
-                    equivalencias o certificado de salud (Solo odontologia)</small>
+                  <small><?php echo $nombre_solicitud ?></small>
                   </h5>
                   
                 </label>

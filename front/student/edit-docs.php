@@ -27,7 +27,7 @@ $file_id = 'rusnies';
     <div class="card-body">
       <div class="p-4">
         <div class="text-center">
-          <h1 class="h4 text-gray-900 mb-4">Editar documentos</h1>
+          <h1 class="h4 text-gray-900 mb-4">Editar - Documentos</h1>
         </div>
 
         <br>

@@ -19,7 +19,7 @@ $cedula = '';
     <div class="card-body">
       <div class="p-4">
         <div class="text-center">
-          <h1 class="h4 text-gray-900 mb-4">Datos del alumno<br>
+          <h1 class="h4 text-gray-900 mb-4">Editar - Datos del alumno<br>
             <small class="text-muted"> asegúrese de rellenar correctamente sus datos</small>
           </h1>
         </div>

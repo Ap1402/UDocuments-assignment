@@ -1,5 +1,9 @@
 <!-- Control de sesion -->
-<?php include 'back/sessionController.php'?>
+<?php 
+include 'back/sessionController.php';
+?>
+
+
 <!-- End of Control de sesion -->
 
 <?php
@@ -22,7 +26,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center py-5" href="index.php">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center py-5">
     <div class="sidebar-brand-icon">
       <img src="img/varias/logo_ujap_peq.png" width="40%" height="20%" class="d-inline-block align-items-center" alt="">
     </div>
@@ -32,7 +36,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
   <?php if ($admin == 1) { // Mostrar solo para administradores ?>
 
   <!-- Divider -->
-  <hr class="sidebar-divider my-0">  
+  <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
@@ -59,7 +63,6 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="page-check.php">Validaciones</a>
-        <a class="collapse-item" href="page-cards.php">Cards</a>
       </div>
     </div>
   </li>
@@ -69,11 +72,10 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
     <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
       aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"></i>
-      <span>Utilities</span>
+      <span>Utilidades</span>
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Custom Utilities:</h6>
         <a class="collapse-item" href="page-crear-admin.php">Crear admin</a>
       </div>
     </div>
@@ -81,26 +83,6 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
 
   <!-- Divider -->
   <hr class="sidebar-divider">
-
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Addons
-  </div>
-
-  <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
-    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-      aria-controls="collapsePages">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Pages</span>
-    </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="page-404.php">404 Page</a>
-        <a class="collapse-item" href="page-blank.php">Blank Page</a>
-      </div>
-    </div>
-  </li>
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
@@ -119,12 +101,19 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
   <?php } ?>
 
   <!-- Divider -->
-  <hr class="sidebar-divider">  
+  <hr class="sidebar-divider">
 
   <!-- Students -->
   <div class="sidebar-heading">
     Alumnos
   </div>
+
+  <!-- Nav Item - Solicitud -->
+  <li class="nav-item">
+    <a id="solicitud" class="nav-link" href="page-solicitud.php">
+      <i class="fas fa-vote-yea"></i>
+      <span>Solicitud</span></a>
+  </li>
 
   <!-- Nav Item - Datos -->
   <li class="nav-item">
@@ -153,6 +142,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="page-edit-datos.php">Datos</a>
         <a class="collapse-item" href="page-edit-docs.php">Documentos</a>
+        <a class="collapse-item" href="page-edit-solicitud.php">Solicitud</a>
       </div>
     </div>
   </li>

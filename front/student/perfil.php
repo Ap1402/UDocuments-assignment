@@ -37,6 +37,8 @@ $s_nombre = 'Textotexto';
 $p_apellido = 'Textotexto';
 $s_apellido = 'Textotexto';
 
+$nombre_solicitud = "SolicitudSolicitud";
+
 ?>
 
 <!-- Formulario Check Documentos -->
@@ -278,6 +280,10 @@ $s_apellido = 'Textotexto';
           <div class="col-sm-12 col-md-6">
             <label class="pl-2 pt-2">Turno</label><br>
             <input type="text" value="<?php echo $turno ?>" class="form-control" disabled>
+          </div>
+          <div class="col-sm-12">
+            <label class="pl-2 pt-2">Método de ingreso</label><br>
+            <input type="text" value="<?php echo $nombre_solicitud ?>" class="form-control" disabled>
           </div>
         </div>
 
@@ -549,8 +555,7 @@ $s_apellido = 'Textotexto';
                   class="fas fa-<?php echo ($check_metodo == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
               </div>
               <div class="col-10 text-justify">Metodo de ingreso <br>
-                <small>Aprobacion de ingreso directo, tramitacion de
-                  equivalencias o certificado de salud (Solo odontologia)</small>
+                <small><?php echo $nombre_solicitud ?></small>
                 </div>
             </h5>
           </div>

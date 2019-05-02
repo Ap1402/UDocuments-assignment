@@ -293,46 +293,7 @@
             </div>
           </div>
 
-          <br>
-          <div class="text-center">
-            <h5 class="text-gray-900 mb-4">Carrera</h5>
-          </div>
-          <hr class="sidebar-divider">
-          <br>
-
-          <div class="form-group row">
-            <div class="col-sm-6 my-auto">
-              <select id="carrera" name="carrera" class="form-control" required>
-                <option disabled selected value="">Carrera</option>
-                <?php 
-              include '../../back/conexion.php';
-
-              $sql = "SELECT * FROM carreras WHERE estatus=1";
-              $result = mysqli_query($conexion, $sql);
-              $resultArray = array();
-              if ($result->num_rows > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                echo "<option value=". $row["codigo"] .">".$row["nombre"]."</option>";
-                $resultArray[]=array("codigo"=>$row["codigo"],"nombre"=>$row["nombre"],"manana"=>$row["manana"],"tarde"=>$row["tarde"],"noche"=>$row["noche"]);
-                };
-              
-              };
-            ?>
-              </select>
-            </div>
-            <div class="col-sm-6 my-auto">
-              <select id="turno" name="turno" class="form-control" required>
-                <option disabled="disabled" selected value="">Seleccionar turno</option>
-
-              </select>
-              <div class="invalid-feedback">
-                Por favor introduzca una opcion válida.
-              </div>
-            </div>
-          </div>
-
-          <br>
-
+<br>
           <div class="alert alert-danger" role="alert" id="resultado" hidden>
           </div>
           <br>
