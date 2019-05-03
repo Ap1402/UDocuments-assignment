@@ -53,8 +53,57 @@
             <!-- Nested Row within Card Body -->
             <div id="page-login" class="row justify-content-center">
 
-              <!-- front/access/form-login.php -->
-              <?php require ('front/access/form-login.php'); ?>
+              <!-- Formulario Login -->
+              <div class="col-lg-3 d-none d-lg-block bg-login-image"></div>
+              <div class="col-sm-12 col-md-10 col-lg-9">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                  </div>
+                  <form id="loginForm" method="POST" class="user needs-validation" novalidate>
+
+                    <!-- Username -->
+                    <div class="form-group">
+                      <input type="text" id="usernameLog" name="usernameLog" class="form-control form-control-user"
+                        placeholder="Nombre usuario" minlength="4" required>
+                      <div class="invalid-feedback">
+                        Por favor introduzca un nombre de usuario válido.
+                      </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="password" id="contrasenaLog" name="contrasenaLog" minlength="4"
+                          class="form-control form-control-user" placeholder="Contraseña" required>
+                        <div class="input-group-append">
+                          <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                            <i id="showpass" class="fas fa-eye-slash"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback">
+                        La contraseña debe tener al menos 4 caracteres.
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="alert alert-danger" role="alert" id="resultadoLog" hidden></div>
+                    <!-- Sign up button -->
+                    <button id="enviarLog" type="submit" class="btn btn-primary btn-user btn-block">
+                      Iniciar sesión
+                    </button>
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a href="page-access-forgot.php" class="small">¿Olvido la contraseña?</a>
+                  </div>
+                  <div class="text-center">
+                    <a href="page-access-registro.php" class="small">Crear una cuenta!</a>
+                  </div>
+                </div>
+              </div>
+              <!-- /.Formulario Login -->
 
             </div>
 
@@ -81,8 +130,21 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-  
+
   <script src="scripts/login.js"></script>
+
+  <script type="text/javascript">
+    function mostrarPassword() {
+      var pass = document.getElementById("contrasenaLog");
+      if (pass.type == "password") {
+        pass.type = "text";
+        $('i#showpass').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+      } else {
+        pass.type = "password";
+        $('i#showpass').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+      }
+    }
+  </script>
 
 </body>
 

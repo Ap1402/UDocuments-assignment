@@ -56,24 +56,21 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a id="table" class="nav-link" href="page-table.php">
+    <a id="table" class="nav-link" href="page-admin-table.php">
       <i class="fas fa-fw fa-table"></i>
       <span>Tabla alumnos</span></a>
   </li>
 
-  <!-- Nav Item - Pages Collapse Menu -->
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Provisional
+  </div>
+
+  <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-      aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
-      <span>Alumnos</span>
-    </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="page-check.php">Validar documentos</a>
-        <a class="collapse-item" href="page-perfil.php">Ver perfil</a>
-      </div>
-    </div>
+    <a id="table" class="nav-link" href="page-admin-check.php">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Validaciones</span></a>
   </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
@@ -85,8 +82,8 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="page-crear-admin.php">Crear admin</a>
-        <a class="collapse-item" href="page-crear-alumno.php">Crear alumno</a>
+        <a class="collapse-item" href="page-admin-crear-admin.php">Crear admin</a>
+        <a class="collapse-item" href="page-admin-crear-alumno.php">Crear alumno</a>
       </div>
     </div>
   </li>
@@ -103,14 +100,14 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
 
   <!-- Nav Item - Solicitud -->
   <li class="nav-item">
-    <a id="solicitud" class="nav-link" href="page-solicitud.php">
+    <a id="solicitud" class="nav-link" href="page-student-solicitud.php">
       <i class="fas fa-vote-yea"></i>
       <span>Solicitud</span></a>
   </li>
 
   <!-- Nav Item - Datos -->
   <li class="nav-item">
-    <a id="datos" class="nav-link" href="page-datos.php">
+    <a id="datos" class="nav-link" href="page-student-datos.php">
       <i class="fas fa-file-alt"></i>
       <span>Datos</span></a>
   </li>
@@ -118,7 +115,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
 
   <!-- Nav Item - Documentos -->
   <li class="nav-item">
-    <a id="docs" class="nav-link" href="page-docs.php">
+    <a id="docs" class="nav-link" href="page-student-docs.php">
       <i class="far fa-folder-open"></i>
       <span>Documentos</span></a>
   </li>
@@ -133,9 +130,9 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
     </a>
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="page-edit-datos.php">Datos</a>
-        <a class="collapse-item" href="page-edit-docs.php">Documentos</a>
-        <a class="collapse-item" href="page-edit-solicitud.php">Solicitud</a>
+        <a class="collapse-item" href="page-student-edit-datos.php">Datos</a>
+        <a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>
+        <a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>
       </div>
     </div>
   </li>

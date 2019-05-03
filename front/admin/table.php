@@ -83,3 +83,4 @@ for ($i = 0; $i <= 100; $i++) {
     </div>
   </div>
 </div>
+<!-- /.Tabla de alumnos -->

@@ -42,11 +42,11 @@
               </a>
               <!-- Dropdown - Perfil de usuario -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="page-perfil.php">
+                <a class="dropdown-item" href="page-student-perfil.php">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
                 </a>
-                <a class="dropdown-item" href="page-edit-pass.php">
+                <a class="dropdown-item" href="page-student-edit-pass.php">
                   <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                   Editar (Correo/Contraseña)
                 </a>
