@@ -53,16 +53,25 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
     Control
   </div>
 
+
+  <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a id="table" class="nav-link" href="page-table.php">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Tabla alumnos</span></a>
+  </li>
+
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
       aria-controls="collapseTwo">
       <i class="fas fa-fw fa-cog"></i>
-      <span>Inscripcion</span>
+      <span>Alumnos</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="page-check.php">Validaciones</a>
+        <a class="collapse-item" href="page-check.php">Validar documentos</a>
+        <a class="collapse-item" href="page-perfil.php">Ver perfil</a>
       </div>
     </div>
   </li>
@@ -80,23 +89,6 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
         <a class="collapse-item" href="page-crear-alumno.php">Crear alumno</a>
       </div>
     </div>
-  </li>
-
-  <!-- Divider -->
-  <hr class="sidebar-divider">
-
-  <!-- Nav Item - Charts -->
-  <li class="nav-item">
-    <a class="nav-link" href="page-charts.php">
-      <i class="fas fa-fw fa-chart-area"></i>
-      <span>Charts</span></a>
-  </li>
-
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a id="table" class="nav-link" href="page-table.php">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Alumnos</span></a>
   </li>
 
   <?php } ?>

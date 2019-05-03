@@ -1,3 +1,11 @@
+<?php
+$p_nombre = 'Nombre';
+$s_nombre = 'Nombre';
+$p_apellido = 'Apellido';
+$s_apellido = 'Apellido';
+$cedula = '564564454';
+
+?>
 <div id="prueba">
     <div class="col-sm-12 col-lg-10 mx-auto">
         <div class="card shadow mb-4 border-bottom-primary">
@@ -18,6 +26,19 @@
                         <img src="img/images/preload.gif" alt="preload">
                     </div>
                 </form>
+
+                <div class="form-group row text-center">
+                    <div class="col-sm-12 col-md-6">
+                        <label class="pl-2 pt-2">
+                            <b>Nombre:</b> <?php echo $p_nombre.' '.$s_nombre.' '.$p_apellido.' '.$s_apellido ?>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <label class="pl-2 pt-2">
+                            <b>Cedula:</b> <?php echo $cedula ?>
+                        </label>
+                    </div>
+                </div>
 
 
                 SELECT
