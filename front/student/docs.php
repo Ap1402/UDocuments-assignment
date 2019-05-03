@@ -113,7 +113,6 @@ if ($all) {
           <br>
           <div class="alert alert-danger" role="alert" id="resultado" hidden></div>
           <br>
-          <br>
 
         </form>
 

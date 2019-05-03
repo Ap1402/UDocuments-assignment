@@ -34,22 +34,22 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-12 col-md-6 col-lg-4 my-auto">
-              <input type="text" id="habitacion" name="habitacion" class="form-control form-control-user"
-                placeholder="Teléfono de habitación" minlength="11">
+              <input type="number" id="habitacion" name="habitacion" class="form-control form-control-user"
+                placeholder="Teléfono de habitación" min="2400000000">
               <div class="invalid-feedback">
                 Por favor introduzca un teléfono de habitación válido.
               </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 my-auto">
-              <input type="text" id="movil" name="movil" class="form-control form-control-user"
-                placeholder="Teléfono móvil" minlength="11" required>
+              <input type="number" id="movil" name="movil" class="form-control form-control-user"
+                placeholder="Teléfono móvil" min="4100000000" required>
               <div class="invalid-feedback">
                 Por favor introduzca un teléfono móvil válido.
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-4 my-auto">
-              <input type="text" id="trabajo" name="trabajo" class="form-control form-control-user"
-                placeholder="Teléfono de trabajo" minlength="11">
+              <input type="number" id="trabajo" name="trabajo" class="form-control form-control-user"
+                placeholder="Teléfono de trabajo" min="2400000000">
               <div class="invalid-feedback">
                 Por favor introduzca un teléfono de trabajo válido.
               </div>
@@ -223,15 +223,15 @@
               </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 pt-3">
-              <input type="text" id="e_local" name="e_local" class="form-control form-control-user"
-                placeholder="Teléfono de local" minlength="11">
+              <input type="number" id="e_local" name="e_local" class="form-control form-control-user"
+                placeholder="Teléfono de local" min="2400000000">
               <div class="invalid-feedback">
                 Por favor introduzca un teléfono de local válido.
               </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 pt-3">
-              <input type="text" id="e_movil" name="e_movil" class="form-control form-control-user"
-                placeholder="Teléfono móvil" minlength="11" required>
+              <input type="number" id="e_movil" name="e_movil" class="form-control form-control-user"
+                placeholder="Teléfono móvil" min="4100000000" required>
               <div class="invalid-feedback">
                 Por favor introduzca un teléfono móvil válido.
               </div>
@@ -293,7 +293,6 @@
             </div>
           </div>
 
-<br>
           <div class="alert alert-danger" role="alert" id="resultado" hidden>
           </div>
           <br>
@@ -310,8 +309,6 @@
 <!-- Page level custom scripts -->
 <script src="scripts/datos.js"></script>
 
-
-
 <script>
   $(document).ready(function () {
     $("#discapacidad").change(function () {
@@ -323,27 +320,6 @@
       } else {
         $("#tipo_discapacidad").remove();
       };
-    });
-  });
-</script>
-
-<script>
-  $(document).ready(function () {
-    var carreras = <?php echo json_encode($resultArray) ?>;
-    $("#carrera").change(function () {
-      var codigo = $("#carrera").val();
-      var nuevasopciones = "";
-      console.log(carreras[codigo - 1]);
-      if (carreras[codigo - 1]["manana"] == 1) {
-        nuevasopciones += "<option value='1'>Mañana</option>";
-      }
-      if (carreras[codigo - 1]["tarde"] == 1) {
-        nuevasopciones += "<option value='2'>Tarde</option>";
-      }
-      if (carreras[codigo - 1]["noche"] == 1) {
-        nuevasopciones += "<option value='3'>Noche</option>";
-      }
-      $("select#turno").html(nuevasopciones);
     });
   });
 </script>

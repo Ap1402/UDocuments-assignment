@@ -9,12 +9,10 @@
       </div>
       <form id="forgotForm" method="POST" class="user needs-validation" novalidate>
         <div class="form-group">
-          <div class="col">
           <input type="email" id="pass_forgot" name="pass_forgot" class="form-control form-control-user"
             placeholder="Correo" required>
             <div class="invalid-feedback">
               Por favor introduzca un correo válido.
-            </div>
             </div>
         </div>
         <button id="enviarFor" type="submit" class="btn btn-primary btn-user btn-block">

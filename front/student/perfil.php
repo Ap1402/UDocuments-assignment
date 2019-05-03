@@ -20,7 +20,7 @@ $cedula = '21217885';
 
 
 // rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-$path_image = 'back/documentos/'.$cedula.'/cedula_0_04-28-19001051.jpg';
+$path_image = 'back/documentos/'.$cedula.'/partida_0_04-28-19001145.jpg';
 
 $path_foto = $path_image;
 $path_cedula = $path_image;

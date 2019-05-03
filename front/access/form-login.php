@@ -8,32 +8,26 @@
 
       <!-- Username -->
       <div class="form-group">
-        <div class="col">
         <input type="text" id="usernameLog" name="usernameLog" class="form-control form-control-user"
           placeholder="Nombre usuario" minlength="4" required>
         <div class="invalid-feedback">
           Por favor introduzca un nombre de usuario válido.
         </div>
-        </div>
       </div>
 
       <!-- Password -->
       <div class="form-group">
-        <div class="col">
-        <input type="password" id="contrasenaLog" name="contrasenaLog" minlength="4"
-          class="form-control form-control-user" placeholder="Contraseña" required>
+        <div class="input-group">
+          <input type="password" id="contrasenaLog" name="contrasenaLog" minlength="4"
+            class="form-control form-control-user" placeholder="Contraseña" required>
+          <div class="input-group-append">
+            <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+              <i id="showpass" class="fas fa-eye-slash"></i>
+            </a>
+          </div>
+        </div>
         <div class="invalid-feedback">
-          La contraseña debe tener al menos 8 carateres
-        </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col">
-        <div class="custom-control custom-checkbox small">
-          <input type="checkbox" class="custom-control-input" id="customCheck">
-          <label class="custom-control-label" for="customCheck">Recordarme</label>
-        </div>
+          La contraseña debe tener al menos 4 caracteres.
         </div>
       </div>
 
@@ -53,3 +47,16 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function mostrarPassword() {
+    var pass = document.getElementById("contrasenaLog");
+    if (pass.type == "password") {
+      pass.type = "text";
+      $('i#showpass').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+    } else {
+      pass.type = "password";
+      $('i#showpass').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+    }
+  }
+</script>

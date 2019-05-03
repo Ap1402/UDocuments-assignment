@@ -17,7 +17,7 @@ $check_metodo = 0;
 // Iniciando valores
 $cedula = '21217885';
 // rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-$path_image = 'back/Documentos/'.$cedula.'/cedula_0_04-28-19001051.jpg';
+$path_image = 'back/documentos/'.$cedula.'/partida_0_04-28-19001145.jpg';
 $file_id = 'rusnies';
 
 ?>
@@ -119,7 +119,6 @@ $file_id = 'rusnies';
           <br>
           <div class="alert alert-danger" role="alert" id="resultado" hidden></div>
           <br>
-          <br>
 
 
         </form>
@@ -138,8 +137,8 @@ $file_id = 'rusnies';
         </button>
       </div>
       <div class="modal-body">
-        Seleccione "Guardar cambios" a continuación si está seguro de continuar con la operacion.<br>
-        <b>Los archivos eliminados no pueden ser restablecidos.</b>
+        Seleccione "Guardar cambios" a continuación si está seguro de continuar con la operacion y guardar los documentos nuevos.<br>
+        <b>Los archivos previamente eliminados no pueden ser restablecidos.</b>
       </div>
       <div class="modal-footer">
         <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>

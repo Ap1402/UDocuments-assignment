@@ -57,6 +57,23 @@ input[type=password]:disabled {
  width: 100%;
 }
 
+#show {
+ align-self: center;
+ background: transparent;
+ border-radius: 0 10rem 10rem 0;
+ border: 1px solid #d1d3e2;
+ color: rgb(92, 92, 92);
+ cursor: pointer;
+ padding: .75rem 1rem;
+ transition: 1s;
+}
+
+#show:hover {
+ color: rgba(1, 48, 177, 0.8);
+ background-color: #d1d3e2;
+ transition: 1s;
+}
+
 select {
  border: 1px solid #d1d3e2;
  background-color: transparent;

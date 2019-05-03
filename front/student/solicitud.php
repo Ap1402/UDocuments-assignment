@@ -74,8 +74,6 @@
             </div>
           </div>
 
-          <br>
-
           <div class="alert alert-danger" role="alert" id="resultado" hidden>
           </div>
           <br>

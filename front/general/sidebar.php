@@ -77,6 +77,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="page-crear-admin.php">Crear admin</a>
+        <a class="collapse-item" href="page-crear-alumno.php">Crear alumno</a>
       </div>
     </div>
   </li>

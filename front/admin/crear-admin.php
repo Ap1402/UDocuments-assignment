@@ -4,7 +4,7 @@
 		<div class="card-body">
 			<div class="p-4">
 				<div class="text-center">
-					<h1 class="h4 text-gray-900 mb-4">Datos del administrador
+					<h1 class="h4 text-gray-900 mb-4">Crear administrador
 					</h1>
 				</div>
 				<form id="crearAdmin" method="POST" class="user needs-validation" novalidate>

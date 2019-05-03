@@ -1,10 +1,13 @@
-<div class="col-lg-3 d-none d-lg-block bg-register-image"></div>
-<div class="col-sm-12 col-md-10 col-lg-9">
-	<div class="p-5">
-		<div class="text-center">
-			<h1 class="h4 text-gray-900 mb-4">Crear una cuenta!</h1>
-		</div>
-		<form id="registroForm" method="POST" class="user needs-validation" novalidate>
+<!-- Formulario Crear Alumnos -->
+<div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+	<div class="card shadow mb-4">
+		<div class="card-body">
+			<div class="p-4">
+				<div class="text-center">
+					<h1 class="h4 text-gray-900 mb-4">Crear alumno
+					</h1>
+				</div>
+				<form id="registroForm" method="POST" class="user needs-validation" novalidate>
 			<div class="alert alert-success" role="alert" id="exito" hidden></div>
 			<div class="form-group row">
 				<div class="col-sm-6">
@@ -80,15 +83,12 @@
 				Registrar Cuenta
 			</button>
 		</form>
-		<hr>
-		<div class="text-center">
-			<a href="page-forgot.php" class="small">¿Olvido la contraseña?</a>
-		</div>
-		<div class="text-center">
-			<a href="index.php" class="small">¿Ya tienes una cuenta? Iniciar sesión!</a>
+			</div>
 		</div>
 	</div>
 </div>
+
+<script src="scripts/registro.js"></script>
 
 <script type="text/javascript">
 	function mostrarPassword() {

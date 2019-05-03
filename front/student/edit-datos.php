@@ -540,8 +540,6 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
             </div>
           </div>
 
-          <br>
-
           <div class="alert alert-danger" role="alert" id="resultado" hidden>
           </div>
           <br>
