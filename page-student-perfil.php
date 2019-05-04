@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Perfil del alumno </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +35,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require('front/general/sidebar.php'); ?>
+    <?php require 'front/general/sidebar.php';?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -42,7 +45,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php'; ?>
+        <?php require 'front/general/navbar.php';?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -89,13 +92,37 @@ $p_apellido = 'Textotexto';
 $s_apellido = 'Textotexto';
 
 $nombre_solicitud = "SolicitudSolicitud";
+$admin = 1;
 
 ?>
 
+          <!-- Título de página -->
+          <div class="d-sm-flex col-sm-12 col-lg-10 align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Perfil del alumno</h1>
+            <!-- Boton para el alumno (Imprimir perfil) -->
+            <?php if ($admin != 1) { ?>
+            <a id="btnImprimirPerfil" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+              <i class="fas fa-download fa-sm"></i>
+              Imprimir perfil
+            </a>
+            <?php }; ?>
+            <!-- /.Boton para el alumno (Imprimir perfil) -->
+            <!-- Boton para el admin (Ir a Validaciones) -->
+            <?php if ($admin == 1) { ?>
+            <a href="page-admin-check.php" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+              <i class="fas fa-clipboard-list fa-sm"></i>
+              Ir a validaciones
+            </a>
+            <?php }; ?>
+            <!-- /.Boton para el admin (Ir a Validaciones) -->
+          </div>
+          <!-- /.Título de página -->
+
           <!-- Perfil alumno -->
-          <div class="col-sm-12 col-lg-10 mx-auto">
-            <!-- Header Status de Documentos -->
-            <div class="card border-left-primary h-100 py-2">
+          <div id="imprimirPerfil" class="col-sm-12 col-lg-10 mx-auto">
+
+            <!-- Header Status de Datos -->
+            <div class="card border-left-primary py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center px-2">
                   <div class="col pr-2">
@@ -110,20 +137,20 @@ $nombre_solicitud = "SolicitudSolicitud";
                     </div>
                   </div>
                   <div class="col-auto">
-                    <a href="page-student-edit-datos.php" data-toggle="tooltip" data-placement="top" title="Editar información">
+                    <a href="page-student-edit-datos.php" data-toggle="tooltip" data-placement="top"
+                      title="Editar información">
                       <i class="fas fa-user-edit fa-2x text-gray-300"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- /Header Status de Documentos -->
+            <!-- /Header Status de Datos -->
 
-            <!-- Tabla de Status de Documentos -->
+            <!-- Tabla de Status de Datos -->
             <div class="card border-left-primary shadow mb-4">
               <div class="card-body">
-                <div class="p-4">
-
+                <div class="px-3 py-2">
                   <div class="form-group row">
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                       <label class="pl-2 pt-2">Primer nombre</label><br>
@@ -141,41 +168,41 @@ $nombre_solicitud = "SolicitudSolicitud";
                       <label class="pl-2 pt-2">Segundo apellido</label><br>
                       <input type="text" value="<?php echo $s_apellido ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6">
+                    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
                       <label class="pl-2 pt-2">Correo</label><br>
                       <input type="text" value="<?php echo $correo ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-6">
+                    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
                       <label class="pl-2 pt-2">Nombre de usuario</label><br>
                       <input type="text" value="<?php echo $username ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                       <label class="pl-2 pt-2">Cédula</label><br>
                       <input type="text" value="<?php echo $cedula ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                       <label class="pl-2 pt-2">Estado civil</label><br>
                       <input type="text" value="<?php echo $estado_civil ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                       <label class="pl-2 pt-2">Fecha de nacimiento</label><br>
                       <input type="text" value="<?php echo $fecha_nacimiento ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                       <label class="pl-2 pt-2">Discapacidad</label><br>
                       <input type="text" value="<?php echo $discapacidad . '/' . $tipo_disc ?>" class="form-control"
                         disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                      <label class="pl-2 pt-2">Teléfono de habitación</label><br>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <label class="pl-2 pt-2">Teléfono habitación</label><br>
                       <input type="text" value="<?php echo $habitacion ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
                       <label class="pl-2 pt-2">Teléfono móvil</label><br>
                       <input type="text" value="<?php echo $movil ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                      <label class="pl-2 pt-2">Teléfono de trabajo</label><br>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <label class="pl-2 pt-2">Teléfono trabajo</label><br>
                       <input type="text" value="<?php echo $trabajo ?>" class="form-control" disabled>
                     </div>
 
@@ -187,7 +214,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                     <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>
                   </div>
                   <hr class="sidebar-divider">
-                  <br>
 
                   <div class="form-group row">
                     <div class="col-sm-12 col-md-6 col-xl-3">
@@ -214,7 +240,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                     <h5 class="text-gray-900 mb-4">Dirección de habitación</h5>
                   </div>
                   <hr class="sidebar-divider">
-                  <br>
 
                   <div class="form-group row">
                     <div class="col-sm-12 col-md-6 col-xl-3">
@@ -240,7 +265,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                     <h5 class="text-gray-900 mb-4">Dirección de trabajo</h5>
                   </div>
                   <hr class="sidebar-divider">
-                  <br>
 
                   <div class="form-group row">
                     <div class="col-sm-12 col-md-6 col-xl-3">
@@ -266,7 +290,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                     <h5 class="text-gray-900 mb-4">Contacto en caso de emergencia</h5>
                   </div>
                   <hr class="sidebar-divider">
-                  <br>
 
                   <div class="form-group row">
                     <div class="col-sm-12 col-md-6 col-xl-3">
@@ -292,26 +315,25 @@ $nombre_solicitud = "SolicitudSolicitud";
                     <h5 class="text-gray-900 mb-4">Datos título de bachiller</h5>
                   </div>
                   <hr class="sidebar-divider">
-                  <br>
 
                   <div class="form-group row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 col-md-12 col-lg-8">
                       <label class="pl-2 pt-2">Nombre de la institución (no abreviar)</label><br>
                       <input type="text" value="<?php echo $i_nombre ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                       <label class="pl-2 pt-2">Año de egreso</label><br>
                       <input type="text" value="<?php echo $i_egreso ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                       <label class="pl-2 pt-2">Código de la institución</label><br>
                       <input type="text" value="<?php echo $i_codigo ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                       <label class="pl-2 pt-2">Estado</label><br>
                       <input type="text" value="<?php echo $i_estado ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                       <label class="pl-2 pt-2">Tipo de institución</label><br>
                       <input type="text" value="<?php echo $tipo_inst ?>" class="form-control" disabled>
                     </div>
@@ -322,18 +344,17 @@ $nombre_solicitud = "SolicitudSolicitud";
                     <h5 class="text-gray-900 mb-4">Carrera</h5>
                   </div>
                   <hr class="sidebar-divider">
-                  <br>
 
                   <div class="form-group row">
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                       <label class="pl-2 pt-2">Carrera</label><br>
                       <input type="text" value="<?php echo $carrera ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                       <label class="pl-2 pt-2">Turno</label><br>
                       <input type="text" value="<?php echo $turno ?>" class="form-control" disabled>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 col-lg-4">
                       <label class="pl-2 pt-2">Método de ingreso</label><br>
                       <input type="text" value="<?php echo $nombre_solicitud ?>" class="form-control" disabled>
                     </div>
@@ -342,11 +363,11 @@ $nombre_solicitud = "SolicitudSolicitud";
                 </div>
               </div>
             </div>
-            <!-- /Tabla de Status de Documentos -->
+            <!-- /Tabla de Status de Datos -->
 
             <!-- Header Status de Documentos -->
 
-            <div class="card border-left-info h-100 py-2">
+            <div class="card border-left-info py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center px-2">
                   <div class="col pr-2">
@@ -364,7 +385,8 @@ $nombre_solicitud = "SolicitudSolicitud";
                     </div>
                   </div>
                   <div class="col-auto">
-                    <a href="page-student-edit-docs.php" data-toggle="tooltip" data-placement="top" title="Editar documentos">
+                    <a href="page-student-edit-docs.php" data-toggle="tooltip" data-placement="top"
+                      title="Editar documentos">
                       <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                     </a>
                   </div>
@@ -410,7 +432,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                   </div>
                   <!-- End Foto -->
 
-                  <br>
                   <hr class="sidebar-divider">
                   <br>
 
@@ -446,7 +467,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                   </div>
                   <!-- End Cedula -->
 
-                  <br>
                   <hr class="sidebar-divider">
                   <br>
 
@@ -485,7 +505,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                   </div>
                   <!-- End Notas -->
 
-                  <br>
                   <hr class="sidebar-divider">
                   <br>
 
@@ -521,7 +540,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                   </div>
                   <!-- End Fondo -->
 
-                  <br>
                   <hr class="sidebar-divider">
                   <br>
 
@@ -559,7 +577,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                   </div>
                   <!-- End rusnies -->
 
-                  <br>
                   <hr class="sidebar-divider">
                   <br>
 
@@ -594,7 +611,6 @@ $nombre_solicitud = "SolicitudSolicitud";
                   </div>
                   <!-- End Partida -->
 
-                  <br>
                   <hr class="sidebar-divider">
                   <br>
 
@@ -606,7 +622,7 @@ $nombre_solicitud = "SolicitudSolicitud";
                         <div class="col-2"><i
                             class="fas fa-<?php echo ($check_metodo == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
                         </div>
-                        <div class="col-10 text-justify">Metodo de ingreso <br>
+                        <div class="col-10 text-justify">Metodo de ingreso:
                           <small><?php echo $nombre_solicitud ?></small>
                         </div>
                       </h5>
@@ -650,7 +666,7 @@ $nombre_solicitud = "SolicitudSolicitud";
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require 'front/general/footer.php';?>
       <!-- End of Footer -->
 
     </div>
@@ -665,7 +681,7 @@ $nombre_solicitud = "SolicitudSolicitud";
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php';?>
   <!-- End of Logout Modal-->
 
   <!-- Bootstrap core JavaScript-->
@@ -679,6 +695,43 @@ $nombre_solicitud = "SolicitudSolicitud";
   <script src="js/sb-admin-2.js"></script>
 
   <script src="js/lightbox-plus-jquery.js"></script>
+  <!-- Imprimir Areas Especeficas -->
+  <script>
+    document.querySelector("#btnImprimirPerfil").addEventListener("click", function () {
+      var div = document.querySelector("#imprimirPerfil");
+      imprimirElemento(div);
+    });
+
+    function imprimirElemento(elemento) {
+      var ventana = window.open('', 'PRINT', 'height=400,width=600');
+      ventana.document.write('<html><head><title>' + document.title + '</title>');
+      ventana.document.write(
+        '<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">'); //Aquí agregué la hoja de estilos
+      ventana.document.write('<link rel="stylesheet" href="css/font.css">');
+      ventana.document.write('<link rel="stylesheet" href="css/sb-admin-2.css">');
+      ventana.document.write('<link rel="stylesheet" href="css/style.css">');
+      ventana.document.write('<link rel="stylesheet" href="css/check.css">');
+
+      ventana.document.write('</head><body >');
+      ventana.document.write('<div class="container-fluid bg-white align-items-center text-center topbar mb-2 px-5">');
+      ventana.document.write('<a class="navbar-brand align-items-center">');
+      ventana.document.write(
+        '<img src="img/varias/logo_ujap_peq.png" width="35" height="40" class="d-inline-block align-items-center">');
+      ventana.document.write('<b class="pl-4">Control de estudios / Sistema de archivo digital</b>');
+      ventana.document.write('</a>');
+      ventana.document.write('</div>');
+
+      ventana.document.write(elemento.innerHTML);
+      ventana.document.write('</body></html>');
+      ventana.document.close();
+      ventana.focus();
+      ventana.onload = function () {
+        ventana.print();
+        ventana.close();
+      };
+      return true;
+    }
+  </script>
 
 </body>
 

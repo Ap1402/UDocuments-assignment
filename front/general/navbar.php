@@ -47,7 +47,7 @@
                   Perfil
                 </a>
                 <a class="dropdown-item" href="page-student-edit-pass.php">
-                  <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-user-lock fa-sm fa-fw mr-2 text-gray-400"></i>
                   Editar (Correo/Contraseña)
                 </a>
                 <div class="dropdown-divider"></div>

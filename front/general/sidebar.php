@@ -97,7 +97,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
   <div class="sidebar-heading">
     Alumnos
   </div>
-
+ 
   <!-- Nav Item - Solicitud -->
   <li class="nav-item">
     <a id="solicitud" class="nav-link" href="page-student-solicitud.php">

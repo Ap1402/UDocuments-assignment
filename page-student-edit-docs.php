@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Editar - Documentos </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -74,17 +77,19 @@ $path_image = 'back/documentos/'.$cedula.'/partida_0_04-28-19001145.jpg';
 $file_id = 'rusnies';
 
 ?>
+          <!-- Título de página -->
+          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Editar - Documentos</h1>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></a>
+          </div>
+          <!-- /.Título de página -->
 
           <!-- Formulario Editar Documentos -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Editar - Documentos</h1>
-                  </div>
 
-                  <br>
                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <i class="fas fa-exclamation-triangle"></i>
                     <strong>Advertencia!</strong>
@@ -93,7 +98,6 @@ $file_id = 'rusnies';
                       &times;
                     </button>
                   </div>
-                  <br>
 
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a editar</option>
@@ -165,7 +169,6 @@ $file_id = 'rusnies';
                     </div>
 
                     <br>
-                    <br>
                     <!-- <button type="submit" class="publish">Subir</button> -->
                     <a data-toggle="modal" data-target="#cambiosModal">
                       <button id="permisoModal" class="btn btn-primary btn-user btn-block">
@@ -174,10 +177,7 @@ $file_id = 'rusnies';
                       <button id="enviarDocs" type="submit" hidden></button>
                     </a>
 
-
-                    <br>
                     <div class="alert alert-danger" role="alert" id="resultado" hidden></div>
-                    <br>
 
 
                   </form>

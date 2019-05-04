@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Editar - Datos del alumno </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -152,19 +155,20 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
 ?>
 
+          <!-- Título de página -->
+          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Editar - Datos del alumno<br><small class="text-muted"> asegúrese de rellenar correctamente sus datos</small></h1>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
+          </div>
+          <!-- /.Título de página -->
+
           <!-- Formulario Editar Datos -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Editar - Datos del alumno<br>
-                      <small class="text-muted"> asegúrese de rellenar correctamente sus datos</small>
-                    </h1>
-                  </div>
                   <form id="datosEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
-                    <br>
 
                     <div class="form-group row">
                       <div class="col-sm-6">

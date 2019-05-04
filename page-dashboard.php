@@ -11,6 +11,9 @@
 
   <title> Dashboard </title>
 
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
+
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="css/font.css" rel="stylesheet">

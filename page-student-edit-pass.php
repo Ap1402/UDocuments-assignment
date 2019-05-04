@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Editar (Correo / Contraseña) </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -70,18 +73,20 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
 ?>
 
+          <!-- Título de página -->
+          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Editar (Correo / Contraseña)</h1>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-user-lock fa-2x text-gray-300"></i></a>
+          </div>
+          <!-- /.Título de página -->
+
           <!-- Formulario Editar Correo y Contraseña -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Editar (Correo / Contraseña)<br>
-                    </h1>
-                  </div>
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
-                    <br>
 
                     <div class="form-group">
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
@@ -109,8 +114,6 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         Su contraseña debe tener al menos 4 caracteres.
                       </div>
                     </div>
-
-                    <br>
 
                     <div class="alert alert-danger" role="alert" id="resultado" hidden>
                     </div>

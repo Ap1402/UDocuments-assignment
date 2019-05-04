@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Datos del alumno </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,7 +33,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require('front/general/sidebar.php'); ?>
+    <?php require 'front/general/sidebar.php';?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -40,26 +43,27 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php'; ?>
+        <?php require 'front/general/navbar.php';?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-student-datos" class="container-fluid">
 
+          <!-- Título de página -->
+          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Datos del alumno<br><small class="text-muted"> asegúrese de rellenar correctamente sus datos</small></h1>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
+          </div>
+          <!-- /.Título de página -->
+
           <!-- Formulario Datos -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Datos del alumno<br>
-                      <small class="text-muted"> asegúrese de rellenar correctamente sus datos</small>
-                    </h1>
-                  </div>
                   <form id="datosForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
-                    <br>
 
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
@@ -75,7 +79,7 @@
                       <div class="col-sm-6 my-auto">
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
                           class="form-control form-control-user" placeholder="Fecha nacimiento" min="1930-07-22"
-                          max="<?php echo date('Y-m-d');?>" required>
+                          max="<?php echo date('Y-m-d'); ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un fecha de nacimiento válido.
                         </div>
@@ -365,7 +369,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require 'front/general/footer.php';?>
       <!-- End of Footer -->
 
     </div>
@@ -380,7 +384,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php';?>
   <!-- End of Logout Modal-->
 
   <!-- Bootstrap core JavaScript-->

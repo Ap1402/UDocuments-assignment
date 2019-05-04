@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Documentos del alumno </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -89,15 +92,18 @@ if ($all) {
 }
 ?>
 
+          <!-- Título de página -->
+          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Documentos del alumno</h1>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></a>
+          </div>
+          <!-- /.Título de página -->
+
           <!-- Formulario Documentos -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Documentos del alumno</h1>
-                  </div>
-
 
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a subir</option>
@@ -151,18 +157,12 @@ if ($all) {
                       <img src="img/images/preload.gif" alt="preload">
                     </div>
 
-
-
                     <br>
-                    <br>
-                    <!-- <button type="submit" class="publish">Subir</button> -->
                     <button id="enviarDocs" type="submit" class="btn btn-primary btn-user btn-block" disabled="true">
                       Enviar Documentos
                     </button>
 
-                    <br>
                     <div class="alert alert-danger" role="alert" id="resultado" hidden></div>
-                    <br>
 
                   </form>
 

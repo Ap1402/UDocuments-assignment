@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Validar documentos </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -164,24 +167,26 @@ $nombre_solicitud = "SolicitudSolicitud";
 <!-- /.Busqueda Check -->
 
 
+<!-- Título de página -->
+          <div class="d-sm-flex col-sm-12 col-lg-10 align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Validar documentos</h1>
+            <!-- Boton para el admin (Ir a perfil) -->
+            <a href="page-student-perfil.php" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+              <i class="fas fa-user fa-sm"></i>
+              Ir a perfil
+            </a>
+            <!-- /.Boton para el admin (Ir a perfil) -->
+          </div>
+          <!-- /.Título de página -->
+
 <!-- Formulario Check Documentos -->
 <div class="col-sm-12 col-lg-10 mx-auto">
   <div class="card shadow mb-4">
     <div class="card-body">
       <div class="pl-4 pr-3 py-4">
-        <div class="text-center">
-          <h1 class="h4 text-gray-900 mb-4">Validar documentos del alumno</h1>
-          <div class="col-auto">
-            <a href="page-student-perfil.php" data-toggle="tooltip" data-placement="top" title="Ver perfil del alumno">              
-              <i class="fas fa-id-card text-gray-300">
-               Ir a perfil 
-              </i>
-            </a>
-          </div>
-        </div>
+
         <form id="checkForm" method="POST" class="user needs-validation" novalidate>
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
-          <br>
 
           <!-- Foto -->
           <div class="form-group row">

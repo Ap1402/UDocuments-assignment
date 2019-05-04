@@ -9,7 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Dashboard </title>
+  <title> Tabla de alumnos </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -80,13 +83,17 @@ $s_apellido = 'Textotexto';
 
 ?>
 
+          <!-- Título de página -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Tabla de alumnos</h1>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i></a>
+          </div>
+          <!-- /.Título de página -->
+
 
           <!-- Tabla de alumnos -->
           <div class="card shadow mb-4">
             <div class="card-body">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Tabla de alumnos</h1>
-              </div>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
