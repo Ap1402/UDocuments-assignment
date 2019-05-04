@@ -31,7 +31,7 @@ foreach ($_FILES as $key => $file) {
   		$datos = mysqli_fetch_array($result);
 
 	  	if ($datos['foto']!='empty'){
-		 	 print_r('12354');
+			return print_r(json_encode(['message' => 'Ya ha subido un documento de cedula, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
 
 	  	}else{
 		  	$direccion = $cedula.$photo_name;
@@ -56,7 +56,7 @@ foreach ($_FILES as $key => $file) {
 	$datos = mysqli_fetch_array($result);
 
 		if ($datos['cedula']!='empty'){
-			print_r('12354');
+			return print_r(json_encode(['message' => 'Ya ha subido un documento de cedula, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
 
 		}else{
 			$direccion = $cedula.$photo_name;
@@ -72,7 +72,7 @@ foreach ($_FILES as $key => $file) {
 	$datos = mysqli_fetch_array($result);
 
 		if ($datos['fondo']!='empty'){
-			print_r('12354');
+			return print_r(json_encode(['message' => 'Ya ha subido un documento de cedula, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
 
 		}else{
 			$direccion = $cedula.$photo_name;
@@ -88,7 +88,7 @@ foreach ($_FILES as $key => $file) {
 	$datos = mysqli_fetch_array($result);
 
 		if ($datos['partida']!='empty'){
-			print_r('12354');
+			return print_r(json_encode(['message' => 'Ya ha subido un documento de cedula, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
 
 		}else{
 			$direccion = $cedula.$photo_name;
@@ -105,11 +105,7 @@ if (($path_splitted[0] == 'metodo') && isset($_FILES[$key])) {
 
 	if ( !move_uploaded_file($file['tmp_name'], $path_alumno. $photo_name) ) {
 		return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
-	}else{
-		$direccion = $cedula.$photo_name;
-		
 	}
-
 	$count++;
 
 }
