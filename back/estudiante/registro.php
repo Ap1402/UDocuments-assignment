@@ -30,7 +30,7 @@ if (empty($errores)) {
     $fecha= date("Y-m-d");
 
 
-    $instDoc = "INSERT INTO documentos (foto) VALUES('aa')";
+    $instDoc = "INSERT INTO documentos (foto) VALUES('')";
     $result = mysqli_query($conexion, $instDoc);
     $lastid = mysqli_insert_id($conexion); 
 
