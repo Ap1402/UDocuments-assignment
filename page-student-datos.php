@@ -52,7 +52,8 @@
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Datos del alumno<br><small class="text-muted"> asegúrese de rellenar correctamente sus datos</small></h1>
+            <h1 class="h3 mb-0 text-gray-800">Datos del alumno<br><small class="text-muted"> asegúrese de rellenar
+                correctamente sus datos</small></h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
@@ -66,7 +67,7 @@
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 my-auto">
+                      <div class="col-sm-6 pt-2">
                         <select id="estado_civil" name="estado_civil" class="form-control" required>
                           <option disabled selected value="">Estado civil</option>
                           <option value="1">Casado</option>
@@ -76,7 +77,7 @@
                         </select>
 
                       </div>
-                      <div class="col-sm-6 my-auto">
+                      <div class="col-sm-6 pt-2">
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
                           class="form-control form-control-user" placeholder="Fecha nacimiento" min="1930-07-22"
                           max="<?php echo date('Y-m-d'); ?>" required>
@@ -86,21 +87,21 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
                         <input type="number" id="habitacion" name="habitacion" class="form-control form-control-user"
                           placeholder="Teléfono de habitación" min="2400000000">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de habitación válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
                         <input type="number" id="movil" name="movil" class="form-control form-control-user"
                           placeholder="Teléfono móvil" min="4100000000" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4 my-auto">
+                      <div class="col-sm-12 col-md-12 col-lg-4 pt-2">
                         <input type="number" id="trabajo" name="trabajo" class="form-control form-control-user"
                           placeholder="Teléfono de trabajo" min="2400000000">
                         <div class="invalid-feedback">
@@ -118,7 +119,7 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-12 my-auto">
+                      <div class="col-12 pt-2">
                         <select id="discapacidad" name="discapacidad" class="form-control" required>
                           <option value="1">No</option>
                           <option value="2">Sí</option>
@@ -130,7 +131,7 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-12 my-auto" id="tipo_disc" name="tipo_disc">
+                      <div class="col-12 pt-3" id="tipo_disc" name="tipo_disc">
 
                       </div>
                     </div>
@@ -144,28 +145,28 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="pais" name="pais" class="form-control form-control-user"
                           placeholder="País" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un País válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="estado" name="estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un ciudad válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
                           placeholder="municipio" minlength="4" required>
                         <div class="invalid-feedback">
@@ -183,28 +184,28 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="nac_postal" name="nac_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca una Zona postal válida.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="nac_estado" name="nac_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="nac_ciudad" name="nac_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un ciudad válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="nac_municipio" name="nac_municipio"
                           class="form-control form-control-user" placeholder="municipio" minlength="4" required>
                         <div class="invalid-feedback">
@@ -212,8 +213,29 @@
                         </div>
                       </div>
                     </div>
-
-
+                    <div class="form-group row">
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+                        <input type="text" id="nac_urbanizacion" name="nac_urbanizacion"
+                          class="form-control form-control-user" placeholder="Urbanizacion" minlength="4" required>
+                        <div class="invalid-feedback">
+                          Por favor introduzca una urbanizacion válida.
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+                        <input type="text" id="nac_aptcasa" name="nac_aptcasa" class="form-control form-control-user"
+                          placeholder="Casa o Apartamento" minlength="4" required>
+                        <div class="invalid-feedback">
+                          Por favor introduzca un apartamento o casa válida.
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-lg-4 pt-2">
+                        <input type="text" id="nac_calle" name="nac_calle" class="form-control form-control-user"
+                          placeholder="Calle" minlength="4" required>
+                        <div class="invalid-feedback">
+                          Por favor introduzca una calle válida.
+                        </div>
+                      </div>
+                    </div>
                     <br>
                     <div class="text-center">
                       <h5 class="text-gray-900 mb-4">Dirección de trabajo</h5>
@@ -222,28 +244,28 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="t_postal" name="t_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca una Zona postal válida.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="t_estado" name="t_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="t_ciudad" name="t_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca un ciudad válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 my-auto">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
                         <input type="text" id="t_municipio" name="t_municipio" class="form-control form-control-user"
                           placeholder="municipio" minlength="4">
                         <div class="invalid-feedback">
@@ -261,28 +283,28 @@
 
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-3">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
                         <input type="text" id="e_nombre" name="e_nombre" class="form-control form-control-user"
                           placeholder="Nombre y apellido" minlength="8" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un nombre válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-3">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
                         <input type="text" id="parentesco" name="parentesco" class="form-control form-control-user"
                           placeholder="Parentesco" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un Parentesco válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-3">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
                         <input type="number" id="e_local" name="e_local" class="form-control form-control-user"
                           placeholder="Teléfono de local" min="2400000000">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de local válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-3">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
                         <input type="number" id="e_movil" name="e_movil" class="form-control form-control-user"
                           placeholder="Teléfono móvil" min="4100000000" required>
                         <div class="invalid-feedback">
@@ -312,14 +334,14 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 my-auto">
+                      <div class="col-sm-6 pt-2">
                         <input type="number" id="i_egreso" name="i_egreso" class="form-control"
                           placeholder="Año de egreso" minlength="1930" max="<?php echo date('Y') ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un año de egreso válido.
                         </div>
                       </div>
-                      <div class="col-sm-6 my-auto">
+                      <div class="col-sm-6 pt-2">
                         <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
                           placeholder="Código de la institución" minlength="6" required>
                         <div class="invalid-feedback">
@@ -330,14 +352,14 @@
 
                     <div class="form-group row">
 
-                      <div class="col-sm-6 my-auto">
+                      <div class="col-sm-6 pt-2">
                         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-6 my-auto">
+                      <div class="col-sm-6 pt-2">
                         <select id="tipo_inst" name="tipo_inst" class="form-control" required>
                           <option disabled selected value="">Tipo de institución</option>
                           <option value="1">Privada</option>

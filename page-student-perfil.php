@@ -55,79 +55,112 @@
 
           <?php
 
-           include 'back/conexion.php';
+include 'back/conexion.php';
 
-           // ------------ Obtener la id del alumno dependiendo la sesion
-           if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-           }elseif (isset($_SESSION['id'])) {
-            $id = $_SESSION['id'];
-           };
-           // ------------ /.Obtener la id del alumno dependiendo la sesion
+// ------------ Obtener la id del alumno dependiendo la sesion
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} elseif (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+}
+;
+// ------------ /.Obtener la id del alumno dependiendo la sesion
 
+$sql = "SELECT *, alumnos.cedula AS ci, documentos.cedula AS cedula, carreras.nombre AS carreraname FROM alumnos
+        INNER JOIN documentos ON alumnos.documento=documentos.id_documento
+        LEFT JOIN telefonos ON alumnos.id_alumno=telefonos.alumno
+        LEFT JOIN direcciones ON alumnos.id_alumno=direcciones.alumno
+        LEFT JOIN carreras ON alumnos.carrera=carreras.codigo
+        LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
+        WHERE alumnos.id_alumno = '$id';";
 
-          $sql = "SELECT *, alumnos.cedula AS ci, documentos.cedula AS cedula, carreras.nombre AS carreraname FROM alumnos
-                  INNER JOIN documentos ON alumnos.documento=documentos.id_documento
-                  LEFT JOIN telefonos ON alumnos.id_alumno=telefonos.alumno
-                  LEFT JOIN direcciones ON alumnos.id_alumno=direcciones.alumno
-                  LEFT JOIN carreras ON alumnos.carrera=carreras.codigo
-                  LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-                  WHERE alumnos.id_alumno = '$id';";
+$result = mysqli_query($conexion, $sql);
+if ($result->num_rows > 0) {
+    $row = mysqli_fetch_assoc($result);
+} else {
+    $mensaje = "Ocurrió un error al cargar el perfil";
+    echo ($mensaje);
+}
+;
 
-          $result = mysqli_query($conexion, $sql);
-          if ($result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($result);
-          }else{
-            $mensaje = "Ocurrió un error al cargar el perfil";
-            echo ($mensaje);
-          };
+switch ($row['estado_civil']) {
+    case 1:
+        $estado_civil = 'Casado';
+        break;
+    case 2:
+        $estado_civil = 'Soltero';
+        break;
+    case 3:
+        $estado_civil = 'Divorciado';
+        break;
+    case 4:
+        $estado_civil = 'Viudo';
+        break;
+    default:
+        $estado_civil = '';
+        break;
+};
 
-          // -------- Porcentaje de Documentos
+// -------- Porcentaje de Documentos
 
-          $porcentaje = ($row['check_foto'] + $row['check_cedula'] + $row['check_fondo'] + $row['check_nota'] + $row['check_partida'] + $row['check_rusinies'] + $row['check_metodo']) * 100 / 7;
-          $porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+$porcentaje = ($row['check_foto'] + $row['check_cedula'] + $row['check_fondo'] + $row['check_nota'] + $row['check_partida'] + $row['check_rusinies'] + $row['check_metodo']) * 100 / 7;
+$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
 
-          // -------- /Porcentaje de Documentos          
+// -------- /.Porcentaje de Documentos
 
-          switch ($row['turno']) {
-            case '1':
-              $turno = 'Mañana';
-              break;
-            case '2':
-              $turno = 'Tarde';
-              break;
-            case '3':
-              $turno = 'Noche';
-              break;
-            default:
-              $turno = '';
-              break;
-          };
+switch ($row['turno']) {
+    case 1:
+        $turno = 'Mañana';
+        break;
+    case 2:
+        $turno = 'Tarde';
+        break;
+    case 3:
+        $turno = 'Noche';
+        break;
+    default:
+        $turno = '';
+        break;
+};
 
-          $path_image = 'back/documentos/'; // ruta raiz de los Documentos
-          $id_documento = $row['id_documento']; // para hacer las consultas de cada tipo de Documento
-          $admin = 1;
+switch ($row['tipoInst']) {
+    case 1:
+        $tipoInst = 'Pública';
+        break;
+    case 2:
+        $tipoInst = 'Privada';
+        break;
+    default:
+        $tipoInst = '';
+        break;
+};
 
-          ?>
+$path_image = 'back/documentos/'; // ruta raiz de los Documentos
+$id_documento = $row['id_documento']; // para hacer las consultas de cada tipo de Documento
+$admin = 1;
+
+?>
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-lg-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Perfil del alumno</h1>
             <!-- Boton para el alumno (Imprimir perfil) -->
-            <?php if ($admin != 1) { ?>
+            <?php if ($admin != 1) {?>
             <a id="btnImprimirPerfil" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
               <i class="fas fa-download fa-sm"></i>
               Imprimir perfil
             </a>
-            <?php }; ?>
+            <?php }
+;?>
             <!-- /.Boton para el alumno (Imprimir perfil) -->
             <!-- Boton para el admin (Ir a Validaciones) -->
-            <?php if ($admin == 1) { ?>
-            <a href="page-admin-check.php" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+            <?php if ($admin == 1) {?>
+            <a href="page-admin-check.php?id=<?=$id_documento?>" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
               <i class="fas fa-clipboard-list fa-sm"></i>
               Ir a validaciones
             </a>
-            <?php }; ?>
+            <?php }
+;?>
             <!-- /.Boton para el admin (Ir a Validaciones) -->
           </div>
           <!-- /.Título de página -->
@@ -196,7 +229,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                       <label class="pl-2 pt-2">Estado civil</label><br>
-                      <input type="text" value="<?=$row['estado_civil']?>" class="form-control" disabled>
+                      <input type="text" value="<?=$estado_civil?>" class="form-control" disabled>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                       <label class="pl-2 pt-2">Fecha de nacimiento</label><br>
@@ -349,7 +382,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4">
                       <label class="pl-2 pt-2">Tipo de institución</label><br>
-                      <input type="text" value="<?=$row['tipoInst']?>" class="form-control" disabled>
+                      <input type="text" value="<?=$tipoInst?>" class="form-control" disabled>
                     </div>
                   </div>
 
@@ -370,7 +403,7 @@
                     </div>
                     <div class="col-sm-12 col-lg-4">
                       <label class="pl-2 pt-2">Método de ingreso</label><br>
-                      <input type="text" value="<?=$row['metodo_ingreso']?>" class="form-control" disabled>
+                      <input type="text" value="<?=$row['nombre_solicitud']?>" class="form-control" disabled>
                     </div>
                   </div>
 
@@ -430,21 +463,22 @@
                       <div id="preview-images-foto" class="preview-images">
 
                       <?php
-                      if ($row['foto'] != '') {
-                      ?>
-                        <div class="thumbnail" style="background-image: url('<?=$path_image.$row['foto']?>')">
+if ($row['foto'] != '') {
+    ?>
+                        <div class="thumbnail" style="background-image: url('<?=$path_image . $row['foto']?>')">
                           <div class="close-button-db">
-                            <a href="<?=$path_image.$row['foto']?>" data-lightbox="galleryFoto" data-title="foto">
+                            <a href="<?=$path_image . $row['foto']?>" data-lightbox="galleryFoto" data-title="foto">
                               <i class="fas fa-eye"></i>
                             </a>
-                            <a href="<?=$path_image.$row['foto']?>" download="<?php echo ('foto' . $row['ci']) ?>">
+                            <a href="<?=$path_image . $row['foto']?>" download="<?php echo ('foto' . $row['ci']) ?>">
                               <i class="fas fa-download"></i>
                             </a>
                           </div>
                         </div>
                     <?php
-                    };
-                    ?>              
+}
+;
+?>
 
                       </div>
                     </div>
@@ -471,21 +505,22 @@
                       <div id="preview-images-cedula" class="preview-images">
 
                         <?php
-                        if ($row['cedula'] != '') {
-                        ?>
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row['cedula']?>')">
+if ($row['cedula'] != '') {
+    ?>
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['cedula']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row['cedula']?>" data-lightbox="galleryCedula" data-title="Cedula">
+                              <a href="<?=$path_image . $row['cedula']?>" data-lightbox="galleryCedula" data-title="Cedula">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row['cedula']?>" download="<?php echo ('cedula' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row['cedula']?>" download="<?php echo ('cedula' . $row['ci']) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                         <?php
-                        };
-                        ?> 
+}
+;
+?>
 
                       </div>
                     </div>
@@ -514,30 +549,32 @@
 
                         <?php
 
-                        $sql_notas = "SELECT * FROM notas
+$sql_notas = "SELECT * FROM notas
                                       WHERE documento = '$id_documento';";
 
-                        $result_notas = mysqli_query($conexion, $sql_notas);
+$result_notas = mysqli_query($conexion, $sql_notas);
 
-                        if ($result_notas->num_rows > 0) {
-                          while ($row_notas = mysqli_fetch_assoc($result_notas)) {
-                        ?>
+if ($result_notas->num_rows > 0) {
+    while ($row_notas = mysqli_fetch_assoc($result_notas)) {
+        ?>
                           <!-- Esto se repite por cada imagen de Notas -->
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row_notas['nota']?>')">
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row_notas['nota']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row_notas['nota']?>" data-lightbox="galleryNotas" data-title="Notas">
+                              <a href="<?=$path_image . $row_notas['nota']?>" data-lightbox="galleryNotas" data-title="Notas">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row_notas['nota']?>" download="<?php echo ('notas' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row_notas['nota']?>" download="<?php echo ('notas' . $row['ci']) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                           <!--  /Esto se repite por cada imagen de Notas -->
                         <?php
-                          };
-                        };
-                        ?>
+}
+    ;
+}
+;
+?>
 
                       </div>
                     </div>
@@ -563,21 +600,22 @@
                     <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
                       <div id="preview-images-fondo" class="preview-images">
                         <?php
-                        if ($row['fondo'] != '') {
-                        ?>
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row['fondo']?>')">
+if ($row['fondo'] != '') {
+    ?>
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['fondo']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row['fondo']?>" data-lightbox="galleryFondo" data-title="Fondo">
+                              <a href="<?=$path_image . $row['fondo']?>" data-lightbox="galleryFondo" data-title="Fondo">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row['fondo']?>" download="<?php echo ('fondo' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row['fondo']?>" download="<?php echo ('fondo' . $row['ci']) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                         <?php
-                        };
-                        ?>
+}
+;
+?>
                       </div>
                     </div>
 
@@ -603,29 +641,31 @@
                       <div id="preview-images-rusnies" class="preview-images">
 
                         <?php
-                        $sql_rusnies = "SELECT * FROM rusnies
+$sql_rusnies = "SELECT * FROM rusnies
                                         WHERE documento = '$id_documento';";
 
-                        $result_rusnies = mysqli_query($conexion, $sql_rusnies);
-                        if ($result_rusnies->num_rows > 0) {
-                          while ($row_rusnies = mysqli_fetch_assoc($result_rusnies)) {
-                        ?>
+$result_rusnies = mysqli_query($conexion, $sql_rusnies);
+if ($result_rusnies->num_rows > 0) {
+    while ($row_rusnies = mysqli_fetch_assoc($result_rusnies)) {
+        ?>
                           <!-- Esto se repite por cada imagen de Rusnies -->
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row_rusnies['rusnies']?>')">
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row_rusnies['rusnies']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row_rusnies['rusnies']?>" data-lightbox="galleryRusnies" data-title="Rusnies">
+                              <a href="<?=$path_image . $row_rusnies['rusnies']?>" data-lightbox="galleryRusnies" data-title="Rusnies">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row_rusnies['rusnies']?>" download="<?php echo ('rusnies' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row_rusnies['rusnies']?>" download="<?php echo ('rusnies' . $row['ci']) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                           <!--  /Esto se repite por cada imagen de Rusnies -->
                         <?php
-                          };
-                        };
-                        ?> 
+}
+    ;
+}
+;
+?>
 
                       </div>
                     </div>
@@ -650,21 +690,22 @@
                     <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
                       <div id="preview-images-partida" class="preview-images">
                         <?php
-                        if ($row['partida'] != '') {
-                        ?>
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row['partida']?>')">
+if ($row['partida'] != '') {
+    ?>
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['partida']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row['partida']?>" data-lightbox="galleryPartida" data-title="Partida">
+                              <a href="<?=$path_image . $row['partida']?>" data-lightbox="galleryPartida" data-title="Partida">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row['partida']?>" download="<?php echo ('partida' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row['partida']?>" download="<?php echo ('partida' . $row['ci']) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                         <?php
-                        };
-                        ?>
+}
+;
+?>
                       </div>
                     </div>
 
@@ -692,29 +733,31 @@
                       <div id="preview-images-metodo" class="preview-images">
 
                         <?php
-                        $sql_metodoing = "SELECT * FROM metodoing
+$sql_metodoing = "SELECT * FROM metodoing
                                           WHERE documento = '$id_documento';";
 
-                        $result_metodoing = mysqli_query($conexion, $sql_metodoing);
-                        if ($result_metodoing->num_rows > 0) {
-                          while ($row_metodoing = mysqli_fetch_assoc($result_metodoing)) {
-                        ?>
+$result_metodoing = mysqli_query($conexion, $sql_metodoing);
+if ($result_metodoing->num_rows > 0) {
+    while ($row_metodoing = mysqli_fetch_assoc($result_metodoing)) {
+        ?>
                           <!-- Esto se repite por cada imagen de Metodo -->
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row_metodoing['metodo']?>')">
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row_metodoing['metodo']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row_metodoing['metodo']?>" data-lightbox="galleryMetodo" data-title="Metodo">
+                              <a href="<?=$path_image . $row_metodoing['metodo']?>" data-lightbox="galleryMetodo" data-title="Metodo">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row_metodoing['metodo']?>" download="<?php echo ('metodo' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row_metodoing['metodo']?>" download="<?php echo ('metodo' . $row['ci']) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                           <!--  /Esto se repite por cada imagen de Metodo -->
                         <?php
-                          };
-                        };
-                        ?> 
+}
+    ;
+}
+;
+?>
 
                       </div>
                     </div>
@@ -767,6 +810,7 @@
   <script src="js/sb-admin-2.js"></script>
 
   <script src="js/lightbox-plus-jquery.js"></script>
+<?php if ($admin != 1) {?>
   <!-- Imprimir Areas Especeficas -->
   <script>
     document.querySelector("#btnImprimirPerfil").addEventListener("click", function () {
@@ -805,6 +849,8 @@
     }
   </script>
 <!-- /.Imprimir Areas Especeficas -->
+ <?php }
+;?>
 </body>
 
 </html>
