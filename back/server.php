@@ -31,7 +31,7 @@ foreach ($_FILES as $key => $file) {
   		$datos = mysqli_fetch_array($result);
 
 	  	if ($datos['foto']!='empty'){
-			return print_r(json_encode(['message' => 'Ya ha subido un documento de cedula, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
+			return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos para fotos, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
 
 	  	}else{
 		  	$direccion = $cedula.$photo_name;
@@ -42,10 +42,35 @@ foreach ($_FILES as $key => $file) {
  
  if (($path_splitted[0] == 'notas') && isset($_FILES[$key])) {
   $photo_name = 'notas' . '_' . $count . '_' . date('m-d-yHis') . '.' . $path_info['extension'];
+  $consulta="SELECT COUNT(*) AS `count` FROM `notas` WHERE documento=$idDoc";
+  $result = mysqli_query($conexion, $consulta);
+  $datos = mysqli_fetch_array($result);
+
+  if ($datos['count']>=5){
+	  return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos para notas, dirigirse a Modificación para hacer cambios', 'status' => http_response_code(500)]));
+
+  }else{
+
+	  $direccion = $cedula.$photo_name;
+	  $insertarDoc = "INSERT INTO notas(nota,documento) VALUES ('$direccion','$idDoc')";
+	  $result = mysqli_query($conexion, $insertarDoc);
+  	}
  }
 
  if (($path_splitted[0] == 'rusnies') && isset($_FILES[$key])) {
-    $photo_name = 'rusnies' . '_' . $count . '_' . date('m-d-yHis') . '.' . $path_info['extension'];
+	$photo_name = 'rusnies' . '_' . $count . '_' . date('m-d-yHis') . '.' . $path_info['extension'];
+	$consulta="SELECT COUNT(*) AS `count` FROM `rusnies` WHERE documento=$idDoc";
+	$result = mysqli_query($conexion, $consulta);
+	$datos = mysqli_fetch_array($result);
+
+	if ($datos['count']>=5){
+		return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos para rusnies, dirigirse a Modificación para hacer cambios o eliminar', 'status' => http_response_code(500)]));
+
+	}else{
+		$direccion = $cedula.$photo_name;
+		$insertarDoc = "INSERT INTO rusnies (rusnies,documento) VALUES ('$direccion','$idDoc')";
+		$result = mysqli_query($conexion, $insertarDoc);
+	}
 }
 
 	if (($path_splitted[0] == 'cedula') && isset($_FILES[$key])) {
@@ -72,7 +97,7 @@ foreach ($_FILES as $key => $file) {
 	$datos = mysqli_fetch_array($result);
 
 		if ($datos['fondo']!='empty'){
-			return print_r(json_encode(['message' => 'Ya ha subido un documento de cedula, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
+			return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos de fondo negro, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
 
 		}else{
 			$direccion = $cedula.$photo_name;
@@ -88,7 +113,7 @@ foreach ($_FILES as $key => $file) {
 	$datos = mysqli_fetch_array($result);
 
 		if ($datos['partida']!='empty'){
-			return print_r(json_encode(['message' => 'Ya ha subido un documento de cedula, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
+			return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos de partida, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
 
 		}else{
 			$direccion = $cedula.$photo_name;
@@ -99,6 +124,19 @@ foreach ($_FILES as $key => $file) {
 
 if (($path_splitted[0] == 'metodo') && isset($_FILES[$key])) {
 	$photo_name = 'metodo' . '_' . $count . '_' . date('m-d-yHis') . '.' . $path_info['extension'];
+	$consulta="SELECT COUNT(*) AS `count` FROM `metodoing` WHERE documento=$idDoc";
+	$result = mysqli_query($conexion, $consulta);
+	$datos = mysqli_fetch_array($result);
+
+	if ($datos['count']>=5){
+		return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos para metodo de ingreso, dirigirse a Modificación para hacer cambios o eliminar', 'status' => http_response_code(500)]));
+
+	}else{
+		$direccion = $cedula.$photo_name;
+		$insertarDoc = "INSERT INTO metodoing (metodo,documento) VALUES ('$direccion','$idDoc')";
+		$result = mysqli_query($conexion, $insertarDoc);
+	}
+
 }
 
 	// print_r(array_keys($_FILES)); // esto da un error porque se considera como respuesta al fetch y no esta en json
@@ -113,7 +151,7 @@ if (($path_splitted[0] == 'metodo') && isset($_FILES[$key])) {
 
 if ( $count == count( $_FILES ) ) {
 
-	$message = ( $count > 1 ? 'Se subieron ' . $count . ' fotos con éxito' : 'Se subió ' . $count . ' foto con éxito' );
+	$message = ( $count > 1 ? 'Se subieron ' . $count . ' archivos con éxito' : 'Se subió ' . $count . ' foto con éxito' );
 
 	return print_r(json_encode(
 		[
