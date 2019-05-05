@@ -495,7 +495,7 @@ if ($row['foto'] != '') {
                     <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
                       <h5 class="text-gray-900 row">
                         <div class="col-2"><i
-                            class="fas fa-<?php echo ($row['check_foto'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                            class="fas fa-<?php echo ($row['check_cedula'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
                         </div>
                         <div class="col-10 text-justify">Cedula</div>
                       </h5>
