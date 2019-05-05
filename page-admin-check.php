@@ -91,24 +91,20 @@ $porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
 // -------- /Porcentaje de Documentos
 
 // Iniciando valores
-$cedula = '21217885';
+$ci = $_GET['ci']; // cedula
+$mi = $_GET['mi']; // metodo_ingreso
 
-// rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
+$sql_mi = "SELECT * FROM tipo_solicitud
+            WHERE tipo='$mi'";
+$result_mi = mysqli_query($conexion, $sql_mi);
+$row_mi = mysqli_fetch_assoc($result_mi);
+
+
+// ruta raiz de la imagen
 $path_image = 'back/documentos/';
 
-$path_foto = 'back/documentos/'.$row['foto'];
-$path_cedula = 'back/documentos/'.$row['cedula'];
-$path_fondo = 'back/documentos/'.$row['fondo'];
-$path_partida = 'back/documentos/'.$row['partida'];
-
 $ultActualizacion = date('Y-m-d');
-
-$p_nombre = 'Textotexto';
-$s_nombre = 'Textotexto';
-$p_apellido = 'Textotexto';
-$s_apellido = 'Textotexto';
-
-$nombre_solicitud = "SolicitudSolicitud";
+$nombre_solicitud = $row_mi['nombre_solicitud'];
 
 ?>
 <!-- Busqueda Check -->
@@ -134,21 +130,12 @@ $nombre_solicitud = "SolicitudSolicitud";
                 </form>
 
                 <div class="form-group row text-center">
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col">
                         <label class="pl-2 pt-2">
-                            <b>Nombre:</b> <?php echo $p_nombre . ' ' . $s_nombre . ' ' . $p_apellido . ' ' . $s_apellido ?>
-                        </label>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                        <label class="pl-2 pt-2">
-                            <b>Cedula:</b> <?php echo $cedula ?>
+                            <b>Cedula:</b> <?php echo $ci ?>
                         </label>
                     </div>
                 </div>
-
-
-
-
 
 
             </div>
@@ -198,16 +185,23 @@ $nombre_solicitud = "SolicitudSolicitud";
 
               <div id="preview-images-foto" class="preview-images">
 
-                <div class="thumbnail" style="background-image: url('<?php echo $path_foto ?>')">
-                  <div class="close-button-db">
-                    <a href="<?php echo $path_foto ?>" data-lightbox="galleryFoto" data-title="foto">
-                      <i class="fas fa-eye"></i>
-                    </a>
-                    <a href="<?php echo $path_foto ?>" download="<?php echo ('foto'.$cedula) ?>">
-                      <i class="fas fa-download"></i>
-                    </a>
-                  </div>
-                </div>
+                                      <?php
+if ($row['foto'] != '') {
+    ?>
+                        <div class="thumbnail" style="background-image: url('<?=$path_image . $row['foto']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row['foto']?>" data-lightbox="galleryFoto" data-title="foto">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row['foto']?>" download="<?php echo ('foto' . $ci) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
+                          </div>
+                        </div>
+                    <?php
+}
+;
+?>              
 
               </div>
 
@@ -235,16 +229,23 @@ $nombre_solicitud = "SolicitudSolicitud";
 
               <div id="preview-images-cedula" class="preview-images">
 
-                <div class="thumbnail" style="background-image: url('<?php echo $path_cedula ?>')">
-                  <div class="close-button-db">
-                    <a href="<?php echo $path_cedula ?>" data-lightbox="galleryCedula" data-title="Cedula">
-                      <i class="fas fa-eye"></i>
-                    </a>
-                    <a href="<?php echo $path_cedula ?>" download="<?php echo ('cedula'.$cedula) ?>">
-                      <i class="fas fa-download"></i>
-                    </a>
-                  </div>
-                </div>
+                <?php
+if ($row['cedula'] != '') {
+    ?>
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['cedula']?>')">
+                            <div class="close-button-db">
+                              <a href="<?=$path_image . $row['cedula']?>" data-lightbox="galleryCedula" data-title="Cedula">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                              <a href="<?=$path_image . $row['cedula']?>" download="<?php echo ('cedula' . $ci) ?>">
+                                <i class="fas fa-download"></i>
+                              </a>
+                            </div>
+                          </div>
+                        <?php
+}
+;
+?>
 
               </div>
 
@@ -277,28 +278,30 @@ $nombre_solicitud = "SolicitudSolicitud";
               <?php
 
 $sql_notas = "SELECT * FROM notas
-              WHERE documento = '$id';";
+                                      WHERE documento = '$id';";
 
 $result_notas = mysqli_query($conexion, $sql_notas);
 
 if ($result_notas->num_rows > 0) {
-  while ($row_notas = mysqli_fetch_assoc($result_notas)) {
-?>
-  <!-- Esto se repite por cada imagen de Notas -->
-  <div class="thumbnail" style="background-image: url('<?=$path_image.$row_notas['nota']?>')">
-    <div class="close-button-db">
-      <a href="<?=$path_image.$row_notas['nota']?>" data-lightbox="galleryNotas" data-title="Notas">
-        <i class="fas fa-eye"></i>
-      </a>
-      <a href="<?=$path_image.$row_notas['nota']?>" download="<?php echo ('notas' . $row['ci']) ?>">
-        <i class="fas fa-download"></i>
-      </a>
-    </div>
-  </div>
-  <!--  /Esto se repite por cada imagen de Notas -->
-<?php
-  };
-};
+    while ($row_notas = mysqli_fetch_assoc($result_notas)) {
+        ?>
+                          <!-- Esto se repite por cada imagen de Notas -->
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row_notas['nota']?>')">
+                            <div class="close-button-db">
+                              <a href="<?=$path_image . $row_notas['nota']?>" data-lightbox="galleryNotas" data-title="Notas">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                              <a href="<?=$path_image . $row_notas['nota']?>" download="<?php echo ('notas' . $ci) ?>">
+                                <i class="fas fa-download"></i>
+                              </a>
+                            </div>
+                          </div>
+                          <!--  /Esto se repite por cada imagen de Notas -->
+                        <?php
+}
+    ;
+}
+;
 ?>
               </div>
 
@@ -327,18 +330,23 @@ if ($result_notas->num_rows > 0) {
 
               <div id="preview-images-fondo" class="preview-images">
 
-                <!-- Esto se repite por cada imagen de Fondo de titulo -->
-                <div class="thumbnail" style="background-image: url('<?php echo $path_fondo ?>')">
-                  <div class="close-button-db">
-                    <a href="<?php echo $path_fondo ?>" data-lightbox="galleryFondo" data-title="Fondo">
-                      <i class="fas fa-eye"></i>
-                    </a>
-                    <a href="<?php echo $path_fondo ?>" download="<?php echo ('fondo'.$cedula) ?>">
-                      <i class="fas fa-download"></i>
-                    </a>
-                  </div>
-                </div>
-                <!--  /Esto se repite por cada imagen de Fondo de titulo -->
+               <?php
+if ($row['fondo'] != '') {
+    ?>
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['fondo']?>')">
+                            <div class="close-button-db">
+                              <a href="<?=$path_image . $row['fondo']?>" data-lightbox="galleryFondo" data-title="Fondo">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                              <a href="<?=$path_image . $row['fondo']?>" download="<?php echo ('fondo' . $ci) ?>">
+                                <i class="fas fa-download"></i>
+                              </a>
+                            </div>
+                          </div>
+                        <?php
+}
+;
+?>
 
               </div>
 
@@ -366,30 +374,32 @@ if ($result_notas->num_rows > 0) {
             <div class="col-md-12 text-md-center col-lg-8 text-lg-left pt-3 my-auto">
 
               <div id="preview-images-rusnies" class="preview-images">
-              <?php
-                        $sql_rusnies = "SELECT * FROM rusnies
+             <?php
+$sql_rusnies = "SELECT * FROM rusnies
                                         WHERE documento = '$id';";
 
-                        $result_rusnies = mysqli_query($conexion, $sql_rusnies);
-                        if ($result_rusnies->num_rows > 0) {
-                          while ($row_rusnies = mysqli_fetch_assoc($result_rusnies)) {
-                        ?>
+$result_rusnies = mysqli_query($conexion, $sql_rusnies);
+if ($result_rusnies->num_rows > 0) {
+    while ($row_rusnies = mysqli_fetch_assoc($result_rusnies)) {
+        ?>
                           <!-- Esto se repite por cada imagen de Rusnies -->
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row_rusnies['rusnies']?>')">
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row_rusnies['rusnies']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row_rusnies['rusnies']?>" data-lightbox="galleryRusnies" data-title="Rusnies">
+                              <a href="<?=$path_image . $row_rusnies['rusnies']?>" data-lightbox="galleryRusnies" data-title="Rusnies">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row_rusnies['rusnies']?>" download="<?php echo ('rusnies' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row_rusnies['rusnies']?>" download="<?php echo ('rusnies' . $ci) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                           <!--  /Esto se repite por cada imagen de Rusnies -->
                         <?php
-                          };
-                        };
-                        ?> 
+}
+    ;
+}
+;
+?>
               </div>
 
             </div>
@@ -417,16 +427,23 @@ if ($result_notas->num_rows > 0) {
 
               <div id="preview-images-partida" class="preview-images">
 
-                <div class="thumbnail" style="background-image: url('<?php echo $path_partida ?>')">
-                  <div class="close-button-db">
-                    <a href="<?php echo $path_partida ?>" data-lightbox="galleryPartida" data-title="Partida">
-                      <i class="fas fa-eye"></i>
-                    </a>
-                    <a href="<?php echo $path_partida ?>" download="<?php echo ('partida'.$cedula) ?>">
-                      <i class="fas fa-download"></i>
-                    </a>
-                  </div>
-                </div>
+                <?php
+if ($row['partida'] != '') {
+    ?>
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['partida']?>')">
+                            <div class="close-button-db">
+                              <a href="<?=$path_image . $row['partida']?>" data-lightbox="galleryPartida" data-title="Partida">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                              <a href="<?=$path_image . $row['partida']?>" download="<?php echo ('partida' . $ci) ?>">
+                                <i class="fas fa-download"></i>
+                              </a>
+                            </div>
+                          </div>
+                        <?php
+}
+;
+?>
 
               </div>
 
@@ -458,29 +475,31 @@ if ($result_notas->num_rows > 0) {
 
               <div id="preview-images-metodo" class="preview-images">
               <?php
-                        $sql_metodoing = "SELECT * FROM metodoing
+$sql_metodoing = "SELECT * FROM metodoing
                                           WHERE documento = '$id';";
 
-                        $result_metodoing = mysqli_query($conexion, $sql_metodoing);
-                        if ($result_metodoing->num_rows > 0) {
-                          while ($row_metodoing = mysqli_fetch_assoc($result_metodoing)) {
-                        ?>
+$result_metodoing = mysqli_query($conexion, $sql_metodoing);
+if ($result_metodoing->num_rows > 0) {
+    while ($row_metodoing = mysqli_fetch_assoc($result_metodoing)) {
+        ?>
                           <!-- Esto se repite por cada imagen de Metodo -->
-                          <div class="thumbnail" style="background-image: url('<?=$path_image.$row_metodoing['metodo']?>')">
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row_metodoing['metodo']?>')">
                             <div class="close-button-db">
-                              <a href="<?=$path_image.$row_metodoing['metodo']?>" data-lightbox="galleryMetodo" data-title="Metodo">
+                              <a href="<?=$path_image . $row_metodoing['metodo']?>" data-lightbox="galleryMetodo" data-title="Metodo">
                                 <i class="fas fa-eye"></i>
                               </a>
-                              <a href="<?=$path_image.$row_metodoing['metodo']?>" download="<?php echo ('metodo' . $row['ci']) ?>">
+                              <a href="<?=$path_image . $row_metodoing['metodo']?>" download="<?php echo ('metodo' . $ci) ?>">
                                 <i class="fas fa-download"></i>
                               </a>
                             </div>
                           </div>
                           <!--  /Esto se repite por cada imagen de Metodo -->
                         <?php
-                          };
-                        };
-                        ?> 
+}
+    ;
+}
+;
+?>
               </div>
 
             </div>
