@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title> Crear alumno </title>
+	<?php require('back/admin/restriccionAcceso.php');?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">

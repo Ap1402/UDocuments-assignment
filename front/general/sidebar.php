@@ -33,7 +33,7 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
   </a>
 
 
-  <?php if ($admin == 1) { // Mostrar solo para administradores ?>
+  <?php if ($admin > 0) { // Mostrar solo para administradores ?>
 
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
