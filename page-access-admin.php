@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Control de estudios / SAD - login</title>
+  <title>Control de estudios / SAD - login Admin</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -41,7 +41,7 @@
 
 
   <div class="container">
-
+    
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
@@ -52,20 +52,20 @@
           <div class="card-body p-0">
 
             <!-- Nested Row within Card Body -->
-            <div id="page-login" class="row justify-content-center">
+            <div id="page-access-admin" class="row justify-content-center">
 
-              <!-- Formulario Login -->
-              <div class="col-lg-3 d-none d-lg-block bg-login-image"></div>
+              <!-- Formulario Login Admin -->
+              <div class="col-lg-3 d-none d-lg-block bg-admin-image"></div>
               <div class="col-sm-12 col-md-10 col-lg-9">
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
                   </div>
-                  <form id="loginForm" method="POST" class="user needs-validation" novalidate>
+                  <form id="adminForm" method="POST" class="user needs-validation" novalidate>
 
                     <!-- Username -->
                     <div class="form-group">
-                      <input type="text" id="usernameLog" name="usernameLog" class="form-control form-control-user"
+                      <input type="text" id="usernameAdmin" name="usernameAdmin" class="form-control form-control-user"
                         placeholder="Nombre usuario" minlength="4" required>
                       <div class="invalid-feedback">
                         Por favor introduzca un nombre de usuario válido.
@@ -75,7 +75,7 @@
                     <!-- Password -->
                     <div class="form-group">
                       <div class="input-group">
-                        <input type="password" id="contrasenaLog" name="contrasenaLog" minlength="4"
+                        <input type="password" id="contrasenaAdmin" name="contrasenaAdmin" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" required>
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
@@ -89,9 +89,9 @@
                     </div>
 
                     <br>
-                    <div class="alert alert-danger" role="alert" id="resultadoLog" hidden></div>
+                    <div class="alert alert-danger" role="alert" id="resultadoLogAdmin" hidden></div>
                     <!-- Sign up button -->
-                    <button id="enviarLog" type="submit" class="btn btn-primary btn-user btn-block">
+                    <button id="enviarLogAdmin" type="submit" class="btn btn-primary btn-user btn-block">
                       Iniciar sesión
                     </button>
                   </form>
@@ -100,14 +100,11 @@
                     <a href="page-access-forgot.php" class="small">¿Olvido la contraseña?</a>
                   </div>
                   <div class="text-center">
-                    <a href="page-access-registro.php" class="small">Crear una cuenta!</a>
-                  </div>
-                  <div class="text-center">
-                    <a href="page-access-admin.php" class="small text-dark">Acceso solo para Administradores</a>
+                    <a href="index.php" class="small">Iniciar sesión como alumno</a>
                   </div>
                 </div>
               </div>
-              <!-- /.Formulario Login -->
+              <!-- /.Formulario Login Admin -->
 
             </div>
 
@@ -135,11 +132,11 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
-  <script src="scripts/login.js"></script>
+  <!-- <script src="scripts/login.js"></script> -->
 
   <script type="text/javascript">
     function mostrarPassword() {
-      var pass = document.getElementById("contrasenaLog");
+      var pass = document.getElementById("contrasenaAdmin");
       if (pass.type == "password") {
         pass.type = "text";
         $('i#showpass').removeClass('fas fa-eye-slash').addClass('fas fa-eye');

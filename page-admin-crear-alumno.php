@@ -123,18 +123,34 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="input-group">
-                        <input type="password" id="contrasena" name="contrasena" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" required>
-                        <div class="input-group-append">
-                          <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                            <i id="showpass" class="fas fa-eye-slash"></i>
-                          </a>
-                        </div>
+											<div class="input-group">
+												<input type="password" id="contrasena" name="contrasena" minlength="4"
+													class="form-control form-control-user" placeholder="Contraseña"
+													required>
+												<div class="input-group-append">
+													<a id="show" onclick="mostrarPassword()"
+														class="btn btn-primary text-center align-middle">
+														<i id="showpass" class="fas fa-eye-slash"></i>
+													</a>
+												</div>
                       </div>
                       <div class="invalid-feedback">
                         La contraseña debe tener al menos 4 caracteres.
                       </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="password" id="contrasena2" name="contrasena2" minlength="4"
+                          class="form-control form-control-user" placeholder="Repetir contraseña" required>
+                        <div class="input-group-append">
+                          <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                            <i id="showpass2" class="fas fa-eye-slash"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback">
+												La contraseña debe tener al menos 4 caracteres.
+											</div>
                     </div>
                     <div class="alert alert-danger" role="alert" id="resultado" hidden>
                     </div>
@@ -189,17 +205,20 @@
   <script src="scripts/registro.js"></script>
 
   <script type="text/javascript">
-    function mostrarPassword() {
-      var pass = document.getElementById("contrasena");
-      if (pass.type == "password") {
-        pass.type = "text";
-        $('i#showpass').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
-      } else {
-        pass.type = "password";
-        $('i#showpass').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
-      }
-    }
-  </script>
+		function mostrarPassword() {
+			var pass = document.getElementById("contrasena");
+			var pass2 = document.getElementById("contrasena2");
+			if (pass.type == "password") {
+				pass.type = "text";
+				pass2.type = "text";
+				$('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+			} else {
+				pass.type = "password";
+				pass2.type = "password";
+				$('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+			}
+		}
+	</script>
 
 </body>
 
