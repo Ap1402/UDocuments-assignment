@@ -51,37 +51,6 @@
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-admin-table" class="container-fluid">
 
-          <?php
-
-$check_foto = 1; // verificar si fue o no chequeado por control de estudios
-$check_cedula = 0;
-$check_fondo = 1;
-$check_notas = 0;
-$check_partida = 1;
-$check_rusnies = 1;
-$check_metodo = 0;
-
-// -------- Porcentaje de Documentos
-
-$porcentaje = ($check_foto + $check_cedula + $check_fondo + $check_notas + $check_partida + $check_rusnies + $check_metodo) * 100 / 7;
-$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
-
-// -------- /Porcentaje de Documentos
-
-// Iniciando valores
-$cedula = '21217885';
-
-// rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-$path_image = 'back/documentos/' . $cedula . '/cedula_0_04-28-19001051.jpg';
-
-$ultActualizacion = date('Y-m-d');
-
-$p_nombre = 'Textotexto';
-$s_nombre = 'Textotexto';
-$p_apellido = 'Textotexto';
-$s_apellido = 'Textotexto';
-
-?>
 
           <!-- Título de página -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
@@ -120,20 +89,38 @@ $s_apellido = 'Textotexto';
                   </tfoot>
                   <tbody>
                     <?php
-for ($i = 0; $i <= 100; $i++) {
-    ?>
+                    include 'back/conexion.php';
+
+                    $sql = "SELECT *, alumnos.cedula as ci, documentos.cedula as cedula FROM alumnos
+                            INNER JOIN documentos ON alumnos.documento=documentos.id_documento;";
+
+                    $result = mysqli_query($conexion, $sql);
+                    if ($result->num_rows > 0) {
+                      while ($row = mysqli_fetch_assoc($result)) {
+
+                        // -------- Porcentaje de Documentos
+
+                        $porcentaje = ($row['check_foto'] + $row['check_cedula'] + $row['check_fondo'] + $row['check_nota'] + $row['check_partida'] + $row['check_rusinies'] + $row['check_metodo']) * 100 / 7;
+                        $porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+
+                        // -------- /.Porcentaje de Documentos
+                    ?>
+
                     <tr>
-                      <td><?php echo $cedula ?></td>
-                      <td><?php echo $p_nombre . ' ' . $s_nombre ?></td>
-                      <td><?php echo $p_apellido . ' ' . $s_apellido ?></td>
-                      <td><?php echo $porcentaje ?></td>
-                      <td><?php echo $ultActualizacion ?></td>
-                      <td><a href="#"><i class="fas fa-clipboard-list"></i></a> </td>
-                      <td><a href="#"><i class="fas fa-id-card"></i></a> </td>
+                      <td><?=$row['ci']?></td>
+                      <td><?=$row['p_nombre'].' '.$row['s_nombre']?></td>
+                      <td><?=$row['p_apellido'].' '.$row['s_apellido']?></td>
+                      <td><?=$porcentaje.' %' ?></td>
+                      <td><?=$row['ultActualizacion']?></td>
+                      <td><a href="<?='page-admin-check.php?id='.$row['id_documento']?>"><i class="fas fa-clipboard-list"></i></a> </td>
+                      <td><a href="<?='page-student-perfil.php?id='.$row['id_alumno']?>"><i class="fas fa-id-card"></i></a> </td>
                     </tr>
+
                     <?php
-}
-?>
+                      };
+                    };
+                    ?>
+
                   </tbody>
                 </table>
               </div>
