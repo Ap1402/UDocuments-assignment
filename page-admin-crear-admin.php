@@ -103,11 +103,18 @@
 						</a>
 					</div>
 				</div>
+
+			</div>
+			<div class="input-group row">
+
+			<input type="password" id="contrasena2" name="contrasena2" minlength="4"
+						class="form-control form-control-user" placeholder="Contraseña" required>
 				<div class="invalid-feedback">
 					La contraseña debe tener al menos 4 caracteres.
 				</div>
-			</div>
-			
+				</div>
+				
+
 					<div class="alert alert-danger" role="alert" id="resultado" hidden>
 					</div>
 					<br>
@@ -158,15 +165,18 @@
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
 
-  
+  <script src="scripts/crearAdmin.js"></script>
 <script type="text/javascript">
 	function mostrarPassword() {
 		var pass = document.getElementById("contrasena");
+		var pass2 = document.getElementById("contrasena2");
 		if (pass.type == "password") {
 			pass.type = "text";
+			pass2.type= "text";
 			$('i#showpass').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
 		} else {
 			pass.type = "password";
+			pass2.type= "password";
 			$('i#showpass').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
 		}
 	}
