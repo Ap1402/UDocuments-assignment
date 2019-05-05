@@ -1,6 +1,6 @@
 <?php
 
-include './conexion.php';
+include './../conexion.php';
 
 session_start();
 
@@ -12,7 +12,7 @@ if ( !is_dir('./Documentos') ) mkdir('./Documentos');
 $cedula= $_SESSION['cedula'].'/';
 $idDoc=$_SESSION['docId'];
 
-$path_alumno='./Documentos/'.$cedula.'/';
+$path_alumno='./../Documentos/'.$cedula.'/';
 
 if ( !is_dir($path_alumno) ) mkdir($path_alumno);
 

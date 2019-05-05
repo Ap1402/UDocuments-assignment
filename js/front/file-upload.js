@@ -78,7 +78,7 @@
 		e.preventDefault();
 		preload.classList.add('activate-preload');
 
-		fetch('./back/server.php', {
+		fetch('./back/estudiante/guardarDocsAlumno.php', {
 			method: 'POST',
 			body: formData
 		})
