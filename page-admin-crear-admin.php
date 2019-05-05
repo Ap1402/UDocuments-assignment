@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Crear administrador </title>
-
+	<?php require('back/admin/restriccionAcceso.php');?>
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
@@ -115,7 +115,7 @@
 				</div>
 				
 
-					<div class="alert alert-danger" role="alert" id="resultado" hidden>
+					<div class="alert alert-danger" role="alert" id="resultado"style="display: none;" >
 					</div>
 					<br>
 					<button id="registroAdmin" type="submit" class="btn btn-primary btn-user btn-block">
@@ -166,6 +166,7 @@
   <script src="js/sb-admin-2.js"></script>
 
   <script src="scripts/crearAdmin.js"></script>
+  
 <script type="text/javascript">
 	function mostrarPassword() {
 		var pass = document.getElementById("contrasena");

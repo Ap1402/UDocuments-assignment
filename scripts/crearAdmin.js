@@ -4,25 +4,31 @@ $(document).ready(function () {
     'use strict';
 
         // ----------------- Form Validation -------------------
-        $('#contrasena2').change(function(){
+        $('#contrasena2').keyup(function(){
             var contrasena2= $('#contrasena2').val();
             var contrasena= $('#contrasena').val();
-            console.log(contrasena);
             if (contrasena2==contrasena){
-                console.log('prueba');
-                $('#registroAdmin').prop( "disabled", true);
-            }else{
                 $('#registroAdmin').prop( "disabled", false);
+                $('#resultado').hide();
+
+            }else{
+                $('#registroAdmin').prop( "disabled", true);
+                $('#resultado').show();
+                $('#resultado').text('Las contraseñas deben coincidir');
             }
         });
 
-        $('#contrasena').change(function(){
+        $('#contrasena').keyup(function(){
             var contrasena2= $('#contrasena2').val();
             var contrasena= $('#contrasena').val();
             if (contrasena2==contrasena){
-                $('#registroAdmin').prop( "disabled", true);
-            }else{
                 $('#registroAdmin').prop( "disabled", false);
+                $('#resultado').hide();
+
+            }else{
+                $('#registroAdmin').prop( "disabled", true);
+                $('#resultado').show();
+                $('#resultado').text('Las contraseñas deben coincidir');
             }
         });
         

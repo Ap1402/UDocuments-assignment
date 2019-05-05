@@ -1,6 +1,11 @@
 <?php
 //Reanudamos la sesión
-session_start();
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
 
 //Comprobamos si el usario está logueado
 //Si no lo está, se le redirecciona al index
