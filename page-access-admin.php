@@ -89,7 +89,7 @@
                     </div>
 
                     <br>
-                    <div class="alert alert-danger" role="alert" id="resultadoLogAdmin" hidden></div>
+                    <div class="alert alert-danger" role="alert" id="resultadoLogAdmin" style="display: none;"></div>
                     <!-- Sign up button -->
                     <button id="enviarLogAdmin" type="submit" class="btn btn-primary btn-user btn-block">
                       Iniciar sesión
@@ -131,8 +131,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- <script src="scripts/login.js"></script> -->
+	<script src="scripts/loginAdmin.js"></script>
 
   <script type="text/javascript">
     function mostrarPassword() {

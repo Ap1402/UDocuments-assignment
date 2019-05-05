@@ -4,7 +4,7 @@ if(!isset($_SESSION)) {
     session_start(); 
 }
 
-if(!isset($_SESSION['usuario']) and $_SESSION['nivel'] < 0) {
+if(!isset($_SESSION['usuario']) and $_SESSION['rol'] <1) {
 	header('Location: index.php');
 } else {
 	//$estado = $_SESSION['usuario'];

@@ -8,7 +8,7 @@ include 'back/sessionController.php';
 
 <?php
 
-$admin = 1; // Limitar los enlaces del sidebar de acuerdo al rol
+$admin = $_SESSION['rol']; // Limitar los enlaces del sidebar de acuerdo al rol
 
 $num_foto = 0;
 $num_cedula = 0;
