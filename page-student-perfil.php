@@ -138,8 +138,6 @@ switch ($row['tipoInst']) {
 $path_image = 'back/documentos/'; // ruta raiz de los Documentos
 $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documento
 
-$admin = 1;
-
 ?>
 
           <!-- Título de página -->
