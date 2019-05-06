@@ -61,17 +61,6 @@ $all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $
       <span>Tabla alumnos</span></a>
   </li>
 
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Provisional
-  </div>
-
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a id="table" class="nav-link" href="page-admin-check.php">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Validaciones</span></a>
-  </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">

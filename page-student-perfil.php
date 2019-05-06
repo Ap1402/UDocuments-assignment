@@ -58,10 +58,10 @@
 include 'back/conexion.php';
 
 // ------------ Obtener la id del alumno dependiendo la sesion
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET['ida'])) {
+    $ida = $_GET['ida'];
 } elseif (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
+    $ida = $_SESSION['id'];
 }
 ;
 // ------------ /.Obtener la id del alumno dependiendo la sesion
@@ -72,7 +72,7 @@ $sql = "SELECT *, alumnos.cedula AS ci, documentos.cedula AS cedula, carreras.no
         LEFT JOIN direcciones ON alumnos.id_alumno=direcciones.alumno
         LEFT JOIN carreras ON alumnos.carrera=carreras.codigo
         LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-        WHERE alumnos.id_alumno = '$id';";
+        WHERE alumnos.id_alumno = '$ida';";
 
 $result = mysqli_query($conexion, $sql);
 if ($result->num_rows > 0) {
@@ -136,7 +136,8 @@ switch ($row['tipoInst']) {
 };
 
 $path_image = 'back/documentos/'; // ruta raiz de los Documentos
-$id_documento = $row['id_documento']; // para hacer las consultas de cada tipo de Documento
+$idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documento
+
 $admin = 1;
 
 ?>
@@ -155,7 +156,7 @@ $admin = 1;
             <!-- /.Boton para el alumno (Imprimir perfil) -->
             <!-- Boton para el admin (Ir a Validaciones) -->
             <?php if ($admin == 1) {?>
-            <a href="page-admin-check.php?id=<?=$id_documento?>" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+            <a href="<?='page-admin-check.php?idd='.$idd.'&ida='.$ida.'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
               <i class="fas fa-clipboard-list fa-sm"></i>
               Ir a validaciones
             </a>
@@ -550,7 +551,7 @@ if ($row['cedula'] != '') {
                         <?php
 
 $sql_notas = "SELECT * FROM notas
-                                      WHERE documento = '$id_documento';";
+                                      WHERE documento = '$idd';";
 
 $result_notas = mysqli_query($conexion, $sql_notas);
 
@@ -642,7 +643,7 @@ if ($row['fondo'] != '') {
 
                         <?php
 $sql_rusnies = "SELECT * FROM rusnies
-                                        WHERE documento = '$id_documento';";
+                                        WHERE documento = '$idd';";
 
 $result_rusnies = mysqli_query($conexion, $sql_rusnies);
 if ($result_rusnies->num_rows > 0) {
@@ -734,7 +735,7 @@ if ($row['partida'] != '') {
 
                         <?php
 $sql_metodoing = "SELECT * FROM metodoing
-                                          WHERE documento = '$id_documento';";
+                                          WHERE documento = '$idd';";
 
 $result_metodoing = mysqli_query($conexion, $sql_metodoing);
 if ($result_metodoing->num_rows > 0) {

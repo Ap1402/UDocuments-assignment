@@ -59,12 +59,12 @@
 
 include 'back/conexion.php';
 
-// ------------ Obtener la id del alumno dependiendo la sesion
-    if (isset($_GET['id'])) {
-      $id = $_GET['id'];
+// ------------ Obtener la id del documento
+    if (isset($_GET['idd'])) {
+      $idd = $_GET['idd'];
       }
 
-    $sql= "SELECT * FROM documentos WHERE id_documento='$id'";
+    $sql= "SELECT * FROM documentos WHERE id_documento='$idd'";
     $result = mysqli_query($conexion, $sql);
 
     if ($result->num_rows > 0) {
@@ -93,6 +93,7 @@ $porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
 // Iniciando valores
 $ci = $_GET['ci']; // cedula
 $mi = $_GET['mi']; // metodo_ingreso
+$ida = $_GET['ida']; // id_alumno
 
 $sql_mi = "SELECT * FROM tipo_solicitud
             WHERE tipo='$mi'";
@@ -108,18 +109,16 @@ $nombre_solicitud = $row_mi['nombre_solicitud'];
 
 ?>
 <!-- Busqueda Check -->
-<div id="prueba">
+<!-- <div id="prueba">
     <div class="col-sm-12 col-lg-10 mx-auto">
         <div class="card shadow mb-4 border-bottom-primary">
             <div class="card-body">
 
-                <form action="index.php" onsubmit="return buscar()" class="mx-auto my-2 my-md-0 col-sm-12 col-md-6">
+                <form id="checkFormSearch" class="mx-auto my-2 my-md-0 col-sm-12 col-md-6">
                     <div class="input-group">
-                        <input type="text" id="q" name="q" onKeyUp="return buscar()"
-                            class="form-control bg-light border-0 small" placeholder="Buscar alumno" aria-label="Search"
-                            aria-describedby="basic-addon2">
+                        <input type="number" id="q" name="q" class="form-control bg-light border-0 small" placeholder="Buscar por cedula" aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button type="submit" value="Buscar" id="boton" class="btn btn-primary">
+                            <button type="submit" value="Buscar" id="search" class="btn btn-primary">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -144,15 +143,15 @@ $nombre_solicitud = $row_mi['nombre_solicitud'];
 
     </div>
 
-</div>
+</div> -->
 <!-- /.Busqueda Check -->
 
 
 <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-lg-10 align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Validar documentos</h1>
+            <h1 class="h3 mb-0 text-gray-800">Validar documentos <small>( <b>Cedula:</b> <?=$ci?> )</small></h1>
             <!-- Boton para el admin (Ir a perfil) -->
-            <a href="page-student-perfil.php" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+            <a href="<?='page-student-perfil.php?ida='.$ida?>" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
               <i class="fas fa-user fa-sm"></i>
               Ir a perfil
             </a>
@@ -278,7 +277,7 @@ if ($row['cedula'] != '') {
               <?php
 
 $sql_notas = "SELECT * FROM notas
-                                      WHERE documento = '$id';";
+                                      WHERE documento = '$idd';";
 
 $result_notas = mysqli_query($conexion, $sql_notas);
 
@@ -376,7 +375,7 @@ if ($row['fondo'] != '') {
               <div id="preview-images-rusnies" class="preview-images">
              <?php
 $sql_rusnies = "SELECT * FROM rusnies
-                                        WHERE documento = '$id';";
+                                        WHERE documento = '$idd';";
 
 $result_rusnies = mysqli_query($conexion, $sql_rusnies);
 if ($result_rusnies->num_rows > 0) {
@@ -476,7 +475,7 @@ if ($row['partida'] != '') {
               <div id="preview-images-metodo" class="preview-images">
               <?php
 $sql_metodoing = "SELECT * FROM metodoing
-                                          WHERE documento = '$id';";
+                                          WHERE documento = '$idd';";
 
 $result_metodoing = mysqli_query($conexion, $sql_metodoing);
 if ($result_metodoing->num_rows > 0) {
@@ -510,7 +509,7 @@ if ($result_metodoing->num_rows > 0) {
           <div class="alert alert-danger" role="alert" id="resultado" hidden>
           </div>
           <br>
-          <input type="text" id="idDoc" value=<?php echo $id ?> hidden>
+          <input type="text" id="idDoc" value=<?php echo $idd ?> hidden>
           <button id="enviarCheck" type="submit" class="btn btn-primary btn-user btn-block">
             Guardar validaciones
           </button>
@@ -521,9 +520,6 @@ if ($result_metodoing->num_rows > 0) {
   </div>
 </div>
 <!-- /.Formulario Check Documentos -->
-
-
-
 
 
         </div>

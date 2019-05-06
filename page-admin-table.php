@@ -113,8 +113,8 @@
                       <td><?=$row['p_apellido'].' '.$row['s_apellido']?></td>
                       <td><?=$porcentaje.' %' ?></td>
                       <td><?=$row['ultActualizacion']?></td>
-                      <td><a href="<?='page-admin-check.php?id='.$row['id_documento'].'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"><i class="fas fa-clipboard-list"></i></a> </td>
-                      <td><a href="<?='page-student-perfil.php?id='.$row['id_alumno']?>"><i class="fas fa-id-card"></i></a> </td>
+                      <td><a href="<?='page-admin-check.php?idd='.$row['id_documento'].'&ida='.$row['id_alumno'].'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"><i class="fas fa-clipboard-list"></i></a> </td>
+                      <td><a href="<?='page-student-perfil.php?ida='.$row['id_alumno']?>"><i class="fas fa-id-card"></i></a> </td>
                     </tr>
 
                     <?php
