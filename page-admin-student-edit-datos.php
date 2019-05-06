@@ -59,8 +59,8 @@
 <?php
 include ('back/conexion.php');
 
-if (isset($_SESSION['cedula'])){
-  $cedula=$_SESSION['cedula'];
+if ($rol >= 1 && isset($_GET['ci'])){
+  $cedula=$_GET['ci'];
 };
 
 $consulta = "SELECT * FROM `alumnos` WHERE cedula='" . $cedula . "'";

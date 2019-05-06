@@ -42,7 +42,7 @@
               </a>              
               <!-- Dropdown - Perfil de usuario -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <?php if ($admin < 1) { // Mostrar solo para alumnos ?>
+                <?php if ($rol == 0) { // Mostrar solo para alumnos ?>
                   <a class="dropdown-item" href="page-student-perfil.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Perfil

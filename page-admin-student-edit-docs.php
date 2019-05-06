@@ -60,8 +60,7 @@
   esto optimizaria tiempo, porque sino va a tener que estar diciendole al de control de estudios que se
   equivoco en tal parte que si lo puede corregir o que se yo.
 -->
-          <?php
-$admin = 0; // probando que sea admin para restringir la edicion de algunos campos
+<?php
 $check_foto = 0; // verificar si fue o no chequeado por control de estudios
 $check_cedula = 0;
 $check_fondo = 1;
@@ -71,7 +70,10 @@ $check_rusnies = 0;
 $check_metodo = 0;
 
 // Iniciando valores
-$cedula = '21217885';
+if ($rol >= 1 && isset($_GET['ci'])) {
+    $cedula = $_GET['ci'];
+};
+
 // rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
 $path_image = 'back/documentos/'.$cedula.'/partida_0_04-28-19001145.jpg';
 $file_id = 'rusnies';
@@ -101,15 +103,15 @@ $file_id = 'rusnies';
 
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a editar</option>
-                    <option <?php echo ($admin == 1 || $check_cedula == 0) ? '' : 'hidden' ?> value="1">Cedula</option>
-                    <option <?php echo ($admin == 1 || $check_foto == 0) ? '' : 'hidden' ?> value="2">Foto</option>
-                    <option <?php echo ($admin == 1 || $check_notas == 0) ? '' : 'hidden' ?> value="3">Notas</option>
-                    <option <?php echo ($admin == 1 || $check_fondo == 0) ? '' : 'hidden' ?> value="4">Fondo</option>
-                    <option <?php echo ($admin == 1 || $check_rusnies == 0) ? '' : 'hidden' ?> value="5">Rusnies
+                    <option <?php echo ($rol == 1 || $check_cedula == 0) ? '' : 'hidden' ?> value="1">Cedula</option>
+                    <option <?php echo ($rol == 1 || $check_foto == 0) ? '' : 'hidden' ?> value="2">Foto</option>
+                    <option <?php echo ($rol == 1 || $check_notas == 0) ? '' : 'hidden' ?> value="3">Notas</option>
+                    <option <?php echo ($rol == 1 || $check_fondo == 0) ? '' : 'hidden' ?> value="4">Fondo</option>
+                    <option <?php echo ($rol == 1 || $check_rusnies == 0) ? '' : 'hidden' ?> value="5">Rusnies
                     </option>
-                    <option <?php echo ($admin == 1 || $check_partida == 0) ? '' : 'hidden' ?> value="6">Partida
+                    <option <?php echo ($rol == 1 || $check_partida == 0) ? '' : 'hidden' ?> value="6">Partida
                     </option>
-                    <option <?php echo ($admin == 1 || $check_metodo == 0) ? '' : 'hidden' ?> value="7">Método</option>
+                    <option <?php echo ($rol == 1 || $check_metodo == 0) ? '' : 'hidden' ?> value="7">Método</option>
                   </select>
 
                   <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>

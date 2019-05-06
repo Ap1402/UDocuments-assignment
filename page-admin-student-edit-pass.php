@@ -53,10 +53,11 @@
           <?php
 include 'back/conexion.php';
 
-if (isset($_SESSION['cedula'])) {
-    $cedula = $_SESSION['cedula'];
+if ($rol >= 1 && isset($_GET['ci'])) {
+    $cedula = $_GET['ci'];
 }
 ;
+
 
 $consulta = "SELECT id_alumno, cedula, correo FROM `alumnos` WHERE cedula='" . $cedula . "'";
 $resultado = mysqli_query($conexion, $consulta);
