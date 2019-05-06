@@ -97,12 +97,12 @@ $admin = $_SESSION['rol']; // Limitar los enlaces del sidebar de acuerdo al rol
   </li>
  <?php } ?>
  <?php if ( ( $admin >= 1 && isset($_GET['ida']) ) || ($admin < 1) ) { // Mostrar solo para admin 
-  $ida = $_GET['ida']; // id_alumno
+  // $_GET['ida'] =  id_alumno
   ?> 
   <!-- Nav Item - Documentos -->
   <li class="nav-item">
     <a id="docs" class="nav-link"
-    href="<?=($admin == 1) ? 'page-admin-student-docs.php?ida='.$ida : 'page-student-docs.php'?>">
+    href="<?=($admin == 1) ? 'page-admin-student-docs.php?ida='.$_GET['ida'] : 'page-student-docs.php'?>">
       <i class="far fa-folder-open"></i>
       <span>Documentos</span></a>
   </li>
@@ -110,7 +110,7 @@ $admin = $_SESSION['rol']; // Limitar los enlaces del sidebar de acuerdo al rol
   <!-- Nav Item - Solicitud -->
   <li class="nav-item">
     <a id="solicitud" class="nav-link"
-    href="<?=($admin == 1) ? 'page-admin-student-solicitud.php?ida='.$ida : 'page-student-solicitud.php'?>">
+    href="<?=($admin == 1) ? 'page-admin-student-solicitud.php?ida='.$_GET['ida'] : 'page-student-solicitud.php'?>">
       <i class="fas fa-vote-yea"></i>
       <span>Solicitud</span></a>
   </li>
@@ -126,13 +126,13 @@ $admin = $_SESSION['rol']; // Limitar los enlaces del sidebar de acuerdo al rol
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item"
-        href="<?=($admin == 1) ? 'page-admin-student-edit-datos.php?ida='.$ida : 'page-student-edit-datos.php'?>">Datos</a>
+        href="<?=($admin == 1) ? 'page-admin-student-edit-datos.php?ida='.$_GET['ida'] : 'page-student-edit-datos.php'?>">Datos</a>
         <a class="collapse-item"
-        href="<?=($admin == 1) ? 'page-admin-student-edit-docs.php?ida='.$ida : 'page-student-edit-docs.php'?>">Documentos</a>
+        href="<?=($admin == 1) ? 'page-admin-student-edit-docs.php?ida='.$_GET['ida'] : 'page-student-edit-docs.php'?>">Documentos</a>
         <a class="collapse-item"
-        href="<?=($admin == 1) ? 'page-admin-student-edit-solicitud.php?ida='.$ida : 'page-student-edit-solicitud.php'?>">Solicitud</a>
+        href="<?=($admin == 1) ? 'page-admin-student-edit-solicitud.php?ida='.$_GET['ida'] : 'page-student-edit-solicitud.php'?>">Solicitud</a>
         <?php if ($admin >= 1) { ?>
-          <a class="collapse-item" href="<?='page-admin-student-edit-pass.php?ida='.$ida?>">Correo / Contraseña</a>
+          <a class="collapse-item" href="<?='page-admin-student-edit-pass.php?ida='.$_GET['ida']?>">Correo / Contraseña</a>
         <?php } ?>        
       </div>
     </div>
