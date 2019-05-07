@@ -46,8 +46,4 @@
     e.preventDefault();
   });
 
-  // Carga automatico el front/Dashboard
-  $('#page-content').load('front/admin/dashboard.php');
-   
-
 })(jQuery); // End of use strict
