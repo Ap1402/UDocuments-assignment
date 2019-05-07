@@ -50,28 +50,7 @@
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-student-edit-pass" class="container-fluid">
 
-          <?php
-include 'back/conexion.php';
-
-if (isset($_SESSION['cedula'])) {
-    $cedula = $_SESSION['cedula'];
-}
-;
-
-$consulta = "SELECT id_alumno, cedula, correo FROM `alumnos` WHERE cedula='" . $cedula . "'";
-$resultado = mysqli_query($conexion, $consulta);
-$datos = mysqli_fetch_array($resultado);
-
-$id = $datos['id_alumno'];
-$cedula = $datos['cedula'];
-$correo = $datos['correo'];
-
-$_SESSION['nivel'] = 1; // probando que sea admin para restringir la edicion de algunos campos
-$verificar_check = 1; // verificar si fue o no chequeado por control de estudios
-
-// Iniciando valores
-
-?>
+ 
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
