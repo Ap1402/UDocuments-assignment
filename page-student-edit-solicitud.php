@@ -118,7 +118,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                         <label class="pl-2"><small>Carrera</small></label><br>
                         <select id="carrera" name="carrera" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Carrera"
-                          <?php echo ($rol == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                           <option disabled selected value="<?php echo $carrera ?>"><?php echo $carrera ?></option>
                           <?php
 
@@ -142,7 +142,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                         <label class="pl-2"><small>Turno</small></label><br>
                         <select id="turno" name="turno" class="form-control" data-toggle="tooltip" data-placement="top"
                           title="Turno"
-                          <?php echo ($rol == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                           <option disabled="disabled" selected value="<?php echo $turno ?>"><?php echo $turno_name ?>
                           </option>
 
@@ -158,7 +158,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                         <label class="pl-2"><small>Método de ingreso</small></label><br>
                         <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Método de ingreso"
-                          <?php echo ($rol == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                           <option disabled selected value="<?php echo $tipo ?>"><?php echo $nombre_solicitud ?></option>
                           <?php
                             $sql2 = "SELECT * FROM tipo_solicitud WHERE activa=1";

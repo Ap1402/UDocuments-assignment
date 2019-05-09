@@ -527,7 +527,7 @@ if ($row['foto'] != '') {
                           <div class="col-2"><i
                               class="fas fa-<?php echo ($row['check_cedula'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
                           </div>
-                          <div class="col-10 text-justify">Cedula</div>
+                          <div class="col-10 text-justify">Cédula</div>
                         </h5>
                       </div>
 
@@ -764,7 +764,7 @@ if ($row['partida'] != '') {
                           <div class="col-2"><i
                               class="fas fa-<?php echo ($row['check_metodo'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
                           </div>
-                          <div class="col-10 text-justify">Metodo de ingreso:
+                          <div class="col-10 text-justify">Método de ingreso:
                             <small><?=$row['nombre_solicitud']?></small>
                           </div>
                         </h5>

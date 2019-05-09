@@ -60,22 +60,45 @@
   esto optimizaria tiempo, porque sino va a tener que estar diciendole al de control de estudios que se
   equivoco en tal parte que si lo puede corregir o que se yo.
 -->
-<?php
-$check_foto = 0; // verificar si fue o no chequeado por control de estudios
-$check_cedula = 0;
-$check_fondo = 1;
-$check_notas = 0;
-$check_partida = 1;
-$check_rusnies = 0;
-$check_metodo = 0;
+ <?php
 
-// Iniciando valores
-if ($rol >= 1 && isset($_GET['ci'])) {
-    $cedula = $_GET['ci'];
-};
+include 'back/conexion.php';
+// ------------ Obtener la id del documento
+if (isset($_GET['idd']) && ($rol >= 1)) {
+    $idd = $_GET['idd'];
+    $ci = $_GET['ci'];
+}
+
+$sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
+$result = mysqli_query($conexion, $sql);
+
+if ($result->num_rows > 0) {
+    $row = mysqli_fetch_assoc($result);
+} else {
+    $mensaje = "Ocurrió un error al consultar los documentos";
+    echo ($mensaje);
+}
+;
+
+$check_foto = $row['check_foto']; // verificar si fue o no chequeado por control de estudios
+$check_cedula = $row['check_cedula'];
+$check_fondo = $row['check_fondo'];
+$check_notas = $row['check_nota'];
+$check_partida = $row['check_partida'];
+$check_rusnies = $row['check_rusinies'];
+$check_metodo = $row['check_metodo'];
+
+// -------- Porcentaje de Documentos
+
+$porcentaje = ($check_foto + $check_cedula + $check_fondo + $check_notas + $check_partida + $check_rusnies +
+    $check_metodo) * 100 / 7;
+$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+
+// -------- /Porcentaje de Documentos
+
 
 // rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-$path_image = 'back/documentos/'.$cedula.'/partida_0_04-28-19001145.jpg';
+$path_image = 'back/documentos/'.$ci.'/partida_0_04-28-19001145.jpg';
 $file_id = 'rusnies';
 
 ?>
@@ -92,6 +115,26 @@ $file_id = 'rusnies';
               <div class="card-body">
                 <div class="p-4">
 
+            <?php
+// ---------------Hacer si todos los documentos estan validados
+if ($porcentaje == 100) {
+
+    ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Éxito!</strong>
+                    Todos los documentos de este alumno han sido validados.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      &times;
+                    </button>
+                  </div>
+  <?php
+}
+;
+// --------------- /.Hacer si todos los documentos estan validados
+
+?>
+
                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <i class="fas fa-exclamation-triangle"></i>
                     <strong>Advertencia!</strong>
@@ -101,17 +144,19 @@ $file_id = 'rusnies';
                     </button>
                   </div>
 
+       
+
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a editar</option>
-                    <option <?php echo ($rol == 1 || $check_cedula == 0) ? '' : 'hidden' ?> value="1">Cedula</option>
-                    <option <?php echo ($rol == 1 || $check_foto == 0) ? '' : 'hidden' ?> value="2">Foto</option>
-                    <option <?php echo ($rol == 1 || $check_notas == 0) ? '' : 'hidden' ?> value="3">Notas</option>
-                    <option <?php echo ($rol == 1 || $check_fondo == 0) ? '' : 'hidden' ?> value="4">Fondo</option>
-                    <option <?php echo ($rol == 1 || $check_rusnies == 0) ? '' : 'hidden' ?> value="5">Rusnies
+                    <option <?php echo ($rol == 1 || $check_cedula == 0) ? '' : 'hidden' ?> value="1">Cédula</option>
+                    <option <?php echo ($rol == 1 || $check_foto == 0) ? '' : 'hidden' ?> value="2">Foto tipo carnet</option>
+                    <option <?php echo ($rol == 1 || $check_notas == 0) ? '' : 'hidden' ?> value="3">Notas certificadas de bachillerato (1er a 5to)</option>
+                    <option <?php echo ($rol == 1 || $check_fondo == 0) ? '' : 'hidden' ?> value="4">Titulo de bachillerato autenticado</option>
+                    <option <?php echo ($rol == 1 || $check_rusnies == 0) ? '' : 'hidden' ?> value="5">Resultado del RUSNIES
                     </option>
-                    <option <?php echo ($rol == 1 || $check_partida == 0) ? '' : 'hidden' ?> value="6">Partida
+                    <option <?php echo ($rol == 1 || $check_partida == 0) ? '' : 'hidden' ?> value="6">Partida de nacimiento
                     </option>
-                    <option <?php echo ($rol == 1 || $check_metodo == 0) ? '' : 'hidden' ?> value="7">Método</option>
+                    <option <?php echo ($rol == 1 || $check_metodo == 0) ? '' : 'hidden' ?> value="7">Método de ingreso</option>
                   </select>
 
                   <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
@@ -141,12 +186,12 @@ $file_id = 'rusnies';
                               style="background-image: url('<?php echo $path_image ?>')">
                               <div class="close-button-db">
                                 <span data-path='<?php echo $path_image ?>'
-                                  data-cedula='<?php echo $cedula ?>'>&times;</span>
+                                  data-cedula='<?php echo $ci ?>'>&times;</span>
                                 <a href="<?php echo $path_image ?>" data-lightbox="gallery"
                                   data-title="<?php echo $file_id ?>">
                                   <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="<?php echo $path_image ?>" download="<?php echo ($cedula.date('m-d-yHis')) ?>">
+                                <a href="<?php echo $path_image ?>" download="<?php echo ($ci.date('m-d-yHis')) ?>">
                                   <i class="fas fa-download"></i>
                                 </a>
                               </div>
