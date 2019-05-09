@@ -39,7 +39,7 @@ input[type=text]::placeholder,
 input[type=email]::placeholder,
 input[type=search]::placeholder,
 input[type=password]::placeholder {
- color: rgba(0, 0, 0, .8);
+ color: rgba(0, 0, 0, 0.5);
 }
 
 input[type=number]:disabled,
@@ -62,7 +62,8 @@ input[type=password]:disabled {
  width: 100%;
 }
 
-#show {
+#show,
+#show2 {
  align-self: center;
  background: transparent;
  border-radius: 0 10rem 10rem 0;
@@ -73,7 +74,8 @@ input[type=password]:disabled {
  transition: 1s;
 }
 
-#show:hover {
+#show:hover,
+#show2:hover {
  color: rgba(1, 48, 177, 0.8);
  background-color: #d1d3e2;
  transition: 1s;

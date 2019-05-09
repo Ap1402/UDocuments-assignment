@@ -69,6 +69,7 @@
 
                     <div class="form-group row">
                       <div class="col-sm-6">
+                        <label class="pl-2"><small>Primer nombre</small></label><br>
                         <input type="text" id="p_nombre" name="p_nombre" class="form-control form-control-user"
                           placeholder="Primer nombre" minlength="2" required>
                         <div class="invalid-feedback">
@@ -76,6 +77,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6">
+                        <label class="pl-2"><small>Segundo nombre</small></label><br>
                         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
                           placeholder="Segundo nombre" required>
                         <div class="invalid-feedback">
@@ -85,6 +87,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6">
+                        <label class="pl-2"><small>Primer apellido</small></label><br>
                         <input type="text" id="p_apellido" name="p_apellido" class="form-control form-control-user"
                           placeholder="Primer apellido" minlength="2" required>
                         <div class="invalid-feedback">
@@ -92,6 +95,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6">
+                        <label class="pl-2"><small>Segundo apellido</small></label><br>
                         <input type="text" id="s_apellido" name="s_apellido" class="form-control form-control-user"
                           placeholder="Segundo apellido" minlength="2" required>
                         <div class="invalid-feedback">
@@ -100,6 +104,7 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label class="pl-2"><small>Correo</small></label><br>
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
                         placeholder="Correo" required>
                       <div class="invalid-feedback">
@@ -108,6 +113,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6">
+                        <label class="pl-2"><small>Nombre de ususario</small></label><br>
                         <input type="text" id="username" name="username" class="form-control form-control-user"
                           placeholder="Nombre de ususario" minlength="4" required>
                         <div class="invalid-feedback">
@@ -115,6 +121,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6">
+                        <label class="pl-2"><small>Cédula</small></label><br>
                         <input type="number" id="cedula" name="cedula" class="form-control" placeholder="Cédula"
                           required>
                         <div class="invalid-feedback">
@@ -123,6 +130,7 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label class="pl-2"><small>Contraseña</small></label><br>
 											<div class="input-group">
 												<input type="password" id="contrasena" name="contrasena" minlength="4"
 													class="form-control form-control-user" placeholder="Contraseña"
@@ -139,11 +147,12 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label class="pl-2"><small>Repetir contraseña</small></label><br>
                       <div class="input-group">
                         <input type="password" id="contrasena2" name="contrasena2" minlength="4"
                           class="form-control form-control-user" placeholder="Repetir contraseña" required>
                         <div class="input-group-append">
-                          <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                          <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass2" class="fas fa-eye-slash"></i>
                           </a>
                         </div>

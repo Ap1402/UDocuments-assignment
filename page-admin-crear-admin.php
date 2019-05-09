@@ -70,6 +70,7 @@
 
 										<div class="form-group row">
 											<div class="col-sm-6">
+												<label class="pl-2"><small>Primer nombre</small></label><br>
 												<input type="text" id="nombre" name="nombre"
 													class="form-control form-control-user" placeholder="Nombre"
 													minlength="2" data-toggle="tooltip" data-placement="top"
@@ -79,6 +80,7 @@
 												</div>
 											</div>
 											<div class="col-sm-6">
+												<label class="pl-2"><small>Nombre de ususario</small></label><br>
 												<input type="text" id="username" name="username"
 													class="form-control form-control-user"
 													placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip"
@@ -90,6 +92,7 @@
 										</div>
 
 										<div class="form-group">
+											<label class="pl-2"><small>Correo</small></label><br>
 											<input type="email" id="correo" name="correo"
 												class="form-control form-control-user" placeholder="Correo"
 												data-toggle="tooltip" data-placement="top" title="Correo" required>
@@ -98,6 +101,7 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label class="pl-2"><small>Contraseña</small></label><br>
 											<div class="input-group">
 												<input type="password" id="contrasena" name="contrasena" minlength="4"
 													class="form-control form-control-user" placeholder="Contraseña"
@@ -108,25 +112,28 @@
 														<i id="showpass" class="fas fa-eye-slash"></i>
 													</a>
 												</div>
-                      </div>
-                      <div class="invalid-feedback">
-                        La contraseña debe tener al menos 4 caracteres.
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                          class="form-control form-control-user" placeholder="Repetir contraseña" required>
-                        <div class="input-group-append">
-                          <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                            <i id="showpass2" class="fas fa-eye-slash"></i>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="invalid-feedback">
+											</div>
+											<div class="invalid-feedback">
 												La contraseña debe tener al menos 4 caracteres.
 											</div>
-                    </div>
+										</div>
+										<div class="form-group">
+											<label class="pl-2"><small>Repetir contraseña</small></label><br>
+											<div class="input-group">
+												<input type="password" id="contrasena2" name="contrasena2" minlength="4"
+													class="form-control form-control-user"
+													placeholder="Repetir contraseña" required>
+												<div class="input-group-append">
+													<a id="show2" onclick="mostrarPassword()"
+														class="btn btn-primary text-center align-middle">
+														<i id="showpass2" class="fas fa-eye-slash"></i>
+													</a>
+												</div>
+											</div>
+											<div class="invalid-feedback">
+												La contraseña debe tener al menos 4 caracteres.
+											</div>
+										</div>
 
 
 										<div class="alert alert-danger" role="alert" id="resultado"

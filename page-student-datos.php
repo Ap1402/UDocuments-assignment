@@ -67,7 +67,8 @@
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 pt-2">
+                      <div class="col-sm-6 pt-1">
+                        <label class="pl-2"><small>Estado civil</small></label><br>
                         <select id="estado_civil" name="estado_civil" class="form-control" required>
                           <option disabled selected value="">Estado civil</option>
                           <option value="1">Casado</option>
@@ -77,7 +78,8 @@
                         </select>
 
                       </div>
-                      <div class="col-sm-6 pt-2">
+                      <div class="col-sm-6 pt-1">
+                        <label class="pl-2"><small>Fecha nacimiento</small></label><br>
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
                           class="form-control form-control-user" placeholder="Fecha nacimiento" min="1930-07-22"
                           max="<?php echo date('Y-m-d'); ?>" required>
@@ -87,21 +89,24 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                        <label class="pl-2"><small>Teléfono de habitación</small></label><br>
                         <input type="number" id="habitacion" name="habitacion" class="form-control form-control-user"
                           placeholder="Teléfono de habitación" min="2400000000">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de habitación válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                        <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="movil" name="movil" class="form-control form-control-user"
                           placeholder="Teléfono móvil" min="4100000000" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4 pt-2">
+                      <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
+                        <label class="pl-2"><small>Teléfono de trabajo</small></label><br>
                         <input type="number" id="trabajo" name="trabajo" class="form-control form-control-user"
                           placeholder="Teléfono de trabajo" min="2400000000">
                         <div class="invalid-feedback">
@@ -119,7 +124,7 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-12 pt-2">
+                      <div class="col-12">
                         <select id="discapacidad" name="discapacidad" class="form-control" required>
                           <option value="1">No</option>
                           <option value="2">Sí</option>
@@ -131,7 +136,7 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-12 pt-3" id="tipo_disc" name="tipo_disc">
+                      <div class="col-12" id="tipo_disc" name="tipo_disc">
 
                       </div>
                     </div>
@@ -145,30 +150,34 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>País</small></label><br>
                         <input type="text" id="pais" name="pais" class="form-control form-control-user"
                           placeholder="País" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un País válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Estado</small></label><br>
                         <input type="text" id="estado" name="estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Ciudad</small></label><br>
                         <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un ciudad válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
-                          placeholder="municipio" minlength="4" required>
+                          placeholder="Municipio" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un municipio válido.
                         </div>
@@ -184,51 +193,58 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Zona postal</small></label><br>
                         <input type="text" id="nac_postal" name="nac_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca una Zona postal válida.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Estado</small></label><br>
                         <input type="text" id="nac_estado" name="nac_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Ciudad</small></label><br>
                         <input type="text" id="nac_ciudad" name="nac_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un ciudad válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="nac_municipio" name="nac_municipio"
-                          class="form-control form-control-user" placeholder="municipio" minlength="4" required>
+                          class="form-control form-control-user" placeholder="Municipio" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un municipio válido.
                         </div>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                        <label class="pl-2"><small>Urbanización</small></label><br>
                         <input type="text" id="nac_urbanizacion" name="nac_urbanizacion"
-                          class="form-control form-control-user" placeholder="Urbanizacion" minlength="4" required>
+                          class="form-control form-control-user" placeholder="Urbanización" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca una urbanizacion válida.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                        <label class="pl-2"><small>Casa o Apartamento</small></label><br>
                         <input type="text" id="nac_aptcasa" name="nac_aptcasa" class="form-control form-control-user"
                           placeholder="Casa o Apartamento" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un apartamento o casa válida.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4 pt-2">
+                      <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
+                        <label class="pl-2"><small>Calle</small></label><br>
                         <input type="text" id="nac_calle" name="nac_calle" class="form-control form-control-user"
                           placeholder="Calle" minlength="4" required>
                         <div class="invalid-feedback">
@@ -244,30 +260,34 @@
                     <br>
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Zona postal</small></label><br>
                         <input type="text" id="t_postal" name="t_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca una Zona postal válida.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Estado</small></label><br>
                         <input type="text" id="t_estado" name="t_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Ciudad</small></label><br>
                         <input type="text" id="t_ciudad" name="t_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca un ciudad válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                        <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="t_municipio" name="t_municipio" class="form-control form-control-user"
-                          placeholder="municipio" minlength="4">
+                          placeholder="Municipio" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca un municipio válido.
                         </div>
@@ -283,28 +303,32 @@
 
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                        <label class="pl-2"><small>Nombre y apellido</small></label><br>
                         <input type="text" id="e_nombre" name="e_nombre" class="form-control form-control-user"
                           placeholder="Nombre y apellido" minlength="8" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un nombre válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                        <label class="pl-2"><small>Parentesco</small></label><br>
                         <input type="text" id="parentesco" name="parentesco" class="form-control form-control-user"
                           placeholder="Parentesco" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un Parentesco válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                        <label class="pl-2"><small>Teléfono local</small></label><br>
                         <input type="number" id="e_local" name="e_local" class="form-control form-control-user"
-                          placeholder="Teléfono de local" min="2400000000">
+                          placeholder="Teléfono local" min="2400000000">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de local válido.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-2">
+                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                        <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="e_movil" name="e_movil" class="form-control form-control-user"
                           placeholder="Teléfono móvil" min="4100000000" required>
                         <div class="invalid-feedback">
@@ -324,6 +348,7 @@
 
                     <div class="form-group row">
                       <div class="col">
+                        <label class="pl-2"><small>Nombre de la institución (no abreviar)</small></label><br>
                         <input type="text" id="i_nombre" name="i_nombre" class="form-control form-control-user"
                           placeholder="Nombre de la institución (no abreviar)" minlength="11">
                         <div class="invalid-feedback">
@@ -334,14 +359,16 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 pt-2">
+                      <div class="col-sm-6 pt-1">
+                        <label class="pl-2"><small>Año de egreso</small></label><br>
                         <input type="number" id="i_egreso" name="i_egreso" class="form-control"
                           placeholder="Año de egreso" minlength="1930" max="<?php echo date('Y') ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un año de egreso válido.
                         </div>
                       </div>
-                      <div class="col-sm-6 pt-2">
+                      <div class="col-sm-6 pt-1">
+                        <label class="pl-2"><small>Código de la institución</small></label><br>
                         <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
                           placeholder="Código de la institución" minlength="6" required>
                         <div class="invalid-feedback">
@@ -352,14 +379,16 @@
 
                     <div class="form-group row">
 
-                      <div class="col-sm-6 pt-2">
+                      <div class="col-sm-6 pt-1">
+                        <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4">
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
                       </div>
-                      <div class="col-sm-6 pt-2">
+                      <div class="col-sm-6 pt-1">
+                        <label class="pl-2"><small>Tipo de institución</small></label><br>
                         <select id="tipo_inst" name="tipo_inst" class="form-control" required>
                           <option disabled selected value="">Tipo de institución</option>
                           <option value="1">Privada</option>

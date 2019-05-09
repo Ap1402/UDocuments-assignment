@@ -129,10 +129,6 @@ if ($all) {
                     <!-- file -->
                     <div class="wrapper-file">
                       <br>
-                      <div class="text-center">
-                        <h5 class="text-gray-900">Cargar documento</h5>
-                      </div>
-                      <br>
 
                       <div class="container-input">
                         <div class="wrap-file">

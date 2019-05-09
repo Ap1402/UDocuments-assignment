@@ -64,10 +64,8 @@ $resultado = mysqli_query($conexion, $consulta);
 $datos = mysqli_fetch_array($resultado);
 
 $id = $datos['id_alumno'];
-$cedula = $datos['cedula'];
 $correo = $datos['correo'];
 
-$_SESSION['nivel'] = 1; // probando que sea admin para restringir la edicion de algunos campos
 $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
 // Iniciando valores
@@ -89,22 +87,25 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
 
-                    <div class="form-group">
+                   <div class="form-group">
+                      <label class="pl-2"><small>Correo</small></label><br>
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
                         placeholder="Correo" minlength="2" data-toggle="tooltip" data-placement="top" title="Correo"
                         value="<?php echo $correo ?>"
-                        <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                        <?php echo ($rol >= 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                       <div class="invalid-feedback">
                         Por favor introduzca un correo válido.
                       </div>
                     </div>
 
-                    <div class="form-group">
+
+                   <div class="form-group">
+                      <label class="pl-2"><small>Contraseña</small></label><br>
                       <div class="input-group">
                         <input type="password" id="contrasena" name="contrasena" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
                           data-placement="top" title="Contraseña" value="<?php echo $contrasena ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                          <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass" class="fas fa-eye-slash"></i>
@@ -116,6 +117,23 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
+                     <div class="form-group">
+                       <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                      <div class="input-group">
+                        <input type="password" id="contrasena2" name="contrasena2" minlength="4"
+                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                          data-placement="top" title="Repetir contraseña" value="<?php echo $contrasena ?>"
+                          <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                        <div class="input-group-append">
+                          <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                            <i id="showpass2" class="fas fa-eye-slash"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="invalid-feedback">
+                        Su contraseña debe tener al menos 4 caracteres.
+                      </div>
+                    </div>
                     <div class="alert alert-danger" role="alert" id="resultado" hidden>
                     </div>
                     <br>
@@ -168,19 +186,21 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
   <script src="js/sb-admin-2.js"></script>
 
 
-  <script type="text/javascript">
-    function mostrarPassword() {
-      var pass = document.getElementById("contrasena");
-      if (pass.type == "password") {
-        pass.type = "text";
-        $('i#showpass').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
-      } else {
-        pass.type = "password";
-        $('i#showpass').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
-      }
-    }
-  </script>
-
+ <script type="text/javascript">
+		function mostrarPassword() {
+			var pass = document.getElementById("contrasena");
+			var pass2 = document.getElementById("contrasena2");
+			if (pass.type == "password") {
+				pass.type = "text";
+				pass2.type = "text";
+				$('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+			} else {
+				pass.type = "password";
+				pass2.type = "password";
+				$('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+			}
+		}
+	</script>
 
 </body>
 

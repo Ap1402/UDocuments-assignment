@@ -66,6 +66,7 @@
 
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
+                         <label class="pl-2"><small>Carrera</small></label><br>
                         <select id="carrera" name="carrera" class="form-control" required>
                           <option disabled selected value="">Carrera</option>
                           <?php 
@@ -88,6 +89,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto">
+                         <label class="pl-2"><small>Turno</small></label><br>
                         <select id="turno" name="turno" class="form-control" required>
                           <option disabled="disabled" selected value="">Seleccionar turno</option>
 
@@ -103,6 +105,7 @@
 
                     <div class="form-group row">
                       <div class="col my-auto">
+                         <label class="pl-2"><small>Método de ingreso</small></label><br>
                         <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" required>
                           <option disabled selected value="">Método de ingreso</option>
                           <?php 
