@@ -53,7 +53,7 @@
 					<!-- Título de página -->
 					<div
 						class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
-						<h1 class="h3 mb-0 text-gray-800">Crear administrador</h1>
+						<h1 class="h3 mb-0 text-gray-800">Registrar administrador</h1>
 						<a class="d-none d-sm-inline-block"><i class="fas fa-user-cog fa-2x text-gray-300"></i></a>
 					</div>
 					<!-- /.Título de página -->
@@ -90,16 +90,6 @@
 												</div>
 											</div>
 										</div>
-
-										<div class="form-group">
-											<label class="pl-2"><small>Correo</small></label><br>
-											<input type="email" id="correo" name="correo"
-												class="form-control form-control-user" placeholder="Correo"
-												data-toggle="tooltip" data-placement="top" title="Correo" required>
-											<div class="invalid-feedback">
-												Por favor introduzca un correo válido.
-											</div>
-										</div>
 										<div class="form-group">
 											<label class="pl-2"><small>Contraseña</small></label><br>
 											<div class="input-group">
@@ -134,6 +124,16 @@
 												La contraseña debe tener al menos 4 caracteres.
 											</div>
 										</div>
+
+										<div class="form-group">
+                      <label class="pl-2"><small>Rol</small></label><br>
+                      <select id="rol_admin" name="rol_admin" class="form-control">
+                        <option disabled selected value="">Rol</option>
+                        <option value="1">Personal</option>
+                        <option value="2">Asistente</option>
+                        <option value="3">Administrador</option>
+                      </select>
+                    </div>
 
 
 										<div class="alert alert-danger" role="alert" id="resultado"

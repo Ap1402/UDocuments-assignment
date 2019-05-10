@@ -53,7 +53,7 @@
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Crear alumno</h1>
+            <h1 class="h3 mb-0 text-gray-800">Registrar alumno</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->

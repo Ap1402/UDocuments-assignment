@@ -197,6 +197,13 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
     Admin
   </div>
 
+  <!-- Nav Item - Tables -->
+  <li class="nav-item">
+    <a id="sbtableAdmin" class="nav-link" href="page-admin-table-admin.php">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Tabla Admin</span></a>
+  </li>
+
   <!-- Nav Item - Crear Admin -->
   <li class="nav-item">
     <a id="sdAdmin" class="nav-link" href="page-admin-crear-admin.php">
@@ -204,24 +211,10 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
       <span>Registrar Admin</span></a>
   </li>
 
-  <!-- Nav Item - Modificar Admin -->
-  <li class="nav-item">
-    <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseAdminEdit" aria-expanded="true"
-      aria-controls="collapseAdminEdit">
-      <i class="fas fa-fw fa-wrench"></i>
-      <span>Modificar</span>
-    </a>
-    <div id="collapseAdminEdit" class="collapse" aria-labelledby="headingAdminEdit" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="page-admin-edit-pass.php">Correo / Contraseña<br>(Admin)</a>
-      </div>
-    </div>
-  </li>
-
   <!-- Divider -->
   <hr class="sidebar-divider">
 
-  <?php }?>
+ <?php }?>
 
   <!-- ============================== /.Para los ADMINISTRADORES $rol='3' ============================== -->
 
