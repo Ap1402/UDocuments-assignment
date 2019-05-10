@@ -61,7 +61,7 @@
           <!-- /.Título de página -->
 
 
-          <!-- Tabla de alumnos -->
+          <!-- Tabla de Admin -->
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
@@ -127,7 +127,7 @@
               </div>
             </div>
           </div>
-          <!-- /.Tabla de alumnos -->
+          <!-- /.Tabla de Admin -->
 
 
         </div>

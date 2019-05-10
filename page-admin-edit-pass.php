@@ -68,7 +68,7 @@ $datos = mysqli_fetch_array($resultado);
 $nombre = $datos['nombre'];
 $contrasena = $datos['contrasena'];
 $estatus = $datos['estatus'];
-$rol_admin = $datos['rol'];
+$rol_admin = $datos['rol']; // no usar $rol porque $rol = $_SESSION['rol]
 
 switch ($rol_admin) {
     case 1:
@@ -86,7 +86,7 @@ switch ($rol_admin) {
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Editar (Contraseña)</h1>
+            <h1 class="h3 mb-0 text-gray-800">Editar Admin</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-lock fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
