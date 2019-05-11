@@ -603,7 +603,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
+                    <div class="alert alert-danger" role="alert" id="resultado">
                     </div>
                     <br>
 
@@ -647,6 +647,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
+
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->

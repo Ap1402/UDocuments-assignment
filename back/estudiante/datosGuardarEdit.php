@@ -8,6 +8,25 @@ $datos = array();
 
 include ('getDatosForm.php');
 
+if(isset($_POST['p_nombre'])){
+    $p_nombre=$_POST['p_nombre'];
+}
+if(isset($_POST['s_nombre'])){
+    $s_nombre=$_POST['s_nombre'];
+}
+
+if(isset($_POST['p_apellido'])){
+    $p_apellido=$_POST['p_apellido'];
+}
+
+if(isset($_POST['s_apellido'])){
+    $s_apellido=$_POST['s_apellido'];
+}
+$postal_hab= $_POST['nac_postal'];
+$urbanizacion=$_POST['nac_urbanizacion'];
+$aptcasa=$_POST['nac_aptcasa'];
+$calle=$_POST['nac_calle'];
+
 $cedula = $_SESSION['cedula'];
 $id = $_SESSION['id'];
 
@@ -21,10 +40,10 @@ $fecha= date("Y-m-d");
 
     $sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
     "estado_civil='$estado_civil',". 
-    "pais_nac='$pais_nac',ciudad_nac='$ciudad_nac',". 
+    "pais_nac='$pais_nac',ciudad_nac='$ciudad_nac', p_nombre='$p_nombre', s_nombre='$s_nombre', p_apellido='$p_apellido', s_apellido='$s_apellido',". 
     "estado_nac='$estado_nac', municipio_nac='$municipio_nac',". 
     "parientename='$e_nombre', parentesco='$parentesco',". 
-    "ultActualizacion='$fecha', nombreInst='$i_nombre', anoEgreso='$i_egreso', codigoInst='$i_codigo', estadoInst='$i_estado', tipoInst='$tipo_inst' WHERE cedula='$cedula'";
+    "ultActualizacion='$fecha', nombreInst='$i_nombre', anoEgreso='$i_egreso', codigoInst='$i_codigo', estadoInst='$i_estado', tipoInst='$tipo_inst' WHERE id_alumno='$id'";
 
     $result = mysqli_query($conexion, $sql);
 
@@ -41,7 +60,8 @@ $actualizarDIREC = "INSERT INTO direcciones (alumno, estado, ciudad, municipio, 
 
 $result = mysqli_query($conexion, $actualizarDIREC); 
 
-echo json_encode($errores);
+echo(json_encode(['message' => 'Registros modificados con éxito', 'status' => http_response_code(200),
+'exito'=>TRUE]));
 
 }
 /* if (empty($errores)) {

@@ -29,7 +29,9 @@ $(document).ready(function () {
             'check_rusnies': $("#check_rusnies").is(":checked"),
             'check_partida': $("#check_partida").is(":checked"),
             'check_metodo': $("#check_metodo").is(":checked"),
-            'idDoc':$("#idDoc").val()
+            'idDoc':$("#idDoc").val(),
+            'porcentaje':$("#porcentaje").val()
+
         };
 
         $.ajax({

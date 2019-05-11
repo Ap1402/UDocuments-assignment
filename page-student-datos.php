@@ -144,7 +144,7 @@
 
                     <br>
                     <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>
+                      <h5 class="text-gray-900 mb-4">Lugar de nacimiento(*)</h5>
                     </div>
                     <hr class="sidebar-divider">
                     <br>
@@ -187,7 +187,7 @@
 
                     <br>
                     <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Dirección de habitación</h5>
+                      <h5 class="text-gray-900 mb-4">Dirección de habitación(*)</h5>
                     </div>
                     <hr class="sidebar-divider">
                     <br>
@@ -297,7 +297,7 @@
 
                     <br>
                     <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Contacto en caso de emergencia</h5>
+                      <h5 class="text-gray-900 mb-4">Contacto en caso de emergencia(*)</h5>
                     </div>
                     <hr class="sidebar-divider">
 
@@ -340,7 +340,7 @@
 
                     <br>
                     <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Datos título de bachiller</h5>
+                      <h5 class="text-gray-900 mb-4">Datos título de bachiller(*)</h5>
                     </div>
                     <hr class="sidebar-divider">
                     <br>
@@ -350,7 +350,7 @@
                       <div class="col">
                         <label class="pl-2"><small>Nombre de la institución (no abreviar)</small></label><br>
                         <input type="text" id="i_nombre" name="i_nombre" class="form-control form-control-user"
-                          placeholder="Nombre de la institución (no abreviar)" minlength="11">
+                          placeholder="Nombre de la institución (no abreviar)" minlength="11" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un nombre de institución válido.
                         </div>
@@ -382,7 +382,7 @@
                       <div class="col-sm-6 pt-1">
                         <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
-                          placeholder="Estado" minlength="4">
+                          placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>

@@ -90,7 +90,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
                         placeholder="Correo" minlength="2" data-toggle="tooltip" data-placement="top" title="Correo"
                         value="<?php echo $correo ?>"
-                        <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                        >
                       <div class="invalid-feedback">
                         Por favor introduzca un correo válido.
                       </div>
@@ -101,8 +101,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="input-group">
                         <input type="password" id="contrasena" name="contrasena" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Contraseña" value="<?php echo $contrasena ?>"
-                          <?php echo ($verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                          data-placement="top" title="Contraseña" value=""
+                          >
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass" class="fas fa-eye-slash"></i>
@@ -119,8 +119,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="input-group">
                         <input type="password" id="contrasena2" name="contrasena2" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Repetir contraseña" value="<?php echo $contrasena ?>"
-                          <?php echo ($verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                          data-placement="top" title="Repetir contraseña" value=""
+                          >
                         <div class="input-group-append">
                           <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass2" class="fas fa-eye-slash"></i>

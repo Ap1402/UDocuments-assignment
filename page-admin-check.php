@@ -150,6 +150,7 @@ $nombre_solicitud = $row_mi['nombre_solicitud'];
       <div class="pl-4 pr-3 py-4">
 
         <form id="checkForm" method="POST" class="user needs-validation" novalidate>
+        <input id="porcentaje" name ="porcentaje" value ="<?php echo $porcentaje ?>" hidden>
           <div class="alert alert-success" role="alert" id="exito" hidden></div>
 
           <!-- Foto -->
