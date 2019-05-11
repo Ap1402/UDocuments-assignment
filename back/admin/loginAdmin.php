@@ -17,7 +17,7 @@ if ($usuario == $userBD and password_verify($contrasena, $passwordBD)) {
     $_SESSION['nombre']=$datos['nombre'];
     $_SESSION['estado'] = 1;
     $_SESSION['rol']=$datos['rol'];
-    $_SESSION['id']=$datos['id_admin'];
+    $_SESSION['id_admin']=$datos['id_admin'];
 
     echo "1";
 } else {

@@ -74,9 +74,9 @@ $p_apellido=$datos['p_apellido'];
 $s_apellido=$datos['s_apellido'];
 $cedula=$datos['cedula'];
 $correo= $datos['correo'];
-$estado_civil=$datos['estado_civil'];
+$estado_civild=$datos['estado_civil'];
 
-switch ($estado_civil) {
+switch ($estado_civild) {
   case 1:
   $estado_civil_name='Casado';
     break;
@@ -111,6 +111,8 @@ $i_egreso=$datos['anoEgreso'];
 $i_codigo=$datos['codigoInst'];
 $i_estado=$datos['estadoInst'];
 $tipo_inst=$datos['tipoInst'];
+$discapacidad=$datos['discapacidad'];
+
 
 switch ($tipo_inst) {
   case 1:
@@ -148,8 +150,7 @@ $t_postal=$datosDirecc['postal_trabajo'];
 $t_estado=$datosDirecc['estado_trabajo'];
 $t_municipio=$datosDirecc['municipio_trabajo'];
 $t_ciudad=$datosDirecc['ciudad_trabajo'];
-
-
+$nac_postal=$datosDirecc['postal_hab'];
 
 
 
@@ -175,7 +176,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
               <div class="card-body">
                 <div class="p-4">
                   <form id="datosEditForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
+                    <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
                     <div class="form-group row">
                       <div class="col-sm-6">
@@ -222,24 +223,14 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
-                    <div class="form-group row">
-                      <div class="col-sm-12 pt-1">
-                        <label class="pl-2"><small>Cédula</small></label><br>
-                        <input type="number" id="cedula" name="cedula" class="form-control" placeholder="Cédula"
-                          data-toggle="tooltip" data-placement="top" title="Cédula" value="<?php echo $cedula ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                        <div class="invalid-feedback">
-                          Por favor introduzca un número de cédula válido.
-                        </div>
-                      </div>
-                    </div>
+
 
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Estado civil</small></label><br>
                         <select id="estado_civil" name="estado_civil" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Estado civil" required>
-                          <option disabled selected value="<?php echo $estado_civil ?>">
+                          <option  selected value="<?php echo $estado_civild ?>">
                             <?php echo $estado_civil_name ?>
                           </option>
                           <option value="1">Casado</option>
@@ -291,7 +282,10 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
+                    <!-- DISCAPACIDAD ---->
+              <?php if($discapacidad!='0'){ ?>
                     <br>
+      
                     <div class="text-center">
                       <h5 class="text-gray-900 mb-4">Discapacidad</h5>
                     </div>
@@ -307,7 +301,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         </div>
                       </div>
                     </div>
-
+              <?php } ?>
                     <br>
                     <div class="text-center">
                       <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>
@@ -600,7 +594,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <select id="tipo_inst" name="tipo_inst" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Tipo de institución"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option disabled selected value="<?php echo $tipo_inst ?>"><?php echo $tipo_inst_name ?>
+                          <option  selected value="<?php echo $tipo_inst ?>"><?php echo $tipo_inst_name ?>
                           </option>
                           <option value="1">Privada</option>
                           <option value="2">Pública</option>
@@ -608,7 +602,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
+
                     </div>
                     <br>
 
@@ -656,6 +651,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="scripts/editDatos.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>

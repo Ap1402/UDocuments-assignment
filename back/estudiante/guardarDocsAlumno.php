@@ -17,6 +17,8 @@ $path_alumno='./../Documentos/'.$cedula.'/';
 if ( !is_dir($path_alumno) ) mkdir($path_alumno);
 
 
+/// Empieza recorrer de $_FILES
+
 foreach ($_FILES as $key => $file) {
 
 	$path_info = pathinfo( $path_alumno . $file['name'] );
@@ -36,7 +38,10 @@ foreach ($_FILES as $key => $file) {
 	  	}else{
 		  	$direccion = $cedula.$photo_name;
 		  	$insertarDoc = "UPDATE documentos SET foto='$direccion' WHERE id_documento=$idDoc";
-		  	$result = mysqli_query($conexion, $insertarDoc);
+			  $result = mysqli_query($conexion, $insertarDoc);
+			  if(mysqli_affected_rows($conexion)<1){
+				return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+			}
 	  	}
  }
  
@@ -54,6 +59,9 @@ foreach ($_FILES as $key => $file) {
 	  $direccion = $cedula.$photo_name;
 	  $insertarDoc = "INSERT INTO notas(nota,documento) VALUES ('$direccion','$idDoc')";
 	  $result = mysqli_query($conexion, $insertarDoc);
+	  if(mysqli_affected_rows($conexion)<1){
+		return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+	}
   	}
  }
 
@@ -70,6 +78,9 @@ foreach ($_FILES as $key => $file) {
 		$direccion = $cedula.$photo_name;
 		$insertarDoc = "INSERT INTO rusnies (rusnies,documento) VALUES ('$direccion','$idDoc')";
 		$result = mysqli_query($conexion, $insertarDoc);
+		if(mysqli_affected_rows($conexion)<1){
+			return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+		}
 	}
 }
 
@@ -87,6 +98,9 @@ foreach ($_FILES as $key => $file) {
 			$direccion = $cedula.$photo_name;
 			$insertarDoc = "UPDATE documentos SET cedula='$direccion' WHERE id_documento=$idDoc";
 			$result = mysqli_query($conexion, $insertarDoc);
+			if(mysqli_affected_rows($conexion)<1){
+				return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+			}
 		}
 }
 
@@ -103,6 +117,9 @@ foreach ($_FILES as $key => $file) {
 			$direccion = $cedula.$photo_name;
 			$insertarDoc = "UPDATE documentos SET fondo='$direccion' WHERE id_documento=$idDoc";
 			$result = mysqli_query($conexion, $insertarDoc);
+			if(mysqli_affected_rows($conexion)<1){
+				return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+			}
 		}
 }
 
@@ -119,7 +136,11 @@ foreach ($_FILES as $key => $file) {
 			$direccion = $cedula.$photo_name;
 			$insertarDoc = "UPDATE documentos SET partida='$direccion' WHERE id_documento=$idDoc";
 			$result = mysqli_query($conexion, $insertarDoc);
+			if(mysqli_affected_rows($conexion)<1){
+				return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+			}
 		}
+		
 }
 
 if (($path_splitted[0] == 'metodo') && isset($_FILES[$key])) {
@@ -129,17 +150,21 @@ if (($path_splitted[0] == 'metodo') && isset($_FILES[$key])) {
 	$datos = mysqli_fetch_array($result);
 
 	if ($datos['count']>=5){
-		return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos para metodo de ingreso, dirigirse a Modificación para hacer cambios o eliminar', 'status' => http_response_code(500)]));
+		return print_r(json_encode([
+			'exito' =>FALSE,
+			'message' => 'Ya ha subido la cantidad máxima de archivos para metodo de ingreso, dirigirse a Modificación para hacer cambios o eliminar', 'status' => http_response_code(500)]));
 
 	}else{
 		$direccion = $cedula.$photo_name;
 		$insertarDoc = "INSERT INTO metodoing (metodo,documento) VALUES ('$direccion','$idDoc')";
 		$result = mysqli_query($conexion, $insertarDoc);
+		if(mysqli_affected_rows($conexion)<1){
+			return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+		}
 	}
 
 }
 
-	// print_r(array_keys($_FILES)); // esto da un error porque se considera como respuesta al fetch y no esta en json
 
 	if ( !move_uploaded_file($file['tmp_name'], $path_alumno. $photo_name) ) {
 		return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
@@ -147,6 +172,11 @@ if (($path_splitted[0] == 'metodo') && isset($_FILES[$key])) {
 	$count++;
 
 }
+
+/// Termina el reccorrer de $_FILES
+$fecha= date("Y-m-d");
+$updateQuery="UPDATE documentos SET ultActDoc='$fecha' WHERE id_documento=$idDoc";
+$result = mysqli_query($conexion, $updateQuery);
 
 
 if ( $count == count( $_FILES ) ) {
@@ -157,7 +187,8 @@ if ( $count == count( $_FILES ) ) {
 		[
 			'message' => $message,
 			'count' => $count,
-			'status' => http_response_code(200)
+			'status' => http_response_code(200),
+			'exito' => TRUE
 			
 		]
 		));

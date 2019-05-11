@@ -34,7 +34,7 @@ if (empty($errores)) {
     $result = mysqli_query($conexion, $instDoc);
     $lastid = mysqli_insert_id($conexion); 
 
-    $instAlumn = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,ultActualizacion,documento) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha','$lastid')";
+    $instAlumn = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,fechacreacion,documento) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha','$lastid')";
     $result = mysqli_query($conexion, $instAlumn);
 
 
