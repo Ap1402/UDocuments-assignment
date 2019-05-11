@@ -1,8 +1,5 @@
->>Poner la fecha en Fechacreacion en registro.php
 >>modificar la ultactDoc en subirdocs y modificar
 >>arreglar modificardoc.
->>campos faltantes en editardatos
->> Porcentaje en check
 >> modificar contraseña admin
 
 
