@@ -35,6 +35,8 @@ function ejecutarAjaxLog(event){
     .done(function(echo){
         if(echo==1){
             $(location).attr('href','page-dashboard.php');
+        }else{
+            
         }
     });
 

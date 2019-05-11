@@ -234,12 +234,16 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
 
   <!-- Students -->
   <!-- Nav Item - Datos -->
+  <?php if($_SESSION['datosLlenados']==0){    ?>
+
   <li class="nav-item">
     <a id="sddatos" class="nav-link" href="page-student-datos.php">
       <i class="fas fa-file-alt"></i>
-      <span>Datos</span></a>
+      <span>Llenar datos</span></a>
   </li>
+  <?php } ?>
 
+    <?php if($_SESSION['datosLlenados']==1){    ?>
   <!-- Nav Item - Documentos -->
   <li class="nav-item">
     <a id="sdstudentDocs" class="nav-link" href="page-student-docs.php">
@@ -270,6 +274,7 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
       </div>
     </div>
   </li>
+    <?php }?>
 
   <!-- Divider -->
   <hr class="sidebar-divider">

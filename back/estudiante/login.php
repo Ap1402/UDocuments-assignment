@@ -23,9 +23,15 @@ if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
     $_SESSION['docId']=$datos['documento'];
     $_SESSION['correo']=$datos['correo'];
 
+    if ($datos['ultActualizacion'] == '0000-00-00'){
+        $_SESSION['datosLlenados']=0;
+    }else{
+        $_SESSION['datosLlenados']=1;
+    }
+
     echo "1";
 } else {
-    echo "$contrasena";
+    echo "2";
 }
 
 ?>
