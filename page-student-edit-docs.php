@@ -124,7 +124,7 @@ if ($porcentaje == 100) {
   <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <i class="fas fa-check-circle"></i>
                     <strong>Éxito!</strong>
-                    Todos los documentos de este alumno han sido validados.
+                    Todos los documentos han sido validados. Si desea ver sus documentos dirijase a su perfil.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       &times;
                     </button>
@@ -171,8 +171,7 @@ if ($porcentaje == 100) {
                       <div class="container-input">
                         <div class="wrap-file">
                           <div class="content-icon-camera">
-                            <input type="file" id="file" name="file" accept="image/*" class="input-file"
-                              data-id="<?php echo $file_id ?>">
+                            <input type="file" id="file" name="file" accept="image/*" class="input-file">
                             <div class="icon-camera"></div>
                           </div>
                           <div id="preview-images" class="preview-images">

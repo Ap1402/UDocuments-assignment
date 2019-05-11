@@ -56,7 +56,7 @@
                 <?php if ($rol >= 1) { // Mostrar solo para admin ?>
                   <a class="dropdown-item" href="page-admin-edit-pass.php">
                     <i class="fas fa-user-lock fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Editar (Correo/Contraseña)
+                    Editar mis datos
                   </a>
                 <div class="dropdown-divider"></div>
                 <?php }?>

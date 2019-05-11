@@ -121,6 +121,28 @@ $nombre_solicitud = $row_mi['nombre_solicitud'];
           </div>
           <!-- /.Título de página -->
 
+          <!-- Datos del alumno (Editable) -->
+          <div class="col-sm-12 col-lg-10 mx-auto">
+          <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardDAE" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardDAE">
+                  <h6 class="m-0 font-weight-bold text-primary">Datos del alumno (Editable)</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="collapseCardDAE" style="">
+                  <div class="card-body">
+                    
+
+
+
+
+
+                  </div>
+                </div>
+              </div>
+              </div>
+              <!-- /.Datos del alumno (Editable) -->
+
 <!-- Formulario Check Documentos -->
 <div class="col-sm-12 col-lg-10 mx-auto">
   <div class="card shadow mb-4">

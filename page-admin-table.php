@@ -60,6 +60,52 @@
           </div>
           <!-- /.Título de página -->
 
+<!-- Busquedas especificas -->
+          <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCardBE" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardBE">
+                  <h6 class="m-0 font-weight-bold text-primary">Busquedas especificas</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse" id="collapseCardBE">
+                  <div class="card-body">
+
+                    <a id="docFaltante" href="#" class="btn btn-danger btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Alumnos con documentos faltantes</span>
+                    </a>
+
+                    <a id="docFaltante50" href="#" class="btn btn-warning btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Alumnos con documentos faltantes mayor a 50%</span>
+                    </a>
+
+                    <a id="docCompletos" href="#" class="btn btn-success btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Alumnos con documentos completos</span>
+                    </a>
+
+                    <a id="other" href="#" class="btn btn-info btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Alumnos others</span>
+                    </a>
+
+
+
+
+                  </div>
+                </div>
+              </div>
+              <!-- /.Busquedas especificas -->
+
 
           <!-- Tabla de alumnos -->
           <div class="card shadow mb-4">

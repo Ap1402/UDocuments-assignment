@@ -229,10 +229,10 @@ $p_reinc = 0;
 
           <!-- Content Row -->
 
-          <div id="card-progress-illustrations" class="row">
+          <div id="card-barras" class="row">
 
             <?php
-require 'front/admin/dashboard/card-progress-illustrations.php';
+require 'front/admin/dashboard/card-barras.php';
 ?>
           </div>
 
@@ -280,6 +280,7 @@ require 'front/admin/dashboard/card-progress-illustrations.php';
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="js/demo/chart-bar-demo.js"></script>
 
 </body>
 

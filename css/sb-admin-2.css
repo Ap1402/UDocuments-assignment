@@ -11064,6 +11064,7 @@ a:focus {
 .sidebar {
   width: 6.5rem;
   min-height: 100vh;
+  transition: .5s;
 }
 
 .sidebar .nav-item {
@@ -11180,6 +11181,7 @@ a:focus {
 .sidebar.toggled {
   width: 0 !important;
   overflow: hidden;
+
 }
 
 .sidebar.toggled #sidebarToggle::after {
@@ -12005,4 +12007,5 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+  transition: .5s;
 }
