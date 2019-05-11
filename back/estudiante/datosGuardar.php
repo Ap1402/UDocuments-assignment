@@ -12,19 +12,24 @@ $cedula = $_SESSION['cedula'];
 $id = $_SESSION['id'];
 
 
+if(empty($errores)){
+
  //Actualizacion de datos tabla alumno
 
 $fecha= date("Y-m-d");
 
-$sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
-"estado_civil='$estado_civil',". 
-"carrera='$carrera', pais_nac='$pais_nac',ciudad_nac='$ciudad_nac',". 
-"estado_nac='$estado_nac', municipio_nac='$municipio_nac',". 
-"parientename='$e_nombre', parentesco='$parentesco',". 
-"ultActualizacion='$fecha', nombreInst='$i_nombre', anoEgreso='$i_egreso', codigoInst='$i_codigo', estadoInst='$i_estado', tipoInst='$tipo_inst', turno='$turno' WHERE cedula='$cedula'";
+    $sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
+    "estado_civil='$estado_civil',". 
+    "carrera='$carrera', pais_nac='$pais_nac',ciudad_nac='$ciudad_nac',". 
+    "estado_nac='$estado_nac', municipio_nac='$municipio_nac',". 
+    "parientename='$e_nombre', parentesco='$parentesco',". 
+    "ultActualizacion='$fecha', nombreInst='$i_nombre', anoEgreso='$i_egreso', codigoInst='$i_codigo', estadoInst='$i_estado', tipoInst='$tipo_inst', turno='$turno' WHERE cedula='$cedula'";
 
-$result = mysqli_query($conexion, $sql);
+    $result = mysqli_query($conexion, $sql);
+    if (mysql_affected_rows()<1){
+        echo json_encode([mensaje =>'Hubo un problema con la base de datos']);
 
+    }
 // ver si existen telefonos si existen se actualizan sino se crea en TABLA TELEFONOS
 $actualizarTLF = "INSERT INTO telefonos (alumno, num_movil, num_habitacion, num_trabajo, num_habitacion_pariente, num_movil_pariente) VALUES('$id','$mov_tel','$hab_tel','$trab_tel','$e_hab_tel','$e_mov_tel') ON DUPLICATE KEY UPDATE num_movil='$mov_tel', num_habitacion='$hab_tel', num_trabajo='$trab_tel',num_movil_pariente='$e_mov_tel', num_habitacion_pariente='$e_hab_tel'";
 $result = mysqli_query($conexion, $actualizarTLF); 
@@ -38,9 +43,9 @@ $actualizarDIREC = "INSERT INTO direcciones (alumno, estado, ciudad, municipio, 
 
 $result = mysqli_query($conexion, $actualizarDIREC); 
 
+echo json_encode($errores);
 
-
-
+}
 /* if (empty($errores)) {
     $fecha= date("Y-m-d");
 
@@ -55,6 +60,5 @@ $result = mysqli_query($conexion, $actualizarDIREC);
 } */
 
 //dar respuesta:
-echo json_encode($errores);
 
 ?>
