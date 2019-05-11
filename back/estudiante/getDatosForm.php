@@ -31,6 +31,10 @@ $postal = filter_var($_POST['nac_postal'], FILTER_SANITIZE_NUMBER_INT);
 $estado = filter_var($_POST['nac_estado'], FILTER_SANITIZE_STRING);
 $ciudad = filter_var($_POST['nac_ciudad'], FILTER_SANITIZE_STRING);
 $municipio = filter_var($_POST['nac_municipio'], FILTER_SANITIZE_STRING);
+$postal_hab= filter_var($_POST['nac_postal'], FILTER_SANITIZE_STRING);
+$urbanizacion=filter_var($_POST['nac_urbanizacion'], FILTER_SANITIZE_STRING);
+$aptcasa=filter_var($_POST['nac_aptcasa'], FILTER_SANITIZE_STRING);
+$calle=filter_var($_POST['nac_calle'], FILTER_SANITIZE_STRING);
 
 
 // Telefono 
