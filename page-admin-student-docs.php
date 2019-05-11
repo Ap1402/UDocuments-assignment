@@ -53,6 +53,45 @@
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-student-docs" class="container-fluid">
 
+
+        <?php
+
+include 'back/conexion.php';
+
+// ------------ Obtener la id del documento
+if (isset($_GET['idd']) && ($rol >= 1)) {
+    $idd = $_GET['idd'];
+}
+
+$sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
+$result = mysqli_query($conexion, $sql);
+
+if ($result->num_rows > 0) {
+    $row = mysqli_fetch_assoc($result);
+} else {
+    $mensaje = "Ocurrió un error al consultar los documentos";
+    echo ($mensaje);
+}
+;
+
+$check_foto = $row['check_foto']; // verificar si fue o no chequeado por control de estudios
+$check_cedula = $row['check_cedula'];
+$check_fondo = $row['check_fondo'];
+$check_notas = $row['check_nota'];
+$check_partida = $row['check_partida'];
+$check_rusnies = $row['check_rusinies'];
+$check_metodo = $row['check_metodo'];
+
+// -------- Porcentaje de Documentos
+
+$porcentaje = ($check_foto + $check_cedula + $check_fondo + $check_notas + $check_partida + $check_rusnies +
+    $check_metodo) * 100 / 7;
+$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+
+// -------- /Porcentaje de Documentos
+
+?>
+
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Documentos del alumno</h1>
@@ -66,16 +105,35 @@
               <div class="card-body">
                 <div class="p-4">
 
+                <?php 
+                // ---------------Hacer si todos los documentos estan validados
+if ($porcentaje == 100) {
+
+  ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Éxito!</strong>
+                    Todos los documentos de este alumno han sido validados.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      &times;
+                    </button>
+                  </div>
+  <?php
+}
+;  
+// --------------- /.Hacer si todos los documentos estan validados
+              
+                ?>
+
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a subir</option>
-                    <?php echo ($num_cedula != 0) ? '' : '<option value="1">Cedula</option>' ?>
-                    <?php echo ($num_foto != 0) ? '' : '<option value="2">Foto</option>' ?>
-                    <?php echo ($num_notas != 0) ? '' : '<option value="3">Notas</option>' ?>
-                    <?php echo ($num_fondo != 0) ? '' : '<option value="4">Fondo</option>' ?>
-                    <?php echo ($num_rusnies != 0) ? '' : '<option value="5">Rusnies</option>' ?>
-                    <?php echo ($num_partida != 0) ? '' : '<option value="6">Partida</option>' ?>
-                    <?php echo ($num_metodo != 0) ? '' : '<option value="7">Método</option>' ?>
-
+                    <option value="1">Cédula</option>
+                    <option value="2">Foto tipo carnet</option>
+                    <option value="3">Notas certificadas de bachillerato (1er a 5to)</option>
+                    <option value="4">Titulo de bachillerato autenticado</option>
+                    <option value="5">Resultado del RUSNIES</option>
+                    <option value="6">Partida de nacimiento</option>
+                    <option value="7">Método de ingreso</option>
                   </select>
 
                   <form id="docsForm" method="POST" class="user needs-validation" novalidate>
@@ -89,10 +147,6 @@
 
                     <!-- file -->
                     <div class="wrapper-file">
-                      <br>
-                      <div class="text-center">
-                        <h5 class="text-gray-900">Cargar documento</h5>
-                      </div>
                       <br>
 
                       <div class="container-input">

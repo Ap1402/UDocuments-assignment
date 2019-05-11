@@ -108,44 +108,6 @@ $ultActualizacion = date('Y-m-d');
 $nombre_solicitud = $row_mi['nombre_solicitud'];
 
 ?>
-<!-- Busqueda Check -->
-<!-- <div id="prueba">
-    <div class="col-sm-12 col-lg-10 mx-auto">
-        <div class="card shadow mb-4 border-bottom-primary">
-            <div class="card-body">
-
-                <form id="checkFormSearch" class="mx-auto my-2 my-md-0 col-sm-12 col-md-6">
-                    <div class="input-group">
-                        <input type="number" id="q" name="q" class="form-control bg-light border-0 small" placeholder="Buscar por cedula" aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button type="submit" value="Buscar" id="search" class="btn btn-primary">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="preload" class="preload">
-                        <img src="img/images/preload.gif" alt="preload">
-                    </div>
-                </form>
-
-                <div class="form-group row text-center">
-                    <div class="col">
-                        <label class="pl-2 pt-2">
-                            <b>Cedula:</b> <?php echo $ci ?>
-                        </label>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div> -->
-<!-- /.Busqueda Check -->
-
 
 <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-lg-10 align-items-center justify-content-between mb-4 mx-auto">

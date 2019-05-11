@@ -55,36 +55,61 @@
 
           <?php
 
-$num_foto = 0;
-$num_cedula = 0;
-$num_fondo = 0;
-$num_notas = 0;
-$num_partida = 0;
-$num_rusnies = 0;
-$num_metodo = 0;
+include 'back/conexion.php';
 
-$all = $num_foto > 0 && $num_cedula > 0 && $num_fondo > 0 && $num_notas > 0 && $num_partida > 0 && $num_rusnies > 0 &&
-    $num_metodo;
+// ------------ Obtener la id del documento
+if (isset($_SESSION['docId'])) {
+    $idd = $_SESSION['docId'];
+}
 
-// Hacer si todos los documentos se cargaron
-if ($all) {
+$sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
+$result = mysqli_query($conexion, $sql);
+
+if ($result->num_rows > 0) {
+    $row = mysqli_fetch_assoc($result);
+} else {
+    $mensaje = "Ocurrió un error al cargar los documentos";
+    echo ($mensaje);
+}
+;
+
+$check_foto = $row['check_foto']; // verificar si fue o no chequeado por control de estudios
+$check_cedula = $row['check_cedula'];
+$check_fondo = $row['check_fondo'];
+$check_notas = $row['check_nota'];
+$check_partida = $row['check_partida'];
+$check_rusnies = $row['check_rusinies'];
+$check_metodo = $row['check_metodo'];
+
+// -------- Porcentaje de Documentos
+
+$porcentaje = ($check_foto + $check_cedula + $check_fondo + $check_notas + $check_partida + $check_rusnies +
+    $check_metodo) * 100 / 7;
+$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+
+// -------- /Porcentaje de Documentos
+
+
+// Hacer si todos los documentos estan validados
+if ($porcentaje == 100) {
 ?>
           <!-- Modal -->
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Mensaje</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-check-circle"></i>
+                    <strong>Éxito!</strong></h5>
               </div>
               <label for="continuar">
                 <div class="modal-body">
-                  Todos los documentos han sido cargados con exito!. Sera redirigido a su perfil.
+                  Todos los documentos han sido validados con éxito!.
                   <br>
-                  Seleccione el boton "Continuar".
+                  Para ver los documentos dirijase al perfil, seleccionando el botón "Ir a perfil".
                 </div>
               </label>
               <div class="modal-footer">
                 <button type="button" id="continuar" class="btn btn-primary"
-                  onclick="window.location.replace('page-student-perfil.php');">Continuar</button>
+                  onclick="window.location.replace('page-student-perfil.php');">Ir a perfil</button>
               </div>
             </div>
           </div>
@@ -107,14 +132,13 @@ if ($all) {
 
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a subir</option>
-                    <?php echo ($num_cedula != 0) ? '' : '<option value="1">Cedula</option>' ?>
-                    <?php echo ($num_foto != 0) ? '' : '<option value="2">Foto</option>' ?>
-                    <?php echo ($num_notas != 0) ? '' : '<option value="3">Notas</option>' ?>
-                    <?php echo ($num_fondo != 0) ? '' : '<option value="4">Fondo</option>' ?>
-                    <?php echo ($num_rusnies != 0) ? '' : '<option value="5">Rusnies</option>' ?>
-                    <?php echo ($num_partida != 0) ? '' : '<option value="6">Partida</option>' ?>
-                    <?php echo ($num_metodo != 0) ? '' : '<option value="7">Método</option>' ?>
-
+                    <option value="1">Cédula</option>
+                    <option value="2">Foto tipo carnet</option>
+                    <option value="3">Notas certificadas de bachillerato (1er a 5to)</option>
+                    <option value="4">Titulo de bachillerato autenticado</option>
+                    <option value="5">Resultado del RUSNIES</option>
+                    <option value="6">Partida de nacimiento</option>
+                    <option value="7">Método de ingreso</option>
                   </select>
 
                   <form id="docsForm" method="POST" class="user needs-validation" novalidate>
@@ -128,10 +152,6 @@ if ($all) {
 
                     <!-- file -->
                     <div class="wrapper-file">
-                      <br>
-                      <div class="text-center">
-                        <h5 class="text-gray-900">Cargar documento</h5>
-                      </div>
                       <br>
 
                       <div class="container-input">

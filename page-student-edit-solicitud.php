@@ -51,11 +51,51 @@
         <div id="page-student-edit-solicitud" class="container-fluid">
 
           <?php
-$admin = 1; // probando que sea admin para restringir la edicion de algunos campos
-$verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
-// Iniciando valores
-$cedula = '';
+include 'back/conexion.php';
+
+// ------------ Obtener la id del alumno dependiendo la sesion
+if (isset($_SESSION['id'])) {
+    $ida = $_SESSION['id'];
+}
+;
+// ------------ /.Obtener la id del alumno dependiendo la sesion
+
+$sql_sol = "SELECT carrera, turno, tipo, nombre_solicitud FROM alumnos
+        LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
+        WHERE alumnos.id_alumno = '$ida'";
+
+$result_sol = mysqli_query($conexion, $sql_sol);
+if ($result_sol->num_rows > 0) {
+    $row_sol = mysqli_fetch_assoc($result_sol);
+} else {
+    $mensaje = "Ocurrió un error al cargar datos de solicitud";
+    echo ($mensaje);
+}
+;
+
+$carrera = $row_sol['carrera'];
+$tipo = $row_sol['tipo']; // metodo_ingreso
+$nombre_solicitud = $row_sol['nombre_solicitud'];
+$turno = $row_sol['turno'];
+$carrera = $row_sol['carrera'];
+
+switch ($turno) {
+    case 1:
+        $turno_name = 'Mañana';
+        break;
+    case 2:
+        $turno_name = 'Tarde';
+        break;
+    case 3:
+        $turno_name = 'Noche';
+        break;
+    default:
+        $turno_name = '';
+        break;
+};
+
+$verificar_check = 0; // verificar si fue o no chequeado por control de estudios
 
 ?>
 <!-- Título de página -->
@@ -75,12 +115,12 @@ $cedula = '';
 
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
+                        <label class="pl-2"><small>Carrera</small></label><br>
                         <select id="carrera" name="carrera" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Carrera"
-                          <?php echo ($admin == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                           <option disabled selected value="<?php echo $carrera ?>"><?php echo $carrera ?></option>
                           <?php
-                            include 'back/conexion.php';
 
                             $sql = "SELECT * FROM carreras WHERE estatus=1";
                             $result = mysqli_query($conexion, $sql);
@@ -99,10 +139,11 @@ $cedula = '';
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto">
+                        <label class="pl-2"><small>Turno</small></label><br>
                         <select id="turno" name="turno" class="form-control" data-toggle="tooltip" data-placement="top"
                           title="Turno"
-                          <?php echo ($admin == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option disabled="disabled" selected value="<?php echo $turno ?>"><?php echo $turno ?>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <option disabled="disabled" selected value="<?php echo $turno ?>"><?php echo $turno_name ?>
                           </option>
 
                         </select>
@@ -114,9 +155,10 @@ $cedula = '';
 
                     <div class="form-group row">
                       <div class="col my-auto">
+                        <label class="pl-2"><small>Método de ingreso</small></label><br>
                         <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Método de ingreso"
-                          <?php echo ($admin == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                           <option disabled selected value="<?php echo $tipo ?>"><?php echo $nombre_solicitud ?></option>
                           <?php
                             $sql2 = "SELECT * FROM tipo_solicitud WHERE activa=1";

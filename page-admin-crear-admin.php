@@ -53,7 +53,7 @@
 					<!-- Título de página -->
 					<div
 						class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
-						<h1 class="h3 mb-0 text-gray-800">Crear administrador</h1>
+						<h1 class="h3 mb-0 text-gray-800">Registrar administrador</h1>
 						<a class="d-none d-sm-inline-block"><i class="fas fa-user-cog fa-2x text-gray-300"></i></a>
 					</div>
 					<!-- /.Título de página -->
@@ -70,6 +70,7 @@
 
 										<div class="form-group row">
 											<div class="col-sm-6">
+												<label class="pl-2"><small>Primer nombre</small></label><br>
 												<input type="text" id="nombre" name="nombre"
 													class="form-control form-control-user" placeholder="Nombre"
 													minlength="2" data-toggle="tooltip" data-placement="top"
@@ -79,6 +80,7 @@
 												</div>
 											</div>
 											<div class="col-sm-6">
+												<label class="pl-2"><small>Nombre de ususario</small></label><br>
 												<input type="text" id="username" name="username"
 													class="form-control form-control-user"
 													placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip"
@@ -88,16 +90,8 @@
 												</div>
 											</div>
 										</div>
-
 										<div class="form-group">
-											<input type="email" id="correo" name="correo"
-												class="form-control form-control-user" placeholder="Correo"
-												data-toggle="tooltip" data-placement="top" title="Correo" required>
-											<div class="invalid-feedback">
-												Por favor introduzca un correo válido.
-											</div>
-										</div>
-										<div class="form-group">
+											<label class="pl-2"><small>Contraseña</small></label><br>
 											<div class="input-group">
 												<input type="password" id="contrasena" name="contrasena" minlength="4"
 													class="form-control form-control-user" placeholder="Contraseña"
@@ -108,24 +102,37 @@
 														<i id="showpass" class="fas fa-eye-slash"></i>
 													</a>
 												</div>
-                      </div>
-                      <div class="invalid-feedback">
-                        La contraseña debe tener al menos 4 caracteres.
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="input-group">
-                        <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                          class="form-control form-control-user" placeholder="Repetir contraseña" required>
-                        <div class="input-group-append">
-                          <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                            <i id="showpass2" class="fas fa-eye-slash"></i>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="invalid-feedback">
+											</div>
+											<div class="invalid-feedback">
 												La contraseña debe tener al menos 4 caracteres.
 											</div>
+										</div>
+										<div class="form-group">
+											<label class="pl-2"><small>Repetir contraseña</small></label><br>
+											<div class="input-group">
+												<input type="password" id="contrasena2" name="contrasena2" minlength="4"
+													class="form-control form-control-user"
+													placeholder="Repetir contraseña" required>
+												<div class="input-group-append">
+													<a id="show2" onclick="mostrarPassword()"
+														class="btn btn-primary text-center align-middle">
+														<i id="showpass2" class="fas fa-eye-slash"></i>
+													</a>
+												</div>
+											</div>
+											<div class="invalid-feedback">
+												La contraseña debe tener al menos 4 caracteres.
+											</div>
+										</div>
+
+										<div class="form-group">
+                      <label class="pl-2"><small>Rol</small></label><br>
+                      <select id="rol_admin" name="rol_admin" class="form-control">
+                        <option disabled selected value="">Rol</option>
+                        <option value="1">Personal</option>
+                        <option value="2">Asistente</option>
+                        <option value="3">Administrador</option>
+                      </select>
                     </div>
 
 

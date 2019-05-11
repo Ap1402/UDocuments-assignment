@@ -66,13 +66,12 @@ if (isset($_GET['ida'])) {
 ;
 // ------------ /.Obtener la id del alumno dependiendo la sesion
 
-$sql = "SELECT *, alumnos.cedula AS ci, documentos.cedula AS cedula, carreras.nombre AS carreraname FROM alumnos
+$sql = "SELECT *, alumnos.cedula AS ci, documentos.cedula AS cedula FROM alumnos
         INNER JOIN documentos ON alumnos.documento=documentos.id_documento
         LEFT JOIN telefonos ON alumnos.id_alumno=telefonos.alumno
         LEFT JOIN direcciones ON alumnos.id_alumno=direcciones.alumno
-        LEFT JOIN carreras ON alumnos.carrera=carreras.codigo
         LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-        WHERE alumnos.id_alumno = '$ida';";
+        WHERE alumnos.id_alumno = '$ida'";
 
 $result = mysqli_query($conexion, $sql);
 if ($result->num_rows > 0) {
@@ -209,55 +208,55 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
                   <div class="px-3 py-2">
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2">Primer nombre</label><br>
+                        <label class="pl-2 pt-2"><small>Primer nombre</small></label><br>
                         <input type="text" value="<?=$row['p_nombre']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2">Segundo nombre</label><br>
+                        <label class="pl-2 pt-2"><small>Segundo nombre</small></label><br>
                         <input type="text" value="<?=$row['s_nombre']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2">Primer apellido</label><br>
+                        <label class="pl-2 pt-2"><small>Primer apellido</small></label><br>
                         <input type="text" value="<?=$row['p_apellido']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2">Segundo apellido</label><br>
+                        <label class="pl-2 pt-2"><small>Segundo apellido</small></label><br>
                         <input type="text" value="<?=$row['s_apellido']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
-                        <label class="pl-2 pt-2">Correo</label><br>
+                        <label class="pl-2 pt-2"><small>Correo</small></label><br>
                         <input type="text" value="<?=$row['correo']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
-                        <label class="pl-2 pt-2">Nombre de usuario</label><br>
+                        <label class="pl-2 pt-2"><small>Nombre de usuario</small></label><br>
                         <input type="text" value="<?=$row['username']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2">Cédula</label><br>
+                        <label class="pl-2 pt-2"><small>Cédula</small></label><br>
                         <input type="text" value="<?=$row['ci']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2">Estado civil</label><br>
+                        <label class="pl-2 pt-2"><small>Estado civil</small></label><br>
                         <input type="text" value="<?=$estado_civil?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2">Fecha de nacimiento</label><br>
+                        <label class="pl-2 pt-2"><small>Fecha de nacimiento</small></label><br>
                         <input type="text" value="<?=$row['fecha_nacimiento']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2">Discapacidad</label><br>
+                        <label class="pl-2 pt-2"><small>Discapacidad</small></label><br>
                         <input type="text" value="<?=$row['discapacidad']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-4 col-lg-4">
-                        <label class="pl-2 pt-2">Teléfono habitación</label><br>
+                        <label class="pl-2 pt-2"><small>Teléfono habitación</small></label><br>
                         <input type="text" value="<?=$row['num_habitacion']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-4 col-lg-4">
-                        <label class="pl-2 pt-2">Teléfono móvil</label><br>
+                        <label class="pl-2 pt-2"><small>Teléfono móvil</small></label><br>
                         <input type="text" value="<?=$row['num_movil']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-4 col-lg-4">
-                        <label class="pl-2 pt-2">Teléfono trabajo</label><br>
+                        <label class="pl-2 pt-2"><small>Teléfono trabajo</small></label><br>
                         <input type="text" value="<?=$row['num_trabajo']?>" class="form-control" disabled>
                       </div>
 
@@ -272,19 +271,19 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
 
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">País</label><br>
+                        <label class="pl-2 pt-2"><small>País</small></label><br>
                         <input type="text" value="<?=$row['pais_nac']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Estado</label><br>
+                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
                         <input type="text" value="<?=$row['estado_nac']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Ciudad</label><br>
+                        <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
                         <input type="text" value="<?=$row['ciudad_nac']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Municipio</label><br>
+                        <label class="pl-2 pt-2"><small>Municipio</small></label><br>
                         <input type="text" value="<?=$row['municipio_nac']?>" class="form-control" disabled>
                       </div>
                     </div>
@@ -298,22 +297,35 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
 
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Estado</label><br>
+                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
                         <input type="text" value="<?=$row['estado']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Ciudad</label><br>
+                        <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
                         <input type="text" value="<?=$row['ciudad']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Municipio</label><br>
+                        <label class="pl-2 pt-2"><small>Municipio</small></label><br>
                         <input type="text" value="<?=$row['municipio']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Zona postal</label><br>
+                        <label class="pl-2 pt-2"><small>Zona postal</small></label><br>
                         <input type="text" value="<?=$row['postal']?>" class="form-control" disabled>
                       </div>
+                      <div class="col-sm-12 col-md-6 col-xl-4">
+                        <label class="pl-2 pt-2"><small>Urbanizacion</small></label><br>
+                        <input type="text" value="<?=$row['urbanizacion']?>" class="form-control" disabled>
+                      </div>
+                      <div class="col-sm-12 col-md-6 col-xl-4">
+                        <label class="pl-2 pt-2"><small>Apartamento o casa</small></label><br>
+                        <input type="text" value="<?=$row['aptcasa']?>" class="form-control" disabled>
+                      </div>
+                      <div class="col-sm-12 col-md-12 col-xl-4">
+                        <label class="pl-2 pt-2"><small>Calle</small></label><br>
+                        <input type="text" value="<?=$row['calle']?>" class="form-control" disabled>
+                      </div>
                     </div>
+
 
                     <br>
                     <div class="text-center">
@@ -323,19 +335,19 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
 
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Estado</label><br>
+                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
                         <input type="text" value="<?=$row['estado_trabajo']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Ciudad</label><br>
+                        <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
                         <input type="text" value="<?=$row['ciudad_trabajo']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Municipio</label><br>
+                        <label class="pl-2 pt-2"><small>Municipio</small></label><br>
                         <input type="text" value="<?=$row['municipio_trabajo']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Zona postal</label><br>
+                        <label class="pl-2 pt-2"><small>Zona postal</small></label><br>
                         <input type="text" value="<?=$row['postal_trabajo']?>" class="form-control" disabled>
                       </div>
                     </div>
@@ -348,19 +360,19 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
 
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Nombre y apellido</label><br>
+                        <label class="pl-2 pt-2"><small>Nombre y apellido</small></label><br>
                         <input type="text" value="<?=$row['parientename']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Parentesco</label><br>
+                        <label class="pl-2 pt-2"><small>Parentesco</small></label><br>
                         <input type="text" value="<?=$row['parentesco']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Teléfono local</label><br>
+                        <label class="pl-2 pt-2"><small>Teléfono local</small></label><br>
                         <input type="text" value="<?=$row['num_habitacion_pariente']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2">Teléfono móvil</label><br>
+                        <label class="pl-2 pt-2"><small>Teléfono móvil</small></label><br>
                         <input type="text" value="<?=$row['num_movil_pariente']?>" class="form-control" disabled>
                       </div>
                     </div>
@@ -373,23 +385,23 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
 
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-12 col-lg-8">
-                        <label class="pl-2 pt-2">Nombre de la institución (no abreviar)</label><br>
+                        <label class="pl-2 pt-2"><small>Nombre de la institución (no abreviar)</small></label><br>
                         <input type="text" value="<?=$row['nombreInst']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2">Año de egreso</label><br>
+                        <label class="pl-2 pt-2"><small>Año de egreso</small></label><br>
                         <input type="text" value="<?=$row['anoEgreso']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2">Código de la institución</label><br>
+                        <label class="pl-2 pt-2"><small>Código de la institución</small></label><br>
                         <input type="text" value="<?=$row['codigoInst']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2">Estado</label><br>
+                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
                         <input type="text" value="<?=$row['estadoInst']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2">Tipo de institución</label><br>
+                        <label class="pl-2 pt-2"><small>Tipo de institución</small></label><br>
                         <input type="text" value="<?=$tipoInst?>" class="form-control" disabled>
                       </div>
                     </div>
@@ -402,15 +414,15 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
 
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2">Carrera</label><br>
-                        <input type="text" value="<?=$row['carreraname']?>" class="form-control" disabled>
+                        <label class="pl-2 pt-2"><small>Carrera</small></label><br>
+                        <input type="text" value="<?=$row['carrera']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2">Turno</label><br>
+                        <label class="pl-2 pt-2"><small>Turno</small></label><br>
                         <input type="text" value="<?=$turno?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-lg-4">
-                        <label class="pl-2 pt-2">Método de ingreso</label><br>
+                        <label class="pl-2 pt-2"><small>Método de ingreso</small></label><br>
                         <input type="text" value="<?=$row['nombre_solicitud']?>" class="form-control" disabled>
                       </div>
                     </div>
@@ -515,7 +527,7 @@ if ($row['foto'] != '') {
                           <div class="col-2"><i
                               class="fas fa-<?php echo ($row['check_cedula'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
                           </div>
-                          <div class="col-10 text-justify">Cedula</div>
+                          <div class="col-10 text-justify">Cédula</div>
                         </h5>
                       </div>
 
@@ -752,7 +764,7 @@ if ($row['partida'] != '') {
                           <div class="col-2"><i
                               class="fas fa-<?php echo ($row['check_metodo'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
                           </div>
-                          <div class="col-10 text-justify">Metodo de ingreso:
+                          <div class="col-10 text-justify">Método de ingreso:
                             <small><?=$row['nombre_solicitud']?></small>
                           </div>
                         </h5>
