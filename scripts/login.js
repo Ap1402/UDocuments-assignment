@@ -30,13 +30,15 @@ function ejecutarAjaxLog(event){
         encode: true,
         cache: false,
         contentType: false,
-        processData: false
+        processData: false,
+        dataType : 'json'
+
     })
     .done(function(echo){
         if(echo==1){
             $(location).attr('href','page-dashboard.php');
         }else{
-            
+
         }
     });
 

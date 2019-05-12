@@ -30,7 +30,9 @@ $(document).ready(function () {
                 encode: true,
                 cache: false,
                 contentType: false,
-                processData: false
+                processData: false,
+                dataType : 'json',
+
             })
             .done(function(echo){
                 console.log(echo);

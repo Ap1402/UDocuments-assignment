@@ -66,7 +66,7 @@
 
 									<form id="crearAdmin" method="POST" class="user needs-validation" novalidate>
 
-										<div class="alert alert-success" role="alert" id="exito" hidden></div>
+										<div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
 
 										<div class="form-group row">
 											<div class="col-sm-6">
@@ -128,7 +128,6 @@
 										<div class="form-group">
                       <label class="pl-2"><small>Rol</small></label><br>
                       <select id="rol_admin" name="rol_admin" class="form-control">
-                        <option disabled selected value="">Rol</option>
                         <option value="1">Personal</option>
                         <option value="2">Asistente</option>
                         <option value="3">Administrador</option>
