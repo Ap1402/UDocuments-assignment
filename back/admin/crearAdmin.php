@@ -21,7 +21,7 @@ if ($check >0) {
 }
 
 
-    $crearUser = "INSERT INTO administradores (usuario, contrasena, nombre, rol) VALUES('$usuario','$contrasena','$nombre','$rol')";
+    $crearUser = "INSERT INTO administradores (usuario, contrasena, nombre, rol, estatus) VALUES('$usuario','$contrasena','$nombre','$rol','1')";
     $result = mysqli_query($conexion, $crearUser);
 
     return print_r(json_encode(['message'=>'Usuario registrado correctamente', 'exito'=> TRUE]));

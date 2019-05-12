@@ -97,8 +97,9 @@ switch ($rol_admin) {
               <div class="card-body">
                 <div class="p-4">
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
-
+                  
+                    <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
+<input name="adminId" id="adminId" value="<?php echo $id_admin ?>" hidden>
                     <div class="form-group">
                       <label class="pl-2"><small>Nombre</small></label><br>
                       <input type="text" id="nombre" name="nombre" class="form-control form-control-user"
@@ -108,6 +109,14 @@ switch ($rol_admin) {
                         Por favor introduzca un nombre válido.
                       </div>
                     </div>
+                    <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input"
+                  id="botonMostrarContrasena">
+                <label class="custom-control-label" for="botonMostrarContrasena">
+                  <h5 class="text-gray-900 text-justify pl-4">Modificar Contraseña</h5>
+                </label>
+              </div>
+                    <div id="contrasenaMostrar" style="display: none;">
                     <div class="form-group">
                       <label class="pl-2"><small>Contraseña</small></label><br>
                       <div class="input-group">
@@ -140,11 +149,12 @@ switch ($rol_admin) {
                         Su contraseña debe tener al menos 4 caracteres.
                       </div>
                     </div>
+                    </div>
                     <?php if ($rol >= 3 && isset($_GET['id_admin'])) {?>
                     <div class="form-group">
                       <label class="pl-2"><small>Rol</small></label><br>
                       <select id="rol_admin" name="rol_admin" class="form-control">
-                        <option disabled selected value="<?php echo $rol_admin ?>"><?php echo $rol_admin_name ?></option>
+                        <option  selected value="<?php echo $rol_admin ?>"><?php echo $rol_admin_name ?></option>
                         <option value="1">Personal</option>
                         <option value="2">Asistente</option>
                         <option value="3">Administrador</option>
@@ -152,7 +162,19 @@ switch ($rol_admin) {
                     </div>
                     <?php };?>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
+
+                    <?php if ($rol >= 3 && isset($_GET['id_admin'])) {?>
+                    <div class="form-group">
+                      <label class="pl-2"><small>Estado</small></label><br>
+                      <select id="estatus" name="estatus" class="form-control">
+                        <option  selected value="<?php echo $estatus ?>"><?php echo (($estatus==1)?'Activo':'Inactivo') ?></option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                      </select>
+                    </div>
+                    <?php };?>
+
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
                     </div>
                     <br>
 
@@ -199,6 +221,8 @@ switch ($rol_admin) {
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="scripts/editAdmin.js"></script>
+
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
@@ -220,7 +244,23 @@ switch ($rol_admin) {
       }
     }
   </script>
+<script type="text/javascript">
 
+$("#botonMostrarContrasena").click(function() {  
+        if($("#botonMostrarContrasena").is(':checked')) {  
+            $('#contrasenaMostrar').show();
+            $('#contrasena').val('');
+            $('#contrasena2').val('');
+
+        } else {  
+          $('#contrasenaMostrar').hide();
+          $('#contrasena').val('');
+            $('#contrasena2').val('');
+
+        }  
+    });  
+  
+</script>
 
 </body>
 
