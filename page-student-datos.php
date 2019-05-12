@@ -81,8 +81,9 @@
                       <div class="col-sm-6 pt-1">
                         <label class="pl-2"><small>Fecha nacimiento</small></label><br>
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
-                          class="form-control form-control-user" placeholder="Fecha nacimiento" min="1930-07-22"
-                          max="<?php echo date('Y-m-d'); ?>" required>
+                          class="form-control" placeholder="Fecha nacimiento"
+                          min="<?php echo date('Y-m-d', strtotime('-150 year')) ?>"
+                          max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un fecha de nacimiento válido.
                         </div>
@@ -91,24 +92,24 @@
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
                         <label class="pl-2"><small>Teléfono de habitación</small></label><br>
-                        <input type="number" id="habitacion" name="habitacion" class="form-control form-control-user"
-                          placeholder="Teléfono de habitación" min="2400000000">
+                        <input type="number" id="habitacion" name="habitacion" class="form-control"
+                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,}">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de habitación válido.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
-                        <input type="number" id="movil" name="movil" class="form-control form-control-user"
-                          placeholder="Teléfono móvil" min="4100000000" required>
+                        <input type="number" id="movil" name="movil" class="form-control"
+                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
                         <label class="pl-2"><small>Teléfono de trabajo</small></label><br>
-                        <input type="number" id="trabajo" name="trabajo" class="form-control form-control-user"
-                          placeholder="Teléfono de trabajo" min="2400000000">
+                        <input type="number" id="trabajo" name="trabajo" class="form-control"
+                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,}">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de trabajo válido.
                         </div>
@@ -321,16 +322,16 @@
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
                         <label class="pl-2"><small>Teléfono local</small></label><br>
-                        <input type="number" id="e_local" name="e_local" class="form-control form-control-user"
-                          placeholder="Teléfono local" min="2400000000">
+                        <input type="number" id="e_local" name="e_local" class="form-control"
+                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,}">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de local válido.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
-                        <input type="number" id="e_movil" name="e_movil" class="form-control form-control-user"
-                          placeholder="Teléfono móvil" min="4100000000" required>
+                        <input type="number" id="e_movil" name="e_movil" class="form-control"
+                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
                         </div>
@@ -362,7 +363,7 @@
                       <div class="col-sm-6 pt-1">
                         <label class="pl-2"><small>Año de egreso</small></label><br>
                         <input type="number" id="i_egreso" name="i_egreso" class="form-control"
-                          placeholder="Año de egreso" minlength="1930" max="<?php echo date('Y') ?>" required>
+                          placeholder="Año de egreso" min="1930" pattern="\d*.{4,4}" max="<?php echo date('Y') ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un año de egreso válido.
                         </div>

@@ -23,7 +23,8 @@
 input[type=number],
 input[type=text],
 input[type=email],
-input[type=search] {
+input[type=search],
+input[type=date] {
  border: 1px solid #d1d3e2;
  background-color: #ffffff;
  font-size: 0.8rem;
@@ -38,6 +39,7 @@ input[type=number]::placeholder,
 input[type=text]::placeholder,
 input[type=email]::placeholder,
 input[type=search]::placeholder,
+input[type=date]::placeholder,
 input[type=password]::placeholder {
  color: rgba(0, 0, 0, 0.5);
 }
@@ -46,6 +48,7 @@ input[type=number]:disabled,
 input[type=text]:disabled,
 input[type=email]:disabled,
 input[type=search]:disabled,
+input[type=date]:disabled,
 input[type=password]:disabled {
  background-color: rgba(240, 240, 240, 0.5);
  color: rgba(0, 0, 0, .8);
