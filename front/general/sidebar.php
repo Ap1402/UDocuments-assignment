@@ -211,6 +211,20 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
       <span>Registrar Admin</span></a>
   </li>
 
+  <!-- Nav Item - Edit Solicitudes -->
+  <li class="nav-item">
+    <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitud.php">
+      <i class="fas fa-vote-yea"></i>
+      <span>Editar solicitudes</span></a>
+  </li>
+
+  <!-- Nav Item - Editar Turnos / Carreras -->
+  <li class="nav-item">
+    <a id="sdEditCarAdmin" class="nav-link" href="page-admin-edit-carrera.php">
+      <i class="fas fa-list-alt"></i>
+      <span>Editar carreras</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider">
 

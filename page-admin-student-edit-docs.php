@@ -228,6 +228,7 @@ if ($porcentaje == 100) {
               </div>
             </div>
           </div>
+<!-- Modal de advertencia de cambios -->
           <div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -251,6 +252,7 @@ if ($porcentaje == 100) {
               </div>
             </div>
           </div>
+<!-- /.Modal de advertencia de cambios -->
           <!-- /.Formulario Editar Documentos -->
 
         </div>
