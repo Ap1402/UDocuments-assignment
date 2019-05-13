@@ -85,7 +85,7 @@ var arrayData = <?=json_encode($reg_meses)?>;
  <div class="card shadow mb-4">
   <!-- Card Header - Dropdown -->
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-   <h6 class="m-0 font-weight-bold text-primary">Registros de alumnos <small>(ultimos 12 meses)</small></h6>
+   <h6 class="m-0 font-weight-bold text-primary">Registros de alumnos <small>(ultimos 6 meses)</small></h6>
    <div class="dropdown no-arrow">
     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
      aria-expanded="false">

@@ -2,7 +2,8 @@
 
 $array_carreras = [];
 $reg_carreras = [];
-$var_mes = 12;
+$name_carreras = [];
+$var_mes = 6;
 
 $dt_mesAntes = date('Y-m-d', strtotime('-' . ($var_mes) . ' month')); // resto var_mes mes
 $dt_mesAux = explode("-", $dt_mesAntes);
@@ -19,6 +20,7 @@ $result_cerreraa = mysqli_query($conexion, $sql_cerreraa);
 if ($result_cerreraa->num_rows > 0) {
     while ($row_cerreraa = mysqli_fetch_assoc($result_cerreraa)) {
       array_push($array_carreras, $row_cerreraa['codigo']);
+      array_push($name_carreras, $row_cerreraa['nombre']);
   };
 };
 
@@ -45,15 +47,22 @@ foreach ($array_carreras as $key => $value) {
     <!-- Project Card Facultades -->
      <div class="card shadow mb-4">
        <div class="card-header py-3">
-         <h6 class="m-0 font-weight-bold text-primary">Registro por carreras <small>(ultimos 12 meses)</small></h6>
+         <h6 class="m-0 font-weight-bold text-primary">Registro por carreras <small>(ultimos 6 meses)</small></h6>
        </div>
        <div class="card-body">
          <div class="chart-bar">
            <canvas id="myBarChart"></canvas>
          </div>
          <hr>
-         Leyenda las barras
-         1: ING COMPUTACION 2: ING ELECTRICA ..........
+         <div class="text-justufy">
+
+         <?php foreach ($name_carreras as $key => $value) { ?>
+
+          <label class="text-xs text-uppercase px-2"><?='<b>'.$array_carreras[$key].'</b>: '.$value?></label>
+
+          <?php }; ?>
+
+         </div>
        </div>
      </div>  
     <!-- Project Card Facultades -->

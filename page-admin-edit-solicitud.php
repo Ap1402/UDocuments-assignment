@@ -96,7 +96,7 @@
                     <?php
                       include 'back/conexion.php';
 
-                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, alumnos.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion, id_admin, usuario FROM alumnos
+                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion, id_admin, usuario FROM alumnos
                               INNER JOIN solicitudes ON alumnos.id_alumno = solicitudes.alumno
                               LEFT JOIN administradores ON administradores.id_admin = solicitudes.personalAtencion
                               LEFT JOIN tipo_solicitud ON tipo_solicitud.tipo = solicitudes.tipo";
