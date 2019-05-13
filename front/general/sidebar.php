@@ -150,7 +150,7 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
   <li class="nav-item">
     <a id="sdsolicitud" class="nav-link" href="page-admin-student-solicitud.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">
       <i class="fas fa-vote-yea"></i>
-      <span>Solicitud</span></a>
+      <span>Crear Solicitud</span></a>
   </li>
 
 
@@ -269,7 +269,7 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
   <li class="nav-item">
     <a id="sdstudentSolicitud" class="nav-link" href="page-student-solicitud.php">
       <i class="fas fa-vote-yea"></i>
-      <span>Solicitud</span></a>
+      <span>Crear Solicitud</span></a>
   </li>
 
   <!-- Nav Item - Edicion Datos/Documentos -->

@@ -62,8 +62,7 @@
               <div class="card-body">
                 <div class="p-4">
                   <form id="solicitudForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
-
+                  <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
                          <label class="pl-2"><small>Carrera</small></label><br>
@@ -129,7 +128,7 @@
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
                     </div>
                     <br>
 
@@ -190,7 +189,6 @@
         var codigo = $("#carrera").val();
         var nuevasopciones = "";
 
-        console.log(carreras[codigo - 1]);
 
         if (carreras[codigo - 1]["manana"] == 1) {
           nuevasopciones += "<option value='1'>Mañana</option>";
@@ -206,7 +204,7 @@
       });
     });
   </script>
-
+<script src="scripts/estudianteSolicitud.js"> </script>
 </body>
 
 </html>

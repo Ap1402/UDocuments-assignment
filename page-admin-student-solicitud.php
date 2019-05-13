@@ -62,7 +62,7 @@
               <div class="card-body">
                 <div class="p-4">
                   <form id="solicitudForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
+                    <div class="alert alert-success" role="alert" id="exito" style="display:none;"></div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
@@ -129,10 +129,12 @@
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display:none;">
                     </div>
                     <br>
-
+                    <?php if (isset($_GET['ida'])){ ?>
+                    <input name="idEstudiante" id="idEstudiante" value="<?php echo $_GET['ida'] ?>" hidden>
+                    <?php } ?>
                     <button id="enviarSol" type="submit" class="btn btn-primary btn-user btn-block">
                       Guardar
                     </button>
@@ -179,6 +181,7 @@
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
+  <script src="scripts/estudianteSolicitud.js"> </script>
 
   <script>
     $(document).ready(function () {

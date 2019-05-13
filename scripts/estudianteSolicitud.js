@@ -1,40 +1,38 @@
 $(document).ready(function () {
 
-    // $('#datosForm').on('submit',ejecutarAjaxLog);
-
-    // ----------------- Form Validation -------------------
-
-    'use strict';
-
-    $('#datosEditForm')[0].addEventListener('submit', function (event) {
-        if ($('#datosEditForm')[0].checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            ejecutarAjaxLog(event);
-        }
-        $('#datosEditForm')[0].classList.add('was-validated');
-    }, false);
-
-    // ----------------- /Form Validation -------------------
-
+    // $('#loginForm').on('submit',ejecutarAjaxLog);
+    
+        // ----------------- Form Validation -------------------
+    
+        'use strict';
+    
+        $('#solicitudForm')[0].addEventListener('submit', function (event) {
+            if ($('#solicitudForm')[0].checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                ejecutarAjaxLog(event);
+            }
+            $('#solicitudForm')[0].classList.add('was-validated');
+        }, false);
+    
+        // ----------------- /Form Validation -------------------
     
     
     function ejecutarAjaxLog(event){
     
-        var formData = new FormData(document.getElementById("datosEditForm"));
-
+        var formData = new FormData(document.getElementById("solicitudForm"));
     
         $.ajax({
             type: 'POST',
-            url : './back/estudiante/datosGuardarEdit.php',
+            url : './back/estudiante/crearSolicitud.php',
             data :formData,
             encode: true,
             cache: false,
             contentType: false,
             processData: false,
             dataType : 'json'
-
+    
         })
         .done(function(datosRecibidos){
             if(!datosRecibidos.exito){
@@ -55,4 +53,4 @@ $(document).ready(function () {
     
         event.preventDefault();
     };
-});
+    });
