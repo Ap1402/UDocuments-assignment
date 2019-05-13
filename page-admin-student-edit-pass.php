@@ -104,7 +104,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="input-group">
                         <input type="password" id="contrasena" name="contrasena" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Contraseña" value="<?php echo $contrasena ?>"
+                          data-placement="top" title="Contraseña" value=""
                           <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
@@ -122,7 +122,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="input-group">
                         <input type="password" id="contrasena2" name="contrasena2" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Repetir contraseña" value="<?php echo $contrasena ?>"
+                          data-placement="top" title="Repetir contraseña" value=""
                           <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
                         <div class="input-group-append">
                           <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">

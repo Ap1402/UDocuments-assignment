@@ -97,64 +97,71 @@ switch ($rol_admin) {
               <div class="card-body">
                 <div class="p-4">
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
-                  
+
                     <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
-<input name="adminId" id="adminId" value="<?php echo $id_admin ?>" hidden>
+                    <input name="adminId" id="adminId" value="<?php echo $id_admin ?>" hidden>
                     <div class="form-group">
                       <label class="pl-2"><small>Nombre</small></label><br>
                       <input type="text" id="nombre" name="nombre" class="form-control form-control-user"
-                        placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" value="<?php echo $nombre ?>"
-                        required>
+                        placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
+                        value="<?php echo $nombre ?>" required>
                       <div class="invalid-feedback">
                         Por favor introduzca un nombre válido.
                       </div>
                     </div>
-                    <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input"
-                  id="botonMostrarContrasena">
-                <label class="custom-control-label" for="botonMostrarContrasena">
-                  <h5 class="text-gray-900 text-justify pl-4">Modificar Contraseña</h5>
-                </label>
-              </div>
+                    <div class="form-group row pt-2">
+                      <div class="col-10">
+                        <label for="botonMostrarContrasena">
+                          <h5 class="text-gray-900 pl-2">Modificar Contraseña</h5>
+                        </label>
+                      </div>
+                      <div class="col-2 text-center">
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="botonMostrarContrasena">
+                          <label class="custom-control-label" for="botonMostrarContrasena">
+                          </label>
+                        </div>
+                      </div>
+                    </div>
                     <div id="contrasenaMostrar" style="display: none;">
-                    <div class="form-group">
-                      <label class="pl-2"><small>Contraseña</small></label><br>
-                      <div class="input-group">
-                        <input type="password" id="contrasena" name="contrasena" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Contraseña" value="">
-                        <div class="input-group-append">
-                          <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                            <i id="showpass" class="fas fa-eye-slash"></i>
-                          </a>
+                      <div class="form-group">
+                        <label class="pl-2"><small>Contraseña</small></label><br>
+                        <div class="input-group">
+                          <input type="password" id="contrasena" name="contrasena" minlength="4"
+                            class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                            data-placement="top" title="Contraseña" value="">
+                          <div class="input-group-append">
+                            <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                              <i id="showpass" class="fas fa-eye-slash"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="invalid-feedback">
+                          Su contraseña debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="invalid-feedback">
-                        Su contraseña debe tener al menos 4 caracteres.
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="pl-2"><small>Repetir contraseña</small></label><br>
-                      <div class="input-group">
-                        <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Repetir contraseña" value="">
-                        <div class="input-group-append">
-                          <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                            <i id="showpass2" class="fas fa-eye-slash"></i>
-                          </a>
+                      <div class="form-group">
+                        <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                        <div class="input-group">
+                          <input type="password" id="contrasena2" name="contrasena2" minlength="4"
+                            class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                            data-placement="top" title="Repetir contraseña" value="">
+                          <div class="input-group-append">
+                            <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                              <i id="showpass2" class="fas fa-eye-slash"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="invalid-feedback">
+                          Su contraseña debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="invalid-feedback">
-                        Su contraseña debe tener al menos 4 caracteres.
-                      </div>
-                    </div>
                     </div>
                     <?php if ($rol >= 3 && isset($_GET['id_admin'])) {?>
                     <div class="form-group">
                       <label class="pl-2"><small>Rol</small></label><br>
                       <select id="rol_admin" name="rol_admin" class="form-control">
-                        <option  selected value="<?php echo $rol_admin ?>"><?php echo $rol_admin_name ?></option>
+                        <option selected value="<?php echo $rol_admin ?>"><?php echo $rol_admin_name ?></option>
                         <option value="1">Personal</option>
                         <option value="2">Asistente</option>
                         <option value="3">Administrador</option>
@@ -167,7 +174,8 @@ switch ($rol_admin) {
                     <div class="form-group">
                       <label class="pl-2"><small>Estado</small></label><br>
                       <select id="estatus" name="estatus" class="form-control">
-                        <option  selected value="<?php echo $estatus ?>"><?php echo (($estatus==1)?'Activo':'Inactivo') ?></option>
+                        <option selected value="<?php echo $estatus ?>">
+                          <?php echo (($estatus==1)?'Activo':'Inactivo') ?></option>
                         <option value="1">Activo</option>
                         <option value="0">Inactivo</option>
                       </select>
@@ -244,23 +252,21 @@ switch ($rol_admin) {
       }
     }
   </script>
-<script type="text/javascript">
+  <script type="text/javascript">
+    $("#botonMostrarContrasena").click(function () {
+      if ($("#botonMostrarContrasena").is(':checked')) {
+        $('#contrasenaMostrar').show();
+        $('#contrasena').val('');
+        $('#contrasena2').val('');
 
-$("#botonMostrarContrasena").click(function() {  
-        if($("#botonMostrarContrasena").is(':checked')) {  
-            $('#contrasenaMostrar').show();
-            $('#contrasena').val('');
-            $('#contrasena2').val('');
+      } else {
+        $('#contrasenaMostrar').hide();
+        $('#contrasena').val('');
+        $('#contrasena2').val('');
 
-        } else {  
-          $('#contrasenaMostrar').hide();
-          $('#contrasena').val('');
-            $('#contrasena2').val('');
-
-        }  
-    });  
-  
-</script>
+      }
+    });
+  </script>
 
 </body>
 

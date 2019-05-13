@@ -230,7 +230,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <label class="pl-2"><small>Estado civil</small></label><br>
                         <select id="estado_civil" name="estado_civil" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Estado civil" required>
-                          <option  selected value="<?php echo $estado_civild ?>">
+                          <option selected value="<?php echo $estado_civild ?>">
                             <?php echo $estado_civil_name ?>
                           </option>
                           <option value="1">Casado</option>
@@ -242,9 +242,11 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Fecha de nacimiento</small></label><br>
-                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
-                          class="form-control" data-toggle="tooltip" data-placement="top"
-                          title="Fecha de nacimiento" value="<?php echo $fecha_nacimiento ?>" min="<?php echo date('Y-m-d', strtotime('-150 year')) ?>" max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>"
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control"
+                          data-toggle="tooltip" data-placement="top" title="Fecha de nacimiento"
+                          value="<?php echo $fecha_nacimiento ?>"
+                          min="<?php echo date('Y-m-d', strtotime('-150 year')) ?>"
+                          max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un fecha de nacimiento válido.
@@ -255,16 +257,17 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono habitación</small></label><br>
                         <input type="number" id="habitacion" name="habitacion" class="form-control"
-                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,}" data-toggle="tooltip" data-placement="top"
-                          title="Teléfono de habitación" value="<?php echo $habitacion ?>">
+                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,}"
+                          data-toggle="tooltip" data-placement="top" title="Teléfono de habitación"
+                          value="<?php echo $habitacion ?>">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de habitación válido.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
-                        <input type="number" id="movil" name="movil" class="form-control"
-                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" data-toggle="tooltip" data-placement="top"
+                        <input type="number" id="movil" name="movil" class="form-control" placeholder="Teléfono móvil"
+                          min="4100000000" pattern="\d*.{11,}" data-toggle="tooltip" data-placement="top"
                           title="Teléfono móvil" value="<?php echo $movil ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
@@ -273,8 +276,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col my-auto pt-3">
                         <label class="pl-2"><small>Teléfono trabajo</small></label><br>
                         <input type="number" id="trabajo" name="trabajo" class="form-control"
-                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,}" data-toggle="tooltip" data-placement="top"
-                          title="Teléfono de trabajo" value="<?php echo $trabajo ?>">
+                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,}" data-toggle="tooltip"
+                          data-placement="top" title="Teléfono de trabajo" value="<?php echo $trabajo ?>">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de trabajo válido.
                         </div>
@@ -282,9 +285,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                     </div>
 
                     <!-- DISCAPACIDAD ---->
-              <?php if($discapacidad!='0'){ ?>
+                    <?php if($discapacidad!='0'){ ?>
                     <br>
-      
+
                     <div class="text-center">
                       <h5 class="text-gray-900 mb-4">Discapacidad</h5>
                     </div>
@@ -300,7 +303,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         </div>
                       </div>
                     </div>
-              <?php } ?>
+                    <?php } ?>
                     <br>
                     <div class="text-center">
                       <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>
@@ -510,8 +513,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono local</small></label><br>
                         <input type="number" id="e_local" name="e_local" class="form-control"
-                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,}" data-toggle="tooltip" data-placement="top"
-                          title="Teléfono de local" value="<?php echo $e_local ?>">
+                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,}" data-toggle="tooltip"
+                          data-placement="top" title="Teléfono de local" value="<?php echo $e_local ?>">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono local válido.
                         </div>
@@ -519,8 +522,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="e_movil" name="e_movil" class="form-control"
-                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" data-toggle="tooltip" data-placement="top"
-                          title="Teléfono móvil" value="<?php echo $e_movil ?>" required>
+                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" data-toggle="tooltip"
+                          data-placement="top" title="Teléfono móvil" value="<?php echo $e_movil ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
                         </div>
@@ -557,8 +560,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Año de egreso</small></label><br>
                         <input type="number" id="i_egreso" name="i_egreso" class="form-control"
-                          placeholder="Año de egreso" min="1930" max="<?php echo date('Y') ?>" pattern="\d*.{4,4}" data-toggle="tooltip"
-                          data-placement="top" title="Año de egreso" value="<?php echo $i_egreso ?>"
+                          placeholder="Año de egreso" min="1930" max="<?php echo date('Y') ?>" pattern="\d*.{4,4}"
+                          data-toggle="tooltip" data-placement="top" title="Año de egreso"
+                          value="<?php echo $i_egreso ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un año de egreso válido.
@@ -593,7 +597,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <select id="tipo_inst" name="tipo_inst" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Tipo de institución"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option  selected value="<?php echo $tipo_inst ?>"><?php echo $tipo_inst_name ?>
+                          <option selected value="<?php echo $tipo_inst ?>"><?php echo $tipo_inst_name ?>
                           </option>
                           <option value="1">Privada</option>
                           <option value="2">Pública</option>
@@ -603,7 +607,6 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
                     <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
 
-                    </div>
                     <br>
 
                     <button id="editDat" type="submit" class="btn btn-primary btn-user btn-block">
