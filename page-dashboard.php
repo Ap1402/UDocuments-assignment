@@ -50,13 +50,12 @@
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-content" class="container-fluid">
 
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+         <!-- Título de página -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i>
-              Generate Report</a>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-chart-bar fa-2x text-gray-300"></i></a>
           </div>
+          <!-- /.Título de página -->
 
           <!-- Content Row -->
           <div id="card-info" class="row">
@@ -136,37 +135,37 @@ $row_reinc = mysqli_fetch_assoc($result_reinc);
 $reinc = $row_reinc['COUNT(*)'];
 
 if ($total && $intro){
-  $p_intro = ($intro/$total)*100;
+  $p_intro = round(($intro/$total)*100, 0, PHP_ROUND_HALF_UP);
 }else{
   $p_intro = 0;
 }
 
 if ($total && $basic){
-$p_basic = ($basic/$total)*100;
+$p_basic = round(($basic/$total)*100, 0, PHP_ROUND_HALF_UP);
 }else{
-$p_basic = 0;
+$p_basic = 0; 
 }
 
 if ($total && $admis){
-$p_admis = ($admis/$total)*100;
+$p_admis = round(($admis/$total)*100, 0, PHP_ROUND_HALF_UP);
 }else{
 $p_admis = 0;
 }
 
 if ($total && $direc){
-$p_direc = ($direc/$total)*100;
+$p_direc = round(($direc/$total)*100, 0, PHP_ROUND_HALF_UP);
 }else{
 $p_direc = 0;
 }
 
 if ($total && $equiv){
-$p_equiv = ($equiv/$total)*100;
+$p_equiv = round(($equiv/$total)*100, 0, PHP_ROUND_HALF_UP);
 }else{
 $p_equiv = 0;
 }
 
 if ($total && $reinc){
-$p_reinc = ($reinc/$total)*100;
+$p_reinc = round(($reinc/$total)*100, 0, PHP_ROUND_HALF_UP);
 }else{
 $p_reinc = 0;
 }

@@ -109,12 +109,50 @@ var arrayData = <?=json_encode($reg_meses)?>;
  </div>
 </div>
 
+<?php
+
+$array_pendientes = [];
+
+$sql_pendientes_100 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje = 100) AND (estatus=1)";
+
+$result_pendientes_100 = mysqli_query($conexion, $sql_pendientes_100);
+$row_pendientes_100 = mysqli_fetch_assoc($result_pendientes_100);
+$alumnos_pendientes_100 = $row_pendientes_100['COUNT(*)'];
+array_push($array_pendientes, $alumnos_pendientes_100);
+
+$sql_pendientes_60 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje >= 50) AND (porcentaje < 100) AND (estatus=1)";
+
+$result_pendientes_60 = mysqli_query($conexion, $sql_pendientes_60);
+$row_pendientes_60 = mysqli_fetch_assoc($result_pendientes_60);
+$alumnos_pendientes_60 = $row_pendientes_60['COUNT(*)'];
+array_push($array_pendientes, $alumnos_pendientes_60);
+
+$sql_pendientes_50 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje > 0) AND (porcentaje < 50) AND (estatus=1)";
+
+$result_pendientes_50 = mysqli_query($conexion, $sql_pendientes_50);
+$row_pendientes_50 = mysqli_fetch_assoc($result_pendientes_50);
+$alumnos_pendientes_50 = $row_pendientes_50['COUNT(*)'];
+array_push($array_pendientes, $alumnos_pendientes_50);
+
+$sql_pendientes_0 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje = 0) AND (estatus=1)";
+
+$result_pendientes_0 = mysqli_query($conexion, $sql_pendientes_0);
+$row_pendientes_0 = mysqli_fetch_assoc($result_pendientes_0);
+$alumnos_pendientes_0 = $row_pendientes_0['COUNT(*)'];
+array_push($array_pendientes, $alumnos_pendientes_0);
+
+?>
+
+<script>
+var arrayDataPendientes = <?=json_encode($array_pendientes)?>;
+</script>
+
 <!-- Pie Chart -->
 <div id="pie-chart" class="col-xl-4 col-lg-5">
  <div class="card shadow mb-4">
   <!-- Card Header - Dropdown -->
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-   <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+   <h6 class="m-0 font-weight-bold text-primary">Record de documentos cargados</h6>
    <div class="dropdown no-arrow">
     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
      aria-expanded="false">
@@ -136,13 +174,16 @@ var arrayData = <?=json_encode($reg_meses)?>;
    </div>
    <div class="mt-4 text-center small">
     <span class="mr-2">
-     <i class="fas fa-circle text-primary"></i> Direct
+     <i class="fas fa-circle text-success"></i> 100%
     </span>
     <span class="mr-2">
-     <i class="fas fa-circle text-success"></i> Social
+     <i class="fas fa-circle text-info"></i> Más 50%
     </span>
     <span class="mr-2">
-     <i class="fas fa-circle text-info"></i> Referral
+     <i class="fas fa-circle text-warning"></i> Menos 50%
+    </span>
+    <span class="mr-2">
+     <i class="fas fa-circle text-danger"></i> 0%
     </span>
    </div>
   </div>
