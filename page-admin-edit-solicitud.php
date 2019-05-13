@@ -68,6 +68,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>Cédula</th>
                       <th>Alumno</th>
                       <th>Fecha de creacion</th>
                       <th>Estado de solicitud</th>
@@ -80,6 +81,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>Cédula</th>
                       <th>Alumno</th>
                       <th>Fecha de creacion</th>
                       <th>Estado de solicitud</th>
@@ -94,41 +96,61 @@
                     <?php
                       include 'back/conexion.php';
 
-                      $sql = "SELECT * FROM solicitudes";
+                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, alumnos.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion, id_admin, usuario FROM alumnos
+                              INNER JOIN solicitudes ON alumnos.id_alumno = solicitudes.alumno
+                              LEFT JOIN administradores ON administradores.id_admin = solicitudes.personalAtencion
+                              LEFT JOIN tipo_solicitud ON tipo_solicitud.tipo = solicitudes.tipo";
 
                       $result = mysqli_query($conexion, $sql);
                       if ($result->num_rows > 0) {
                           while ($row = mysqli_fetch_assoc($result)) {
                     ?>
 
-                    <tr id="solicitudA-<?=$row['codigo']?>">
+                    <tr id="solicitudA-<?=$row['id_solicitud']?>">
                       
-                      <td><?=$row['alumno']?></td>
+                      <td><?=$row['cedula']?></td>
+                      <td><?=$row['p_nombre'].' '.$row['p_apellido']?></td>
                       <td><?=$row['fechaCreacion']?></td>
 
                       <td>
 
                         <?php if ($row['estadoSolicitud'] == 0) {?>
 
-                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
+                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="false" data-id="<?=$row['id_solicitud']?>"
                             data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Pendiente</a></small>
 
                         <?php } elseif ($row['estadoSolicitud'] == 1) {?>
 
-                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
+                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="true" data-id="<?=$row['id_solicitud']?>"
                             data-role="update"><i class="fas fa-check-circle text-success"></i> Atendida</a></small>
 
                         <?php }?>
 
                       </td>
 
-
-                      <td><?=$row['fechaAtencion']?></td>
-                      <td><?=$row['fechaCreacion']?></td>
-                      <td><?=$row['tipo']?></td>
+                      <td><?=$row['fechaAtencion']?></td>                      
+                      <td><?=$row['nombre_solicitud']?></td>
                       <td><?=$row['carrera']?></td>
-                      <td><?=$row['turno']?></td>
-                      <td><?=$row['personalAtencion']?></td>
+                      <td>
+                      <?php
+                      switch ($row['turno']) {
+                        case 1:
+                            $turno = 'Mañana';
+                            break;
+                        case 2:
+                            $turno = 'Tarde';
+                            break;
+                        case 3:
+                            $turno = 'Noche';
+                            break;
+                        default:
+                            $turno = '';
+                            break;
+                    };
+                    echo $turno;
+                      ?>
+                      </td>
+                      <td><?=$row['usuario']?></td>
 
                     </tr>
                     
@@ -173,7 +195,7 @@
             </div>
             <div class="modal-footer">
               <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
-              <label><a id="ejecutarCambioSolicitudAlumno" class="btn btn-primary text-white">Guardar cambios</a></label>
+              <label><a id="ejecutarCambioSolicitudA" class="btn btn-primary text-white">Guardar cambios</a></label>
             </div>
           </div>
         </div>

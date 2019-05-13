@@ -15,7 +15,7 @@ $estado = ($_POST['estado']=='true') ? 0 : 1;
 // print_r($elemento);
 
 $consulta = "UPDATE solicitudes SET `$elemento`=$estado
-             WHERE codigo=$codigo";
+             WHERE id_solicitud=$codigo";
 $resultado = mysqli_query($conexion, $consulta);
 
  print_r(json_encode(
