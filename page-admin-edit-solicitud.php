@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Tabla de Administradores </title>
+  <title> Tabla de Solicitudes Alumno </title>
   <?php require 'back/admin/restriccionAcceso.php';?>
 
   <!-- Favicon -->
@@ -55,7 +55,7 @@
 
           <!-- Título de página -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Tabla de Solicitudes</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tabla de Solicitudes Alumno</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i> </a>
           </div>
           <!-- /.Título de página -->
@@ -68,7 +68,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-
                       <th>Alumno</th>
                       <th>Fecha de creacion</th>
                       <th>Estado de solicitud</th>
@@ -93,43 +92,46 @@
                   </tfoot>
                   <tbody>
                     <?php
-include 'back/conexion.php';
+                      include 'back/conexion.php';
 
-$sql = "SELECT * FROM solicitudes";
+                      $sql = "SELECT * FROM solicitudes";
 
-$result = mysqli_query($conexion, $sql);
-if ($result->num_rows > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+                      $result = mysqli_query($conexion, $sql);
+                      if ($result->num_rows > 0) {
+                          while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
 
-                    <tr>
+                    <tr id="solicitudA-<?=$row['codigo']?>">
+                      
                       <td><?=$row['alumno']?></td>
                       <td><?=$row['fechaCreacion']?></td>
+
                       <td>
 
                         <?php if ($row['estadoSolicitud'] == 0) {?>
 
-                        <small><a id="estatus" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
-                            data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-minus-circle text-secondary"></i> Pendiente</a></small>
+                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Pendiente</a></small>
 
                         <?php } elseif ($row['estadoSolicitud'] == 1) {?>
 
-                        <small><a id="estatus" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
-                            data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-check-circle text-success"></i> Atendida</a></small>
+                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-check-circle text-success"></i> Atendida</a></small>
 
                         <?php }?>
 
                       </td>
-                     
+
+
+                      <td><?=$row['fechaAtencion']?></td>
+                      <td><?=$row['fechaCreacion']?></td>
+                      <td><?=$row['tipo']?></td>
+                      <td><?=$row['carrera']?></td>
+                      <td><?=$row['turno']?></td>
+                      <td><?=$row['personalAtencion']?></td>
+
                     </tr>
-                    <td><?=$row['fechaAtencion']?></td>
-                    <td><?=$row['fechaCreacion']?></td>
-                    <td><?=$row['tipo']?></td>
-                    <td><?=$row['carrera']?></td>
-                    <td><?=$row['turno']?></td>
-                    <td><?=$row['personalAtencion']?></td>
+                    
 
                     <?php
 };
@@ -143,7 +145,7 @@ if ($result->num_rows > 0) {
           </div>
           <!-- /.Tabla de Admin -->
 
-
+        
         </div>
         <!-- /.Contenido Variable - Todo lo demas es fijo -->
         <!-- /.container-fluid -->
@@ -165,15 +167,18 @@ if ($result->num_rows > 0) {
             <div class="modal-body">
               Seleccione "Guardar cambios" a continuación si está seguro de continuar con la operación.<br>
               <b>Este cambio se hace de manera inmediata y puede ser revertido.</b>
+              <input type="hidden" id="codigo">
+              <input type="hidden" id="elemento">
+              <input type="hidden" id="estado">
             </div>
             <div class="modal-footer">
               <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
-              <label><a id="ejecutarCambioCarrera" class="btn btn-primary text-white">Guardar cambios</a></label>
+              <label><a id="ejecutarCambioSolicitudAlumno" class="btn btn-primary text-white">Guardar cambios</a></label>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
@@ -209,42 +214,65 @@ if ($result->num_rows > 0) {
   <script src="vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/2s/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/front/table.js"></script>
 
-  <script>
+<script>
     $(document).ready(function () {
-      $('.toggle-modal').click(function () {
-        var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
+      $(document).on('click', 'a[data-role=update]', function () {
         var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
+        var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
         var estadoElemento = $(this).attr('data-active'); // data-active (row['idemento']) activo o no
-        $('#ejecutarCambioCarrera').on('click',ejecutarAjaxCarerra(event,codigoCarrera,idElemento,estadoElemento));
+
+        $('#codigo').val(codigoCarrera);
+        $('#elemento').val(idElemento);
+        $('#estado').val(estadoElemento);
+        $('#cambiosModal').modal('toggle');
       });
-      
-      function ejecutarAjaxCarerra(event,codigo,elemento,estado) {
-        var datosEnviados = {
-        'codigo': codigo,
-        'elemento': elemento,
-        'estado': estado
+
+      $('#ejecutarCambioSolicitudA').on('click', ejecutarAjaxSolicitudA);
+
+
+      function ejecutarAjaxSolicitudA(event) {
+        var codigo = $('#codigo').val();
+        var elemento = $('#elemento').val();
+        var estado = $('#estado').val();
+
+        var datosEnviadosS = {
+          'codigo': codigo,
+          'elemento': elemento,
+          'estado': estado
         };
 
         $.ajax({
-        type: 'POST',
-        url: './back/admin/backCarrera.php',
-        data: datosEnviados,
-        dataType: 'json',
-        encode: true
-        })
-        .done(function (datosRecibidos) {
-        console.log(datosRecibidos['message']);
+            type: 'POST',
+            url: './back/admin/backSolicitudAlumno.php',
+            data: datosEnviadosS
+          })
+          .done(function (dataS) {
+            var datosRecibidosS = $.parseJSON(dataS);
+            if (datosRecibidosS.estado == 0) {
+              $('#solicitudA-' + codigo + ' #' + elemento).attr('data-active', 'false');
+              $('#solicitudA-' + codigo + ' #' + elemento).html(
+                '<i class="fas fa-minus-circle text-secondary"></i> Pendiente</a>');
+            } else if (datosRecibidosS.estado == 1) {
+              $('#solicitudA-' + codigo + ' #' + elemento).attr('data-active', 'true');
+              $('#solicitudA-' + codigo + ' #' + elemento).html(
+                '<i class="fas fa-check-circle text-success"></i> Atendida</a>');
+            }
+            $('#cambiosModal').modal('toggle');
+          })
+          .fail(function (err) {
+            console.log(err);
+          });
 
-        });
         event.preventDefault();
       };
+
     });
   </script>
 </body>

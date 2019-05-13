@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Tabla de Administradores </title>
+  <title> Tabla de Carreras/Solicitud </title>
   <?php require 'back/admin/restriccionAcceso.php';?>
 
   <!-- Favicon -->
@@ -55,7 +55,7 @@
 
           <!-- Título de página -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Tabla de Administradores</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tabla de Carreras</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i> </a>
           </div>
           <!-- /.Título de página -->
@@ -97,20 +97,20 @@ if ($result->num_rows > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         ?>
 
-                    <tr>
+                    <tr id="carrera-<?=$row['codigo']?>">
                       <td><?=$row['codigo']?></td>
                       <td><?=$row['nombre']?></td>
                       <td>
 
                         <?php if ($row['estatus'] == 0) {?>
 
-                        <small><a id="estatus" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
+                        <small><a id="estatus" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
 
                         <?php } elseif ($row['estatus'] == 1) {?>
 
-                        <small><a id="estatus" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-check-circle text-success"></i> Activo</a></small>
+                        <small><a id="estatus" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
 
                         <?php }?>
 
@@ -119,13 +119,13 @@ if ($result->num_rows > 0) {
 
                         <?php if ($row['manana'] == 0) {?>
 
-                        <small><a id="manana" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
+                        <small><a id="manana" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
 
                         <?php } elseif ($row['manana'] == 1) {?>
 
-                        <small><a id="manana" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-check-circle text-success"></i> Activo</a></small>
+                        <small><a id="manana" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
 
                         <?php }?>
 
@@ -134,13 +134,13 @@ if ($result->num_rows > 0) {
 
                         <?php if ($row['tarde'] == 0) {?>
 
-                        <small><a id="tarde" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
+                        <small><a id="tarde" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
 
                         <?php } elseif ($row['tarde'] == 1) {?>
 
-                        <small><a id="tarde" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-check-circle text-success"></i> Activo</a></small>
+                        <small><a id="tarde" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
 
                         <?php }?>
 
@@ -149,18 +149,93 @@ if ($result->num_rows > 0) {
 
                         <?php if ($row['noche'] == 0) {?>
 
-                        <small><a id="noche" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
+                        <small><a id="noche" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
 
                         <?php } elseif ($row['noche'] == 1) {?>
 
-                        <small><a id="noche" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>" data-toggle="modal" data-target="#cambiosModal"><i
-                              class="fas fa-check-circle text-success"></i> Activo</a></small>
+                        <small><a id="noche" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
+                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
 
                         <?php }?>
 
                       </td>
                     </tr>
+
+                    <?php
+}
+    ;
+}
+;
+?>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- /.Tabla de Admin -->
+
+          <!-- Título de página -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
+            <h1 class="h3 mb-0 text-gray-800">Tabla de Solicitudes</h1>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i> </a>
+          </div>
+          <!-- /.Título de página -->
+
+          <!-- Tabla de Admin -->
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre de solicitud</th>
+                      <th>Estado de solicitud</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre de solicitud</th>
+                      <th>Estado de solicitud</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <?php
+                      include 'back/conexion.php';
+
+                      $sql = "SELECT * FROM tipo_solicitud";
+
+                      $result = mysqli_query($conexion, $sql);
+                      if ($result->num_rows > 0) {
+                          while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+
+                    <tr id="solicitud-<?=$row['tipo']?>">
+
+                      <td><?=$row['tipo']?></td>
+                      <td><?=$row['nombre_solicitud']?></td>
+
+                      <td>
+
+                        <?php if ($row['activa'] == 0) {?>
+
+                        <small><a id="activa" class="toggle-modal" data-active="false" data-id="<?=$row['tipo']?>"
+                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactiva</a></small>
+
+                        <?php } elseif ($row['activa'] == 1) {?>
+
+                        <small><a id="activa" class="toggle-modal" data-active="true" data-id="<?=$row['tipo']?>"
+                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activa</a></small>
+
+                        <?php }?>
+
+                      </td>
+
+                    </tr>
+
 
                     <?php
 };
@@ -185,7 +260,7 @@ if ($result->num_rows > 0) {
       <!-- Modal de advertencia de cambios -->
       <div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
@@ -196,15 +271,20 @@ if ($result->num_rows > 0) {
             <div class="modal-body">
               Seleccione "Guardar cambios" a continuación si está seguro de continuar con la operación.<br>
               <b>Este cambio se hace de manera inmediata y puede ser revertido.</b>
+              <input type="hidden" id="codigo">
+              <input type="hidden" id="elemento">
+              <input type="hidden" id="estado">
             </div>
             <div class="modal-footer">
-              <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
-              <label><a id="ejecutarCambioCarrera" class="btn btn-primary text-white">Guardar cambios</a></label>
+              <button class="btn btn-secondary text-white" type="button" data-dismiss="modal">Cancelar</button>
+              <a href="#" id="ejecutarCambioCarrera" data-do="" class="btn btn-primary text-white" hidden="false">Guardar
+                cambios</a>
+              <a href="#" id="ejecutarCambioSolicitud" class="btn btn-primary text-white" hidden="true">Guardar cambios</a>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
@@ -249,33 +329,100 @@ if ($result->num_rows > 0) {
 
   <script>
     $(document).ready(function () {
-      $('.toggle-modal').click(function () {
-        var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
-        var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
-        var estadoElemento = $(this).attr('data-active'); // data-active (row['idemento']) activo o no
-        $('#ejecutarCambioCarrera').on('click',ejecutarAjaxCarerra(event,codigoCarrera,idElemento,estadoElemento));
+      $(document).on('click', '#dataTable a', function () {
+        $('#ejecutarCambioCarrera').removeAttr('hidden');
+        $('#ejecutarCambioSolicitud').attr('hidden', 'true');
       });
-      
-      function ejecutarAjaxCarerra(event,codigo,elemento,estado) {
+      $(document).on('click', '#dataTable2 a', function () {
+        $('#ejecutarCambioSolicitud').removeAttr('hidden');
+        $('#ejecutarCambioCarrera').attr('hidden', 'true');
+      });
+      $(document).on('click', 'a[data-role=update]', function () {
+        var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
+        var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
+        var estadoElemento = $(this).attr('data-active'); // data-active (row['idemento']) activo o no
+
+        $('#codigo').val(codigoCarrera);
+        $('#elemento').val(idElemento);
+        $('#estado').val(estadoElemento);
+        $('#cambiosModal').modal('toggle');
+      });
+
+      $('#ejecutarCambioCarrera').on('click', ejecutarAjaxCarerra);
+
+      $('#ejecutarCambioSolicitud').on('click', ejecutarAjaxSolicitud);
+
+      function ejecutarAjaxCarerra(event) {
+        var codigo = $('#codigo').val();
+        var elemento = $('#elemento').val();
+        var estado = $('#estado').val();
+
         var datosEnviados = {
-        'codigo': codigo,
-        'elemento': elemento,
-        'estado': estado
+          'codigo': codigo,
+          'elemento': elemento,
+          'estado': estado
         };
 
         $.ajax({
-        type: 'POST',
-        url: './back/admin/backCarrera.php',
-        data: datosEnviados,
-        dataType: 'json',
-        encode: true
-        })
-        .done(function (datosRecibidos) {
-        console.log(datosRecibidos['message']);
+            type: 'POST',
+            url: './back/admin/backCarrera.php',
+            data: datosEnviados
+          })
+          .done(function (data) {
+            var datosRecibidos = $.parseJSON(data);
+            if (datosRecibidos.estado == 0) {
+              $('#carrera-' + codigo + ' #' + elemento).attr('data-active', 'false');
+              $('#carrera-' + codigo + ' #' + elemento).html(
+                '<i class="fas fa-minus-circle text-secondary"></i> Desactivo</a>');
+            } else if (datosRecibidos.estado == 1) {
+              $('#carrera-' + codigo + ' #' + elemento).attr('data-active', 'true');
+              $('#carrera-' + codigo + ' #' + elemento).html(
+                '<i class="fas fa-check-circle text-success"></i> Activo</a>');
+            }
+            $('#cambiosModal').modal('toggle');
+          })
+          .fail(function (err) {
+            console.log(err);
+          });
 
-        });
         event.preventDefault();
       };
+
+      function ejecutarAjaxSolicitud(event) {
+        var codigo = $('#codigo').val();
+        var elemento = $('#elemento').val();
+        var estado = $('#estado').val();
+
+        var datosEnviadosS = {
+          'codigo': codigo,
+          'estado': estado
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: './back/admin/backSolicitud.php',
+            data: datosEnviadosS
+          })
+          .done(function (dataS) {
+            var datosRecibidosS = $.parseJSON(dataS);
+            if (datosRecibidosS.estado == 0) {
+              $('#solicitud-' + codigo + ' #' + elemento).attr('data-active', 'false');
+              $('#solicitud-' + codigo + ' #' + elemento).html(
+                '<i class="fas fa-minus-circle text-secondary"></i> Desactivo</a>');
+            } else if (datosRecibidosS.estado == 1) {
+              $('#solicitud-' + codigo + ' #' + elemento).attr('data-active', 'true');
+              $('#solicitud-' + codigo + ' #' + elemento).html(
+                '<i class="fas fa-check-circle text-success"></i> Activo</a>');
+            }
+            $('#cambiosModal').modal('toggle');
+          })
+          .fail(function (err) {
+            console.log(err);
+          });
+
+        event.preventDefault();
+      };
+
     });
   </script>
 </body>
