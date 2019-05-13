@@ -6,7 +6,6 @@ session_start();
 
 $count = 0;
 
-if ( !is_dir('./Documentos') ) mkdir('./Documentos');
 
 
 $cedula= $_SESSION['cedula'].'/';
