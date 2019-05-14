@@ -100,7 +100,7 @@ $porcentaje = $row['porcentaje'];
 // Iniciando valores
 $path_general = 'back/documentos/';
 
-$cedula='25582804';
+$cedula=$_SESSION['cedula'];
 
 $partida=$path_general.$row['partida'];
 $foto= $path_general.$row['foto'];
@@ -144,7 +144,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
 
-$file_id = 'rusnies';
 
 ?>
           <!-- Título de página -->
@@ -199,7 +198,6 @@ if ($porcentaje == 100) {
                      <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '' ?>
                      <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '' ?>
                   </select>
-
                   <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
                     <!--
@@ -221,23 +219,7 @@ if ($porcentaje == 100) {
                           <div id="preview-images" class="preview-images">
                             <!-- Repetir con todas las rutas cargadas -->
                              
-                            <div class="thumbnail"
-                              data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                              style="background-image: url('<?php echo $foto ?>')">
-                              <div class="close-button-db">
-                                <span data-path='<?php echo $foto ?>'
-                                  data-cedula='<?php echo $cedula ?>'>&times;</span>
-
-                                <a href="<?php echo $foto ?>" data-lightbox="gallery"
-                                  data-title="<?php echo $file_id ?>">
-
-                                  <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="<?php echo $foto ?>" download="<?php echo ($cedula.date('m-d-yHis')) ?>">
-                                  <i class="fas fa-download"></i>
-                                </a>
-                              </div>
-                            </div>
+         
 
                           </div>
                         </div>
@@ -361,19 +343,22 @@ if (num == 1) {
   var cedula = <?php echo json_encode($cedulaFoto) ?>;
   
   //var path = path.replace(/\//g, '/');
+if (cedula!='back/documentos/'){
+  $.get(cedula)
+    .done(function() {
+      var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+  'style="background-image: url('+ cedula +')">'+
+  '<div class="close-button-db"><span data-path="'+ cedula +'"'+
+  'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ cedula +'" data-lightbox="gallery"'+ 
+  'data-title="cedula"> <i class="fas fa-eye"></i> </a> <a href="'+ cedula +'" '+
+  'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
 
-var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
-'style="background-image: url('+ cedula +')">'+
-'<div class="close-button-db"><span data-path="'+ cedula +'"'+
-'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ cedula +'" data-lightbox="gallery"'+ 
-'data-title="cedula"> <i class="fas fa-eye"></i> </a> <a href="'+ cedula +'" '+
-'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
-
-document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
-
+  document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);    
+}).fail(function() { 
+    });
   elemento.attr("data-id", "cedula");
-
   $("input").prop('multiple', false);
+  }
 
 }
 
@@ -382,7 +367,9 @@ if (num == 2) {
   var foto = <?php echo json_encode($foto) ?>;
 
     //var path = path.replace(/\//g, '/');
-
+    if (foto!='back/documentos/'){
+      $.get(foto)
+    .done(function() {
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
  'style="background-image: url('+ foto +')">'+
  '<div class="close-button-db"><span data-path="'+ foto +'"'+
@@ -391,12 +378,13 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
  'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
 
   document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
-
-
-
+}).fail(function() { 
+    });
   elemento.attr("data-id", "foto");
 
   $("input").prop('multiple', false);
+
+    }
 }
 
 
@@ -407,7 +395,9 @@ if (num == 3) {
   
   notas.forEach(function(path, index){
     //var path = path.replace(/\//g, '/');
-
+    if (notas!='back/documentos/'){
+      $.get(notas)
+    .done(function() {
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
  'style="background-image: url('+ path +')">'+
  '<div class="close-button-db"><span data-path="'+ path +'"'+
@@ -416,10 +406,10 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
  'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
 
   document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
-
-  });
-
-
+    }).fail(function() { 
+    });
+  }}
+  );
 
   elemento.attr("data-id", "notas");
 
@@ -432,7 +422,9 @@ if (num == 4) {
   var fondo = <?php echo json_encode($fondo) ?>;
   
     //var path = path.replace(/\//g, '/');
-
+    if (fondo!='back/documentos/'){
+      $.get(fondo)
+    .done(function() {
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
  'style="background-image: url('+ fondo +')">'+
  '<div class="close-button-db"><span data-path="'+ fondo +'"'+
@@ -441,11 +433,13 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
  'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
 
   document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
-
+}).fail(function() { 
+    });
 
   elemento.attr("data-id", "fondo");
 
   $("input").prop('multiple', false);
+    }
 }
 
 
@@ -456,7 +450,8 @@ if (num == 5) {
 
 
   var rusnies = <?php echo json_encode($rusnies) ?>;
-  
+  if (rusnies!='back/documentos/'){
+
   rusnies.forEach(function(path, index){
     //var path = path.replace(/\//g, '/');
 
@@ -468,11 +463,9 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
  'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
 
   document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
-
+  
   });
-
-
-
+}
 }
 
 if (num == 6) {
@@ -480,6 +473,7 @@ if (num == 6) {
   var partida = <?php echo json_encode($partida) ?>;
   
   //var path = path.replace(/\//g, '/');
+  if (partida!='back/documentos/'){
 
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
 'style="background-image: url('+ partida +')">'+
@@ -494,9 +488,7 @@ document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
 
   $("input").prop('multiple', false);
 
-
-
-
+  }
 }
 
 if (num == 7) {
@@ -506,7 +498,8 @@ if (num == 7) {
   $("input").prop('multiple', true);
 
   var metodoPrueba = <?php echo json_encode($metodo) ?>;
-  
+  if (cedula!='back/documentos/'){
+
   metodoPrueba.forEach(function(path, index){
     //var path = path.replace(/\//g, '/');
 
@@ -520,12 +513,15 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
   document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
 
   });
+}
 
 }
 
 // ------------ fin Funcion del select
 
 });
+
+
 
     
 

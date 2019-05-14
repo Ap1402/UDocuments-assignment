@@ -219,7 +219,13 @@ if ($porcentaje == 100) {
                       </button>
                       <button id="enviarDocs" type="submit" hidden></button>
                     </a>
+                    <?php if ($_GET['ci']) { ?>
+                      <input id="cedula" name="cedula" val="<?php echo $_GET['id']?>" hidden>
+                    <?php } ?>
 
+                    <?php if ($_GET['idd']) { ?>
+                      <input id="docId" name="docId" val="<?php echo $_GET['idd']?>" hidden>
+                    <?php } ?>
                     <div class="alert alert-danger" role="alert" id="resultado" hidden></div>
 
 

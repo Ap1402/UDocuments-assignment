@@ -14,9 +14,64 @@
 		// Limpiar preview-images y success
 		clearFormDataAndThumbnails();
 		$("#success").html("");
-
+		if ($('#cedulaCOD').length){
+			formData.append('cedulaCOD',$('#cedulaCOD').val());
+		}
+		if ($('#docId').length){
+			formData.append('docId',$('#docId').val());
+		}
 		// ------------ Funcion del select
-		
+		var num = $("#seleccion").val();
+		var elemento = $("[name=file]");
+
+		if (num != "") {
+			$("input").prop('disabled', false);
+
+			$("#enviarDocs").prop('disabled', false);
+
+		}
+
+		if (num == 1) {
+			elemento.attr("data-id", "cedula");
+
+			$("input").prop('multiple', false);
+
+		}
+
+		if (num == 2) {
+			elemento.attr("data-id", "foto");
+
+			$("input").prop('multiple', false);
+		}
+		if (num == 3) {
+			elemento.attr("data-id", "notas");
+
+			$("input").prop('multiple', true);
+
+		}
+		if (num == 4) {
+			elemento.attr("data-id", "fondo");
+
+			$("input").prop('multiple', false);
+		}
+
+		if (num == 5) {
+			elemento.attr("data-id", "rusnies");
+
+			$("input").prop('multiple', true);
+		}
+
+		if (num == 6) {
+			elemento.attr("data-id", "partida");
+
+			$("input").prop('multiple', false);
+		}
+
+		if (num == 7) {
+			elemento.attr("data-id", "metodo");
+
+			$("input").prop('multiple', true);
+		}
 
 		// ------------ fin Funcion del select
 

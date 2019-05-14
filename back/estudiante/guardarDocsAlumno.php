@@ -6,10 +6,17 @@ session_start();
 
 $count = 0;
 
+if (isset($_SESSION['cedula'])){
+	$cedula= $_SESSION['cedula'].'/';
+}else{
+	$cedula= $_POST['cedulaCOD'].'/';
+}
 
-
-$cedula= $_SESSION['cedula'].'/';
-$idDoc=$_SESSION['docId'];
+if (isset($_SESSION['docId'])){
+	$idDoc=$_SESSION['docId'];
+}else{
+	$idDoc=$_POST['docId'];
+}
 
 $path_alumno='./../Documentos/'.$cedula.'/';
 
@@ -22,8 +29,8 @@ foreach ($_FILES as $key => $file) {
 
 	$path_info = pathinfo( $path_alumno . $file['name'] );
 
- // te manda un array de cada uno de los tramos que los separa '_'
-	$path_splitted = explode('_', $key);	
+	// te manda un array de cada uno de los tramos que los separa '_'
+	$path_splitted = explode('_', $key);
 
 	if (($path_splitted[0] == 'foto') && isset($_FILES[$key]) ) {
   		$photo_name= 'foto'.'_'.$count.'_'.date('m-d-yHis').'.'.$path_info['extension'];
