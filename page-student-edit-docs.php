@@ -391,13 +391,17 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
 
 
 if (num == 3) {
+  elemento.attr("data-id", "notas");
+
+  $("input").prop('multiple', true);
+
+
   var notas = <?php echo json_encode($notas) ?>;
-  
+  if (notas!='back/documentos/'){
+
   notas.forEach(function(path, index){
     //var path = path.replace(/\//g, '/');
-    if (notas!='back/documentos/'){
-      $.get(notas)
-    .done(function() {
+    
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
  'style="background-image: url('+ path +')">'+
  '<div class="close-button-db"><span data-path="'+ path +'"'+
@@ -406,14 +410,9 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
  'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
 
   document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
-    }).fail(function() { 
-    });
-  }}
-  );
-
-  elemento.attr("data-id", "notas");
-
-  $("input").prop('multiple', true);
+    
+  });  
+}
 
 }
 
