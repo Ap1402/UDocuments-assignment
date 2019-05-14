@@ -29,9 +29,9 @@ if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
         $_SESSION['datosLlenados']=1;
     }
 
-    echo "1";
+    return print_r(json_encode(['message'=>'Datos correctos', 'exito'=>TRUE]));
 } else {
-    echo "2";
+    return print_r(json_encode(['message'=>'Usuario o contraseña incorrecto', 'exito'=>FALSE]));
 }
 
 ?>

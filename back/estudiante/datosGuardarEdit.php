@@ -3,8 +3,6 @@ include '../conexion.php';
 
 session_start();
 
-$errores = array();
-$datos = array();
 
 include ('getDatosForm.php');
 
@@ -31,12 +29,11 @@ $cedula = $_SESSION['cedula'];
 $id = $_SESSION['id'];
 
 
-if(empty($errores)){
 
  //Actualizacion de datos tabla alumno
 
 
-$fecha= date("Y-m-d");
+    $fecha= date("Y-m-d");
 
     $sql = "UPDATE alumnos SET fecha_nacimiento='$fecha_nacimiento',".
     "estado_civil='$estado_civil',". 
@@ -47,10 +44,17 @@ $fecha= date("Y-m-d");
 
     $result = mysqli_query($conexion, $sql);
 
+    if(mysqli_affected_rows($conexion)<1){
+        return print_r(json_encode(['message' => 'Hubo un error al guardar los datos generales', 'status' => http_response_code(500)]));
+    }
+
 // ver si existen telefonos si existen se actualizan sino se crea en TABLA TELEFONOS
 $actualizarTLF = "INSERT INTO telefonos (alumno, num_movil, num_habitacion, num_trabajo, num_habitacion_pariente, num_movil_pariente) VALUES('$id','$mov_tel','$hab_tel','$trab_tel','$e_hab_tel','$e_mov_tel') ON DUPLICATE KEY UPDATE num_movil='$mov_tel', num_habitacion='$hab_tel', num_trabajo='$trab_tel',num_movil_pariente='$e_mov_tel', num_habitacion_pariente='$e_hab_tel'";
 $result = mysqli_query($conexion, $actualizarTLF); 
 
+if(mysqli_affected_rows($conexion)<1){
+    return print_r(json_encode(['message' => 'Hubo un error al guardar los numeros telefonicos', 'status' => http_response_code(500)]));
+}
 
 // ver si existen direcciones si existen se actualizan sino se crea en TABLA DIRECCIONES
 $actualizarDIREC = "INSERT INTO direcciones (alumno, estado, ciudad, municipio, postal_trabajo, estado_trabajo, municipio_trabajo, ciudad_trabajo, aptcasa,calle,postal_hab,urbanizacion)". 
@@ -60,10 +64,13 @@ $actualizarDIREC = "INSERT INTO direcciones (alumno, estado, ciudad, municipio, 
 
 $result = mysqli_query($conexion, $actualizarDIREC); 
 
+if(mysqli_affected_rows($conexion)<1){
+    return print_r(json_encode(['message' => 'Hubo un error al guardar las direcciones', 'status' => http_response_code(500)]));
+}
+
 echo(json_encode(['message' => 'Registros modificados con éxito', 'status' => http_response_code(200),
 'exito'=>TRUE]));
 
-}
 /* if (empty($errores)) {
     $fecha= date("Y-m-d");
 

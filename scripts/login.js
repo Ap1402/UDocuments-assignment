@@ -35,10 +35,14 @@ function ejecutarAjaxLog(event){
 
     })
     .done(function(echo){
-        if(echo==1){
+        if(echo.exito){
+            $('#resultado').hide();
+
             $(location).attr('href','page-dashboard.php');
         }else{
+            $('#resultado').show();
 
+            $('#resultado').html(echo.message);
         }
     });
 

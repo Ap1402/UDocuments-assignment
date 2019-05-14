@@ -89,7 +89,7 @@
                     </div>
 
                     <br>
-                    <div class="alert alert-danger" role="alert" id="resultadoLog" hidden></div>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
                     <!-- Sign up button -->
                     <button id="enviarLog" type="submit" class="btn btn-primary btn-user btn-block">
                       Iniciar sesión
