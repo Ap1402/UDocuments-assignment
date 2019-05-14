@@ -3,16 +3,16 @@ include '../conexion.php';
 
 session_start();
 
-$errores = array();
-$datos = array();
 
 include ('getDatosForm.php');
 
-$cedula = $_SESSION['cedula'];
-$id = $_SESSION['id'];
-
-
-if(empty($errores)){
+if (isset($_SESSION['cedula'])) {
+    $id = $_SESSION['id'];
+    $cedula = $_SESSION['cedula'];
+}else{
+  $id=$_GET['ida'];
+  $cedula=$_GET['ci'];
+}
 
  //Actualizacion de datos tabla alumno
 
@@ -41,22 +41,8 @@ $actualizarDIREC = "INSERT INTO direcciones (alumno, estado, ciudad, municipio, 
 
 $result = mysqli_query($conexion, $actualizarDIREC); 
 
-echo json_encode($errores);
+$_SESSION['datosLlenados']=1;
+return print_r( json_encode('message'=>'Datos guardados correctamente','exito'=>TRUE));
 
-}
-/* if (empty($errores)) {
-    $fecha= date("Y-m-d");
-
-    $insertar = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,ultActualizacion) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha')";
-    $result = mysqli_query($conexion, $insertar);
-
-    $datos['exito'] = true;
-    $datos['mensaje'] = 'Usuario registrado correctamente';
-} else {
-    $datos['exito'] = false;
-    $datos['errores'] = $errores;
-} */
-
-//dar respuesta:
 
 ?>

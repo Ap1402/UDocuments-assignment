@@ -32,11 +32,25 @@ $(document).ready(function () {
             encode: true,
             cache: false,
             contentType: false,
-            processData: false
+            processData: false,
+            dataType : 'json'
+
         })
         .done(function(datosRecibidos){
-            console.log(datosRecibidos);
+            if(!datosRecibidos.exito){
+                $('#exito').hide();
 
+                $('#resultado').show();
+                $('#resultado').text(datosRecibidos.message);
+            }else{
+                $('#resultado').hide();
+
+                $('#exito').show();
+                $('#exito').text(datosRecibidos.message);
+                $('html, body').animate( { scrollTop : 0 }, 800 );
+
+            }
+            
         });
     
         event.preventDefault();
