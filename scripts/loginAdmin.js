@@ -37,7 +37,7 @@ $(document).ready(function () {
             .done(function(echo){
                 console.log(echo);
                 if(echo==1){
-                    $(location).attr('href','page-dashboard.php');
+                    $(location).attr('href','page-admin-table.php');
                 }else{
                     $('#resultadoLogAdmin').show();
                     $('#resultadoLogAdmin').text('Usuario o contraseña incorrecta');
