@@ -67,7 +67,11 @@ include 'back/conexion.php';
 // ------------ Obtener la id del documento
 if (isset($_SESSION['docId'])) {
     $idd = $_SESSION['docId'];
+}else{
+  $idd=$_GET['idd'];
 }
+
+
 
 $sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
 $result = mysqli_query($conexion, $sql);
@@ -77,8 +81,7 @@ if ($result->num_rows > 0) {
 } else {
     $mensaje = "Ocurrió un error al cargar los documentos";
     echo ($mensaje);
-}
-;
+};
 
 $check_foto = $row['check_foto']; // verificar si fue o no chequeado por control de estudios
 $check_cedula = $row['check_cedula'];
@@ -90,16 +93,57 @@ $check_metodo = $row['check_metodo'];
 
 // -------- Porcentaje de Documentos
 
-$porcentaje = ($check_foto + $check_cedula + $check_fondo + $check_notas + $check_partida + $check_rusnies +
-    $check_metodo) * 100 / 7;
-$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+$porcentaje = $row['porcentaje'];
 
 // -------- /Porcentaje de Documentos
 
 // Iniciando valores
-$cedula = '21217885';
+$path_general = 'back/documentos/';
+
+$cedula='25582804';
+
+$partida=$path_general.$row['partida'];
+$foto= $path_general.$row['foto'];
+$fondo= $path_general.$row['fondo'];
+$cedulaFoto= $path_general.$row['cedula'];
+
+
+$sql = "SELECT * FROM metodoing WHERE documento='$idd'";
+$result = mysqli_query($conexion, $sql);
+
+$metodo= array();
+while ($row = mysqli_fetch_assoc($result)) {
+  array_push($metodo, $path_general.$row['metodo']);
+};
+
+$sql = "SELECT * FROM rusnies WHERE documento='$idd'";
+$result = mysqli_query($conexion, $sql);
+
+$rusnies= array();
+while ($row = mysqli_fetch_assoc($result)) {
+  array_push($rusnies, $path_general.$row['rusnies']);
+};
+
+
+$sql = "SELECT * FROM notas WHERE documento='$idd'";
+$result = mysqli_query($conexion, $sql);
+
+$notas= array();
+while ($row = mysqli_fetch_assoc($result)) {
+  array_push($notas, $path_general.$row['nota']);
+};
+
+
+
+
+
+
 // rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-$path_image = 'back/documentos/'.$cedula.'/partida_0_04-28-19001145.jpg';
+
+
+
+
+
 $file_id = 'rusnies';
 
 ?>
@@ -176,18 +220,20 @@ if ($porcentaje == 100) {
                           </div>
                           <div id="preview-images" class="preview-images">
                             <!-- Repetir con todas las rutas cargadas -->
-
+                             
                             <div class="thumbnail"
                               data-id="<?php echo (str_shuffle('AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_')) ?>"
-                              style="background-image: url('<?php echo $path_image ?>')">
+                              style="background-image: url('<?php echo $foto ?>')">
                               <div class="close-button-db">
-                                <span data-path='<?php echo $path_image ?>'
+                                <span data-path='<?php echo $foto ?>'
                                   data-cedula='<?php echo $cedula ?>'>&times;</span>
-                                <a href="<?php echo $path_image ?>" data-lightbox="gallery"
+
+                                <a href="<?php echo $foto ?>" data-lightbox="gallery"
                                   data-title="<?php echo $file_id ?>">
+
                                   <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="<?php echo $path_image ?>" download="<?php echo ($cedula.date('m-d-yHis')) ?>">
+                                <a href="<?php echo $foto ?>" download="<?php echo ($cedula.date('m-d-yHis')) ?>">
                                   <i class="fas fa-download"></i>
                                 </a>
                               </div>
@@ -287,10 +333,204 @@ if ($porcentaje == 100) {
 
   <script src="js/lightbox-plus-jquery.js"></script>
 
+
+
+
+
   <script src="js/front/file-upload-edit.js"></script>
 
   <script src="js/front/deleteImage.js"></script>
 
+
+  <script> 
+  $("#seleccion").change(function () {
+
+// ------------ Funcion del select
+var num = $("#seleccion").val();
+var elemento = $("[name=file]");
+
+if (num != "") {
+  $("input").prop('disabled', false);
+
+  $("#enviarDocs").prop('disabled', false);
+
+}
+
+if (num == 1) {
+
+  var cedula = <?php echo json_encode($cedulaFoto) ?>;
+  
+  //var path = path.replace(/\//g, '/');
+
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+'style="background-image: url('+ cedula +')">'+
+'<div class="close-button-db"><span data-path="'+ cedula +'"'+
+'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ cedula +'" data-lightbox="gallery"'+ 
+'data-title="cedula"> <i class="fas fa-eye"></i> </a> <a href="'+ cedula +'" '+
+'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+
+  elemento.attr("data-id", "cedula");
+
+  $("input").prop('multiple', false);
+
+}
+
+if (num == 2) {
+
+  var foto = <?php echo json_encode($foto) ?>;
+
+    //var path = path.replace(/\//g, '/');
+
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+ 'style="background-image: url('+ foto +')">'+
+ '<div class="close-button-db"><span data-path="'+ foto +'"'+
+ 'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ foto +'" data-lightbox="gallery"'+ 
+ 'data-title="foto"> <i class="fas fa-eye"></i> </a> <a href="'+ foto +'" '+
+ 'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+  document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+
+
+
+  elemento.attr("data-id", "foto");
+
+  $("input").prop('multiple', false);
+}
+
+
+
+
+if (num == 3) {
+  var notas = <?php echo json_encode($notas) ?>;
+  
+  notas.forEach(function(path, index){
+    //var path = path.replace(/\//g, '/');
+
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+ 'style="background-image: url('+ path +')">'+
+ '<div class="close-button-db"><span data-path="'+ path +'"'+
+ 'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ path +'" data-lightbox="gallery"'+ 
+ 'data-title="notas"> <i class="fas fa-eye"></i> </a> <a href="'+ path +'" '+
+ 'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+  document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+
+  });
+
+
+
+  elemento.attr("data-id", "notas");
+
+  $("input").prop('multiple', true);
+
+}
+
+if (num == 4) {
+
+  var fondo = <?php echo json_encode($fondo) ?>;
+  
+    //var path = path.replace(/\//g, '/');
+
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+ 'style="background-image: url('+ fondo +')">'+
+ '<div class="close-button-db"><span data-path="'+ fondo +'"'+
+ 'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ fondo +'" data-lightbox="gallery"'+ 
+ 'data-title="fondo"> <i class="fas fa-eye"></i> </a> <a href="'+ fondo +'" '+
+ 'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+  document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+
+
+  elemento.attr("data-id", "fondo");
+
+  $("input").prop('multiple', false);
+}
+
+
+if (num == 5) {
+  elemento.attr("data-id", "rusnies");
+
+  $("input").prop('multiple', true);
+
+
+  var rusnies = <?php echo json_encode($rusnies) ?>;
+  
+  rusnies.forEach(function(path, index){
+    //var path = path.replace(/\//g, '/');
+
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+ 'style="background-image: url('+ path +')">'+
+ '<div class="close-button-db"><span data-path="'+ path +'"'+
+ 'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ path +'" data-lightbox="gallery"'+ 
+ 'data-title="rusnies"> <i class="fas fa-eye"></i> </a> <a href="'+ path +'" '+
+ 'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+  document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+
+  });
+
+
+
+}
+
+if (num == 6) {
+
+  var partida = <?php echo json_encode($partida) ?>;
+  
+  //var path = path.replace(/\//g, '/');
+
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+'style="background-image: url('+ partida +')">'+
+'<div class="close-button-db"><span data-path="'+ partida +'"'+
+'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ partida +'" data-lightbox="gallery"'+ 
+'data-title="partida"> <i class="fas fa-eye"></i> </a> <a href="'+ partida +'" '+
+'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+
+  elemento.attr("data-id", "partida");
+
+  $("input").prop('multiple', false);
+
+
+
+
+}
+
+if (num == 7) {
+
+  elemento.attr("data-id", "metodo");
+
+  $("input").prop('multiple', true);
+
+  var metodoPrueba = <?php echo json_encode($metodo) ?>;
+  
+  metodoPrueba.forEach(function(path, index){
+    //var path = path.replace(/\//g, '/');
+
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+ 'style="background-image: url('+ path +')">'+
+ '<div class="close-button-db"><span data-path="'+ path +'"'+
+ 'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ path +'" data-lightbox="gallery"'+ 
+ 'data-title="metodo"> <i class="fas fa-eye"></i> </a> <a href="'+ path +'" '+
+ 'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+  document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+
+  });
+
+}
+
+// ------------ fin Funcion del select
+
+});
+
+    
+
+      </script>
+  
 </body>
 
 </html>
