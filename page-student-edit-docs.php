@@ -67,8 +67,11 @@ include 'back/conexion.php';
 // ------------ Obtener la id del documento
 if (isset($_SESSION['docId'])) {
     $idd = $_SESSION['docId'];
+    $cedula = $_SESSION['cedula'];
+
 }else{
   $idd=$_GET['idd'];
+  $cedula=$_GET['ci'];
 }
 
 
@@ -99,8 +102,6 @@ $porcentaje = $row['porcentaje'];
 
 // Iniciando valores
 $path_general = 'back/documentos/';
-
-$cedula=$_SESSION['cedula'];
 
 $partida=$path_general.$row['partida'];
 $foto= $path_general.$row['foto'];

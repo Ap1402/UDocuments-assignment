@@ -461,7 +461,7 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
 <?php };?>
                     <?php if ($rol >= 2) {?>
                       <div class="col-auto">
-                        <a href="<?='page-admin-student-edit-datos.php?idd='.$idd.'&ida='.$ida.'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"
+                        <a href="<?='page-student-edit-docs.php?idd='.$idd.'&ida='.$ida.'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"
                           data-toggle="tooltip" data-placement="top" title="Editar documentos">
                           <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                         </a>
