@@ -64,7 +64,7 @@
               <div class="card-body">
                 <div class="p-4">
                   <form id="datosForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
+                  <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 pt-1">
@@ -398,7 +398,7 @@
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
                     </div>
                     <br>
 
