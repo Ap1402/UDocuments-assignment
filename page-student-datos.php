@@ -57,7 +57,12 @@
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
-
+<?php
+if ($rol >=1 && isset($_GET['ida']) && isset($_GET['ci'])) {
+    $id = $_GET['ida'];
+    $cedula = $_GET['ci'];
+}
+?>
           <!-- Formulario Datos -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
@@ -65,6 +70,9 @@
                 <div class="p-4">
                   <form id="datosForm" method="POST" class="user needs-validation" novalidate>
                   <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
+
+                    <input type="hidden" name="ida" id="ida" value="<?=$ida?>">
+                    <input type="hidden" name="ci" id="ci" value="<?=$cedula?>">
 
                     <div class="form-group row">
                       <div class="col-sm-6 pt-1">
@@ -399,7 +407,7 @@
                     </div>
 
                     <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
-                    </div>
+                    <!-- </div> No dejar div regados :( -->
                     <br>
 
                     <button id="enviarDat" type="submit" class="btn btn-primary btn-user btn-block">

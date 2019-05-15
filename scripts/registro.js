@@ -58,6 +58,20 @@ $(document).ready(function () {
                 //     $('#resultado').text(datosEnviados.errores.cedula);
                 // }
 
+                if (!datosRecibidos.exito) {
+                    $('#exito').hide();
+
+                    $('#resultado').show();
+                    $('#resultado').text('Algo salio mal, cedula/username registrada');
+                } else {
+                    $('#resultado').hide();
+
+                    $('#exito').show();
+                    $('#exito').text(datosRecibidos.message);
+                    $('html, body').animate({ scrollTop: 0 }, 800);
+
+                }
+
                 
 
                 // ========== Registro exitoso! ===========

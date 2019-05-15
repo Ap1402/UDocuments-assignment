@@ -39,7 +39,7 @@ if (empty($errores)) {
 
 
     $datos['exito'] = true;
-    $datos['mensaje'] = 'Usuario registrado correctamente';
+    $datos['message'] = 'Usuario registrado correctamente';
 } else {
     $datos['exito'] = false;
     $datos['errores'] = $errores;

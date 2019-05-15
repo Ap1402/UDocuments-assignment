@@ -77,6 +77,8 @@
                       <th>Carrera</th>
                       <th>Turno</th>
                       <th>Personal de atencion</th>
+                      <th>Validar Docs</th>
+                      <th>Ver perfil</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -90,13 +92,15 @@
                       <th>Carrera</th>
                       <th>Turno</th>
                       <th>Personal de atencion</th>
+                      <th>Validar Docs</th>
+                      <th>Ver perfil</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <?php
                       include 'back/conexion.php';
 
-                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion, id_admin, usuario FROM alumnos
+                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, documento, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion, id_admin, usuario FROM alumnos
                               INNER JOIN solicitudes ON alumnos.id_alumno = solicitudes.alumno
                               LEFT JOIN administradores ON administradores.id_admin = solicitudes.personalAtencion
                               LEFT JOIN tipo_solicitud ON tipo_solicitud.tipo = solicitudes.tipo";
@@ -151,6 +155,8 @@
                       ?>
                       </td>
                       <td><?=$row['usuario']?></td>
+                      <td><a href="<?='page-admin-check.php?idd='.$row['documento'].'&ida='.$row['id_alumno'].'&ci='.$row['cedula'].'&mi='.$row['tipo']?>"><i class="fas fa-clipboard-list"></i></a> </td>
+                      <td><a href="<?='page-student-perfil.php?ida='.$row['id_alumno']?>"><i class="fas fa-id-card"></i></a> </td>
 
                     </tr>
                     
@@ -244,7 +250,7 @@
   <script src="js/front/table.js"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () {      
       $(document).on('click', 'a[data-role=update]', function () {
         var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
         var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
@@ -263,6 +269,7 @@
         var codigo = $('#codigo').val();
         var elemento = $('#elemento').val();
         var estado = $('#estado').val();
+        // var personalAtencion = $('span[id=usernameActual]').text();
 
         var datosEnviadosS = {
           'codigo': codigo,
