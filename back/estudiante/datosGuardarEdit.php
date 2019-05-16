@@ -7,8 +7,8 @@ if (isset($_SESSION['cedula'])) {
     $id = $_SESSION['id'];
     $cedula = $_SESSION['cedula'];
 }else{
-  $id=$_GET['ida'];
-  $cedula=$_GET['ci'];
+  $id=$_POST['ida'];
+  $cedula=$_POST['ci'];
 }
 
 

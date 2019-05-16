@@ -18,7 +18,7 @@ if (isset($_SESSION['docId'])){
 	$idDoc=$_POST['docId'];
 }
 
-$path_alumno='./../Documentos/'.$cedula.'/';
+$path_alumno='./../Documentos/'.$cedula;
 
 if ( !is_dir($path_alumno) ) mkdir($path_alumno);
 

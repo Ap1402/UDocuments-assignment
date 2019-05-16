@@ -154,12 +154,6 @@ $nac_postal=$datosDirecc['postal_hab'];
 
 
 
-$_SESSION['nivel'] = 1; // probando que sea admin para restringir la edicion de algunos campos
-$verificar_check = 1; // verificar si fue o no chequeado por control de estudios
-
-// Iniciando valores
-
-
 ?>
 
           <!-- Título de página -->
@@ -184,7 +178,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="p_nombre" name="p_nombre" class="form-control form-control-user"
                           placeholder="Primer nombre" minlength="2" data-toggle="tooltip" data-placement="top"
                           title="Primer nombre" value="<?php echo $p_nombre ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un nombre válido.
                         </div>
@@ -194,7 +188,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
                           placeholder="Segundo nombre" data-toggle="tooltip" data-placement="top" title="Segundo nombre"
                           value="<?php echo $s_nombre ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? '' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un nombre válido.
                         </div>
@@ -206,7 +200,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="p_apellido" name="p_apellido" class="form-control form-control-user"
                           placeholder="Primer apellido" minlength="2" data-toggle="tooltip" data-placement="top"
                           title="Primer apellido" value="<?php echo $p_apellido ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un apellido válido.
                         </div>
@@ -216,7 +210,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="s_apellido" name="s_apellido" class="form-control form-control-user"
                           placeholder="Segundo apellido" minlength="2" data-toggle="tooltip" data-placement="top"
                           title="Segundo apellido" value="<?php echo $s_apellido ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un apellido válido.
                         </div>
@@ -247,7 +241,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                           value="<?php echo $fecha_nacimiento ?>"
                           min="<?php echo date('Y-m-d', strtotime('-150 year')) ?>"
                           max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un fecha de nacimiento válido.
                         </div>
@@ -257,9 +251,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono habitación</small></label><br>
                         <input type="number" id="habitacion" name="habitacion" class="form-control"
-                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,}"
+                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,13}"
                           data-toggle="tooltip" data-placement="top" title="Teléfono de habitación"
-                          value="<?php echo $habitacion ?>">
+                          value="<?php echo ($habitacion==0) ? '' : $habitacion ?>">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de habitación válido.
                         </div>
@@ -267,7 +261,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="movil" name="movil" class="form-control" placeholder="Teléfono móvil"
-                          min="4100000000" pattern="\d*.{11,}" data-toggle="tooltip" data-placement="top"
+                          min="4100000000" pattern="\d*.{11,13}" data-toggle="tooltip" data-placement="top"
                           title="Teléfono móvil" value="<?php echo $movil ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
@@ -276,8 +270,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col my-auto pt-3">
                         <label class="pl-2"><small>Teléfono trabajo</small></label><br>
                         <input type="number" id="trabajo" name="trabajo" class="form-control"
-                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,}" data-toggle="tooltip"
-                          data-placement="top" title="Teléfono de trabajo" value="<?php echo $trabajo ?>">
+                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,13}" data-toggle="tooltip"
+                          data-placement="top" title="Teléfono de trabajo" value="<?php echo ($trabajo ==0) ? '' : $trabajo ?>">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono de trabajo válido.
                         </div>
@@ -316,7 +310,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="pais" name="pais" class="form-control form-control-user"
                           placeholder="País" minlength="4" data-toggle="tooltip" data-placement="top" title="País"
                           value="<?php echo $pais ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un País válido.
                         </div>
@@ -326,7 +320,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="estado" name="estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" data-toggle="tooltip" data-placement="top" title="Estado"
                           value="<?php echo $estado ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
@@ -339,7 +333,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" data-toggle="tooltip" data-placement="top" title="Ciudad"
                           value="<?php echo $ciudad ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un ciudad válido.
                         </div>
@@ -349,7 +343,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
                           placeholder="Municipio" minlength="4" data-toggle="tooltip" data-placement="top"
                           title="Municipio" value="<?php echo $municipio ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un municipio válido.
                         </div>
@@ -513,8 +507,8 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono local</small></label><br>
                         <input type="number" id="e_local" name="e_local" class="form-control"
-                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,}" data-toggle="tooltip"
-                          data-placement="top" title="Teléfono de local" value="<?php echo $e_local ?>">
+                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,13}" data-toggle="tooltip"
+                          data-placement="top" title="Teléfono de local" value="<?php echo ($e_local==0) ? '' : $e_local ?>">
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono local válido.
                         </div>
@@ -522,7 +516,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="e_movil" name="e_movil" class="form-control"
-                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" data-toggle="tooltip"
+                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" data-toggle="tooltip"
                           data-placement="top" title="Teléfono móvil" value="<?php echo $e_movil ?>" required>
                         <div class="invalid-feedback">
                           Por favor introduzca un teléfono móvil válido.
@@ -548,7 +542,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                           placeholder="Nombre de la institución (no abreviar)" minlength="11" data-toggle="tooltip"
                           data-placement="top" title="Nombre de la institución (no abreviar)"
                           value="<?php echo $i_nombre ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un nombre de institución válido.
                         </div>
@@ -563,7 +557,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                           placeholder="Año de egreso" min="1930" max="<?php echo date('Y') ?>" pattern="\d*.{4,4}"
                           data-toggle="tooltip" data-placement="top" title="Año de egreso"
                           value="<?php echo $i_egreso ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un año de egreso válido.
                         </div>
@@ -573,7 +567,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
                           placeholder="Código de la institución" minlength="6" data-toggle="tooltip"
                           data-placement="top" title="Código de la institución" value="<?php echo $i_codigo ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un código válido.
                         </div>
@@ -587,7 +581,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" data-toggle="tooltip" data-placement="top" title="Estado"
                           value="<?php echo $i_estado ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un Estado válido.
                         </div>
@@ -596,7 +590,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         <label class="pl-2"><small>Tipo de institución</small></label><br>
                         <select id="tipo_inst" name="tipo_inst" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Tipo de institución"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                           <option selected value="<?php echo $tipo_inst ?>"><?php echo $tipo_inst_name ?>
                           </option>
                           <option value="1">Privada</option>

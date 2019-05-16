@@ -107,6 +107,8 @@ $path_image = 'back/documentos/';
 $ultActualizacion = date('Y-m-d');
 $nombre_solicitud = $row_mi['nombre_solicitud'];
 
+$check_solicitud = 1; //--------------------------------------------- Estado Solicitud ($row['check_solicitud'])
+
 ?>
 
 <!-- Título de página -->
@@ -490,6 +492,53 @@ if ($result_metodoing->num_rows > 0) {
 
           </div>
           <!-- End Metodo -->
+
+          <br>
+          <hr class="sidebar-divider">
+          <br>
+
+          <!-- Estado Solicitud -->
+          <div class="form-group row">
+
+            <div class="col-md-12 col-lg-4 text-lg-left my-auto">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" <?php echo ($check_solicitud == 0) ? '' : 'checked' ?> class="custom-control-input"
+                  id="check_solicitud">
+                <label class="custom-control-label" for="check_solicitud">
+                  <h5 class="text-gray-900 text-justify pl-4">Estado de solicitud <br>
+                    <small><?php echo ($check_solicitud == 0) ? 'Pendiente' : 'Atendida' ?></small>
+                  </h5>
+
+                </label>
+              </div>
+            </div>
+            <div class="col-md-12 text-md-center col-lg-8 text-lg-left pt-3 my-auto">
+
+              <div id="preview-images-Estado Solicitud" class="preview-images">
+                <div>Ejemplo:</div>
+<small>                
+                  <div class="custom-control custom-switch d-inline-flex">
+                    <input type="checkbox" checked class="custom-control-input" readonly>
+                    <label class="custom-control-label">
+                      <h5 class="text-gray-900 text-justify pl-2">Atendida<br>
+                      </h5>
+                    </label>
+                  </div>
+                  <b class="px-2">|</b>
+                  <div class="custom-control custom-switch d-inline-flex">
+                    <input type="checkbox" class="custom-control-input" readonly>
+                    <label class="custom-control-label">
+                      <h5 class="text-gray-900 text-justify pl-2">Pendiente<br>
+                      </h5>
+                    </label>
+                  </div>
+</small>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- End Estado Solicitud -->
 
           <div class="alert alert-danger" role="alert" id="resultado" hidden>
           </div>

@@ -11,7 +11,7 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
   $ida=$_GET['ida']; // id_alumno
 
   include 'back/conexion.php';
-  $sql_alumno = "SELECT p_nombre, p_apellido, cedula, documento FROM alumnos
+  $sql_alumno = "SELECT p_nombre, p_apellido, cedula, documento, ultActualizacion FROM alumnos
                  WHERE id_alumno = '$ida';";
 
   $result_alumno = mysqli_query($conexion, $sql_alumno);
@@ -20,7 +20,9 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
   $p_nombre = $row_alumno['p_nombre'];
   $p_apellido = $row_alumno['p_apellido'];
   $ci = $row_alumno['cedula'];
-  $idd = $row_alumno['documento'];
+  $idd = $row_alumno['documento'];  
+  ($row_alumno['ultActualizacion'] == '0000-00-00') ? $datosLlenados = 0 : $datosLlenados = 1;
+
   }
 
 }
@@ -127,19 +129,21 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
   <!-- ============================== Para los ADMINISTRADORES $rol='2' ============================== -->
 
   <?php if ($rol >= 2 && isset($_GET['ida'])) { // Mostrar solo para admin $rol='2' ?>
+    <?php if ($datosLlenados == 0) { ?>
     <!-- Nav Item - Datos -->
     <li class="nav-item">
       <a id="sddatosAlumno" class="nav-link" href="page-student-datos.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">
         <i class="fas fa-file-alt"></i>
         <span>Datos</span></a>
     </li>
+    <?php }; ?>   
   <!-- Nav Item - Documentos -->
   <li class="nav-item">
     <a id="sddocsAlumno" class="nav-link" href="page-admin-student-docs.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">
       <i class="far fa-folder-open"></i>
       <span>Documentos</span></a>
   </li>
-  <?php }?>
+  <?php };?>
 
   <!-- ============================== /.Para los ADMINISTRADORES $rol='2' ============================== -->
 

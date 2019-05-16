@@ -57,12 +57,7 @@
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
-<?php
-if ($rol >=1 && isset($_GET['ida']) && isset($_GET['ci'])) {
-    $id = $_GET['ida'];
-    $cedula = $_GET['ci'];
-}
-?>
+
           <!-- Formulario Datos -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
@@ -413,6 +408,14 @@ if ($rol >=1 && isset($_GET['ida']) && isset($_GET['ci'])) {
                     <button id="enviarDat" type="submit" class="btn btn-primary btn-user btn-block">
                       Guardar
                     </button>
+                    
+                    <?php if ($_GET['ci']) {?>
+                      <input id="cedula " name="cedula " value="<?php echo $_GET['ci'] ?>" hidden >
+                    <?php }?>
+
+                    <?php if ($_GET['ida']) {?>
+                      <input id="id" name="id" value="<?php echo $_GET['ida'] ?>" hidden >
+                    <?php }?>
 
                   </form>
                 </div>
