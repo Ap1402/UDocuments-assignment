@@ -409,11 +409,11 @@
                       Guardar
                     </button>
                     
-                    <?php if ($_GET['ci']) {?>
+                    <?php if (isset($_GET['ci'])) {?>
                       <input id="cedula " name="cedula " value="<?php echo $_GET['ci'] ?>" hidden >
                     <?php }?>
 
-                    <?php if ($_GET['ida']) {?>
+                    <?php if (isset($_GET['ida'])) {?>
                       <input id="id" name="id" value="<?php echo $_GET['ida'] ?>" hidden >
                     <?php }?>
 

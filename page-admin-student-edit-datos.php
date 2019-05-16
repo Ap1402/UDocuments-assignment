@@ -601,11 +601,11 @@ $nac_postal = $datosDirecc['postal_hab'];
                     <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
 
                     <br>
-                    <?php if ($_GET['ci']) {?>
+                    <?php if (isset($_GET['ci'])) {?>
                       <input id="ci " name="ci " value="<?php echo $_GET['ci'] ?>" hidden >
                     <?php }?>
 
-                    <?php if ($_GET['ida']) {?>
+                    <?php if (isset($_GET['ida'])) {?>
                       <input id="ida" name="ida" value="<?php echo $_GET['ida'] ?>" hidden >
                     <?php }?>
 
