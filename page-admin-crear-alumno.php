@@ -130,6 +130,29 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <select id="pregunta" name="pregunta" class="form-control">
+                        <option disabled selected value="">Elija su pregunta de seguridad</option>
+                        <option value="¿Nombre de mi primera mascota?">¿Nombre de mi primera mascota?</option>
+                        <option value="¿Nombre de mi abuelo paterno?">¿Nombre de mi abuelo paterno?</option>
+                        <option value="¿Segundo nombre de mi padre?">¿Segundo nombre de mi padre?</option>
+                        <option value="¿Dónde nació mi madre?">¿Dónde nació mi madre?</option>
+                        <option value="¿Superhéroe favorito?">¿Superhéroe favorito?</option>
+                        <option value="¿Película favorita?">¿Película favorita?</option>
+                        <option value="¿Serie Favorita?">¿Serie Favorita?</option>
+                        <option value="¿Banda Favorita?">¿Banda Favorita?</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Seleccione una opción.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" id="respuesta" name="respuesta" minlength="2"
+                        class="form-control form-control-user" placeholder="Respuesta" required>
+                      <div class="invalid-feedback">
+                        Este campo debe tener al menos 2 caracteres.
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label class="pl-2"><small>Contraseña</small></label><br>
 											<div class="input-group">
 												<input type="password" id="contrasena" name="contrasena" minlength="4"

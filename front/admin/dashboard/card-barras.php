@@ -47,7 +47,7 @@ foreach ($array_carreras as $key => $value) {
     <!-- Project Card Facultades -->
      <div class="card shadow mb-4">
        <div class="card-header py-3">
-         <h6 class="m-0 font-weight-bold text-primary">Registro por carreras <small>(ultimos 6 meses)</small></h6>
+         <h6 class="m-0 font-weight-bold text-primary">Registro por carreras <small>(últimos 6 meses)</small></h6>
        </div>
        <div class="card-body">
          <div class="chart-bar">
