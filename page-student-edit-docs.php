@@ -194,7 +194,7 @@ if ($porcentaje == 100) {
                      <?php echo ($check_cedula == 0) ? '<option value="1">Cédula</option>' : '' ?>
                      <?php echo ($check_foto == 0) ? '<option value="2">Foto tipo carnet</option>' : '' ?>
                      <?php echo ($check_notas == 0) ? '<option value="3">Notas certificadas de bachillerato (1er a 5to)</option>' : '' ?>
-                     <?php echo ($check_fondo == 0) ? '<option value="4">Titulo de bachillerato autenticado</option>' : '' ?>
+                     <?php echo ($check_fondo == 0) ? '<option value="4">Título de bachillerato autenticado</option>' : '' ?>
                      <?php echo ($check_rusnies == 0) ? '<option value="5">Resultado del RUSNIES</option>' : '' ?>
                      <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '' ?>
                      <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '' ?>

@@ -60,11 +60,11 @@
           </div>
           <!-- /.Título de página -->
 
-<!-- Busquedas especificas -->
+<!-- Búsquedas específicas -->
           <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardBE" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardBE">
-                  <h6 class="m-0 font-weight-bold text-primary">Busquedas especificas</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Búsquedas específicas</h6>
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="collapseCardBE">
@@ -104,7 +104,7 @@
                   </div>
                 </div>
               </div>
-              <!-- /.Busquedas especificas -->
+              <!-- /.Búsquedas específicas -->
 
 
           <!-- Tabla de alumnos -->

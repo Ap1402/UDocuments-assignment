@@ -47,7 +47,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-8 col-lg-10 col-md-8 mx-5 px-5">
+      <div class="col-xl-8 col-lg-10 col-md-10 mx-5 px-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -61,22 +61,26 @@
               <div class="col-sm-10 col-md-9 col-lg-9">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-2">¿Olvido la contraseña?</h1>
-                    <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll send you a
-                      link to reset
-                      your password!</p>
+                    <h1 class="h4 text-gray-900 mb-2">¿Olvidó la contraseña?</h1>
+                    <p class="mb-4">Por favor escriba su cédula</p>
                   </div>
                   <form id="forgotForm" method="POST" class="user needs-validation" novalidate>
                     <div class="form-group">
-                      <input type="email" id="pass_forgot" name="pass_forgot" class="form-control form-control-user"
-                        placeholder="Correo" required>
+                      <input type="number" id="cedula" name="cedula" class="form-control"
+                        placeholder="Cédula" pattern="\d*.{7,11}" required>
                       <div class="invalid-feedback">
-                        Por favor introduzca un correo válido.
+                        Este campo debe tener al menos 7 cifras.
                       </div>
                     </div>
+
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
+<br>
                     <button id="enviarFor" type="submit" class="btn btn-primary btn-user btn-block">
                       Recuperar contraseña
                     </button>
+                    <a href="page-access-forgot-preguntas.php" class="btn btn-primary btn-user btn-block">
+                      Ruta a donde te lleva
+                    </a>
                   </form>
                   <hr>
                   <div class="text-center">

@@ -179,7 +179,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           title="Primer nombre" value="<?php echo $p_nombre ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -189,7 +189,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $s_nombre ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                     </div>
@@ -201,7 +201,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           title="Primer apellido" value="<?php echo $p_apellido ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un apellido válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -211,7 +211,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           title="Segundo apellido" value="<?php echo $s_apellido ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un apellido válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                     </div>
@@ -231,7 +231,9 @@ $nac_postal = $datosDirecc['postal_hab'];
                           <option value="3">Divorciado</option>
                           <option value="4">Viudo</option>
                         </select>
-
+<div class="invalid-feedback">
+                          Por favor seleccione una opción.
+                        </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Fecha de nacimiento</small></label><br>
@@ -242,7 +244,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un fecha de nacimiento válido.
+                          Por favor introduzca una fecha de nacimiento válida.
                         </div>
                       </div>
                     </div>
@@ -254,7 +256,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           data-toggle="tooltip" data-placement="top" title="Teléfono de habitación"
                           value="<?php echo ($habitacion == 0) ? '' : $habitacion ?>">
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono de habitación válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -263,7 +265,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           min="4100000000" pattern="\d*.{11,13}" data-toggle="tooltip" data-placement="top"
                           title="Teléfono móvil" value="<?php echo $movil ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono móvil válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                       <div class="col my-auto pt-3">
@@ -272,7 +274,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,13}" data-toggle="tooltip"
                           data-placement="top" title="Teléfono de trabajo" value="<?php echo ($trabajo == 0) ? '' : $trabajo ?>">
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono de trabajo válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                     </div>
@@ -291,8 +293,8 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type='text' id='tipo_discapacidad' name='tipo_discapacidad'
                           class='form-control form-control-user' placeholder='Tipo discapacidad' minlength='4'
                           value="<?php echo $discapacidad ?>">
-                        <div class='invalid-feedback'>
-                          Por favor introduzca un Tipo de discapacidad válida.
+                        <div class='invalid-feedback'>                          
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -311,7 +313,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $pais ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un País válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -321,7 +323,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $estado ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -334,7 +336,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $ciudad ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un ciudad válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -344,7 +346,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           title="Municipio" value="<?php echo $municipio ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un municipio válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -362,7 +364,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Zona postal" minlength="4" data-toggle="tooltip" data-placement="top"
                           title="Zona postal" value="<?php echo $nac_postal ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca una Zona postal válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -371,7 +373,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Estado" minlength="4" data-toggle="tooltip" data-placement="top" title="Estado"
                           value="<?php echo $nac_estado ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -383,7 +385,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Ciudad" minlength="4" data-toggle="tooltip" data-placement="top" title="Ciudad"
                           value="<?php echo $nac_ciudad ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un ciudad válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -393,7 +395,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           data-toggle="tooltip" data-placement="top" title="Municipio"
                           value="<?php echo $nac_municipio ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un municipio válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -404,7 +406,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           class="form-control form-control-user" placeholder="Urbanización" minlength="4"
                           value="<?php echo $nac_urbanizacion ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca una urbanizacion válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
@@ -412,7 +414,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="nac_aptcasa" name="nac_aptcasa" class="form-control form-control-user"
                           placeholder="Casa o Apartamento" minlength="4" value="<?php echo $nac_aptcasa ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un apartamento o casa válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
@@ -420,7 +422,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="nac_calle" name="nac_calle" class="form-control form-control-user"
                           placeholder="Calle" minlength="4" value="<?php echo $nac_calle ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca una calle válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -438,7 +440,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Zona postal" minlength="4" data-toggle="tooltip" data-placement="top"
                           title="Zona postal" value="<?php echo $t_postal ?>">
                         <div class="invalid-feedback">
-                          Por favor introduzca una Zona postal válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -447,7 +449,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Estado" minlength="4" data-toggle="tooltip" data-placement="top" title="Estado"
                           value="<?php echo $t_estado ?>">
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -459,7 +461,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Ciudad" minlength="4" data-toggle="tooltip" data-placement="top" title="Ciudad"
                           value="<?php echo $t_ciudad ?>">
                         <div class="invalid-feedback">
-                          Por favor introduzca un ciudad válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -468,7 +470,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Municipio" minlength="4" data-toggle="tooltip" data-placement="top"
                           title="Municipio" value="<?php echo $t_municipio ?>">
                         <div class="invalid-feedback">
-                          Por favor introduzca un municipio válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -488,16 +490,16 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Nombre y apellido" minlength="8" data-toggle="tooltip" data-placement="top"
                           title="Nombre y apellido" value="<?php echo $e_nombre ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre válido.
+                          Este campo debe tener al menos 8 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
                         <label class="pl-2"><small>Parentesco</small></label><br>
                         <input type="text" id="parentesco" name="parentesco" class="form-control form-control-user"
-                          placeholder="Parentesco" data-toggle="tooltip" data-placement="top" title="Parentesco"
+                          placeholder="Parentesco" data-toggle="tooltip" minlength="3" data-placement="top" title="Parentesco"
                           value="<?php echo $parentesco ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Parentesco válido.
+                          Este campo debe tener al menos 3 caracteres.
                         </div>
                       </div>
                     </div>
@@ -509,7 +511,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,13}" data-toggle="tooltip"
                           data-placement="top" title="Teléfono de local" value="<?php echo ($e_local == 0) ? '' : $e_local ?>">
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono local válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -518,7 +520,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" data-toggle="tooltip"
                           data-placement="top" title="Teléfono móvil" value="<?php echo $e_movil ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono móvil válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                     </div>
@@ -543,7 +545,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $i_nombre ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre de institución válido.
+                          Este campo debe tener al menos 11 caracteres.
                         </div>
                       </div>
 
@@ -558,7 +560,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $i_egreso ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un año de egreso válido.
+                          Este campo debe tener solo 4 cifras.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -568,7 +570,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           data-placement="top" title="Código de la institución" value="<?php echo $i_codigo ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un código válido.
+                          Este campo debe tener al menos 6 caracteres.
                         </div>
                       </div>
                     </div>
@@ -582,7 +584,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $i_estado ?>"
                           <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto pt-1">
@@ -595,6 +597,9 @@ $nac_postal = $datosDirecc['postal_hab'];
                           <option value="1">Privada</option>
                           <option value="2">Pública</option>
                         </select>
+                        <div class="invalid-feedback">
+                         Por favor seleccione una opción.
+                        </div>
                       </div>
                     </div>
 

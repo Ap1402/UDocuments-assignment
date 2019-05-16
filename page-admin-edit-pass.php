@@ -106,16 +106,16 @@ switch ($rol_admin) {
                         placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
                         value="<?php echo $nombre ?>" required>
                       <div class="invalid-feedback">
-                        Por favor introduzca un nombre válido.
+                        Este campo debe tener al menos 2 caracteres.
                       </div>
                     </div>
                     <div class="form-group row pt-2">
-                      <div class="col-10">
+                      <div class="col-11">
                         <label for="botonMostrarContrasena">
                           <h5 class="text-gray-900 pl-2">Modificar Contraseña</h5>
                         </label>
                       </div>
-                      <div class="col-2 text-center">
+                      <div class="col-1 text-center">
                         <div class="custom-control custom-switch">
                           <input type="checkbox" class="custom-control-input" id="botonMostrarContrasena">
                           <label class="custom-control-label" for="botonMostrarContrasena">
@@ -137,7 +137,7 @@ switch ($rol_admin) {
                           </div>
                         </div>
                         <div class="invalid-feedback">
-                          Su contraseña debe tener al menos 4 caracteres.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="form-group">
@@ -153,7 +153,7 @@ switch ($rol_admin) {
                           </div>
                         </div>
                         <div class="invalid-feedback">
-                          Su contraseña debe tener al menos 4 caracteres.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -166,6 +166,9 @@ switch ($rol_admin) {
                         <option value="2">Asistente</option>
                         <option value="3">Administrador</option>
                       </select>
+                      <div class="invalid-feedback">
+                          Seleccione una opción.
+                        </div>
                     </div>
                     <?php };?>
 
@@ -179,6 +182,9 @@ switch ($rol_admin) {
                         <option value="1">Activo</option>
                         <option value="0">Inactivo</option>
                       </select>
+                      <div class="invalid-feedback">
+                          Seleccione una opción.
+                        </div>
                     </div>
                     <?php };?>
 

@@ -70,13 +70,13 @@
 
 										<div class="form-group row">
 											<div class="col-sm-6">
-												<label class="pl-2"><small>Primer nombre</small></label><br>
+												<label class="pl-2"><small>Nombre</small></label><br>
 												<input type="text" id="nombre" name="nombre"
 													class="form-control form-control-user" placeholder="Nombre"
 													minlength="2" data-toggle="tooltip" data-placement="top"
 													title="Nombre" required>
 												<div class="invalid-feedback">
-													Por favor introduzca un nombre válido.
+													Este campo debe tener al menos 2 caracteres.
 												</div>
 											</div>
 											<div class="col-sm-6">
@@ -86,7 +86,7 @@
 													placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip"
 													data-placement="top" title="Nombre de usuario" required>
 												<div class="invalid-feedback">
-													Por favor introduzca un nombre de usuario válido.
+													Este campo debe tener al menos 4 caracteres.
 												</div>
 											</div>
 										</div>
@@ -104,7 +104,7 @@
 												</div>
 											</div>
 											<div class="invalid-feedback">
-												La contraseña debe tener al menos 4 caracteres.
+												Este campo debe tener al menos 4 caracteres.
 											</div>
 										</div>
 										<div class="form-group">
@@ -121,17 +121,20 @@
 												</div>
 											</div>
 											<div class="invalid-feedback">
-												La contraseña debe tener al menos 4 caracteres.
+												Este campo debe tener al menos 4 caracteres.
 											</div>
 										</div>
 
 										<div class="form-group">
                       <label class="pl-2"><small>Rol</small></label><br>
-                      <select id="rol_admin" name="rol_admin" class="form-control">
+                      <select id="rol_admin" name="rol_admin" class="form-control" required>
                         <option value="1">Personal</option>
                         <option value="2">Asistente</option>
                         <option value="3">Administrador</option>
-                      </select>
+																						</select>
+																						<div class="invalid-feedback">
+												Seleccione una opción.
+											</div>
                     </div>
 
 

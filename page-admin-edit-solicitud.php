@@ -70,13 +70,13 @@
                     <tr>
                       <th>Cédula</th>
                       <th>Alumno</th>
-                      <th>Fecha de creacion</th>
+                      <th>Fecha de creación</th>
                       <th>Estado de solicitud</th>
-                      <th>Fecha de Atencion</th>
+                      <th>Fecha de Atención</th>
                       <th>Tipo</th>
                       <th>Carrera</th>
                       <th>Turno</th>
-                      <th>Personal de atencion</th>
+                      <th>Personal de atención</th>
                       <th>Validar Docs</th>
                       <th>Ver perfil</th>
                     </tr>
@@ -85,13 +85,13 @@
                     <tr>
                       <th>Cédula</th>
                       <th>Alumno</th>
-                      <th>Fecha de creacion</th>
+                      <th>Fecha de creación</th>
                       <th>Estado de solicitud</th>
-                      <th>Fecha de Atencion</th>
+                      <th>Fecha de Atención</th>
                       <th>Tipo</th>
                       <th>Carrera</th>
                       <th>Turno</th>
-                      <th>Personal de atencion</th>
+                      <th>Personal de atención</th>
                       <th>Validar Docs</th>
                       <th>Ver perfil</th>
                     </tr>
@@ -100,9 +100,8 @@
                     <?php
                       include 'back/conexion.php';
 
-                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, documento, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion, id_admin, usuario FROM alumnos
+                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, documento, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion FROM alumnos
                               INNER JOIN solicitudes ON alumnos.id_alumno = solicitudes.alumno
-                              LEFT JOIN administradores ON administradores.id_admin = solicitudes.personalAtencion
                               LEFT JOIN tipo_solicitud ON tipo_solicitud.tipo = solicitudes.tipo";
 
                       $result = mysqli_query($conexion, $sql);
@@ -154,7 +153,7 @@
                     echo $turno;
                       ?>
                       </td>
-                      <td><?=$row['usuario']?></td>
+                      <td><?=$row['personalAtencion']?></td>
                       <td><a href="<?='page-admin-check.php?idd='.$row['documento'].'&ida='.$row['id_alumno'].'&ci='.$row['cedula'].'&mi='.$row['tipo']?>"><i class="fas fa-clipboard-list"></i></a> </td>
                       <td><a href="<?='page-student-perfil.php?ida='.$row['id_alumno']?>"><i class="fas fa-id-card"></i></a> </td>
 
@@ -269,12 +268,13 @@
         var codigo = $('#codigo').val();
         var elemento = $('#elemento').val();
         var estado = $('#estado').val();
-        // var personalAtencion = $('span[id=usernameActual]').text();
+        var personalAtencion = $('span[id=usernameActual]').text();
 
         var datosEnviadosS = {
           'codigo': codigo,
           'elemento': elemento,
-          'estado': estado
+          'estado': estado,
+          'personalAtencion': personalAtencion
         };
 
         $.ajax({

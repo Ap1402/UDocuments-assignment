@@ -10,11 +10,13 @@ if($conexion->connect_error){
 $codigo = $_POST['codigo'];
 $elemento = $_POST['elemento'];
 $estado = ($_POST['estado']=='true') ? 0 : 1;
+$personalAtencion = $_POST['personalAtencion'];
+
 
 // guardando valores
 // print_r($elemento);
 
-$consulta = "UPDATE solicitudes SET `$elemento`=$estado
+$consulta = "UPDATE solicitudes SET `$elemento`=$estado, `personalAtencion`='$personalAtencion'
              WHERE id_solicitud=$codigo";
 $resultado = mysqli_query($conexion, $consulta);
 

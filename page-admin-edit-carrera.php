@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Tabla de Carreras/Solicitud </title>
+  <title> Tabla de Carreras / Solicitud </title>
   <?php require 'back/admin/restriccionAcceso.php';?>
 
   <!-- Favicon -->
@@ -68,7 +68,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Codigo</th>
+                      <th>Código</th>
                       <th>Carrera</th>
                       <th>Estatus</th>
                       <th>Mañana</th>
@@ -78,7 +78,7 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Codigo</th>
+                      <th>Código</th>
                       <th>Carrera</th>
                       <th>Estatus</th>
                       <th>Mañana</th>

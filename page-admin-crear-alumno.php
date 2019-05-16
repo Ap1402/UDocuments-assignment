@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Crear alumno </title>
+  <title> Registrar alumno </title>
 	<?php require('back/admin/restriccionAcceso.php');?>
 
   <!-- Favicon -->
@@ -65,7 +65,7 @@
                 <div class="p-4">
                   <form id="registroForm" method="POST" class="user needs-validation" novalidate>
 
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
+                    <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
                     <div class="form-group row">
                       <div class="col-sm-6">
@@ -73,15 +73,15 @@
                         <input type="text" id="p_nombre" name="p_nombre" class="form-control form-control-user"
                           placeholder="Primer nombre" minlength="2" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <label class="pl-2"><small>Segundo nombre</small></label><br>
                         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
-                          placeholder="Segundo nombre" required>
+                          placeholder="Segundo nombre">
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                     </div>
@@ -91,7 +91,7 @@
                         <input type="text" id="p_apellido" name="p_apellido" class="form-control form-control-user"
                           placeholder="Primer apellido" minlength="2" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un apellido válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -99,7 +99,7 @@
                         <input type="text" id="s_apellido" name="s_apellido" class="form-control form-control-user"
                           placeholder="Segundo apellido" minlength="2" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un apellido válido.
+                          Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
                     </div>
@@ -117,15 +117,15 @@
                         <input type="text" id="username" name="username" class="form-control form-control-user"
                           placeholder="Nombre de ususario" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre de usuario válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <label class="pl-2"><small>Cédula</small></label><br>
-                        <input type="number" id="cedula" name="cedula" class="form-control" placeholder="Cédula"
+                        <input type="number" id="cedula" name="cedula" pattern="\d*.{7,11}" class="form-control" placeholder="Cédula"
                           required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un número de cédula válido.
+                          Este campo debe tener al menos 7 cifras.
                         </div>
                       </div>
                     </div>
@@ -143,7 +143,7 @@
 												</div>
                       </div>
                       <div class="invalid-feedback">
-                        La contraseña debe tener al menos 4 caracteres.
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
                     <div class="form-group">
@@ -158,11 +158,10 @@
                         </div>
                       </div>
                       <div class="invalid-feedback">
-												La contraseña debe tener al menos 4 caracteres.
+												Este campo debe tener al menos 4 caracteres.
 											</div>
                     </div>
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
-                    </div>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
                     <br>
                     <button id="enviar" type="submit" class="btn btn-primary btn-user btn-block">
                       Registrar Cuenta

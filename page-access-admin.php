@@ -45,7 +45,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-8 col-lg-10 col-md-8 mx-5 px-5">
+      <div class="col-xl-8 col-lg-10 col-md-10 mx-5 px-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
 
@@ -59,7 +59,7 @@
               <div class="col-sm-12 col-md-10 col-lg-9">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Bienvenido <br><small>Acesso panel de administración</small></h1>
+                    <h1 class="h4 text-gray-900 mb-4">Bienvenido! <br><small>Acesso a panel de administración</small></h1>
                   </div>
                   <form id="adminForm" method="POST" class="user needs-validation" novalidate>
 
@@ -68,7 +68,7 @@
                       <input type="text" id="usernameAdmin" name="usernameAdmin" class="form-control form-control-user"
                         placeholder="Nombre usuario" minlength="4" required>
                       <div class="invalid-feedback">
-                        Por favor introduzca un nombre de usuario válido.
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
 
@@ -84,7 +84,7 @@
                         </div>
                       </div>
                       <div class="invalid-feedback">
-                        La contraseña debe tener al menos 4 caracteres.
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
 
@@ -97,7 +97,7 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a href="page-access-forgot.php" class="small">¿Olvido la contraseña?</a>
+                    <a href="page-access-forgot.php" class="small">¿Olvidó la contraseña?</a>
                   </div>
                   <div class="text-center">
                     <a href="index.php" class="small">Iniciar sesión como alumno</a>

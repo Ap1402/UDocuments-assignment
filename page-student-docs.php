@@ -135,7 +135,7 @@ if ($porcentaje == 100) {
                     <option value="1">Cédula</option>
                     <option value="2">Foto tipo carnet</option>
                     <option value="3">Notas certificadas de bachillerato (1er a 5to)</option>
-                    <option value="4">Titulo de bachillerato autenticado</option>
+                    <option value="4">Título de bachillerato autenticado</option>
                     <option value="5">Resultado del RUSNIES</option>
                     <option value="6">Partida de nacimiento</option>
                     <option value="7">Método de ingreso</option>

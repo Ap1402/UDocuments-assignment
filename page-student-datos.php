@@ -66,9 +66,6 @@
                   <form id="datosForm" method="POST" class="user needs-validation" novalidate>
                   <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
-                    <input type="hidden" name="ida" id="ida" value="<?=$ida?>">
-                    <input type="hidden" name="ci" id="ci" value="<?=$cedula?>">
-
                     <div class="form-group row">
                       <div class="col-sm-6 pt-1">
                         <label class="pl-2"><small>Estado civil</small></label><br>
@@ -96,25 +93,25 @@
                       <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
                         <label class="pl-2"><small>Teléfono de habitación</small></label><br>
                         <input type="number" id="habitacion" name="habitacion" class="form-control"
-                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,}">
+                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,13}">
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono de habitación válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="movil" name="movil" class="form-control"
-                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" required>
+                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono móvil válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
                         <label class="pl-2"><small>Teléfono de trabajo</small></label><br>
                         <input type="number" id="trabajo" name="trabajo" class="form-control"
-                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,}">
+                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,13}">
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono de trabajo válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
 
@@ -134,7 +131,7 @@
                           <option value="2">Sí</option>
                         </select>
                         <div class="invalid-feedback">
-                          Por favor introduzca una opcion válida.
+                          Por favor introduzca una opción.
                         </div>
                       </div>
                     </div>
@@ -159,7 +156,7 @@
                         <input type="text" id="pais" name="pais" class="form-control form-control-user"
                           placeholder="País" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un País válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -167,7 +164,7 @@
                         <input type="text" id="estado" name="estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -175,7 +172,7 @@
                         <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un ciudad válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -183,7 +180,7 @@
                         <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
                           placeholder="Municipio" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un municipio válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -202,7 +199,7 @@
                         <input type="text" id="nac_postal" name="nac_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca una Zona postal válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -210,7 +207,7 @@
                         <input type="text" id="nac_estado" name="nac_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -218,7 +215,7 @@
                         <input type="text" id="nac_ciudad" name="nac_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un ciudad válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -226,7 +223,7 @@
                         <input type="text" id="nac_municipio" name="nac_municipio"
                           class="form-control form-control-user" placeholder="Municipio" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un municipio válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -236,7 +233,7 @@
                         <input type="text" id="nac_urbanizacion" name="nac_urbanizacion"
                           class="form-control form-control-user" placeholder="Urbanización" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca una urbanizacion válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
@@ -244,7 +241,7 @@
                         <input type="text" id="nac_aptcasa" name="nac_aptcasa" class="form-control form-control-user"
                           placeholder="Casa o Apartamento" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un apartamento o casa válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
@@ -252,7 +249,7 @@
                         <input type="text" id="nac_calle" name="nac_calle" class="form-control form-control-user"
                           placeholder="Calle" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca una calle válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -269,7 +266,7 @@
                         <input type="text" id="t_postal" name="t_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4">
                         <div class="invalid-feedback">
-                          Por favor introduzca una Zona postal válida.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -277,7 +274,7 @@
                         <input type="text" id="t_estado" name="t_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4">
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -285,7 +282,7 @@
                         <input type="text" id="t_ciudad" name="t_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4">
                         <div class="invalid-feedback">
-                          Por favor introduzca un ciudad válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
@@ -293,7 +290,7 @@
                         <input type="text" id="t_municipio" name="t_municipio" class="form-control form-control-user"
                           placeholder="Municipio" minlength="4">
                         <div class="invalid-feedback">
-                          Por favor introduzca un municipio válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                     </div>
@@ -312,31 +309,31 @@
                         <input type="text" id="e_nombre" name="e_nombre" class="form-control form-control-user"
                           placeholder="Nombre y apellido" minlength="8" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre válido.
+                          Este campo debe tener al menos 8 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
                         <label class="pl-2"><small>Parentesco</small></label><br>
-                        <input type="text" id="parentesco" name="parentesco" class="form-control form-control-user"
+                        <input type="text" id="parentesco" name="parentesco" minlength="3" class="form-control form-control-user"
                           placeholder="Parentesco" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Parentesco válido.
+                          Este campo debe tener al menos 3 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
                         <label class="pl-2"><small>Teléfono local</small></label><br>
                         <input type="number" id="e_local" name="e_local" class="form-control"
-                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,}">
+                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,13}">
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono de local válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                       <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="e_movil" name="e_movil" class="form-control"
-                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,}" required>
+                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un teléfono móvil válido.
+                          Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
                     </div>
@@ -356,7 +353,7 @@
                         <input type="text" id="i_nombre" name="i_nombre" class="form-control form-control-user"
                           placeholder="Nombre de la institución (no abreviar)" minlength="11" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un nombre de institución válido.
+                          Este campo debe tener al menos 11 caracteres.
                         </div>
                       </div>
 
@@ -368,7 +365,7 @@
                         <input type="number" id="i_egreso" name="i_egreso" class="form-control"
                           placeholder="Año de egreso" min="1930" pattern="\d*.{4,4}" max="<?php echo date('Y') ?>" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un año de egreso válido.
+                          Este campo debe tener solo 4 cifras.
                         </div>
                       </div>
                       <div class="col-sm-6 pt-1">
@@ -376,7 +373,7 @@
                         <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
                           placeholder="Código de la institución" minlength="6" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un código válido.
+                          Este campo debe tener al menos 6 caracteres.
                         </div>
                       </div>
                     </div>
@@ -388,7 +385,7 @@
                         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
                         <div class="invalid-feedback">
-                          Por favor introduzca un Estado válido.
+                          Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
                       <div class="col-sm-6 pt-1">
@@ -398,6 +395,9 @@
                           <option value="1">Privada</option>
                           <option value="2">Pública</option>
                         </select>
+                        <div class="invalid-feedback">
+                          Por favor seleccione una opción.
+                        </div>
                       </div>
                     </div>
 

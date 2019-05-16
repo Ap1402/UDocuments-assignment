@@ -83,14 +83,13 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
               <div class="card-body">
                 <div class="p-4">
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
+                    <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
                     <div class="form-group">
                       <label class="pl-2"><small>Correo</small></label><br>
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
-                        placeholder="Correo" minlength="2" data-toggle="tooltip" data-placement="top" title="Correo"
-                        value="<?php echo $correo ?>"
-                        >
+                        placeholder="Correo" data-toggle="tooltip" data-placement="top" title="Correo"
+                        value="<?php echo $correo ?>" required>
                       <div class="invalid-feedback">
                         Por favor introduzca un correo válido.
                       </div>
@@ -101,8 +100,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="input-group">
                         <input type="password" id="contrasena" name="contrasena" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Contraseña" value=""
-                          >
+                          data-placement="top" title="Contraseña" value="">
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass" class="fas fa-eye-slash"></i>
@@ -110,7 +108,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         </div>
                       </div>
                       <div class="invalid-feedback">
-                        Su contraseña debe tener al menos 4 caracteres.
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
 
@@ -118,7 +116,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                        <label class="pl-2"><small>Repetir contraseña</small></label><br>
                       <div class="input-group">
                         <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                          class="form-control form-control-user" placeholder="Repetir contraseña" data-toggle="tooltip"
                           data-placement="top" title="Repetir contraseña" value=""
                           >
                         <div class="input-group-append">
@@ -128,12 +126,12 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         </div>
                       </div>
                       <div class="invalid-feedback">
-                        Su contraseña debe tener al menos 4 caracteres.
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
-                    </div>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
+
                     <br>
 
                     <button id="editPass" type="submit" class="btn btn-primary btn-user btn-block">

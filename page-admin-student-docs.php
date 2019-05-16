@@ -58,17 +58,16 @@
           
           include 'back/conexion.php';
           
-          // ------------ Obtener la id del documento
-          if (isset($_SESSION['docId'])) {
-              $idd = $_SESSION['docId'];
+          // ------------ Obtener la id del documento y ci
+          if ($rol>=1 && isset($_GET['idd']) && isset($_GET['ci'])) {
+            $idd = $_GET['idd'];
+            $cedula = $_GET['ci'];
           }else{
-            $idd=$_GET['idd'];
+            $mensaje='Ocurrió un error al cargar la información';
+            echo $mensaje;
           }
+          // ------------ /.Obtener la id del documento y ci
 
-          $cedula=$_GET['ci'];
-
-          
-          
           
           $sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
           $result = mysqli_query($conexion, $sql);
@@ -169,14 +168,14 @@ if ($porcentaje == 100) {
                     <option value="1">Cédula</option>
                     <option value="2">Foto tipo carnet</option>
                     <option value="3">Notas certificadas de bachillerato (1er a 5to)</option>
-                    <option value="4">Titulo de bachillerato autenticado</option>
+                    <option value="4">Título de bachillerato autenticado</option>
                     <option value="5">Resultado del RUSNIES</option>
                     <option value="6">Partida de nacimiento</option>
                     <option value="7">Método de ingreso</option>
                   </select>
 
                   <form id="docsForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
+                    <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
 
                     <!--
 					Los archivos relacionados estan:
@@ -215,14 +214,16 @@ if ($porcentaje == 100) {
                     <button id="enviarDocs" type="submit" class="btn btn-primary btn-user btn-block" disabled="true">
                       Enviar Documentos
                     </button>
-                    <?php if ($_GET['ci']) { ?>
+                    <?php if (isset($_GET['ci'])) { ?>
                       <input id="cedulaCOD" name="cedulaCOD" value="<?php echo $_GET['ci']?>" hidden >
                     <?php } ?>
 
-                    <?php if ($_GET['idd']) { ?>
+                    <?php if (isset($_GET['idd'])) { ?>
                       <input id="docId" name="docId" value="<?php echo $_GET['idd']?>" hidden >
                     <?php } ?>
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden></div>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
+                    </div>
+                    <br>
 
                   </form>
 

@@ -124,10 +124,10 @@ switch ($row['turno']) {
 
 switch ($row['tipoInst']) {
     case 1:
-        $tipoInst = 'Pública';
+        $tipoInst = 'Privada';
         break;
     case 2:
-        $tipoInst = 'Privada';
+        $tipoInst = 'Pública';
         break;
     default:
         $tipoInst = '';
@@ -313,7 +313,7 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
                         <input type="text" value="<?=$row['postal']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Urbanizacion</small></label><br>
+                        <label class="pl-2 pt-2"><small>Urbanización</small></label><br>
                         <input type="text" value="<?=$row['urbanizacion']?>" class="form-control" disabled>
                       </div>
                       <div class="col-sm-12 col-md-6 col-xl-4">
@@ -627,7 +627,7 @@ if ($result_notas->num_rows > 0) {
                           <div class="col-2"><i
                               class="fas fa-<?php echo ($row['check_fondo'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
                           </div>
-                          <div class="col-10 text-justify">Titulo de bachillerato autenticado</div>
+                          <div class="col-10 text-justify">Título de bachillerato autenticado</div>
                         </h5>
                       </div>
 

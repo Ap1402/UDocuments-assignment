@@ -90,7 +90,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                    <div class="form-group">
                       <label class="pl-2"><small>Correo</small></label><br>
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
-                        placeholder="Correo" minlength="2" data-toggle="tooltip" data-placement="top" title="Correo"
+                        placeholder="Correo" data-toggle="tooltip" data-placement="top" title="Correo"
                         value="<?php echo $correo ?>"
                         <?php echo ($rol >= 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                       <div class="invalid-feedback">
@@ -113,7 +113,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         </div>
                       </div>
                       <div class="invalid-feedback">
-                        Su contraseña debe tener al menos 4 caracteres.
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
 
@@ -121,7 +121,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                        <label class="pl-2"><small>Repetir contraseña</small></label><br>
                       <div class="input-group">
                         <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                          class="form-control form-control-user" placeholder="Repetir contraseña" data-toggle="tooltip"
                           data-placement="top" title="Repetir contraseña" value=""
                           <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
                         <div class="input-group-append">
@@ -131,7 +131,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         </div>
                       </div>
                       <div class="invalid-feedback">
-                        Su contraseña debe tener al menos 4 caracteres.
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
                     <div class="alert alert-danger" role="alert" id="resultado" hidden>
