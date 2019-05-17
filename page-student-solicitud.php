@@ -74,12 +74,13 @@
                             $sql = "SELECT * FROM carreras WHERE estatus=1";
                             $result = mysqli_query($conexion, $sql);
                             $resultArray = array();
+                            $i=1;
                             if ($result->num_rows > 0) {
                               while ($row = mysqli_fetch_assoc($result)) {
-                              echo "<option value=". $row["codigo"] .">".$row["nombre"]."</option>";
+                              echo "<option data-id=".$i." value=". $row["codigo"] .">".$row["nombre"]."</option>";
                               $resultArray[]=array("codigo"=>$row["codigo"],"nombre"=>$row["nombre"],"manana"=>$row["manana"],"tarde"=>$row["tarde"],"noche"=>$row["noche"]);
-                              };
-                            
+                              $i++;
+                              };                            
                             };
                           ?>
                         </select>
@@ -186,9 +187,8 @@
 
       $("#carrera").change(function () {
 
-        var codigo = $("#carrera").val();
+        var codigo = $("#carrera option:selected").attr('data-id');        
         var nuevasopciones = "";
-
 
         if (carreras[codigo - 1]["manana"] == 1) {
           nuevasopciones += "<option value='1'>Mañana</option>";
