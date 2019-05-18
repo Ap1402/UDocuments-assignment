@@ -75,7 +75,7 @@ $s_apellido=$datos['s_apellido'];
 $cedula=$datos['cedula'];
 $correo= $datos['correo'];
 $estado_civild=$datos['estado_civil'];
-
+$check_datos =$datos['check_datos'];
 switch ($estado_civild) {
   case 1:
   $estado_civil_name='Casado';
