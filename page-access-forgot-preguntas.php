@@ -125,8 +125,10 @@
                         Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
+                    <input id="cedula" name ="cedula" value="<?php echo $_GET['ci'] ?>" hidden>
+          
                     <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
-                    <button id="enviarFor" type="submit" class="btn btn-primary btn-user btn-block">
+                    <button id="enviar" type="submit" class="btn btn-primary btn-user btn-block">
                       Cambiar contraseña
                     </button>
 
@@ -182,6 +184,48 @@
         $('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
       }
     }
+  </script>
+
+<script>
+    $(document).ready(function () {      
+
+      $('#enviar').on('click', ejecutarAjaxForgot);
+
+
+      function ejecutarAjaxForgot(event) {
+
+        var formData = new FormData(document.getElementById("forgotForm"));
+        $.ajax({
+            type: 'POST',
+            url: './back/estudiante/forgotPassChange.php',
+            data :formData,
+            encode: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType : 'json',
+          })
+          .done(function (datos) {
+            if (!datos.exito) {
+              $('#exito').hide();
+
+                $('#resultado').show();
+                $('#resultado').text(datos.message);
+            } else {
+              $('#resultado').hide();
+              $('#exito').show();
+
+                $('#exito').text(datos.message);            
+              }
+          })
+          .fail(function (err) {
+            console.log(err);
+          });
+
+        event.preventDefault();
+      };
+
+    });
   </script>
 
 </body>

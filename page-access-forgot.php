@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Control de estudios / SAD - Forgot</title>
+  <title>Control de estudios / SAD - Recuperación de contraseña</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -123,21 +123,20 @@
 
 
       function ejecutarAjaxForgot(event) {
-        var cedula = $('#cedula').val();
-
-        var datosEnviados = {
-          'cedula': cedula
-        };
+        var formData = new FormData(document.getElementById("forgotForm"));
 
         $.ajax({
             type: 'POST',
             url: './back/estudiante/forgot.php',
-            data: datosEnviados
+            data :formData,
+            encode: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType : 'json',
           })
-          .done(function (data) {
-            var datos = $.parseJSON(data);
+          .done(function (datos) {
             if (!datos.exito) {
-                $('#exito').hide();
 
                 $('#resultado').show();
                 $('#resultado').text('Algo salio mal, Cédula no registrada');
