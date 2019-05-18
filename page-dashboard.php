@@ -50,10 +50,13 @@
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-content" class="container-fluid">
 
-         <!-- Título de página -->
+          <!-- Título de página -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a class="d-none d-sm-inline-block"><i class="fas fa-chart-bar fa-2x text-gray-300"></i></a>
+            <a id="respaldoDB" href="#" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+              <i class="fas fa-hdd fa-sm"></i>
+              Respaldar base de datos
+            </a>
           </div>
           <!-- /.Título de página -->
 
@@ -244,6 +247,52 @@ require 'front/admin/dashboard/card-barras.php';
       </div>
       <!-- End of Main Content -->
 
+      <!-- Modal de advertencia de cambios -->
+      <div class="modal fade" id="respaldoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalRespaldo"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalRespaldo">Respaldar base de datos</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <form id="respaldoForm" method="POST" class="user needs-validation" novalidate>
+              <div class="modal-body">
+                Por favor introduzca su contraseña y seleccione "Respaldar" si está seguro de continuar con la
+                operación.<br>
+                <b>Se descargara un archivo con la base de datos junto a la carpeta de los documentos.</b><br><br>
+
+                <div class="form-group">
+                  <label class="pl-2"><small>Contraseña del administrador</small></label>
+                  <div class="input-group">
+                    <input type="password" id="contrasena" name="contrasena" minlength="4"
+                      class="form-control form-control-user" placeholder="Contraseña" required>
+                    <div class="input-group-append">
+                      <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                        <i id="showpass" class="fas fa-eye-slash"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback">
+                    Este campo debe tener al menos 4 caracteres.
+                  </div>
+                </div>
+                <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
+
+              </div>
+              <div class="modal-footer">
+                <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
+                <label><button type="submit" id="ejecutarRespaldoDB"
+                    class="btn btn-primary text-white">Respaldar</button></label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- /.Modal de advertencia de cambios -->
+
       <!-- Footer -->
       <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
@@ -280,6 +329,79 @@ require 'front/admin/dashboard/card-barras.php';
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
   <script src="js/demo/chart-bar-demo.js"></script>
+
+  <script type="text/javascript">
+    function mostrarPassword() {
+      var pass = document.getElementById("contrasena");
+      if (pass.type == "password") {
+        pass.type = "text";
+        $('i#showpass').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+      } else {
+        pass.type = "password";
+        $('i#showpass').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+      }
+    }
+  </script>
+
+  <script>
+    $(document).ready(function () {
+
+      $(document).on('click', '#respaldoDB', function () {
+        $('#respaldoModal').modal('toggle');
+      });
+
+      // $('#ejecutarRespaldoDB').on('click', ejecutarAjaxRespaldo);
+
+      // ----------------- Form Validation -------------------
+
+      'use strict';
+
+      $('#respaldoForm')[0].addEventListener('submit', function (event) {
+        if ($('#respaldoForm')[0].checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          ejecutarAjaxRespaldo(event);
+        }
+        $('#respaldoForm')[0].classList.add('was-validated');
+      }, false);
+
+      // ----------------- /Form Validation -------------------
+
+
+      function ejecutarAjaxRespaldo(event) {
+        var contrasena = $('#contrasena').val();
+        var usuario = $('span[id=usernameActual]').text();
+
+        var datosEnviadosS = {
+          'contrasena': contrasena,
+          'usuario': usuario
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: './back/admin/backRespaldo.php',
+            data: datosEnviadosS
+          })
+          .done(function (dataS) {
+            var datos = $.parseJSON(dataS);
+            if (!datos.exito) {
+
+              $('#resultado').show();
+              $('#resultado').text('La contraseña es incorrecta');
+            } else {
+              $('#respaldoModal').modal('toggle');
+            }
+          })
+          .fail(function (err) {
+            console.log(err);
+          });
+
+        event.preventDefault();
+      };
+
+    });
+  </script>
 
 </body>
 
