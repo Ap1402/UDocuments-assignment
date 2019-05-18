@@ -55,8 +55,10 @@ include 'back/conexion.php';
 
 if (isset($_SESSION['cedula'])) {
     $cedula = $_SESSION['cedula'];
+}else{
+  $cedula = $_GET['ci'];
+
 }
-;
 
 $consulta = "SELECT id_alumno, cedula, correo FROM `alumnos` WHERE cedula='" . $cedula . "'";
 $resultado = mysqli_query($conexion, $consulta);
@@ -84,7 +86,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                 <div class="p-4">
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
-
+   <?php if(isset($_GET['ida'])) { ?>
+                  <input id="ida" name="ida" value="<?php echo $_GET['ida'] ?>" hidden>
+                  <?php }?>
                     <div class="form-group">
                       <label class="pl-2"><small>Correo</small></label><br>
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
@@ -198,6 +202,66 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 		}
 	</script>
 
+<script>
+$(document).ready(function () {
+
+// $('#datosForm').on('submit',ejecutarAjaxLog);
+
+// ----------------- Form Validation -------------------
+
+'use strict';
+
+$('#passEditForm')[0].addEventListener('submit', function (event) {
+    if ($('#passEditForm')[0].checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+    } else {
+        ejecutarAjaxLog(event);
+    }
+    $('#passEditForm')[0].classList.add('was-validated');
+}, false);
+
+// ----------------- /Form Validation -------------------
+
+
+
+function ejecutarAjaxLog(event){
+
+    var formData = new FormData(document.getElementById("passEditForm"));
+
+
+    $.ajax({
+        type: 'POST',
+        url : './back/estudiante/editAlumno.php',
+        data :formData,
+        encode: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType : 'json',
+
+    })
+    .done(function(datosRecibidos){
+        if(!datosRecibidos.exito){
+            $('#exito').hide();
+
+            $('#resultado').show();
+            $('#resultado').text(datosRecibidos.message);
+        }else{
+            $('#resultado').hide();
+
+            $('#exito').show();
+            $('#exito').text(datosRecibidos.message);
+            $('html, body').animate( { scrollTop : 0 }, 800 );
+
+        }
+        
+    });
+
+    event.preventDefault();
+};
+});
+</script>
 
 </body>
 

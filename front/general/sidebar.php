@@ -168,7 +168,7 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item"
-          href="page-admin-student-edit-datos.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">Datos</a>
+          href="page-student-edit-datos.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">Datos</a>
         <?php if ($rol >= 2) { // Mostrar solo para admin $rol='2' ?>
         <a class="collapse-item"
           href="page-student-edit-docs.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">Documentos</a>
