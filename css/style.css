@@ -103,3 +103,13 @@ select {
 .form-control.is-invalid {
  background-position: center right calc(0.375em + 0.8rem);
 }
+
+.preload {
+ padding-top: 20px;
+ text-align: center;
+ display: none;
+}
+
+.activate-preload {
+ display: block;
+}
