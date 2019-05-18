@@ -126,7 +126,9 @@
                       </div>
                     </div>
                     <input id="cedula" name ="cedula" value="<?php echo $_GET['ci'] ?>" hidden>
-          
+                    <div id="preload" class="preload">
+                      <img src="img/images/preload.gif" alt="preload" hidden>
+                    </div>
                     <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
                     <button id="enviar" type="submit" class="btn btn-primary btn-user btn-block">
                       Cambiar contraseña
@@ -193,6 +195,7 @@
 
 
       function ejecutarAjaxForgot(event) {
+        preload.classList.add('activate-preload'); 
 
         var formData = new FormData(document.getElementById("forgotForm"));
         $.ajax({
@@ -206,6 +209,7 @@
             dataType : 'json',
           })
           .done(function (datos) {
+            preload.classList.remove('activate-preload'); 
             if (!datos.exito) {
               $('#exito').hide();
 
