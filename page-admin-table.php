@@ -221,6 +221,32 @@
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/front/table.js"></script>
 
+  <script>
+    $(document).ready(function () {
+
+      eKeyup = jQuery.Event("keyup");
+      // Indicamos la tecla que deseamos que se pulse de manera automatica
+      eKeyup.which = 13;     
+
+      $('#docFaltante').on( 'click', function (eKeyup) {          
+        table.column(3).search(0).draw();
+        alert('se ha pulsado la tecla ' + eKeyup.which);
+      }).trigger(eKeyup)
+
+      $('#docCompletos').on( 'click', function (eKeyup) {          
+        table.column(3).search(100).draw();
+        alert('se ha pulsado la tecla ' + eKeyup.which);
+      }).trigger(eKeyup)
+
+      $('#docFaltante50').on( 'click', function (eKeyup) {          
+        table.column(3).search(50).draw();
+        alert('se ha pulsado la tecla ' + eKeyup.which);
+      }).trigger(eKeyup)
+      
+      
+    });
+  </script>
+
 </body>
 
 </html>

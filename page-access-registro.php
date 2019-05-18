@@ -121,14 +121,14 @@
                     <div class="form-group">
                       <select id="pregunta" name="pregunta" class="form-control">
                         <option disabled selected value="">Elija su pregunta de seguridad</option>
-                        <option value="¿Nombre de mi primera mascota?">¿Nombre de mi primera mascota?</option>
-                        <option value="¿Nombre de mi abuelo paterno?">¿Nombre de mi abuelo paterno?</option>
-                        <option value="¿Segundo nombre de mi padre?">¿Segundo nombre de mi padre?</option>
-                        <option value="¿Dónde nació mi madre?">¿Dónde nació mi madre?</option>
-                        <option value="¿Superhéroe favorito?">¿Superhéroe favorito?</option>
-                        <option value="¿Película favorita?">¿Película favorita?</option>
-                        <option value="¿Serie Favorita?">¿Serie Favorita?</option>
-                        <option value="¿Banda Favorita?">¿Banda Favorita?</option>
+                        <option value="Nombre de mi primera mascota">¿Nombre de mi primera mascota?</option>
+                        <option value="Nombre de mi abuelo paterno">¿Nombre de mi abuelo paterno?</option>
+                        <option value="Segundo nombre de mi padre">¿Segundo nombre de mi padre?</option>
+                        <option value="Dónde nació mi madre">¿Dónde nació mi madre?</option>
+                        <option value="Superhéroe favorito">¿Superhéroe favorito?</option>
+                        <option value="Película favorita">¿Película favorita?</option>
+                        <option value="Serie Favorita">¿Serie Favorita?</option>
+                        <option value="Banda Favorita">¿Banda Favorita?</option>
                       </select>
                       <div class="invalid-feedback">
                         Seleccione una opción.

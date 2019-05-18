@@ -55,7 +55,14 @@
             <!-- Nested Row within Card Body -->
 
             <?php 
-            $pregunta = '¿Soy una pregunta?';
+
+            if (isset($_GET['ci'])&&isset($_GET['ask'])) {
+              $cedula = $_GET['ci'];
+              $pregunta = $_GET['ask'];        
+            }else {
+              $pregunta = '';
+            }
+            
             ?>
 
 
@@ -80,7 +87,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-12 text-center">
-                        <label for="respuesta">Pregunta de seguridad: <b><?=$pregunta?></b></label>
+                        <label for="respuesta">Pregunta de seguridad: <b><?='¿'.$pregunta.'?'?></b></label>
                       </div>
                       <div class="col-12">
                         <input type="text" id="respuesta" name="respuesta" minlength="2"

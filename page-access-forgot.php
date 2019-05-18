@@ -78,9 +78,6 @@
                     <button id="enviarFor" type="submit" class="btn btn-primary btn-user btn-block">
                       Recuperar contraseña
                     </button>
-                    <a href="page-access-forgot-preguntas.php" class="btn btn-primary btn-user btn-block">
-                      Ruta a donde te lleva
-                    </a>
                   </form>
                   <hr>
                   <div class="text-center">
@@ -118,6 +115,45 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <script>
+    $(document).ready(function () {      
+
+      $('#enviarFor').on('click', ejecutarAjaxForgot);
+
+
+      function ejecutarAjaxForgot(event) {
+        var cedula = $('#cedula').val();
+
+        var datosEnviados = {
+          'cedula': cedula
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: './back/estudiante/forgot.php',
+            data: datosEnviados
+          })
+          .done(function (data) {
+            var datos = $.parseJSON(data);
+            if (!datos.exito) {
+                $('#exito').hide();
+
+                $('#resultado').show();
+                $('#resultado').text('Algo salio mal, Cédula no registrada');
+            } else {
+                window.location.href = 'page-access-forgot-preguntas.php?ci='+datos.cedula+'&ask='+datos.pregunta;
+            }
+          })
+          .fail(function (err) {
+            console.log(err);
+          });
+
+        event.preventDefault();
+      };
+
+    });
+  </script>
 
 </body>
 

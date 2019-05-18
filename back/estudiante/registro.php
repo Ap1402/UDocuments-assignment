@@ -12,6 +12,8 @@ $s_apellido = trim($_POST['s_apellido']);
 $cedula = trim($_POST['cedula']);
 $correo = $_POST['correo'];
 $username = trim($_POST['username']);
+$pregunta = trim($_POST['pregunta']);
+$respuesta = trim($_POST['respuesta']);
 
 $contrasena = trim($_POST['contrasena']);
 $contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
@@ -34,7 +36,7 @@ if (empty($errores)) {
     $result = mysqli_query($conexion, $instDoc);
     $lastid = mysqli_insert_id($conexion); 
 
-    $instAlumn = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,fechacreacion,documento) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha','$lastid')";
+    $instAlumn = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,fechacreacion,documento,pregunta,respuesta) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha','$lastid','$pregunta','$respuesta')";
     $result = mysqli_query($conexion, $instAlumn);
 
 

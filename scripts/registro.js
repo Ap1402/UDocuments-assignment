@@ -27,6 +27,8 @@ $(document).ready(function () {
             's_apellido': $("#s_apellido").val(),
             'correo': $("#correo").val(),
             'username': $("#username").val(),
+            'pregunta': $("#pregunta").val(),
+            'respuesta': $("#respuesta").val(),
             'contrasena': $("#contrasena").val(),
             'cedula': $("#cedula").val()
         };
