@@ -131,7 +131,8 @@
 
                       </td>
 
-                      <td><?=$row['fechaAtencion']?></td>                      
+                      <td> <a id="fechaActualizacion" data-active="false" data-id="<?=$row['id_solicitud']?>"
+                            data-role="update"><?=$row['fechaAtencion']?></a></td>                      
                       <td><?=$row['nombre_solicitud']?></td>
                       <td><?=$row['carrera']?></td>
                       <td>
@@ -288,7 +289,14 @@
               $('#solicitudA-' + codigo + ' #' + elemento).attr('data-active', 'false');
               $('#solicitudA-' + codigo + ' #' + elemento).html(
                 '<i class="fas fa-minus-circle text-secondary"></i> Pendiente</a>');
+                var d = new Date();
+              var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+              $('#fechaAtencion-' + codigo + ' #' + elemento).html(strDate);
             } else if (datosRecibidosS.estado == 1) {
+              var d = new Date();
+              var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+              $('#fechaAtencion-' + codigo + ' #' + elemento).html(strDate);
+
               $('#solicitudA-' + codigo + ' #' + elemento).attr('data-active', 'true');
               $('#solicitudA-' + codigo + ' #' + elemento).html(
                 '<i class="fas fa-check-circle text-success"></i> Atendida</a>');

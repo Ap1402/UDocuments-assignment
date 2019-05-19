@@ -11,12 +11,13 @@ $codigo = $_POST['codigo'];
 $elemento = $_POST['elemento'];
 $estado = ($_POST['estado']=='true') ? 0 : 1;
 $personalAtencion = $_POST['personalAtencion'];
+$fecha= date("Y-m-d");
 
 
 // guardando valores
 // print_r($elemento);
 
-$consulta = "UPDATE solicitudes SET `$elemento`=$estado, `personalAtencion`='$personalAtencion'
+$consulta = "UPDATE solicitudes SET `$elemento`=$estado, `personalAtencion`='$personalAtencion', fechaAtencion='$fecha'
              WHERE id_solicitud=$codigo";
 $resultado = mysqli_query($conexion, $consulta);
 
