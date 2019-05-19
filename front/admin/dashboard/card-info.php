@@ -1,7 +1,7 @@
 <?php
 include 'back/conexion.php';
 
-$sql_pendientes = "SELECT COUNT(*) FROM documentos WHERE (porcentaje < 100) AND (estatus=1)";
+$sql_pendientes = "SELECT COUNT(*) FROM documentos WHERE (porcentaje < 100)";
 
 $result_pendientes = mysqli_query($conexion, $sql_pendientes);
 $row_pendientes = mysqli_fetch_assoc($result_pendientes);

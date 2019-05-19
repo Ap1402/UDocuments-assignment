@@ -113,28 +113,28 @@ var arrayData = <?=json_encode($reg_meses)?>;
 
 $array_pendientes = [];
 
-$sql_pendientes_100 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje = 100) AND (estatus=1)";
+$sql_pendientes_100 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje = 100)";
 
 $result_pendientes_100 = mysqli_query($conexion, $sql_pendientes_100);
 $row_pendientes_100 = mysqli_fetch_assoc($result_pendientes_100);
 $alumnos_pendientes_100 = $row_pendientes_100['COUNT(*)'];
 array_push($array_pendientes, $alumnos_pendientes_100);
 
-$sql_pendientes_60 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje >= 50) AND (porcentaje < 100) AND (estatus=1)";
+$sql_pendientes_60 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje >= 50) AND (porcentaje < 100)";
 
 $result_pendientes_60 = mysqli_query($conexion, $sql_pendientes_60);
 $row_pendientes_60 = mysqli_fetch_assoc($result_pendientes_60);
 $alumnos_pendientes_60 = $row_pendientes_60['COUNT(*)'];
 array_push($array_pendientes, $alumnos_pendientes_60);
 
-$sql_pendientes_50 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje > 0) AND (porcentaje < 50) AND (estatus=1)";
+$sql_pendientes_50 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje > 0) AND (porcentaje < 50)";
 
 $result_pendientes_50 = mysqli_query($conexion, $sql_pendientes_50);
 $row_pendientes_50 = mysqli_fetch_assoc($result_pendientes_50);
 $alumnos_pendientes_50 = $row_pendientes_50['COUNT(*)'];
 array_push($array_pendientes, $alumnos_pendientes_50);
 
-$sql_pendientes_0 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje = 0) AND (estatus=1)";
+$sql_pendientes_0 = "SELECT COUNT(*) FROM documentos WHERE (porcentaje = 0)";
 
 $result_pendientes_0 = mysqli_query($conexion, $sql_pendientes_0);
 $row_pendientes_0 = mysqli_fetch_assoc($result_pendientes_0);
