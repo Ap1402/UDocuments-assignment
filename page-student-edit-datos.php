@@ -61,7 +61,10 @@ include ('back/conexion.php');
 
 if (isset($_SESSION['cedula'])){
   $cedula=$_SESSION['cedula'];
-};
+}else{
+  $cedula=$_GET['ci'];
+
+}
 
 $consulta = "SELECT * FROM `alumnos` WHERE cedula='" . $cedula . "'";
 $resultado = mysqli_query($conexion, $consulta);
@@ -171,7 +174,13 @@ $nac_postal=$datosDirecc['postal_hab'];
                 <div class="p-4">
                   <form id="datosEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
+                    <?php if (isset($_GET['ci'])) {?>
+                      <input id="ci" name="ci" value="<?php echo $_GET['ci'] ?>" hidden >
+                    <?php }?>
 
+                    <?php if (isset($_GET['ida'])) {?>
+                      <input id="ida" name="ida" value="<?php echo $_GET['ida'] ?>" hidden >
+                    <?php }?>
                     <div class="form-group row">
                       <div class="col-sm-6">
                         <label class="pl-2"><small>Primer nombre</small></label><br>

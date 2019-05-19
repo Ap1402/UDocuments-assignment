@@ -98,6 +98,13 @@
                       <span class="text">Alumnos others</span>
                     </a>
 
+                    <a id="mesActual" href="#" class="btn btn-info btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Alumnos con datos actualizados este mes</span>
+                    </a>
+
 
 
 
@@ -238,8 +245,47 @@
         alert('se ha pulsado la tecla ' + eKeyup.which);
       }).trigger(eKeyup)
 
-      $('#docFaltante50').on( 'click', function (eKeyup) {          
-        table.column(3).search(50).draw();
+      $('#docFaltante50').on( 'click', function (eKeyup) {
+        $.fn.dataTable.ext.search.push(
+        function( settings, data, dataIndex ) {
+        var min = parseInt( 0, 10 );
+        var max = parseInt( 50, 10 );
+        var completado = parseFloat( data[3] ) || 0; // use data for the age column
+ 
+        if ( ( isNaN( min ) && isNaN( max ) ) ||
+             ( isNaN( min ) && completado <= max ) ||
+             ( min <= completado   && isNaN( max ) ) ||
+             ( min <= completado   && completado <= max ) )
+        {
+            return true;
+        }
+        return false;
+        }
+      );          
+
+        table.draw();
+        alert('se ha pulsado la tecla ' + eKeyup.which);
+      }).trigger(eKeyup)
+
+
+
+      $('#mesActual').on( 'click', function (eKeyup) {
+        $.fn.dataTable.ext.search.push(
+        function( settings, data, dataIndex ) {
+        var completado =  data[4]  || 0; // use data for the age column
+        var parts = completado.split('-');
+        var dt = new Date(parts[0], parts[1] - 1, parts[2]).getMonth(); 
+        var dtActual= new Date().getMonth();
+
+        if (dtActual==dt)
+        {
+            return true;
+        }
+        return false;
+        }
+      );          
+
+        table.draw();
         alert('se ha pulsado la tecla ' + eKeyup.which);
       }).trigger(eKeyup)
       

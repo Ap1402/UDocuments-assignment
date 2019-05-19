@@ -258,7 +258,7 @@ require 'front/admin/dashboard/card-barras.php';
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <form id="respaldoForm" method="POST" class="user needs-validation" novalidate>
+            <form id="respaldoForm" action = "back/admin/createBackup.php"method="POST" class="user needs-validation" novalidate>
               <div class="modal-body">
                 Por favor introduzca su contraseña y seleccione "Respaldar" si está seguro de continuar con la
                 operación.<br>
@@ -343,6 +343,7 @@ require 'front/admin/dashboard/card-barras.php';
     }
   </script>
 
+
   <script>
     $(document).ready(function () {
 
@@ -369,36 +370,6 @@ require 'front/admin/dashboard/card-barras.php';
       // ----------------- /Form Validation -------------------
 
 
-      function ejecutarAjaxRespaldo(event) {
-        var contrasena = $('#contrasena').val();
-        var usuario = $('span[id=usernameActual]').text();
-
-        var datosEnviadosS = {
-          'contrasena': contrasena,
-          'usuario': usuario
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: './back/admin/backRespaldo.php',
-            data: datosEnviadosS
-          })
-          .done(function (dataS) {
-            var datos = $.parseJSON(dataS);
-            if (!datos.exito) {
-
-              $('#resultado').show();
-              $('#resultado').text('La contraseña es incorrecta');
-            } else {
-              $('#respaldoModal').modal('toggle');
-            }
-          })
-          .fail(function (err) {
-            console.log(err);
-          });
-
-        event.preventDefault();
-      };
 
     });
   </script>
