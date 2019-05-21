@@ -120,12 +120,12 @@
                         <?php if ($row['estadoSolicitud'] == 0) {?>
 
                         <small><a id="estadoSolicitud" class="toggle-modal" data-active="false" data-id="<?=$row['id_solicitud']?>"
-                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Pendiente</a></small>
+                            data-role="update" data-prueba="<?=$row['id_alumno']?>"><i class="fas fa-minus-circle text-secondary"></i> Pendiente</a></small>
 
                         <?php } elseif ($row['estadoSolicitud'] == 1) {?>
 
                         <small><a id="estadoSolicitud" class="toggle-modal" data-active="true" data-id="<?=$row['id_solicitud']?>"
-                            data-role="update"><i class="fas fa-check-circle text-success"></i> Atendida</a></small>
+                            data-role="update" data-prueba="<?=$row['id_alumno']?>"><i class="fas fa-check-circle text-success"></i> Atendida</a></small>
 
                         <?php }?>
 
@@ -198,6 +198,7 @@
               <input type="hidden" id="codigo">
               <input type="hidden" id="elemento">
               <input type="hidden" id="estado">
+              <input type="hidden" id="id_alumno">
             </div>
             <div class="modal-footer">
               <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
@@ -254,11 +255,14 @@
       $(document).on('click', 'a[data-role=update]', function () {
         var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
         var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
-        var estadoElemento = $(this).attr('data-active'); // data-active (row['idemento']) activo o no
+        var estadoElemento = $(this).attr('data-active');
+        var id_alumno = $(this).attr('data-prueba') // data-active (row['idemento']) activo o no
 
         $('#codigo').val(codigoCarrera);
         $('#elemento').val(idElemento);
         $('#estado').val(estadoElemento);
+        $('#id_alumno').val(id_alumno);
+
         $('#cambiosModal').modal('toggle');
       });
 
@@ -269,12 +273,15 @@
         var codigo = $('#codigo').val();
         var elemento = $('#elemento').val();
         var estado = $('#estado').val();
+        var id_alumno = $('#id_alumno').val();
+
         var personalAtencion = $('span[id=usernameActual]').text();
 
         var datosEnviadosS = {
           'codigo': codigo,
           'elemento': elemento,
           'estado': estado,
+          'id_alumno':id_alumno,
           'personalAtencion': personalAtencion
         };
 

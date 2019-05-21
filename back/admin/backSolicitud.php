@@ -1,11 +1,6 @@
 <?php 
 
-$conexion = new mysqli('localhost','admin','admin','controlest');
-
-if($conexion->connect_error){
-    die('error en la conexion'. $conexion->connect_error);
-};
-
+include '../conexion.php';
 
 $codigo = $_POST['codigo'];
 $estado = ($_POST['estado']=='true') ? 0 : 1;
