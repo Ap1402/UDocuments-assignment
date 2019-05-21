@@ -26,7 +26,7 @@ if ($result_cerreraa->num_rows > 0) {
 
 foreach ($array_carreras as $key => $value) {
 
-  $sql_reg_car = "SELECT COUNT(*) FROM alumnos LEFT JOIN carreras ON alumnos.carrera = carreras.nombre WHERE (codigo = '$value') AND (fechaCreacion > '$fecha_car')";
+  $sql_reg_car = "SELECT COUNT(*) FROM alumnos LEFT JOIN carreras ON alumnos.carrera = carreras.nombre WHERE (codigo = $value) AND (fechaCreacion > '$fecha_car')";
 
   $result_reg_car = mysqli_query($conexion, $sql_reg_car);
   $row_reg_car = mysqli_fetch_assoc($result_reg_car);

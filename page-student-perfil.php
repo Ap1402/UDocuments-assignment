@@ -102,8 +102,7 @@ switch ($row['estado_civil']) {
 
 // -------- Porcentaje de Documentos
 
-$porcentaje = ($row['check_foto'] + $row['check_cedula'] + $row['check_fondo'] + $row['check_nota'] + $row['check_partida'] + $row['check_rusinies'] + $row['check_metodo']) * 100 / 7;
-$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+$porcentaje = $row['porcentaje'];
 
 // -------- /.Porcentaje de Documentos
 

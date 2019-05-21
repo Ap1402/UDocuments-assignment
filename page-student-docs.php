@@ -83,9 +83,8 @@ $check_metodo = $row['check_metodo'];
 
 // -------- Porcentaje de Documentos
 
-$porcentaje = ($check_foto + $check_cedula + $check_fondo + $check_notas + $check_partida + $check_rusnies +
-    $check_metodo) * 100 / 7;
-$porcentaje = round($porcentaje, 0, PHP_ROUND_HALF_UP);
+$porcentaje = $row['porcentaje'];
+
 
 // -------- /Porcentaje de Documentos
 
