@@ -118,7 +118,7 @@
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="tablaValidaciones" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Cédula</th>
@@ -128,50 +128,24 @@
                       <th>Última Actualización</th>
                       <th>Validar Docs</th>
                       <th>Ver perfil</th>
+
+ 
+
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Cédula</th>
+                    <th>Cédula</th>
                       <th>Nombres</th>
                       <th>Apellidos</th>
                       <th>% Documentos</th>
                       <th>Última Actualización</th>
                       <th>Validar Docs</th>
                       <th>Ver perfil</th>
+
                     </tr>
                   </tfoot>
                   <tbody>
-                    <?php
-                    include 'back/conexion.php';
-
-                    $sql = "SELECT *, alumnos.cedula as ci, documentos.cedula as cedula FROM alumnos
-                            INNER JOIN documentos ON alumnos.documento=documentos.id_documento;";
-
-                    $result = mysqli_query($conexion, $sql);
-                    if ($result->num_rows > 0) {
-                      while ($row = mysqli_fetch_assoc($result)) {
-
-                        // -------- Porcentaje de Documentos
-
-                        $porcentaje = $row['porcentaje']
-                        // -------- /.Porcentaje de Documentos
-                    ?>
-
-                    <tr>
-                      <td><?=$row['ci']?></td>
-                      <td><?=$row['p_nombre'].' '.$row['s_nombre']?></td>
-                      <td><?=$row['p_apellido'].' '.$row['s_apellido']?></td>
-                      <td><?=$porcentaje.' %' ?></td>
-                      <td><?=$row['ultActualizacion']?></td>
-                      <td><a href="<?='page-admin-check.php?idd='.$row['id_documento'].'&ida='.$row['id_alumno'].'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"><i class="fas fa-clipboard-list"></i></a> </td>
-                      <td><a href="<?='page-student-perfil.php?ida='.$row['id_alumno']?>"><i class="fas fa-id-card"></i></a> </td>
-                    </tr>
-
-                    <?php
-                      };
-                    };
-                    ?>
 
                   </tbody>
                 </table>
@@ -228,70 +202,30 @@
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/front/table.js"></script>
 
-  <script>
-    $(document).ready(function () {
+ <script>
+  $(document).ready(function() {
+    $('#tablaValidaciones').DataTable( {
+      "ajax":{
+      "method":"POST",
+      "url":"back/admin/tablaAdmin.php"
+    },
+    "columns":[
+      {"data":"cedula"},
+      {"data":"nombres"},
+      {"data":"apellidos"},
+      {"data":"porcentaje"},
+      {"data":"ultActualizacion"},
+      {"data":"irCheck"},
+      {"data":"irPerfil"}
 
-      eKeyup = jQuery.Event("keyup");
-      // Indicamos la tecla que deseamos que se pulse de manera automatica
-      eKeyup.which = 13;     
 
-      $('#docFaltante').on( 'click', function (eKeyup) {          
-        table.column(3).search(0).draw();
-        alert('se ha pulsado la tecla ' + eKeyup.which);
-      }).trigger(eKeyup)
-
-      $('#docCompletos').on( 'click', function (eKeyup) {          
-        table.column(3).search(100).draw();
-        alert('se ha pulsado la tecla ' + eKeyup.which);
-      }).trigger(eKeyup)
-
-      $('#docFaltante50').on( 'click', function (eKeyup) {
-        $.fn.dataTable.ext.search.push(
-        function( settings, data, dataIndex ) {
-        var min = parseInt( 0, 10 );
-        var max = parseInt( 50, 10 );
-        var completado = parseFloat( data[3] ) || 0; // use data for the age column
- 
-        if ( ( isNaN( min ) && isNaN( max ) ) ||
-             ( isNaN( min ) && completado <= max ) ||
-             ( min <= completado   && isNaN( max ) ) ||
-             ( min <= completado   && completado <= max ) )
-        {
-            return true;
-        }
-        return false;
-        }
-      );          
-
-        table.draw();
-        alert('se ha pulsado la tecla ' + eKeyup.which);
-      }).trigger(eKeyup)
+    ]
+    } );
+} );
 
 
 
-      $('#mesActual').on( 'click', function (eKeyup) {
-        $.fn.dataTable.ext.search.push(
-        function( settings, data, dataIndex ) {
-        var completado =  data[4]  || 0; // use data for the age column
-        var parts = completado.split('-');
-        var dt = new Date(parts[0], parts[1] - 1, parts[2]).getMonth(); 
-        var dtActual= new Date().getMonth();
-
-        if (dtActual==dt)
-        {
-            return true;
-        }
-        return false;
-        }
-      );          
-
-        table.draw();
-        alert('se ha pulsado la tecla ' + eKeyup.which);
-      }).trigger(eKeyup)
-      
-      
-    });
-  </script>
+ </script>
 
 </body>
 
