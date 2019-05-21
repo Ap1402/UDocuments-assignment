@@ -218,7 +218,7 @@
     });
 
     $('#docFaltante50').on( 'click', function () {          
-        tablaBuscarRango(0,50);
+        tablaBuscarRango(50,99);
     });
     $('#docFaltante').on( 'click', function () {          
         tablaBuscarRango(0,99);
@@ -226,6 +226,10 @@
 
     $('#docTodos').on( 'click', function () {          
       tablaInicio();
+    });
+
+    $('#mesActual').on( 'click', function () {          
+      tablaBuscarEsteMes();
     });
 
 
@@ -278,6 +282,31 @@
     "language":idioma
     } );
   };
+
+  var tablaBuscarEsteMes= function(){
+
+
+$('#tablaValidaciones').DataTable( {
+  "destroy":true,
+
+"ajax":{
+"method":"POST",
+"data":{
+  "buscarActualMes": ''},
+"url":"back/admin/tablaUtilidades/buscar.php"
+},
+"columns":[
+{"data":"cedula"},
+{"data":"nombres"},
+{"data":"apellidos"},
+{"data":"porcentaje"},
+{"data":"ultActualizacion"},
+{"data":"irCheck"},
+{"data":"irPerfil"}
+],
+"language":idioma
+} );
+};
 
   var idioma={
     "decimal": "",
