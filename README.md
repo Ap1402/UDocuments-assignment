@@ -2,7 +2,7 @@
 
 # Por favor haz una lista de las cosas que hay que hacer :D
 #
-#1 Una parte donde el alumno pueda ver su solicitud pendiente, las que realizo, etc. Y también le indique al usuario que en la parte de perfil puede ver como va la validacion de sus documentos.
+#1 Una parte donde el alumno pueda ver su solicitud pendiente, las que realizo, etc. Y también le indique al usuario que en la parte de perfil puede ver como va la validacion de sus documentos. Hay que hablar con jetro si se pueden hacer varias peticiones, pero si igualmente debería haber una parte donde el alumno pueda ver cómo va su solicitud.
 
 #2 Se pondrá en funcionamiento el campo de CARRERA en la bd de alumnos esto para que cuando la solicitud sea aceptada, el alumno ya pase a ser de la carrera de la cual hizo la solicitud y asi en la PAGINA TABLA DE ALUMNOS se puedan buscar por carreras (importante esto, que faltaba).
 
