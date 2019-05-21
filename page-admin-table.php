@@ -91,6 +91,13 @@
                       <span class="text">Alumnos con documentos completos</span>
                     </a>
 
+                    <a id="docTodos" href="#" class="btn btn-info btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Mostrar todos</span>
+                    </a>
+
                     <a id="other" href="#" class="btn btn-info btn-icon-split">
                       <span class="icon text-white-50">
                         <i class="fas fa-search"></i>
@@ -104,7 +111,6 @@
                       </span>
                       <span class="text">Alumnos con datos actualizados este mes</span>
                     </a>
-
 
 
 
@@ -204,10 +210,35 @@
 
  <script>
   $(document).ready(function() {
-    $('#tablaValidaciones').DataTable( {
+
+    tablaInicio();
+
+    $('#docCompletos').on( 'click', function () {          
+        tablaBuscarRango(100,100);
+    });
+
+    $('#docFaltante50').on( 'click', function () {          
+        tablaBuscarRango(0,50);
+    });
+    $('#docFaltante').on( 'click', function () {          
+        tablaBuscarRango(0,99);
+    });
+
+    $('#docTodos').on( 'click', function () {          
+      tablaInicio();
+    });
+
+
+
+
+  });
+
+    var tablaInicio= function(){
+      $('#tablaValidaciones').DataTable( {
+        "destroy":true,
       "ajax":{
       "method":"POST",
-      "url":"back/admin/tablaAdmin.php"
+      "url":"back/admin/tablaUtilidades/tablaAdmin.php"
     },
     "columns":[
       {"data":"cedula"},
@@ -217,11 +248,34 @@
       {"data":"ultActualizacion"},
       {"data":"irCheck"},
       {"data":"irPerfil"}
-
-
     ]
     } );
-} );
+  };
+
+  var tablaBuscarRango= function(min,max){
+
+
+      $('#tablaValidaciones').DataTable( {
+        "destroy":true,
+
+      "ajax":{
+      "method":"POST",
+      "data":{
+        "min": min,
+        "max": max },
+      "url":"back/admin/tablaUtilidades/buscar.php"
+    },
+    "columns":[
+      {"data":"cedula"},
+      {"data":"nombres"},
+      {"data":"apellidos"},
+      {"data":"porcentaje"},
+      {"data":"ultActualizacion"},
+      {"data":"irCheck"},
+      {"data":"irPerfil"}
+    ]
+    } );
+  };
 
 
 
