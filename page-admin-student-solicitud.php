@@ -47,29 +47,79 @@
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
-        <div id="page-student-solicitud" class="container-fluid">
+        <div id="page-student-edit-solicitud" class="container-fluid">
 
-         <!-- Título de página -->
+          <?php
+
+include 'back/conexion.php';
+
+// ------------ Obtener la id del alumno dependiendo la sesion
+if (isset($_GET['ida'])) {
+    $ida = $_GET['ida'];
+}
+;
+// ------------ /.Obtener la id del alumno dependiendo la sesion
+
+$sql_sol = "SELECT carrera, turno, tipo, nombre_solicitud FROM alumnos
+        LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
+        WHERE alumnos.id_alumno = '$ida'";
+
+$result_sol = mysqli_query($conexion, $sql_sol);
+if ($result_sol->num_rows > 0) {
+    $row_sol = mysqli_fetch_assoc($result_sol);
+} else {
+    $mensaje = "Ocurrió un error al cargar datos de solicitud";
+    echo ($mensaje);
+}
+;
+
+$carrera = $row_sol['carrera'];
+$tipo = $row_sol['tipo']; // metodo_ingreso
+$nombre_solicitud = $row_sol['nombre_solicitud'];
+$turno = $row_sol['turno'];
+$carrera = $row_sol['carrera'];
+
+switch ($turno) {
+    case 1:
+        $turno_name = 'Mañana';
+        break;
+    case 2:
+        $turno_name = 'Tarde';
+        break;
+    case 3:
+        $turno_name = 'Noche';
+        break;
+    default:
+        $turno_name = '';
+        break;
+};
+
+$verificar_check = 0; // verificar si fue o no chequeado por control de estudios
+
+?>
+<!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Solicitud de ingreso</h1>
+            <h1 class="h3 mb-0 text-gray-800">Editar - Solicitud de ingreso</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-vote-yea fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
 
-          <!-- Formulario Solicitudes -->
+          <!-- Formulario Editar Solicitud -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
-                  <form id="solicitudForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" style="display:none;"></div>
+                  <form id="solicitudEditForm" method="POST" class="user needs-validation" novalidate>
+                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
 
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
-                         <label class="pl-2"><small>Carrera</small></label><br>
-                        <select id="carrera" name="carrera" class="form-control" required>
-                          <option disabled selected value="">Carrera</option>
-                          <?php 
+                        <label class="pl-2"><small>Carrera</small></label><br>
+                        <select id="carrera" name="carrera" class="form-control" data-toggle="tooltip"
+                          data-placement="top" title="Carrera"
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <option disabled selected value="<?php echo $carrera ?>"><?php echo $carrera ?></option>
+                           <?php 
                             include 'back/conexion.php';
 
                             $sql = "SELECT * FROM carreras WHERE estatus=1";
@@ -90,37 +140,38 @@
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto">
-                         <label class="pl-2"><small>Turno</small></label><br>
-                        <select id="turno" name="turno" class="form-control" required>
-                          <option disabled="disabled" selected value="">Seleccionar turno</option>
+                        <label class="pl-2"><small>Turno</small></label><br>
+                        <select id="turno" name="turno" class="form-control" data-toggle="tooltip" data-placement="top"
+                          title="Turno"
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <option disabled="disabled" selected value="<?php echo $turno ?>"><?php echo $turno_name ?>
+                          </option>
 
                         </select>
                         <div class="invalid-feedback">
                           Por favor seleccione una opción.
                         </div>
                       </div>
-
-
-
                     </div>
 
                     <div class="form-group row">
                       <div class="col my-auto">
-                         <label class="pl-2"><small>Método de ingreso</small></label><br>
-                        <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" required>
-                          <option disabled selected value="">Método de ingreso</option>
-                          <?php 
+                        <label class="pl-2"><small>Método de ingreso</small></label><br>
+                        <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" data-toggle="tooltip"
+                          data-placement="top" title="Método de ingreso"
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <option disabled selected value="<?php echo $tipo ?>"><?php echo $nombre_solicitud ?></option>
+                          <?php
                             $sql2 = "SELECT * FROM tipo_solicitud WHERE activa=1";
                             $result2 = mysqli_query($conexion, $sql2);
 
-                            if ($result2->num_rows > 0) {                
+                            if ($result2->num_rows > 0) {
                               while ($row2 = mysqli_fetch_assoc($result2)) {
-                            ?>
-                                <option value="<?= $row2['tipo']; ?>"> <?= $row2['nombre_solicitud']; ?></option>
+                          ?>
+                                <option value="<?=$row2['tipo'];?>"> <?=$row2['nombre_solicitud'];?></option>
 
                           <?php
                               };
-                            
                             };
                           ?>
                         </select>
@@ -130,14 +181,12 @@
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" style="display:none;">
+                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
                     </div>
                     <br>
-                    <?php if (isset($_GET['ida'])){ ?>
-                    <input name="idEstudiante" id="idEstudiante" value="<?php echo $_GET['ida'] ?>" hidden>
-                    <?php } ?>
-                    <button id="enviarSol" type="submit" class="btn btn-primary btn-user btn-block">
-                      Guardar
+
+                    <button id="editSol" type="submit" class="btn btn-primary btn-user btn-block">
+                      Guardar cambios
                     </button>
 
                   </form>
@@ -145,7 +194,7 @@
               </div>
             </div>
           </div>
-          <!-- /.Formulario Solicitudes -->
+          <!-- /.Formulario Editar Solicitud -->
 
         </div>
         <!-- /.Contenido Variable - Todo lo demas es fijo -->

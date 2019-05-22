@@ -32,7 +32,7 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center py-5">
+  <a id="sidebar-brand-header" class="sidebar-brand d-flex align-items-center justify-content-center py-5">
     <div class="sidebar-brand-icon">
       <img src="img/varias/logo_ujap_peq.png" width="40%" height="20%" class="d-inline-block align-items-center" alt="">
     </div>

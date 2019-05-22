@@ -187,398 +187,399 @@ $idd = $row['id_documento']; // para hacer las consultas de cada tipo de Documen
                       title="Editar información">
                       <i class="fas fa-user-edit fa-2x text-gray-300"></i>
                     </a>
+                  </div>  
                     <?php };?>
                     <?php if ($rol >= 1) {?>
                     <div class="col-auto">
                       <a href="<?='page-admin-student-edit-datos.php?idd='.$idd.'&ida='.$ida.'&ci='.$row['ci']?>"
-                        data-toggle="tooltip" data-placement="top" title="Editar información">                      
+                        data-toggle="tooltip" data-placement="top" title="Editar información">
                         <i class="fas fa-user-edit fa-2x text-gray-300"></i>
-                      </a>
-                      <?php };?>
+                      </a>                      
                     </div>
-                  </div>
+                    <?php };?>                  
                 </div>
               </div>
-              <!-- /Header Status de Datos -->
+            </div>
+            <!-- /Header Status de Datos -->
 
-              <!-- Tabla de Status de Datos -->
-              <div class="card border-left-primary shadow mb-4">
-                <div class="card-body">
-                  <div class="px-3 py-2">
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Primer nombre</small></label><br>
-                        <input type="text" value="<?=$row['p_nombre']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Segundo nombre</small></label><br>
-                        <input type="text" value="<?=$row['s_nombre']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Primer apellido</small></label><br>
-                        <input type="text" value="<?=$row['p_apellido']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Segundo apellido</small></label><br>
-                        <input type="text" value="<?=$row['s_apellido']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Correo</small></label><br>
-                        <input type="text" value="<?=$row['correo']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Nombre de usuario</small></label><br>
-                        <input type="text" value="<?=$row['username']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Cédula</small></label><br>
-                        <input type="text" value="<?=$row['ci']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Estado civil</small></label><br>
-                        <input type="text" value="<?=$estado_civil?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Fecha de nacimiento</small></label><br>
-                        <input type="text" value="<?=$row['fecha_nacimiento']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Discapacidad</small></label><br>
-                        <input type="text" value="<?=$row['discapacidad']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-4 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Teléfono habitación</small></label><br>
-                        <input type="text" value="<?=$row['num_habitacion']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-4 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Teléfono móvil</small></label><br>
-                        <input type="text" value="<?=$row['num_movil']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-4 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Teléfono trabajo</small></label><br>
-                        <input type="text" value="<?=$row['num_trabajo']?>" class="form-control" disabled>
-                      </div>
-
+            <!-- Tabla de Status de Datos -->
+            <div class="card border-left-primary shadow mb-4">
+              <div class="card-body">
+                <div class="px-3 py-2">
+                  <div class="form-group row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Primer nombre</small></label><br>
+                      <input type="text" value="<?=$row['p_nombre']?>" class="form-control" disabled>
                     </div>
-
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Segundo nombre</small></label><br>
+                      <input type="text" value="<?=$row['s_nombre']?>" class="form-control" disabled>
                     </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>País</small></label><br>
-                        <input type="text" value="<?=$row['pais_nac']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
-                        <input type="text" value="<?=$row['estado_nac']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
-                        <input type="text" value="<?=$row['ciudad_nac']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Municipio</small></label><br>
-                        <input type="text" value="<?=$row['municipio_nac']?>" class="form-control" disabled>
-                      </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Primer apellido</small></label><br>
+                      <input type="text" value="<?=$row['p_apellido']?>" class="form-control" disabled>
                     </div>
-
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Dirección de habitación</h5>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Segundo apellido</small></label><br>
+                      <input type="text" value="<?=$row['s_apellido']?>" class="form-control" disabled>
                     </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
-                        <input type="text" value="<?=$row['estado']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
-                        <input type="text" value="<?=$row['ciudad']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Municipio</small></label><br>
-                        <input type="text" value="<?=$row['municipio']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Zona postal</small></label><br>
-                        <input type="text" value="<?=$row['postal']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Urbanización</small></label><br>
-                        <input type="text" value="<?=$row['urbanizacion']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Apartamento o casa</small></label><br>
-                        <input type="text" value="<?=$row['aptcasa']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-12 col-xl-4">
-                        <label class="pl-2 pt-2"><small>Calle</small></label><br>
-                        <input type="text" value="<?=$row['calle']?>" class="form-control" disabled>
-                      </div>
+                    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Correo</small></label><br>
+                      <input type="text" value="<?=$row['correo']?>" class="form-control" disabled>
                     </div>
-
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Dirección de trabajo</h5>
+                    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Nombre de usuario</small></label><br>
+                      <input type="text" value="<?=$row['username']?>" class="form-control" disabled>
                     </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
-                        <input type="text" value="<?=$row['estado_trabajo']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
-                        <input type="text" value="<?=$row['ciudad_trabajo']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Municipio</small></label><br>
-                        <input type="text" value="<?=$row['municipio_trabajo']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Zona postal</small></label><br>
-                        <input type="text" value="<?=$row['postal_trabajo']?>" class="form-control" disabled>
-                      </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Cédula</small></label><br>
+                      <input type="text" value="<?=$row['ci']?>" class="form-control" disabled>
                     </div>
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Contacto en caso de emergencia</h5>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Estado civil</small></label><br>
+                      <input type="text" value="<?=$estado_civil?>" class="form-control" disabled>
                     </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Nombre y apellido</small></label><br>
-                        <input type="text" value="<?=$row['parientename']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Parentesco</small></label><br>
-                        <input type="text" value="<?=$row['parentesco']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Teléfono local</small></label><br>
-                        <input type="text" value="<?=$row['num_habitacion_pariente']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-xl-3">
-                        <label class="pl-2 pt-2"><small>Teléfono móvil</small></label><br>
-                        <input type="text" value="<?=$row['num_movil_pariente']?>" class="form-control" disabled>
-                      </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Fecha de nacimiento</small></label><br>
+                      <input type="text" value="<?=$row['fecha_nacimiento']?>" class="form-control" disabled>
                     </div>
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Datos título de bachiller</h5>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Discapacidad</small></label><br>
+                      <input type="text" value="<?=$row['discapacidad']?>" class="form-control" disabled>
                     </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-12 col-lg-8">
-                        <label class="pl-2 pt-2"><small>Nombre de la institución (no abreviar)</small></label><br>
-                        <input type="text" value="<?=$row['nombreInst']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Año de egreso</small></label><br>
-                        <input type="text" value="<?=$row['anoEgreso']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Código de la institución</small></label><br>
-                        <input type="text" value="<?=$row['codigoInst']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Estado</small></label><br>
-                        <input type="text" value="<?=$row['estadoInst']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Tipo de institución</small></label><br>
-                        <input type="text" value="<?=$tipoInst?>" class="form-control" disabled>
-                      </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Teléfono habitación</small></label><br>
+                      <input type="text" value="<?=$row['num_habitacion']?>" class="form-control" disabled>
                     </div>
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Carrera</h5>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Teléfono móvil</small></label><br>
+                      <input type="text" value="<?=$row['num_movil']?>" class="form-control" disabled>
                     </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Carrera</small></label><br>
-                        <input type="text" value="<?=$row['carrera']?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Turno</small></label><br>
-                        <input type="text" value="<?=$turno?>" class="form-control" disabled>
-                      </div>
-                      <div class="col-sm-12 col-lg-4">
-                        <label class="pl-2 pt-2"><small>Método de ingreso</small></label><br>
-                        <input type="text" value="<?=$row['nombre_solicitud']?>" class="form-control" disabled>
-                      </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Teléfono trabajo</small></label><br>
+                      <input type="text" value="<?=$row['num_trabajo']?>" class="form-control" disabled>
                     </div>
 
                   </div>
+
+
+                  <br>
+                  <div class="text-center">
+                    <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>
+                  </div>
+                  <hr class="sidebar-divider">
+
+                  <div class="form-group row">
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>País</small></label><br>
+                      <input type="text" value="<?=$row['pais_nac']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Estado</small></label><br>
+                      <input type="text" value="<?=$row['estado_nac']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
+                      <input type="text" value="<?=$row['ciudad_nac']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Municipio</small></label><br>
+                      <input type="text" value="<?=$row['municipio_nac']?>" class="form-control" disabled>
+                    </div>
+                  </div>
+
+
+                  <br>
+                  <div class="text-center">
+                    <h5 class="text-gray-900 mb-4">Dirección de habitación</h5>
+                  </div>
+                  <hr class="sidebar-divider">
+
+                  <div class="form-group row">
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Estado</small></label><br>
+                      <input type="text" value="<?=$row['estado']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
+                      <input type="text" value="<?=$row['ciudad']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Municipio</small></label><br>
+                      <input type="text" value="<?=$row['municipio']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Zona postal</small></label><br>
+                      <input type="text" value="<?=$row['postal']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Urbanización</small></label><br>
+                      <input type="text" value="<?=$row['urbanizacion']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Apartamento o casa</small></label><br>
+                      <input type="text" value="<?=$row['aptcasa']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-xl-4">
+                      <label class="pl-2 pt-2"><small>Calle</small></label><br>
+                      <input type="text" value="<?=$row['calle']?>" class="form-control" disabled>
+                    </div>
+                  </div>
+
+
+                  <br>
+                  <div class="text-center">
+                    <h5 class="text-gray-900 mb-4">Dirección de trabajo</h5>
+                  </div>
+                  <hr class="sidebar-divider">
+
+                  <div class="form-group row">
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Estado</small></label><br>
+                      <input type="text" value="<?=$row['estado_trabajo']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Ciudad</small></label><br>
+                      <input type="text" value="<?=$row['ciudad_trabajo']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Municipio</small></label><br>
+                      <input type="text" value="<?=$row['municipio_trabajo']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Zona postal</small></label><br>
+                      <input type="text" value="<?=$row['postal_trabajo']?>" class="form-control" disabled>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="text-center">
+                    <h5 class="text-gray-900 mb-4">Contacto en caso de emergencia</h5>
+                  </div>
+                  <hr class="sidebar-divider">
+
+                  <div class="form-group row">
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Nombre y apellido</small></label><br>
+                      <input type="text" value="<?=$row['parientename']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Parentesco</small></label><br>
+                      <input type="text" value="<?=$row['parentesco']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Teléfono local</small></label><br>
+                      <input type="text" value="<?=$row['num_habitacion_pariente']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                      <label class="pl-2 pt-2"><small>Teléfono móvil</small></label><br>
+                      <input type="text" value="<?=$row['num_movil_pariente']?>" class="form-control" disabled>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="text-center">
+                    <h5 class="text-gray-900 mb-4">Datos título de bachiller</h5>
+                  </div>
+                  <hr class="sidebar-divider">
+
+                  <div class="form-group row">
+                    <div class="col-sm-12 col-md-12 col-lg-8">
+                      <label class="pl-2 pt-2"><small>Nombre de la institución (no abreviar)</small></label><br>
+                      <input type="text" value="<?=$row['nombreInst']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Año de egreso</small></label><br>
+                      <input type="text" value="<?=$row['anoEgreso']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Código de la institución</small></label><br>
+                      <input type="text" value="<?=$row['codigoInst']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Estado</small></label><br>
+                      <input type="text" value="<?=$row['estadoInst']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Tipo de institución</small></label><br>
+                      <input type="text" value="<?=$tipoInst?>" class="form-control" disabled>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="text-center">
+                    <h5 class="text-gray-900 mb-4">Carrera</h5>
+                  </div>
+                  <hr class="sidebar-divider">
+
+                  <div class="form-group row">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Carrera</small></label><br>
+                      <input type="text" value="<?=$row['carrera']?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Turno</small></label><br>
+                      <input type="text" value="<?=$turno?>" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                      <label class="pl-2 pt-2"><small>Método de ingreso</small></label><br>
+                      <input type="text" value="<?=$row['nombre_solicitud']?>" class="form-control" disabled>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-              <!-- /Tabla de Status de Datos -->
+            </div>
+            <!-- /Tabla de Status de Datos -->
 
-              <!-- Header Status de Documentos -->
+            <!-- Header Status de Documentos -->
 
-              <div class="card border-left-info py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center px-2">
-                    <div class="col pr-2">
-                      <div class="text-sm font-weight-bold text-info text-uppercase mb-1">Estatus de Documentos</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 pr-3 font-weight-bold text-gray-800"><?=$porcentaje?>%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: <?=$porcentaje?>%"
-                              aria-valuenow="<?=$porcentaje?>" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
- <?php if ($rol == 0) {?>
-                    <div class="col-auto">
-                      <a href="page-student-edit-docs.php" data-toggle="tooltip" data-placement="top"
-                        title="Editar documentos">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </a>
-                    </div>
-<?php };?>
-                    <?php if ($rol >= 2) {?>
+            <div class="card border-left-info py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center px-2">
+                  <div class="col pr-2">
+                    <div class="text-sm font-weight-bold text-info text-uppercase mb-1">Estatus de Documentos</div>
+                    <div class="row no-gutters align-items-center">
                       <div class="col-auto">
-                        <a href="<?='page-student-edit-docs.php?idd='.$idd.'&ida='.$ida.'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"
-                          data-toggle="tooltip" data-placement="top" title="Editar documentos">
-                          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </a>
+                        <div class="h5 mb-0 pr-3 font-weight-bold text-gray-800"><?=$porcentaje?>%</div>
                       </div>
-                     <?php };?>
+                      <div class="col">
+                        <div class="progress progress-sm mr-2">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: <?=$porcentaje?>%"
+                            aria-valuenow="<?=$porcentaje?>" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <?php if ($rol == 0) {?>
+                  <div class="col-auto">
+                    <a href="page-student-edit-docs.php" data-toggle="tooltip" data-placement="top"
+                      title="Editar documentos">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </a>
+                  </div>
+                  <?php };?>
+                  <?php if ($rol >= 2) {?>
+                  <div class="col-auto">
+                    <a href="<?='page-student-edit-docs.php?idd='.$idd.'&ida='.$ida.'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"
+                      data-toggle="tooltip" data-placement="top" title="Editar documentos">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </a>
+                  </div>
+                  <?php };?>
                 </div>
               </div>
-              <!-- /Header Status de Documentos -->
+            </div>
+            <!-- /Header Status de Documentos -->
 
 
-              <!-- Tabla de Status de Documentos -->
-              <div class="card border-left-info shadow mb-4">
-                <div class="card-body">
-                  <div class="px-3 py-2">
-                    <!-- Foto -->
-                    <div class="form-group row">
+            <!-- Tabla de Status de Documentos -->
+            <div class="card border-left-info shadow mb-4">
+              <div class="card-body">
+                <div class="px-3 py-2">
+                  <!-- Foto -->
+                  <div class="form-group row">
 
-                      <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
-                        <h5 class="text-gray-900 row">
-                          <div class="col-2"><i
-                              class="fas fa-<?php echo ($row['check_foto'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
-                          </div>
-                          <div class="col-10 text-justify">Foto reciente tipo carnet</div>
-                        </h5>
-                      </div>
+                    <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-2"><i
+                            class="fas fa-<?php echo ($row['check_foto'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                        </div>
+                        <div class="col-10 text-justify">Foto reciente tipo carnet</div>
+                      </h5>
+                    </div>
 
-                      <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
-                        <div id="preview-images-foto" class="preview-images">
+                    <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
+                      <div id="preview-images-foto" class="preview-images">
 
-                          <?php
+                        <?php
 if ($row['foto'] != '') {
     ?>
-                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['foto']?>')">
-                            <div class="close-button-db">
-                              <a href="<?=$path_image . $row['foto']?>" data-lightbox="galleryFoto" data-title="foto">
-                                <i class="fas fa-eye"></i>
-                              </a>
-                              <a href="<?=$path_image . $row['foto']?>" download="<?php echo ('foto' . $row['ci']) ?>">
-                                <i class="fas fa-download"></i>
-                              </a>
-                            </div>
+                        <div class="thumbnail" style="background-image: url('<?=$path_image . $row['foto']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row['foto']?>" data-lightbox="galleryFoto" data-title="foto">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row['foto']?>" download="<?php echo ('foto' . $row['ci']) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
                           </div>
-                          <?php
+                        </div>
+                        <?php
 }
 ;
 ?>
 
-                        </div>
                       </div>
-
                     </div>
-                    <!-- End Foto -->
 
-                    <hr class="sidebar-divider">
-                    <br>
+                  </div>
+                  <!-- End Foto -->
 
-                    <!-- Cedula -->
-                    <div class="form-group row">
+                  <hr class="sidebar-divider">
+                  <br>
 
-                      <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
-                        <h5 class="text-gray-900 row">
-                          <div class="col-2"><i
-                              class="fas fa-<?php echo ($row['check_cedula'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
-                          </div>
-                          <div class="col-10 text-justify">Cédula</div>
-                        </h5>
-                      </div>
+                  <!-- Cedula -->
+                  <div class="form-group row">
 
-                      <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
-                        <div id="preview-images-cedula" class="preview-images">
+                    <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-2"><i
+                            class="fas fa-<?php echo ($row['check_cedula'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                        </div>
+                        <div class="col-10 text-justify">Cédula</div>
+                      </h5>
+                    </div>
 
-                          <?php
+                    <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
+                      <div id="preview-images-cedula" class="preview-images">
+
+                        <?php
 if ($row['cedula'] != '') {
     ?>
-                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['cedula']?>')">
-                            <div class="close-button-db">
-                              <a href="<?=$path_image . $row['cedula']?>" data-lightbox="galleryCedula"
-                                data-title="Cedula">
-                                <i class="fas fa-eye"></i>
-                              </a>
-                              <a href="<?=$path_image . $row['cedula']?>"
-                                download="<?php echo ('cedula' . $row['ci']) ?>">
-                                <i class="fas fa-download"></i>
-                              </a>
-                            </div>
+                        <div class="thumbnail" style="background-image: url('<?=$path_image . $row['cedula']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row['cedula']?>" data-lightbox="galleryCedula"
+                              data-title="Cedula">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row['cedula']?>"
+                              download="<?php echo ('cedula' . $row['ci']) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
                           </div>
-                          <?php
+                        </div>
+                        <?php
 }
 ;
 ?>
 
-                        </div>
                       </div>
-
                     </div>
-                    <!-- End Cedula -->
 
-                    <hr class="sidebar-divider">
-                    <br>
+                  </div>
+                  <!-- End Cedula -->
+
+                  <hr class="sidebar-divider">
+                  <br>
 
 
-                    <!-- Notas -->
-                    <div class="form-group row">
+                  <!-- Notas -->
+                  <div class="form-group row">
 
-                      <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
-                        <h5 class="text-gray-900 row">
-                          <div class="col-2"><i
-                              class="fas fa-<?php echo ($row['check_nota'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
-                          </div>
-                          <div class="col-10 text-justify">Notas certificadas de bachillerato (1er a 5to)</div>
-                        </h5>
-                      </div>
+                    <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-2"><i
+                            class="fas fa-<?php echo ($row['check_nota'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                        </div>
+                        <div class="col-10 text-justify">Notas certificadas de bachillerato (1er a 5to)</div>
+                      </h5>
+                    </div>
 
-                      <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
-                        <div id="preview-images-Notas" class="preview-images">
+                    <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
+                      <div id="preview-images-Notas" class="preview-images">
 
-                          <?php
+                        <?php
 
 $sql_notas = "SELECT * FROM notas
                                       WHERE documento = '$idd';";
@@ -588,94 +589,92 @@ $result_notas = mysqli_query($conexion, $sql_notas);
 if ($result_notas->num_rows > 0) {
     while ($row_notas = mysqli_fetch_assoc($result_notas)) {
         ?>
-                          <!-- Esto se repite por cada imagen de Notas -->
-                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row_notas['nota']?>')">
-                            <div class="close-button-db">
-                              <a href="<?=$path_image . $row_notas['nota']?>" data-lightbox="galleryNotas"
-                                data-title="Notas">
-                                <i class="fas fa-eye"></i>
-                              </a>
-                              <a href="<?=$path_image . $row_notas['nota']?>"
-                                download="<?php echo ('notas' . $row['ci']) ?>">
-                                <i class="fas fa-download"></i>
-                              </a>
-                            </div>
+                        <!-- Esto se repite por cada imagen de Notas -->
+                        <div class="thumbnail" style="background-image: url('<?=$path_image . $row_notas['nota']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row_notas['nota']?>" data-lightbox="galleryNotas"
+                              data-title="Notas">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row_notas['nota']?>"
+                              download="<?php echo ('notas' . $row['ci']) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
                           </div>
-                          <!--  /Esto se repite por cada imagen de Notas -->
-                          <?php
+                        </div>
+                        <!--  /Esto se repite por cada imagen de Notas -->
+                        <?php
 }
     ;
 }
 ;
 ?>
 
-                        </div>
                       </div>
-
                     </div>
-                    <!-- End Notas -->
 
-                    <hr class="sidebar-divider">
-                    <br>
+                  </div>
+                  <!-- End Notas -->
 
-                    <!-- Fondo -->
-                    <div class="form-group row">
+                  <hr class="sidebar-divider">
+                  <br>
 
-                      <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
-                        <h5 class="text-gray-900 row">
-                          <div class="col-2"><i
-                              class="fas fa-<?php echo ($row['check_fondo'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
-                          </div>
-                          <div class="col-10 text-justify">Título de bachillerato autenticado</div>
-                        </h5>
-                      </div>
+                  <!-- Fondo -->
+                  <div class="form-group row">
 
-                      <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
-                        <div id="preview-images-fondo" class="preview-images">
-                          <?php
+                    <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-2"><i
+                            class="fas fa-<?php echo ($row['check_fondo'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                        </div>
+                        <div class="col-10 text-justify">Título de bachillerato autenticado</div>
+                      </h5>
+                    </div>
+
+                    <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
+                      <div id="preview-images-fondo" class="preview-images">
+                        <?php
 if ($row['fondo'] != '') {
     ?>
-                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['fondo']?>')">
-                            <div class="close-button-db">
-                              <a href="<?=$path_image . $row['fondo']?>" data-lightbox="galleryFondo"
-                                data-title="Fondo">
-                                <i class="fas fa-eye"></i>
-                              </a>
-                              <a href="<?=$path_image . $row['fondo']?>"
-                                download="<?php echo ('fondo' . $row['ci']) ?>">
-                                <i class="fas fa-download"></i>
-                              </a>
-                            </div>
+                        <div class="thumbnail" style="background-image: url('<?=$path_image . $row['fondo']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row['fondo']?>" data-lightbox="galleryFondo" data-title="Fondo">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row['fondo']?>" download="<?php echo ('fondo' . $row['ci']) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
                           </div>
-                          <?php
+                        </div>
+                        <?php
 }
 ;
 ?>
-                        </div>
                       </div>
-
                     </div>
-                    <!-- End Fondo -->
 
-                    <hr class="sidebar-divider">
-                    <br>
+                  </div>
+                  <!-- End Fondo -->
 
-                    <!-- Rusnies -->
-                    <div class="form-group row">
+                  <hr class="sidebar-divider">
+                  <br>
 
-                      <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
-                        <h5 class="text-gray-900 row">
-                          <div class="col-2"><i
-                              class="fas fa-<?php echo ($row['check_rusinies'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
-                          </div>
-                          <div class="col-10 text-justify">Resultado del RUSNIES</div>
-                        </h5>
-                      </div>
+                  <!-- Rusnies -->
+                  <div class="form-group row">
 
-                      <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
-                        <div id="preview-images-rusnies" class="preview-images">
+                    <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-2"><i
+                            class="fas fa-<?php echo ($row['check_rusinies'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                        </div>
+                        <div class="col-10 text-justify">Resultado del RUSNIES</div>
+                      </h5>
+                    </div>
 
-                          <?php
+                    <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
+                      <div id="preview-images-rusnies" class="preview-images">
+
+                        <?php
 $sql_rusnies = "SELECT * FROM rusnies
                                         WHERE documento = '$idd';";
 
@@ -683,96 +682,96 @@ $result_rusnies = mysqli_query($conexion, $sql_rusnies);
 if ($result_rusnies->num_rows > 0) {
     while ($row_rusnies = mysqli_fetch_assoc($result_rusnies)) {
         ?>
-                          <!-- Esto se repite por cada imagen de Rusnies -->
-                          <div class="thumbnail"
-                            style="background-image: url('<?=$path_image . $row_rusnies['rusnies']?>')">
-                            <div class="close-button-db">
-                              <a href="<?=$path_image . $row_rusnies['rusnies']?>" data-lightbox="galleryRusnies"
-                                data-title="Rusnies">
-                                <i class="fas fa-eye"></i>
-                              </a>
-                              <a href="<?=$path_image . $row_rusnies['rusnies']?>"
-                                download="<?php echo ('rusnies' . $row['ci']) ?>">
-                                <i class="fas fa-download"></i>
-                              </a>
-                            </div>
+                        <!-- Esto se repite por cada imagen de Rusnies -->
+                        <div class="thumbnail"
+                          style="background-image: url('<?=$path_image . $row_rusnies['rusnies']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row_rusnies['rusnies']?>" data-lightbox="galleryRusnies"
+                              data-title="Rusnies">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row_rusnies['rusnies']?>"
+                              download="<?php echo ('rusnies' . $row['ci']) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
                           </div>
-                          <!--  /Esto se repite por cada imagen de Rusnies -->
-                          <?php
+                        </div>
+                        <!--  /Esto se repite por cada imagen de Rusnies -->
+                        <?php
 }
     ;
 }
 ;
 ?>
 
-                        </div>
                       </div>
-
                     </div>
-                    <!-- End rusnies -->
 
-                    <hr class="sidebar-divider">
-                    <br>
+                  </div>
+                  <!-- End rusnies -->
 
-                    <!-- Partida -->
-                    <div class="form-group row">
+                  <hr class="sidebar-divider">
+                  <br>
 
-                      <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
-                        <h5 class="text-gray-900 row">
-                          <div class="col-2"><i
-                              class="fas fa-<?php echo ($row['check_partida'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
-                          </div>
-                          <div class="col-10 text-justify">Partida de nacimiento</div>
-                        </h5>
-                      </div>
-                      <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
-                        <div id="preview-images-partida" class="preview-images">
-                          <?php
+                  <!-- Partida -->
+                  <div class="form-group row">
+
+                    <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-2"><i
+                            class="fas fa-<?php echo ($row['check_partida'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                        </div>
+                        <div class="col-10 text-justify">Partida de nacimiento</div>
+                      </h5>
+                    </div>
+                    <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
+                      <div id="preview-images-partida" class="preview-images">
+                        <?php
 if ($row['partida'] != '') {
     ?>
-                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['partida']?>')">
-                            <div class="close-button-db">
-                              <a href="<?=$path_image . $row['partida']?>" data-lightbox="galleryPartida"
-                                data-title="Partida">
-                                <i class="fas fa-eye"></i>
-                              </a>
-                              <a href="<?=$path_image . $row['partida']?>"
-                                download="<?php echo ('partida' . $row['ci']) ?>">
-                                <i class="fas fa-download"></i>
-                              </a>
-                            </div>
+                        <div class="thumbnail" style="background-image: url('<?=$path_image . $row['partida']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row['partida']?>" data-lightbox="galleryPartida"
+                              data-title="Partida">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row['partida']?>"
+                              download="<?php echo ('partida' . $row['ci']) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
                           </div>
-                          <?php
+                        </div>
+                        <?php
 }
 ;
 ?>
-                        </div>
                       </div>
-
                     </div>
-                    <!-- End Partida -->
 
-                    <hr class="sidebar-divider">
-                    <br>
+                  </div>
+                  <!-- End Partida -->
 
-                    <!-- Metodo -->
-                    <div class="form-group row">
+                  <hr class="sidebar-divider">
+                  <br>
 
-                      <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
-                        <h5 class="text-gray-900 row">
-                          <div class="col-2"><i
-                              class="fas fa-<?php echo ($row['check_metodo'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
-                          </div>
-                          <div class="col-10 text-justify">Método de ingreso:
-                            <small><?=$row['nombre_solicitud']?></small>
-                          </div>
-                        </h5>
-                      </div>
+                  <!-- Metodo -->
+                  <div class="form-group row">
 
-                      <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
-                        <div id="preview-images-metodo" class="preview-images">
+                    <div class="col-md-12 text-md-center col-lg-4 text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-2"><i
+                            class="fas fa-<?php echo ($row['check_metodo'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?> pr-3"></i>
+                        </div>
+                        <div class="col-10 text-justify">Método de ingreso:
+                          <small><?=$row['nombre_solicitud']?></small>
+                        </div>
+                      </h5>
+                    </div>
 
-                          <?php
+                    <div class="text-sm-left col-md-12 text-md-center col-lg-8 text-lg-left my-auto">
+                      <div id="preview-images-metodo" class="preview-images">
+
+                        <?php
 $sql_metodoing = "SELECT * FROM metodoing
                                           WHERE documento = '$idd';";
 
@@ -780,57 +779,165 @@ $result_metodoing = mysqli_query($conexion, $sql_metodoing);
 if ($result_metodoing->num_rows > 0) {
     while ($row_metodoing = mysqli_fetch_assoc($result_metodoing)) {
         ?>
-                          <!-- Esto se repite por cada imagen de Metodo -->
-                          <div class="thumbnail"
-                            style="background-image: url('<?=$path_image . $row_metodoing['metodo']?>')">
-                            <div class="close-button-db">
-                              <a href="<?=$path_image . $row_metodoing['metodo']?>" data-lightbox="galleryMetodo"
-                                data-title="Metodo">
-                                <i class="fas fa-eye"></i>
-                              </a>
-                              <a href="<?=$path_image . $row_metodoing['metodo']?>"
-                                download="<?php echo ('metodo' . $row['ci']) ?>">
-                                <i class="fas fa-download"></i>
-                              </a>
-                            </div>
+                        <!-- Esto se repite por cada imagen de Metodo -->
+                        <div class="thumbnail"
+                          style="background-image: url('<?=$path_image . $row_metodoing['metodo']?>')">
+                          <div class="close-button-db">
+                            <a href="<?=$path_image . $row_metodoing['metodo']?>" data-lightbox="galleryMetodo"
+                              data-title="Metodo">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="<?=$path_image . $row_metodoing['metodo']?>"
+                              download="<?php echo ('metodo' . $row['ci']) ?>">
+                              <i class="fas fa-download"></i>
+                            </a>
                           </div>
-                          <!--  /Esto se repite por cada imagen de Metodo -->
-                          <?php
+                        </div>
+                        <!--  /Esto se repite por cada imagen de Metodo -->
+                        <?php
 }
     ;
 }
 ;
 ?>
 
-                        </div>
                       </div>
-
                     </div>
-                    <!-- End Metodo -->
 
                   </div>
+                  <!-- End Metodo -->
+
                 </div>
               </div>
-              <!-- /Tabla de Status de Documentos -->
-
             </div>
-            <!-- /.Perfil alumno -->
+            <!-- /Tabla de Status de Documentos -->
+
+            <!-- Header Status de Solicitudes -->
+
+            <div class="card border-left-success py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center px-2">
+                  <div class="col pr-2">
+                    <div class="text-sm font-weight-bold text-success text-uppercase mb-1">Solicitudes</div>
+                  </div>
+                  <?php if ($rol == 0) {?>
+                  <div class="col-auto">
+                    <a href="page-student-edit-solicitud.php" data-toggle="tooltip" data-placement="top"
+                      title="Editar Solicitud mas reciente">
+                      <i class="fas fa-vote-yea fa-2x text-gray-300"></i>
+                    </a>
+                  </div>
+                  <?php };?>
+                  <?php if ($rol >= 2) {?>
+                  <div class="col-auto">
+                    <a href="<?='page-admin-student-edit-solicitud.php?idd='.$idd.'&ida='.$ida.'&ci='.$row['ci'].'&mi='.$row['metodo_ingreso']?>"
+                      data-toggle="tooltip" data-placement="top" title="Editar Solicitud mas reciente">
+                      <i class="fas fa-vote-yea fa-2x text-gray-300"></i>
+                    </a>
+                  </div>
+                  <?php };?>
+                </div>
+              </div>
+            </div>
+            <!-- /Header Status de Solicitudes -->
+
+
+            <!-- Tabla de Status de Solicitudes -->
+            <div class="card border-left-success shadow mb-4">
+              <div class="card-body">
+                <div class="px-3 py-2">
+                 <!-- Solicitud --> 
+                  <?php
+                  $sql_sol= "SELECT * FROM solicitudes
+                  LEFT JOIN tipo_solicitud ON solicitudes.tipo = tipo_solicitud.tipo
+                  LEFT JOIN carreras ON solicitudes.carrera = carreras.codigo
+                  WHERE alumno = $ida";
+
+                  $result_sol= mysqli_query($conexion, $sql_sol);
+                  if ($result_sol->num_rows > 0) {
+                      while ($row_sol= mysqli_fetch_assoc($result_sol)) {
+                        switch ($row_sol['turno']) {
+                        case 1:
+                        $turno_sol = 'Mañana';
+                        break;
+                        case 2:
+                        $turno_sol = 'Tarde';
+                        break;
+                        case 3:
+                        $turno_sol = 'Noche';
+                        break;
+                        default:
+                        $turno_sol = '';
+                        break;
+                        };
+                          ?>
+                  
+                  <div class="form-group d-flex row">
+
+                    <div class="flex-fill text-lg-left my-auto">
+                      <h5 class="text-gray-900 row">
+                        <div class="col-1 py-1">
+                          <i class="fas fa-<?php echo ($row_sol['estadoSolicitud'] == 0) ? 'minus-circle text-secondary' : 'check-circle text-success' ?>">
+                          </i>
+                        </div>
+                        <div class="col-11 py-1"> <?=$row_sol['nombre_solicitud']?> </div>
+                      </h5>
+                    </div>
+
+                    <div class="flex-fill my-auto pl-3 py-1">
+                       
+                      <div class="text-gray-900">
+                        <h6 class="font-weight-bolder">Carrera</h6>
+                          <?=$row_sol['nombre']?>
+                          <br>
+                          <b><small>Turno:</small></b> <?=$turno_sol?>
+                      </div>
+                    </div>
+                     <div class="flex-fill my-auto pl-3 py-1">
+                      <div class="text-gray-900">
+                        <h6 class="font-weight-bolder">Fechas</h6>
+                          <b><small>Creación:</small></b>
+                          <?=($row_sol['fechaCreacion']=='0000-00-00') ? 'Sin fecha' : $row_sol['fechaCreacion'] ?>
+                          <br>
+                          <b><small>Aprobación:</small></b>
+                          <?=($row_sol['fechaAtencion']=='0000-00-00') ? 'Sin fecha' : $row_sol['fechaAtencion'] ?>
+                      </div>
+                
+                    </div>
+
+                  </div>
+                  
+
+                  <hr class="sidebar-divider">
+                  <?php
+                    };
+                  };
+                  ?>
+                  <!-- End Solicitud -->
+
+                </div>
+              </div>
+            </div>
+            <!-- /Tabla de Status de Solicitudes -->
 
           </div>
+          <!-- /.Perfil alumno -->
+
+        </div>
           <!-- /.Contenido Variable - Todo lo demas es fijo -->
           <!-- /.container-fluid -->
 
-        </div>
-        <!-- End of Main Content -->
+      </div>
+      <!-- End of Main Content -->
 
         <!-- Footer -->
         <?php require 'front/general/footer.php';?>
         <!-- End of Footer -->
 
-      </div>
-      <!-- End of Content Wrapper -->
-
     </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
