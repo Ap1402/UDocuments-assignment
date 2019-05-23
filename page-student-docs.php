@@ -133,6 +133,16 @@ if ($porcentaje == 100) {
 
           <!-- Formulario Documentos -->
           <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+            <div class="card mb-4 py-1 border-bottom-primary">
+                <div class="card-body">
+                  <h5 class="font-weight-bolder">Indicaciones</h5>
+                  <b>Formatos permitidos:</b> .JPG y .PNG<br>
+                  <b>Tamaño maximo por imagen:</b> 3MB<br>
+                  <b>Numero maximo por tipo documento:</b><br>
+                  Cédula, Foto, Partida y Certificado de salud -> 1 foto.<br>
+                  Notas, Rusnies y Método de ingreso -> 5 fotos.<br>
+                </div>
+              </div>
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
