@@ -164,8 +164,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="card-body">
                   <h5 class="font-weight-bolder">Indicaciones</h5>
                   <b>Formatos permitidos:</b> .JPG y .PNG<br>
-                  <b>Tamaño maximo por imagen:</b> 3MB<br>
-                  <b>Numero maximo por tipo documento:</b><br>
+                  <b>Tamaño máximo por imagen:</b> 3MB<br>
+                  <b>Número máximo por tipo documento:</b><br>
                   Cédula, Foto, Partida y Certificado de salud -> 1 foto.<br>
                   Notas, Rusnies y Método de ingreso -> 5 fotos.<br>
                 </div>
