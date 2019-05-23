@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Editar - Subir documentos admin </title>
+  <title> Editar - Documentos </title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -182,19 +182,27 @@ if ($porcentaje == 100) {
 ;
 // --------------- /.Hacer si todos los documentos estan validados
 ?>
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Advertencia!</strong>
+                    Todos los cambios realizados en este formulario se hacen de manera <strong>permanente!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      &times;
+                    </button>
+                  </div>
 
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">
                       <?php echo ($porcentaje == 100) ? 'Todos los ducumentos han sido validados' : 'Elija el documento a editar' ?>
                     </option>
-                     <?php echo ($check_cedula == 0) ? '<option value="1">Cédula</option>' : '' ?>
-                     <?php echo ($check_foto == 0) ? '<option value="2">Foto tipo carnet</option>' : '' ?>
-                     <?php echo ($check_notas == 0) ? '<option value="3">Notas certificadas de bachillerato (1er a 5to)</option>' : '' ?>
-                     <?php echo ($check_fondo == 0) ? '<option value="4">Título de bachillerato autenticado</option>' : '' ?>
-                     <?php echo ($check_rusnies == 0) ? '<option value="5">Resultado del RUSNIES</option>' : '' ?>
-                     <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '' ?>
-                     <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '' ?>
-                     <?php echo ($check_certificado_s == 0) ? '<option value="8">Certificado de Salud</option>' : '' ?>
+                     <?php echo ($check_cedula == 0) ? '<option value="1">Cédula</option>' : '<option value="1">Cédula (Validado)</option>' ?>
+                     <?php echo ($check_foto == 0) ? '<option value="2">Foto tipo carnet</option>' : '<option value="2">Foto tipo carnet (Validado)</option>' ?>
+                     <?php echo ($check_notas == 0) ? '<option value="3">Notas certificadas de bachillerato (1er a 5to)</option>' : '<option value="3">Notas certificadas de bachillerato (1er a 5to) (Validado)</option>' ?>
+                     <?php echo ($check_fondo == 0) ? '<option value="4">Título de bachillerato autenticado</option>' : '<option value="4">Título de bachillerato autenticado (Validado)</option>' ?>
+                     <?php echo ($check_rusnies == 0) ? '<option value="5">Resultado del RUSNIES</option>' : '<option value="5">Resultado del RUSNIES (Validado)</option>' ?>
+                     <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '<option value="6">Partida de nacimiento (Validado)</option>' ?>
+                     <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '<option value="7">Método de ingreso (Validado)</option>' ?>
+                     <?php echo ($check_certificado_s == 0) ? '<option value="8">Certificado de Salud</option>' : '<option value="8">Certificado de Salud (Validado)</option>' ?>
                   </select>
                   <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
