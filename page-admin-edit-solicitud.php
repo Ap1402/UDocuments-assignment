@@ -100,9 +100,10 @@
                     <?php
                       include 'back/conexion.php';
 
-                      $sql = "SELECT id_alumno, alumno, cedula, p_nombre, p_apellido, documento, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, alumnos.carrera, alumnos.turno, personalAtencion FROM alumnos
+                      $sql = "SELECT carreras.nombre as carreraNombre, id_alumno, alumno, cedula, p_nombre, p_apellido, documento, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, solicitudes.carrera, alumnos.turno, personalAtencion FROM alumnos
                               INNER JOIN solicitudes ON alumnos.id_alumno = solicitudes.alumno
-                              LEFT JOIN tipo_solicitud ON tipo_solicitud.tipo = solicitudes.tipo";
+                              LEFT JOIN tipo_solicitud ON tipo_solicitud.tipo = solicitudes.tipo
+                              LEFT JOIN carreras ON solicitudes.carrera = carreras.codigo";
 
                       $result = mysqli_query($conexion, $sql);
                       if ($result->num_rows > 0) {
@@ -134,7 +135,7 @@
                       <td> <a id="fechaActualizacion" data-active="false" data-id="<?=$row['id_solicitud']?>"
                             data-role="update"><?=$row['fechaAtencion']?></a></td>                      
                       <td><?=$row['nombre_solicitud']?></td>
-                      <td><?=$row['carrera']?></td>
+                      <td><?=$row['carreraNombre']?></td>
                       <td>
                       <?php
                       switch ($row['turno']) {

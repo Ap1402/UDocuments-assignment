@@ -60,18 +60,24 @@ include 'back/conexion.php';
 // ------------ Obtener la id del documento
 if (isset($_SESSION['docId'])) {
     $idd = $_SESSION['docId'];
+    $alumno=$_SESSION['id'];
 }
 
-$sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
+$sql = "SELECT check_foto,check_cedula,check_fondo,check_nota,check_partida,check_rusinies,check_metodo,check_certificado_s,porcentaje FROM documentos WHERE id_documento='$idd'";
 $result = mysqli_query($conexion, $sql);
+
+$sqlSolicitud = "SELECT tipo, carrera FROM solicitudes WHERE alumno='$alumno'";
+$resultSolicitud =  mysqli_query($conexion, $sqlSolicitud);
+
+$solicitud = mysqli_fetch_assoc($resultSolicitud);
+
 
 if ($result->num_rows > 0) {
     $row = mysqli_fetch_assoc($result);
 } else {
     $mensaje = "Ocurrió un error al cargar los documentos";
     echo ($mensaje);
-}
-;
+};
 
 $check_foto = $row['check_foto']; // verificar si fue o no chequeado por control de estudios
 $check_cedula = $row['check_cedula'];
@@ -80,6 +86,8 @@ $check_notas = $row['check_nota'];
 $check_partida = $row['check_partida'];
 $check_rusnies = $row['check_rusinies'];
 $check_metodo = $row['check_metodo'];
+$check_certificado_s = $row['check_certificado_s'];
+
 
 // -------- Porcentaje de Documentos
 
@@ -137,7 +145,21 @@ if ($porcentaje == 100) {
                     <option value="4">Título de bachillerato autenticado</option>
                     <option value="5">Resultado del RUSNIES</option>
                     <option value="6">Partida de nacimiento</option>
+                  
+                  <?php 
+                  if (isset($solicitud)){
+                  
+                  if($solicitud['tipo']==4 or $solicitud['tipo']==5 ){?>
                     <option value="7">Método de ingreso</option>
+                  <?php } ?>
+
+                  <?php if($solicitud['carrera']==10){?>
+
+                    <option value="8">Certificado de salud</option>
+
+                    <?php }} ?>
+
+
                   </select>
 
                   <form id="docsForm" method="POST" class="user needs-validation" novalidate>
