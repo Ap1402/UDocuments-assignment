@@ -153,7 +153,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 ?>
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Editar - Documentos</h1>
+            <h1 class="h3 mb-0 text-gray-800">Documentos del alumno</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
