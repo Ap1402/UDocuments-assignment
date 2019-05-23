@@ -81,57 +81,44 @@ require 'front/admin/dashboard/charts.php';
 
           <?php
 include 'back/conexion.php';
-$sql_total = "SELECT COUNT(*) FROM alumnos
-        LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo;";
+$sql_total = "SELECT COUNT(*) FROM solicitudes";
 
 $result_total = mysqli_query($conexion, $sql_total);
 $row_total = mysqli_fetch_assoc($result_total);
 $total = $row_total['COUNT(*)'];
 
 
-$sql_intro = "SELECT COUNT(*) FROM alumnos
-              LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-              WHERE tipo_solicitud.tipo=1;";
+$sql_intro = "SELECT COUNT(*) FROM solicitudes WHERE tipo=1";
 
 $result_intro = mysqli_query($conexion, $sql_intro);
 $row_intro = mysqli_fetch_assoc($result_intro);
 $intro = $row_intro['COUNT(*)'];
 
-$sql_basic = "SELECT COUNT(*) FROM alumnos
-LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-WHERE tipo_solicitud.tipo=2;";
+$sql_basic = "SELECT COUNT(*) FROM solicitudes WHERE tipo=2";
 
 $result_basic = mysqli_query($conexion, $sql_basic);
 $row_basic = mysqli_fetch_assoc($result_basic);
 $basic = $row_basic['COUNT(*)'];
 
-$sql_admis = "SELECT COUNT(*) FROM alumnos
-LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-WHERE tipo_solicitud.tipo=3;";
+$sql_admis = "SELECT COUNT(*) FROM solicitudes WHERE tipo=3";
 
 $result_admis = mysqli_query($conexion, $sql_admis);
 $row_admis = mysqli_fetch_assoc($result_admis);
 $admis = $row_admis['COUNT(*)'];
 
-$sql_direc = "SELECT COUNT(*) FROM alumnos
-LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-WHERE tipo_solicitud.tipo=4;";
+$sql_direc = "SELECT COUNT(*) FROM solicitudes WHERE tipo=4";
 
 $result_direc = mysqli_query($conexion, $sql_direc);
 $row_direc = mysqli_fetch_assoc($result_direc);
 $direc = $row_direc['COUNT(*)'];
 
-$sql_equiv = "SELECT COUNT(*) FROM alumnos
-LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-WHERE tipo_solicitud.tipo=5;";
+$sql_equiv = "SELECT COUNT(*) FROM solicitudes WHERE tipo=5";
 
 $result_equiv = mysqli_query($conexion, $sql_equiv);
 $row_equiv = mysqli_fetch_assoc($result_equiv);
 $equiv = $row_equiv['COUNT(*)'];
 
-$sql_reinc = "SELECT COUNT(*) FROM alumnos
-LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-WHERE tipo_solicitud.tipo=6;";
+$sql_reinc = "SELECT COUNT(*) FROM solicitudes WHERE tipo=6";
 
 $result_reinc = mysqli_query($conexion, $sql_reinc);
 $row_reinc = mysqli_fetch_assoc($result_reinc);

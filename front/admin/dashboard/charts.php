@@ -86,6 +86,7 @@ var arrayData = <?=json_encode($reg_meses)?>;
   <!-- Card Header - Dropdown -->
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
    <h6 class="m-0 font-weight-bold text-primary">Registros de alumnos <small>(ultimos 6 meses)</small></h6>
+<!-- 
    <div class="dropdown no-arrow">
     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
      aria-expanded="false">
@@ -99,6 +100,7 @@ var arrayData = <?=json_encode($reg_meses)?>;
      <a class="dropdown-item" href="#">Something else here</a>
     </div>
    </div>
+    -->
   </div>
   <!-- Card Body -->
   <div class="card-body">
@@ -153,6 +155,7 @@ var arrayDataPendientes = <?=json_encode($array_pendientes)?>;
   <!-- Card Header - Dropdown -->
   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
    <h6 class="m-0 font-weight-bold text-primary">Record de documentos cargados</h6>
+<!-- 
    <div class="dropdown no-arrow">
     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
      aria-expanded="false">
@@ -166,6 +169,7 @@ var arrayDataPendientes = <?=json_encode($array_pendientes)?>;
      <a class="dropdown-item" href="#">Something else here</a>
     </div>
    </div>
+    -->
   </div>
   <!-- Card Body -->
   <div class="card-body">
