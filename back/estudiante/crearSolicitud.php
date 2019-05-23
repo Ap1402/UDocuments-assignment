@@ -14,9 +14,6 @@ if (isset($_POST['idEstudiante'])){
 
 }
 
-//echo $_GET['ida'];
-
-// A decidir si se prohibira el registro a cedulas repetidas o a usuarios
 $sql = "SELECT 1 FROM solicitudes WHERE alumno='$ida' AND estadoSolicitud=0 LIMIT 1";
 $result = mysqli_query($conexion, $sql);
 
