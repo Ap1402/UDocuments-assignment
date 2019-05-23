@@ -72,7 +72,11 @@
 
 			$("input").prop('multiple', true);
 		}
+		if (num == 8) {
+			elemento.attr("data-id", "certificado");
 
+			$("input").prop('multiple', false);
+		}
 		// ------------ fin Funcion del select
 
 	})

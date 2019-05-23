@@ -13,6 +13,7 @@ if (isset($_POST['idEstudiante'])){
     $ida = $_SESSION['id'];
 }
 
+echo $ida;
 
 $sql = "SELECT 1 FROM solicitudes WHERE alumno='$ida' AND estadoSolicitud=0 LIMIT 1";
 $result = mysqli_query($conexion, $sql);

@@ -66,11 +66,13 @@ if (isset($_GET['ida'])) {
 ;
 // ------------ /.Obtener la id del alumno dependiendo la sesion
 
-$sql = "SELECT *, alumnos.cedula AS ci, documentos.cedula AS cedula FROM alumnos
+$sql = "SELECT *, alumnos.cedula AS ci, documentos.cedula AS cedula, carreras.nombre AS carrera FROM alumnos
         INNER JOIN documentos ON alumnos.documento=documentos.id_documento
         LEFT JOIN telefonos ON alumnos.id_alumno=telefonos.alumno
         LEFT JOIN direcciones ON alumnos.id_alumno=direcciones.alumno
         LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
+        LEFT JOIN carreras ON alumnos.carrera=carreras.codigo
+
         WHERE alumnos.id_alumno = '$ida'";
 
 $result = mysqli_query($conexion, $sql);

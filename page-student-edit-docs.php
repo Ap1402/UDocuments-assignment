@@ -93,6 +93,8 @@ $check_notas = $row['check_nota'];
 $check_partida = $row['check_partida'];
 $check_rusnies = $row['check_rusinies'];
 $check_metodo = $row['check_metodo'];
+$check_certificado_s = $row['check_certificado_s'];
+
 
 // -------- Porcentaje de Documentos
 
@@ -107,6 +109,8 @@ $partida=$path_general.$row['partida'];
 $foto= $path_general.$row['foto'];
 $fondo= $path_general.$row['fondo'];
 $cedulaFoto= $path_general.$row['cedula'];
+$certificado= $path_general.$row['certificado_s'];
+
 
 
 $sql = "SELECT * FROM metodoing WHERE documento='$idd'";
@@ -198,6 +202,7 @@ if ($porcentaje == 100) {
                      <?php echo ($check_rusnies == 0) ? '<option value="5">Resultado del RUSNIES</option>' : '' ?>
                      <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '' ?>
                      <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '' ?>
+                     <?php echo ($check_certificado_s == 0) ? '<option value="8">Certificado de Salud</option>' : '' ?>
                   </select>
                   <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
@@ -525,6 +530,32 @@ var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFf
 
 }
 
+
+
+if (num == 8) {
+
+var certificado = <?php echo json_encode($certificado) ?>;
+
+  //var path = path.replace(/\//g, '/');
+  if (certificado!='back/documentos/'){
+    $.get(certificado)
+  .done(function() {
+var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
+'style="background-image: url('+ certificado +')">'+
+'<div class="close-button-db"><span data-path="'+ certificado +'"'+
+'data-cedula="<?php echo $cedula ?>">&times;</span> <a href="'+ certificado +'" data-lightbox="gallery"'+ 
+'data-title="certificado"> <i class="fas fa-eye"></i> </a> <a href="'+ certificado +'" '+
+'download="<?php echo ($cedula.date("m-d-yHis")) ?>"> <i class="fas fa-download"></i> </a></div></div>';
+
+document.getElementById("preview-images").insertAdjacentHTML('beforeend', str);
+}).fail(function() { 
+  });
+
+elemento.attr("data-id", "certificado");
+
+$("input").prop('multiple', false);
+  }
+}
 // ------------ fin Funcion del select
 
 });

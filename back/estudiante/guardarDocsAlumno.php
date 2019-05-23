@@ -168,8 +168,27 @@ if (($path_splitted[0] == 'metodo') && isset($_FILES[$key])) {
 			return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
 		}
 	}
-
 }
+
+if (($path_splitted[0] == 'certificado') && isset($_FILES[$key]) ) {
+	$photo_name= 'certificado'.'_'.$count.'_'.date('m-d-yHis').'.'.$path_info['extension'];
+	$consult = "SELECT IF(certificado_s IS NULL or certificado_s = '', 'empty', certificado_s) as certificado_s from documentos WHERE id_documento='".$idDoc."'";
+	$result = mysqli_query($conexion, $consult);
+	$datos = mysqli_fetch_array($result);
+
+	if ($datos['certificado_s']!='empty'){
+	  return print_r(json_encode(['message' => 'Ya ha subido la cantidad máxima de archivos para certificado de, por favor dirigirse a modificación para cambiar este archivo', 'status' => http_response_code(500)]));
+
+	}else{
+		$direccion = $cedula.$photo_name;
+		$insertarDoc = "UPDATE documentos SET certificado_s='$direccion' WHERE id_documento=$idDoc";
+		$result = mysqli_query($conexion, $insertarDoc);
+		if(mysqli_affected_rows($conexion)<1){
+		  return print_r(json_encode(['message' => 'No fue posible subir los archivos', 'status' => http_response_code(500)]));
+	  }
+	}
+}
+
 
 
 	if ( !move_uploaded_file($file['tmp_name'], $path_alumno. $photo_name) ) {

@@ -60,9 +60,10 @@ if (isset($_GET['ida']) && ($rol > 0)) {
 };
 // ------------ /.Obtener la id del alumno dependiendo la sesion
 
-$sql_sol = "SELECT carrera, turno, tipo, nombre_solicitud FROM alumnos
-        LEFT JOIN tipo_solicitud ON alumnos.metodo_ingreso=tipo_solicitud.tipo
-        WHERE alumnos.id_alumno = '$ida'";
+$sql_sol = "SELECT carrera, turno, solicitudes.tipo, tipo_solicitud.nombre_solicitud as nombreSolicitud, carreras.nombre as carreraNombre FROM solicitudes
+          LEFT JOIN tipo_solicitud ON solicitudes.tipo=tipo_solicitud.tipo
+          LEFT JOIN carreras ON carreras.codigo=solicitudes.carrera
+              WHERE solicitudes.alumno = $ida;";
 
 $result_sol = mysqli_query($conexion, $sql_sol);
 if ($result_sol->num_rows > 0) {
@@ -75,7 +76,7 @@ if ($result_sol->num_rows > 0) {
 
 $carrera = $row_sol['carrera'];
 $tipo = $row_sol['tipo']; // metodo_ingreso
-$nombre_solicitud = $row_sol['nombre_solicitud'];
+$nombre_solicitud = $row_sol['nombreSolicitud'];
 $turno = $row_sol['turno'];
 $carrera = $row_sol['carrera'];
 
@@ -98,7 +99,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
 
 ?>
 <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+<div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Editar - Solicitud de ingreso</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-vote-yea fa-2x text-gray-300"></i></a>
           </div>
@@ -109,16 +110,17 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
-                  <form id="solicitudEditForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" hidden></div>
+                  <form id="solicitudForm" method="POST" class="user needs-validation" novalidate>
+                  <input id="idEstudiante" name="idEstudiante" value="<?php echo $ida?>" hidden>
+                  <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
 
-                     <div class="form-group row">
+                    <div class="form-group row">
                       <div class="col-sm-6 my-auto">
                         <label class="pl-2"><small>Carrera</small></label><br>
                         <select id="carrera" name="carrera" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Carrera"
-                          <?php echo ($rol == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option disabled selected value="<?php echo $carrera ?>"><?php echo $carrera ?></option>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <option  value="<?php echo $carrera ?>"><?php echo $row_sol['carreraNombre'] ?></option>
                            <?php 
                             include 'back/conexion.php';
 
@@ -128,9 +130,8 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                             $i=1;
                             if ($result->num_rows > 0) {
                               while ($row = mysqli_fetch_assoc($result)) {
-                              echo "<option data-id=".$i." value=". $row["codigo"] .">".$row["nombre"]."</option>";
+                              echo "<option value=". $row["codigo"] .">".$row["nombre"]."</option>";
                               $resultArray[]=array("codigo"=>$row["codigo"],"nombre"=>$row["nombre"],"manana"=>$row["manana"],"tarde"=>$row["tarde"],"noche"=>$row["noche"]);
-                              $i++;
                               };                            
                             };
                           ?>
@@ -143,7 +144,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                         <label class="pl-2"><small>Turno</small></label><br>
                         <select id="turno" name="turno" class="form-control" data-toggle="tooltip" data-placement="top"
                           title="Turno"
-                          <?php echo ($rol == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                           <option disabled="disabled" selected value="<?php echo $turno ?>"><?php echo $turno_name ?>
                           </option>
 
@@ -159,8 +160,8 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                         <label class="pl-2"><small>Método de ingreso</small></label><br>
                         <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Método de ingreso"
-                          <?php echo ($rol == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option disabled selected value="<?php echo $tipo ?>"><?php echo $nombre_solicitud ?></option>
+                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <option value="<?php echo $tipo ?>"><?php echo $nombre_solicitud ?></option>
                           <?php
                             $sql2 = "SELECT * FROM tipo_solicitud WHERE activa=1";
                             $result2 = mysqli_query($conexion, $sql2);
@@ -181,7 +182,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
-                    <div class="alert alert-danger" role="alert" id="resultado" hidden>
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
                     </div>
                     <br>
 
@@ -237,9 +238,27 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
 
       var carreras = <?php echo json_encode($resultArray) ?> ;
 
+      var codigo = $("#carrera").val();      
+        var nuevasopciones = "";
+
+        if (carreras[codigo - 1]["manana"] == 1) {
+          nuevasopciones += "<option value='1'>Mañana</option>";
+        }
+        if (carreras[codigo - 1]["tarde"] == 1) {
+          nuevasopciones += "<option value='2'>Tarde</option>";
+        }
+        if (carreras[codigo - 1]["noche"] == 1) {
+          nuevasopciones += "<option value='3'>Noche</option>";
+        }
+
+        $("select#turno").html(nuevasopciones);
+        $("select#turno").val(<?php echo $turno?>);
+
+
+
       $("#carrera").change(function () {
 
-        var codigo = $("#carrera option:selected").attr('data-id');        
+        var codigo = $("#carrera").val();      
         var nuevasopciones = "";
 
         if (carreras[codigo - 1]["manana"] == 1) {
@@ -254,8 +273,12 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
 
         $("select#turno").html(nuevasopciones);
       });
+
+
+
     });
   </script>
+<script src="scripts/modificarSolicitudEstudiante.js"> </script>
 
 </body>
 

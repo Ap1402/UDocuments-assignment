@@ -81,6 +81,8 @@ $check_notas = $row['check_nota'];
 $check_partida = $row['check_partida'];
 $check_rusnies = $row['check_rusinies'];
 $check_metodo = $row['check_metodo'];
+$check_certificado_s = $row['check_certificado_s'];
+
 
 // -------- Porcentaje de Documentos
 
@@ -98,6 +100,10 @@ $sql_mi = "SELECT * FROM tipo_solicitud
 $result_mi = mysqli_query($conexion, $sql_mi);
 $row_mi = mysqli_fetch_assoc($result_mi);
 
+$sqlSolicitud = "SELECT * FROM solicitudes
+            WHERE alumno='$ida'";
+$resultSolicitud = mysqli_query($conexion, $sqlSolicitud);
+$rowSolicitud = mysqli_fetch_assoc($resultSolicitud);
 
 // ruta raiz de la imagen
 $path_image = 'back/documentos/';
@@ -105,7 +111,7 @@ $path_image = 'back/documentos/';
 $ultActualizacion = date('Y-m-d');
 $nombre_solicitud = $row_mi['nombre_solicitud'];
 
-$check_solicitud = 1; //--------------------------------------------- Estado Solicitud ($row['check_solicitud'])
+$check_solicitud = $rowSolicitud['estadoSolicitud']; //--------------------------------------------- Estado Solicitud ($row['check_solicitud'])
 
 //----------------------------****************************** /.Documentos **********************
 
@@ -967,13 +973,68 @@ if ($row['partida'] != '') {
             </div>
 
           </div>
+
+
+
           <!-- End Partida -->
 
           <br>
           <hr class="sidebar-divider">
           <br>
 
+
+          <!-- CERTICICADO SALUD -->
+          <?php if($rowSolicitud['carrera']==10) { ?>
+          <div class="form-group row">
+
+            <div class="col-md-12 col-lg-4 text-lg-left my-auto">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" <?php echo ($check_certificado_s == 0) ? '' : 'checked' ?> class="custom-control-input"
+                  id="check_certificado_s">
+                <label class="custom-control-label" for="check_certificado_s">
+                  <h5 class="text-gray-900 text-justify pl-4">Certificado de salud (Solo odontologia)</h5>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-12 text-md-center col-lg-8 text-lg-left pt-3 my-auto">
+
+              <div id="preview-images-partida" class="preview-images">
+
+                <?php 
+if ($row['certificado_s'] != '') {
+    ?>
+                          <div class="thumbnail" style="background-image: url('<?=$path_image . $row['certificado_s']?>')">
+                            <div class="close-button-db">
+                              <a href="<?=$path_image . $row['certificado_s']?>" data-lightbox="galleryPartida" data-title="Partida">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                              <a href="<?=$path_image . $row['certificado_s']?>" download="<?php echo ('certificado_s' . $ci) ?>">
+                                <i class="fas fa-download"></i>
+                              </a>
+                            </div>
+                          </div>
+                        <?php
+}
+;
+?>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Final SALUD -->
+
+          <br>
+          <hr class="sidebar-divider">
+          <br>
+          <?php } ?>
+
           <!-- Metodo -->
+          <?php if($rowSolicitud['tipo']==4 || $rowSolicitud['tipo']==5) { ?>
+
           <div class="form-group row">
 
             <div class="col-md-12 col-lg-4 text-lg-left my-auto">
@@ -1027,6 +1088,7 @@ if ($result_metodoing->num_rows > 0) {
           <br>
           <hr class="sidebar-divider">
           <br>
+<?php }?>
 
           <!-- Estado Solicitud -->
           <div class="form-group row">
@@ -1074,6 +1136,11 @@ if ($result_metodoing->num_rows > 0) {
           
           <br>
           <input type="text" id="idDoc" value=<?php echo $idd ?> hidden>
+          <input type="text" id="tipoSolicitud" value=<?php echo $rowSolicitud['tipo'] ?> hidden>
+          <input type="text" id="carrera" value=<?php echo $rowSolicitud['carrera']  ?> hidden>
+          <input type="text" id="ida" value=<?php echo $ida  ?> hidden>
+
+
           <button id="enviarCheck" type="submit" class="btn btn-primary btn-user btn-block">
             Guardar validaciones
           </button>
