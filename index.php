@@ -102,9 +102,6 @@
                   <div class="text-center">
                     <a href="page-access-registro.php" class="small">Crear una cuenta!</a>
                   </div>
-                  <div class="text-center">
-                    <a href="page-access-admin.php" class="small text-dark">Acceso solo para Administradores</a>
-                  </div>
                 </div>
               </div>
               <!-- /.Formulario Login -->
