@@ -38,7 +38,7 @@ function ejecutarAjaxLog(event){
         if(echo.exito){
             $('#resultado').hide();
 
-            $(location).attr('href','page-dashboard.php');
+            $(location).attr('href','page-student-datos.php');
         }else{
             $('#resultado').show();
 

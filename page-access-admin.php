@@ -95,13 +95,6 @@
                       Iniciar sesión
                     </button>
                   </form>
-                  <hr>
-                  <div class="text-center">
-                    <a href="page-access-forgot.php" class="small">¿Olvidó la contraseña?</a>
-                  </div>
-                  <div class="text-center">
-                    <a href="index.php" class="small">Iniciar sesión como alumno</a>
-                  </div>
                 </div>
               </div>
               <!-- /.Formulario Login Admin -->
