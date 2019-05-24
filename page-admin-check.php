@@ -235,7 +235,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                     
  <div class="p-4">
    <form id="datosEditForm" method="POST" class="user needs-validation" novalidate>
-     <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
+   <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
      <div class="form-group row">
        <div class="col-sm-6">
@@ -688,10 +688,11 @@ $nac_postal = $datosDirecc['postal_hab'];
 <div class="col-sm-12 col-lg-10 mx-auto">
   <div class="card shadow mb-4">
     <div class="card-body">
+
       <div class="pl-4 pr-3 py-4">
 
         <form id="checkForm" method="POST" class="user needs-validation" novalidate>
-
+        <div class="alert alert-success" role="alert" id="exitoCheck" style="display: none"></div>
           <!-- Foto -->
           <div class="form-group row">
 
@@ -1140,6 +1141,7 @@ if ($result_metodoing->num_rows > 0) {
           <input type="text" id="carrera" value=<?php echo $rowSolicitud['carrera']  ?> hidden>
           <input type="text" id="ida" value=<?php echo $ida  ?> hidden>
 
+          <div class="alert alert-info" role="alert" id="resultadoCheck" style="display: none"></div>
 
           <button id="enviarCheck" type="submit" class="btn btn-primary btn-user btn-block">
             Guardar validaciones

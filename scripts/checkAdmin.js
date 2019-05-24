@@ -50,26 +50,19 @@ $(document).ready(function () {
             encode: true
         })
             .done(function (datosRecibidos) {
-                console.log(datosRecibidos['message']);
-                // if(datosEnviados.exito){
-                //     $('#exito').removeAttr('hidden');
-                //     $('#exito').text(datosEnviados.mensaje);
-
-                // }else{
-                //     $('#resultado').removeAttr('hidden');
-                //     if(datosEnviados.errores.usuario)
-
-                //     $('#resultado').text(datosEnviados.errores.usuario);
-
-                //     if(datosEnviados.errores.contra)
-
-                //     $('#resultado').text(datosEnviados.errores.contra);
-
-                //     if(datosEnviados.errores.cedula)
-
-                //     $('#resultado').text(datosEnviados.errores.cedula);
-                // }
-
+                if(!datosRecibidos.exito){
+                    $('#exitoCheck').hide();
+    
+                    $('#resultadoCheck').show();
+                    $('#resultadoCheck').text(datosRecibidos.message);
+                }else{
+                    $('#resultadoCheck').hide();
+    
+                    $('#exitoCheck').show();
+                    $('#exitoCheck').text(datosRecibidos.message);
+                    $('html, body').animate( { scrollTop : 0 }, 800 );
+    
+                }
                 
 
                 // ========== Registro exitoso! ===========

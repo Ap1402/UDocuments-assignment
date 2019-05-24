@@ -131,7 +131,12 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                             if ($result->num_rows > 0) {
                               while ($row = mysqli_fetch_assoc($result)) {
                               echo "<option value=". $row["codigo"] .">".$row["nombre"]."</option>";
-                              $resultArray[]=array("codigo"=>$row["codigo"],"nombre"=>$row["nombre"],"manana"=>$row["manana"],"tarde"=>$row["tarde"],"noche"=>$row["noche"]);
+
+                              $resultArray[]=array("codigo"=>$row["codigo"],
+                              "nombre"=>$row["nombre"],
+                              "manana"=>$row["manana"],
+                              "tarde"=>$row["tarde"],
+                              "noche"=>$row["noche"]);
                               };                            
                             };
                           ?>
@@ -238,7 +243,10 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
 
       var carreras = <?php echo json_encode($resultArray) ?> ;
 
-      var codigo = $("#carrera").val();      
+      var codigo = $("#carrera").val();
+      console.log(codigo);
+      console.log(carreras);
+
         var nuevasopciones = "";
 
         if (carreras[codigo - 1]["manana"] == 1) {

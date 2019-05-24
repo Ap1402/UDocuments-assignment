@@ -48,7 +48,6 @@ $resultado = mysqli_query($conexion, $consulta);
 
 $estado = ($_POST['check_solicitud']=='true') ? 1 : 0;
 
-if(estado ==1){
     $personalAtencion = $_SESSION['nombre'];
     $fecha= date("Y-m-d");
     
@@ -59,9 +58,12 @@ if(estado ==1){
     $cambiarAlumno = "UPDATE alumnos t1, solicitudes t2 SET t1.carrera = t2.carrera, t1.metodo_ingreso=t2.tipo, t1.turno=t2.turno WHERE t2.alumno=t1.id_alumno AND t2.alumno=$ida;";
                  
     $resultado = mysqli_query($conexion, $cambiarAlumno);
-}
 
+    if ($estado==1){
+        print_r(json_encode(['message' => 'Archivos validados con éxito y solicitud marcada como atendida', 'exito'=>TRUE]));
+    }else{
+        print_r(json_encode(['message' => 'Archivos validados con éxito y solicitud marcada como no atendida', 'exito'=>FALSE]));
 
- print_r(json_encode(['message' => 'Archivos validados con éxito']));
+    }
 
 ?>
