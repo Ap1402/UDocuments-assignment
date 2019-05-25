@@ -81,21 +81,6 @@
                       <th>Ver perfil</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Cédula</th>
-                      <th>Alumno</th>
-                      <th>Fecha de creación</th>
-                      <th>Estado de solicitud</th>
-                      <th>Fecha de Atención</th>
-                      <th>Tipo</th>
-                      <th>Carrera</th>
-                      <th>Turno</th>
-                      <th>Personal de atención</th>
-                      <th>Validar Docs</th>
-                      <th>Ver perfil</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
                     <?php
                       include 'back/conexion.php';

@@ -53,6 +53,7 @@ var myBarChart = new Chart(ctx, {
     },
     scales: {
       xAxes: [{
+        display: false,
         time: {
           unit: 'month'
         },

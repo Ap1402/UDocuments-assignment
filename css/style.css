@@ -24,6 +24,19 @@
 }
 
 /* Padding-y no permite la visibilidad del texto e impide introducir valores al input[type=number]*/
+form.user .form-control-user {
+ font-size: 0.8rem;
+ border-radius: 10rem;
+ padding: 1rem 1rem;
+ height: 2.5rem !important;
+}
+
+form.user .btn-user {
+ font-size: .8rem;
+ border-radius: 10rem;
+ padding: .5rem 1rem;
+}
+
 input[type=number],
 input[type=text],
 input[type=email],
@@ -35,7 +48,7 @@ input[type=date] {
  border-radius: 10rem;
  padding-right: 1rem;
  padding-left: 1rem;
- height: 3rem;
+ height: 2.5rem;
 }
 
 
@@ -77,7 +90,7 @@ input[type=password]:disabled {
  border: 1px solid #d1d3e2;
  color: rgb(92, 92, 92);
  cursor: pointer;
- padding: .75rem 1rem;
+ padding: .44rem 1rem;
  transition: 1s;
 }
 
@@ -95,7 +108,7 @@ select {
  border-radius: 10rem !important;
  padding-right: 1rem !important;
  padding-left: 1rem !important;
- height: 3rem !important;
+ height: 2.5rem !important;
 }
 
 .was-validated .form-control:valid,

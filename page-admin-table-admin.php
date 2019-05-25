@@ -75,15 +75,6 @@
                       <th>Editar</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Nombre de usuario</th>
-                      <th>Nombres</th>
-                      <th>Rol</th>
-                      <th>Estatus</th>
-                      <th>Editar</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
                     <?php
                     include 'back/conexion.php';

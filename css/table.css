@@ -53,6 +53,15 @@
     background-color: rgba(0, 0, 0, 1);
 }
 
+thead {
+    background: linear-gradient(rgba(88, 88, 88, 0), rgba(255, 255, 255, 0), rgba(88, 88, 88, 0.555)) !important;
+    color: rgba(85, 85, 85, 0.76);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.856); 
+}
+
+table {
+    font-size: .85em;
+}
 
 @media (max-width: 970px) {
     #page-contenido {

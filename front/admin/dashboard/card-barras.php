@@ -38,7 +38,7 @@ foreach ($array_carreras as $key => $value) {
 ?>
 
 <script>
-  var arrayDataCarerras = <?= json_encode($array_carreras) ?> ;
+  var arrayDataCarerras = <?= json_encode($name_carreras) ?> ;
   var arrayDataRegCar = <?= json_encode($reg_carreras) ?> ;
 </script>
 
@@ -54,15 +54,6 @@ foreach ($array_carreras as $key => $value) {
            <canvas id="myBarChart"></canvas>
          </div>
          <hr>
-         <div class="text-justufy">
-
-         <?php foreach ($name_carreras as $key => $value) { ?>
-
-          <label class="text-xs text-uppercase px-2"><?='<b>'.$array_carreras[$key].'</b>: '.$value?></label>
-
-          <?php }; ?>
-
-         </div>
        </div>
      </div>  
     <!-- Project Card Facultades -->

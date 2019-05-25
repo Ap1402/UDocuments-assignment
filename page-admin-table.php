@@ -68,44 +68,37 @@
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="collapseCardBE">
-                  <div class="card-body">
-
-                    <a id="docFaltante" href="#" class="btn btn-danger btn-icon-split">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Alumnos con documentos faltantes</span>
-                    </a>
-
-                    <a id="docFaltante50" href="#" class="btn btn-warning btn-icon-split">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Alumnos con documentos faltantes mayor a 50%</span>
-                    </a>
-
-                    <a id="docCompletos" href="#" class="btn btn-success btn-icon-split">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Alumnos con documentos completos</span>
-                    </a>
-
-                    <a id="docTodos" href="#" class="btn btn-info btn-icon-split">
+                  <div class="card-body row justify-content-center">
+                  
+                    <a id="docTodos" href="#" class="btn btn-info btn-icon-split m-2">
                       <span class="icon text-white-50">
                         <i class="fas fa-search"></i>
                       </span>
                       <span class="text">Mostrar todos</span>
                     </a>
 
-                    <a id="other" href="#" class="btn btn-info btn-icon-split">
+                    <a id="docFaltante" href="#" class="btn btn-danger btn-icon-split m-2">
                       <span class="icon text-white-50">
                         <i class="fas fa-search"></i>
                       </span>
-                      <span class="text">Alumnos others</span>
+                      <span class="text">Alumnos con documentos faltantes</span>
                     </a>
 
-                    <a id="mesActual" href="#" class="btn btn-info btn-icon-split">
+                    <a id="docFaltante50" href="#" class="btn btn-warning btn-icon-split m-2">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Alumnos con documentos faltantes mayor a 50%</span>
+                    </a>
+
+                    <a id="docCompletos" href="#" class="btn btn-success btn-icon-split m-2">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <span class="text">Alumnos con documentos completos</span>
+                    </a>
+
+                    <a id="mesActual" href="#" class="btn btn-info btn-icon-split m-2">
                       <span class="icon text-white-50">
                         <i class="fas fa-search"></i>
                       </span>
@@ -139,18 +132,6 @@
 
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                    <th>Cédula</th>
-                      <th>Nombres</th>
-                      <th>Apellidos</th>
-                      <th>% Documentos</th>
-                      <th>Última Actualización</th>
-                      <th>Validar Docs</th>
-                      <th>Ver perfil</th>
-
-                    </tr>
-                  </tfoot>
                   <tbody>
 
                   </tbody>
