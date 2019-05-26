@@ -25,7 +25,13 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/table.css" rel="stylesheet">
+
+  <link href="css/jquery.datatable.min.css" rel="stylesheet">
+  <link href="css/tableShow.css" rel="stylesheet">
+  <link href="css/responsive.dataTables.min.css" rel="stylesheet">
+
+
+
 
 </head>
 
@@ -117,7 +123,7 @@
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="tablaValidaciones" width="100%" cellspacing="0">
+                <table class="table table-bordered responsive no-wrap" id="tablaValidaciones" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Cédula</th>
@@ -127,11 +133,19 @@
                       <th>Última Actualización</th>
                       <th>Validar Docs</th>
                       <th>Ver perfil</th>
-
- 
-
                     </tr>
                   </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Cédula</th>
+                      <th>Nombres</th>
+                      <th>Apellidos</th>
+                      <th>% Documentos</th>
+                      <th>Última Actualización</th>
+                      <th>Validar Docs</th>
+                      <th>Ver perfil</th>
+                    </tr>
+                  </tfoot>
                   <tbody>
 
                   </tbody>
@@ -183,67 +197,106 @@
   
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
+  <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
+
+
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/front/table.js"></script>
 
- <script>
+  <script>
   $(document).ready(function() {
-
     tablaInicio();
-
     $('#docCompletos').on( 'click', function () {          
         tablaBuscarRango(100,100);
     });
-
     $('#docFaltante50').on( 'click', function () {          
         tablaBuscarRango(50,99);
     });
     $('#docFaltante').on( 'click', function () {          
         tablaBuscarRango(0,99);
     });
-
     $('#docTodos').on( 'click', function () {          
       tablaInicio();
     });
-
     $('#mesActual').on( 'click', function () {          
       tablaBuscarEsteMes();
     });
-
-
-
-
   });
 
-    var tablaInicio= function(){
+  var tablaInicio= function(){
       $('#tablaValidaciones').DataTable( {
         "destroy":true,
-      "ajax":{
-      "method":"POST",
-      "url":"back/admin/tablaUtilidades/tablaAdmin.php"
-    },
-    "columns":[
-      {"data":"cedula"},
-      {"data":"nombres"},
-      {"data":"apellidos"},
-      {"data":"porcentaje"},
-      {"data":"ultActualizacion"},
-      {"data":"irCheck"},
-      {"data":"irPerfil"}
+        "ajax":{
+        "method":"POST",
+        "url":"back/admin/tablaUtilidades/tablaAdmin.php"
+      
+        },
+        responsive: {
+            details: {
+              type: 'column',
+                target: 'tr',
+                renderer: function ( api, rowIdx, columns ) {
+                    var data = $.map( columns, function ( col, i ) {
+                        return col.hidden ?
+                            '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                '<td>'+col.title+':'+'</td> '+
+                                '<td>'+col.data+'</td>'+
+                            '</tr>' :
+                            '';
+                    } ).join('');
+ 
+                    return data ?
+                        $('<table/>').append( data ) :
+                        false;
+                }
+            }
+        },
+        "columnDefs": [
+      {
+        targets: 3,
+        render: function (data, type, row, meta) {
+          if(data>=50 && data<=99){
+            return `<div class="progress">
+                      <div class="progress-bar bg-info progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+          }
+          if(data<50 && data >=40){
+            return `<div class="progress">
+                      <div class="progress-bar bg-warning progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+          }
+          if(data<40){
+            return `<div class="progress">
+                      <div class="progress-bar bg-danger progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+          }else{
+            return `<div class="progress">
+                      <div class="progress-bar bg-success progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+
+          }
+          
+        }
+      }
     ],
-    "language":idioma
-    } );
+        "columns":[
+          {"data":"cedula"},
+          {"data":"nombres"},
+          {"data":"apellidos"},
+          {"data":"porcentaje"},
+          {"data":"ultActualizacion"},
+          {"data":"irCheck"},
+          {"data":"irPerfil"},
+        ],
+        "order": [[1, 'asc']],
+        "language":idioma
+      });
   };
 
   var tablaBuscarRango= function(min,max){
-
-
       $('#tablaValidaciones').DataTable( {
         "destroy":true,
-
       "ajax":{
       "method":"POST",
       "data":{
@@ -251,43 +304,144 @@
         "max": max },
       "url":"back/admin/tablaUtilidades/buscar.php"
     },
-    "columns":[
-      {"data":"cedula"},
-      {"data":"nombres"},
-      {"data":"apellidos"},
-      {"data":"porcentaje"},
-      {"data":"ultActualizacion"},
-      {"data":"irCheck"},
-      {"data":"irPerfil"}
+        responsive: {
+            details: {
+              type: 'column',
+                target: 'tr',
+                renderer: function ( api, rowIdx, columns ) {
+                    var data = $.map( columns, function ( col, i ) {
+                        return col.hidden ?
+                            '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                '<td>'+col.title+':'+'</td> '+
+                                '<td>'+col.data+'</td>'+
+                            '</tr>' :
+                            '';
+                    } ).join('');
+ 
+                    return data ?
+                        $('<table/>').append( data ) :
+                        false;
+                }
+            }
+        },
+        "columnDefs": [
+      {
+        targets: 3,
+        render: function (data, type, row, meta) {
+          if(data>=50 && data<=99){
+            return `<div class="progress">
+                      <div class="progress-bar bg-info progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+          }
+          if(data<50 && data >=40){
+            return `<div class="progress">
+                      <div class="progress-bar bg-warning progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+          }
+          if(data<40){
+            return `<div class="progress">
+                      <div class="progress-bar bg-danger progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+          }else{
+            return `<div class="progress">
+                      <div class="progress-bar bg-success progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+              </div>`
+
+          }
+          
+        }
+      }
     ],
-    "language":idioma
-    } );
+        "columns":[
+          {"data":"cedula"},
+          {"data":"nombres"},
+          {"data":"apellidos"},
+          {"data":"porcentaje"},
+          {"data":"ultActualizacion"},
+          {"data":"irCheck"},
+          {"data":"irPerfil"},
+        ],
+        "order": [[1, 'asc']],
+        "language":idioma
+      });
   };
 
-  var tablaBuscarEsteMes= function(){
+      var tablaBuscarEsteMes= function(){
+            $('#tablaValidaciones').DataTable( {
+              /// No tocar-------------------------------------
+              "destroy":true,
+            "ajax":{
+            "method":"POST",
+            "data":{
+              "buscarActualMes": ''},
+            "url":"back/admin/tablaUtilidades/buscar.php"
+            }, ///-------------------------------------------
 
+            responsive: {
+                details: {
+                  type: 'column',
+                    target: 'tr',  // Aquí se está estableciendo que TR es el que accionara mostrar la información oculta, también se agrega un icono en algunos casos PREGUNTARME.
 
-$('#tablaValidaciones').DataTable( {
-  "destroy":true,
+                    renderer: function ( api, rowIdx, columns ) {
+                    var data = $.map( columns, function ( col, i ) {
+                        return col.hidden ?
+                            '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                '<td>'+col.title+':'+'</td> '+
+                                '<td>'+col.data+'</td>'+
+                            '</tr>' :
+                            '';
+                    } ).join('');
+ 
+                    return data ?
+                        $('<table/>').append( data ) :
+                        false;
+                }
+              }
+            },
 
-"ajax":{
-"method":"POST",
-"data":{
-  "buscarActualMes": ''},
-"url":"back/admin/tablaUtilidades/buscar.php"
-},
-"columns":[
-{"data":"cedula"},
-{"data":"nombres"},
-{"data":"apellidos"},
-{"data":"porcentaje"},
-{"data":"ultActualizacion"},
-{"data":"irCheck"},
-{"data":"irPerfil"}
-],
-"language":idioma
-} );
-};
+            // inicio COLUMNSDEF
+            "columnDefs": [
+          {
+            targets: 3,  // Este es el numero de fila a escoger, empieza a contar desde 0 en este caso, siendo esta la 4ta fila.
+            render: function (data, type, row, meta) { //funcion para definir cómo se mostrara la columna SIN OCULTAR 
+              // DATA son los datos que contiene la fila, puede incluso contener objetos, por ejemplo data.hola data.prueba
+              if(data>=50 && data<=99){
+                return `<div class="progress">
+                          <div class="progress-bar bg-info progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+                  </div>`
+              }
+              if(data<50 && data >=40){
+                return `<div class="progress">
+                          <div class="progress-bar bg-warning progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+                  </div>`
+              }
+              if(data<40){
+                return `<div class="progress">
+                          <div class="progress-bar bg-danger progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+                  </div>`
+              }else{
+                return `<div class="progress">
+                          <div class="progress-bar bg-success progress-bar-striped" style="width:`+data+`%">`+data+`%</div>
+                  </div>`
+
+              }
+            }
+          }, // Fin columna 4
+        ], // Fin COLUMNSDEF
+
+            "columns":[ /// Donde se define qué datos llevará cada columna segun el php, solo sigue el orden en el que están en el html.
+              {"data":"cedula"},
+              {"data":"nombres"},
+              {"data":"apellidos"},
+              {"data":"porcentaje"},
+              {"data":"ultActualizacion"},
+              {"data":"irCheck"},
+              {"data":"irPerfil"},
+            ],
+            "order": [[1, 'asc']],
+            "language":idioma
+          });
+      };
 
   var idioma={
     "decimal": "",
@@ -309,7 +463,6 @@ $('#tablaValidaciones').DataTable( {
       "previous": "Anterior"
   }
   }
-
  </script>
 
 </body>

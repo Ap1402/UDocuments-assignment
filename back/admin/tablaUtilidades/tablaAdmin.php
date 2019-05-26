@@ -13,7 +13,7 @@ if(!$result){
         $data["irCheck"]='<a href="page-admin-check.php?idd='.$data['id_documento'].'&ida='.$data['id_alumno'].'&ci='.$data['cedula'].'&mi='.$data['metodo_ingreso'].'"><i class="fas fa-clipboard-list"></i></a>';
         
         $data["irPerfil"]='<a href="page-student-perfil.php?ida='.$data['id_alumno'].'"><i class="fas fa-id-card"></i></a>';
-
+        
         $arreglo["data"][]=$data;
 
     }
