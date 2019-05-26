@@ -126,6 +126,8 @@
                 <table class="table table-bordered responsive no-wrap" id="tablaValidaciones" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                    <th></th>
+
                       <th>Cédula</th>
                       <th>Nombres</th>
                       <th>Apellidos</th>
@@ -137,6 +139,8 @@
                   </thead>
                   <tfoot>
                     <tr>
+                    <th></th>
+
                       <th>Cédula</th>
                       <th>Nombres</th>
                       <th>Apellidos</th>
@@ -252,9 +256,15 @@
                 }
             }
         },
-        "columnDefs": [
+        "columnDefs": [{
+            "defaultContent": "",
+            className: 'control',
+            orderable: false,
+            targets:   0
+        },
+          
       {
-        targets: 3,
+        targets: 4,
         render: function (data, type, row, meta) {
           if(data>=50 && data<=99){
             return `<div class="progress">
@@ -281,6 +291,7 @@
       }
     ],
         "columns":[
+          {"data": ""}, // es la fila extra para el icono
           {"data":"cedula"},
           {"data":"nombres"},
           {"data":"apellidos"},
@@ -293,6 +304,9 @@
         "language":idioma
       });
   };
+
+
+
 
   var tablaBuscarRango= function(min,max){
       $('#tablaValidaciones').DataTable( {
@@ -325,8 +339,14 @@
             }
         },
         "columnDefs": [
+          {
+            "defaultContent": "",
+            className: 'control',
+            orderable: false,
+            targets:   0
+        },
       {
-        targets: 3,
+        targets: 4,
         render: function (data, type, row, meta) {
           if(data>=50 && data<=99){
             return `<div class="progress">
@@ -353,6 +373,7 @@
       }
     ],
         "columns":[
+          {"data":""}, // fila extra para el icono
           {"data":"cedula"},
           {"data":"nombres"},
           {"data":"apellidos"},
@@ -401,8 +422,15 @@
 
             // inicio COLUMNSDEF
             "columnDefs": [
+              {
+            "defaultContent": "",
+            className: 'control',
+            orderable: false,
+            targets:   0
+        },
+
           {
-            targets: 3,  // Este es el numero de fila a escoger, empieza a contar desde 0 en este caso, siendo esta la 4ta fila.
+            targets: 4,  // Este es el numero de fila a escoger, empieza a contar desde 0 en este caso, siendo esta la 4ta fila.
             render: function (data, type, row, meta) { //funcion para definir cómo se mostrara la columna SIN OCULTAR 
               // DATA son los datos que contiene la fila, puede incluso contener objetos, por ejemplo data.hola data.prueba
               if(data>=50 && data<=99){
@@ -430,6 +458,7 @@
         ], // Fin COLUMNSDEF
 
             "columns":[ /// Donde se define qué datos llevará cada columna segun el php, solo sigue el orden en el que están en el html.
+              {"data":""}, // fila extra para el icono
               {"data":"cedula"},
               {"data":"nombres"},
               {"data":"apellidos"},
