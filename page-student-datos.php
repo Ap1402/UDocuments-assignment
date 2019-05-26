@@ -51,7 +51,7 @@
         <div id="page-student-datos" class="container-fluid">
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-md-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Datos del alumno<br><small class="text-muted"> asegúrese de rellenar
                 correctamente sus datos</small></h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
@@ -59,7 +59,7 @@
           <!-- /.Título de página -->
 
           <!-- Formulario Datos -->
-          <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+          <div class="col-sm-12 col-md-10 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="p-4">
