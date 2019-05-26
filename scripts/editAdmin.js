@@ -18,41 +18,41 @@ $(document).ready(function () {
 
     // ----------------- /Form Validation -------------------
 
-    
-    
-    function ejecutarAjaxLog(event){
-    
+
+
+    function ejecutarAjaxLog(event) {
+
         var formData = new FormData(document.getElementById("passEditForm"));
 
-    
+
         $.ajax({
             type: 'POST',
-            url : './back/admin/editAdmin.php',
-            data :formData,
+            url: './back/admin/editAdmin.php',
+            data: formData,
             encode: true,
             cache: false,
             contentType: false,
             processData: false,
-            dataType : 'json',
+            dataType: 'json',
 
         })
-        .done(function(datosRecibidos){
-            if(!datosRecibidos.exito){
-                $('#exito').hide();
+            .done(function (datosRecibidos) {
+                if (!datosRecibidos.exito) {
+                    $('#exito').hide();
 
-                $('#resultado').show();
-                $('#resultado').text(datosRecibidos.message);
-            }else{
-                $('#resultado').hide();
+                    $('#resultado').show();
+                    $('#resultado').text(datosRecibidos.message);
+                } else {
+                    $('#resultado').hide();
 
-                $('#exito').show();
-                $('#exito').text(datosRecibidos.message);
-                $('html, body').animate( { scrollTop : 0 }, 800 );
+                    $('#exito').show();
+                    $('#exito').text(datosRecibidos.message);
+                    $('html, body').animate({ scrollTop: 0 }, 800);
 
-            }
-            
-        });
-    
+                }
+
+            });
+
         event.preventDefault();
     };
 });

@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Tabla de Administradores </title>
-  <?php require('back/admin/restriccionAcceso.php');?>
+  <?php require('back/admin/restriccionAcceso.php'); ?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -81,41 +81,27 @@
                   <tbody>
                     <?php
                     include 'back/conexion.php';
-
-                    $sql = "SELECT * FROM administradores";
-
+                    $sql = "SELECT *
+                            FROM administradores LEFT JOIN rol_admin ON rol_admin.id = administradores.rol";
                     $result = mysqli_query($conexion, $sql);
                     if ($result->num_rows > 0) {
                       while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
+                        ?>
 
-                    <tr>
-                      <td><?=$row['usuario']?></td>
-                      <td><?=$row['nombre']?></td>
-                      <td>
-                        <?php
-                      switch ($row['rol']) {
-    case 1:
-        echo 'Personal';
-        break;
-    case 2:
-        echo 'Asistente';
-        break;
-    case 3:
-        echo 'Administrador';
-        break;
-};
-                      ?>
-                      </td>
-                      <td><?=($row['estatus']) ? 'Activo' : 'Inactivo'?></td>
-                      <td><a href="<?='page-admin-edit-pass.php?id_admin='.$row['id_admin']?>"><i
-                            class="fas fa-user-cog"></i></a> </td>
-                    </tr>
+                        <tr>
+                          <td><?= $row['usuario'] ?></td>
+                          <td><?= $row['nombre'] ?></td>
+                          <td>
+                            <?= $row['rol_name']?>
+                          </td>
+                          <td><?= ($row['estatus']) ? 'Activo' : 'Inactivo' ?></td>
+                          <td><a href="<?= 'page-admin-edit-pass.php?id_admin=' . $row['id_admin'] ?>"><i class="fas fa-user-cog"></i></a> </td>
+                        </tr>
 
-                    <?php
-                      };
+                      <?php
                     };
-                    ?>
+                  };
+                  ?>
 
                   </tbody>
                 </table>
@@ -132,9 +118,8 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Modal de advertencia de cambios -->
-      <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin"
-        aria-hidden="true">
+      <!-- Modal CREAR ADMIN-->
+      <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -146,87 +131,87 @@
             <form id="crearAdmin" method="POST" class="user needs-validation" novalidate>
 
               <div class="modal-body">
-              <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
+                <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
 
-              <div class="form-group row">
-                <div class="col-sm-6">
-                  <label class="pl-2"><small>Nombre</small></label><br>
-                  <input type="text" id="nombre" name="nombre" class="form-control form-control-user"
-                    placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
-                    required>
-                  <div class="invalid-feedback">
-                    Este campo debe tener al menos 2 caracteres.
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <label class="pl-2"><small>Nombre</small></label><br>
+                    <input type="text" id="nombre" name="nombre" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" required>
+                    <div class="invalid-feedback">
+                      Este campo debe tener al menos 2 caracteres.
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="pl-2"><small>Nombre de ususario</small></label><br>
+                    <input type="text" id="username" name="username" class="form-control form-control-user" placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip" data-placement="top" title="Nombre de usuario" required>
+                    <div class="invalid-feedback">
+                      Este campo debe tener al menos 4 caracteres.
+                    </div>
                   </div>
                 </div>
-                <div class="col-sm-6">
-                  <label class="pl-2"><small>Nombre de ususario</small></label><br>
-                  <input type="text" id="username" name="username" class="form-control form-control-user"
-                    placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip" data-placement="top"
-                    title="Nombre de usuario" required>
+                <div class="form-group">
+                  <label class="pl-2"><small>Contraseña</small></label><br>
+                  <div class="input-group">
+                    <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" required>
+                    <div class="input-group-append">
+                      <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                        <i id="showpass" class="fas fa-eye-slash"></i>
+                      </a>
+                    </div>
+                  </div>
                   <div class="invalid-feedback">
                     Este campo debe tener al menos 4 caracteres.
                   </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="pl-2"><small>Contraseña</small></label><br>
-                <div class="input-group">
-                  <input type="password" id="contrasena" name="contrasena" minlength="4"
-                    class="form-control form-control-user" placeholder="Contraseña" required>
-                  <div class="input-group-append">
-                    <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                      <i id="showpass" class="fas fa-eye-slash"></i>
-                    </a>
+                <div class="form-group">
+                  <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                  <div class="input-group">
+                    <input type="password" id="contrasena2" name="contrasena2" minlength="4" class="form-control form-control-user" placeholder="Repetir contraseña" required>
+                    <div class="input-group-append">
+                      <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                        <i id="showpass2" class="fas fa-eye-slash"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback">
+                    Este campo debe tener al menos 4 caracteres.
                   </div>
                 </div>
-                <div class="invalid-feedback">
-                  Este campo debe tener al menos 4 caracteres.
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="pl-2"><small>Repetir contraseña</small></label><br>
-                <div class="input-group">
-                  <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                    class="form-control form-control-user" placeholder="Repetir contraseña" required>
-                  <div class="input-group-append">
-                    <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                      <i id="showpass2" class="fas fa-eye-slash"></i>
-                    </a>
+
+                <div class="form-group">
+                  <label class="pl-2"><small>Rol</small></label><br>
+                  <select id="rol_admin" name="rol_admin" class="form-control" required>
+                    <option value="1">Personal</option>
+                    <option value="2">Asistente</option>
+                    <option value="3">Administrador</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Seleccione una opción.
                   </div>
                 </div>
-                <div class="invalid-feedback">
-                  Este campo debe tener al menos 4 caracteres.
+
+
+                <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
                 </div>
-              </div>
-
-              <div class="form-group">
-                <label class="pl-2"><small>Rol</small></label><br>
-                <select id="rol_admin" name="rol_admin" class="form-control" required>
-                  <option value="1">Personal</option>
-                  <option value="2">Asistente</option>
-                  <option value="3">Administrador</option>
-                </select>
-                <div class="invalid-feedback">
-                  Seleccione una opción.
-                </div>
-              </div>
-
-
-              <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
-              </div>
-              <br>
+                <br>
               </div>
               <div class="modal-footer">
                 <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
-                <label><button type="submit" id="registroAdmin"
-                    class="btn btn-primary text-white">Registrar</button></label>
+                <label><button type="submit" id="registroAdmin" class="btn btn-primary text-white">Registrar</button></label>
               </div>
 
             </form>
           </div>
         </div>
       </div>
-      <!-- /.Modal de advertencia de cambios -->
+      <!-- /.Modal CREAR ADMIN-->
+      <!-- /.Modal EDITAR ADMIN-->
+
+                  
+
+        <!-- /.Modal EDITAR ADMIN-->
+
+
 
       <!-- Footer -->
       <?php require 'front/general/footer.php'; ?>
@@ -285,12 +270,10 @@
     }
   </script>
   <script>
-    $(document).ready(function () {
-
-      $(document).on('click', '#btnCrearAdmin', function () {
+    $(document).ready(function() {
+      $(document).on('click', '#btnCrearAdmin', function() {
         $('#crearAdminModal').modal('toggle');
       });
-
     });
   </script>
 
