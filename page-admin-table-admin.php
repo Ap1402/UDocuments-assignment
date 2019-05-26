@@ -271,10 +271,6 @@
   </script>
   <script>
     $(document).ready(function() {
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ef5fbca593ac10f9df8894f5a0ddc6edaf6d9bf
       $(document).on('click', '#btnCrearAdmin', function() {
         $('#crearAdminModal').modal('toggle');
       });
