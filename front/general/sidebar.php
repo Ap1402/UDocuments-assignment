@@ -211,9 +211,11 @@ if ($rol > 0 && isset($_GET['ida'])) {
           <?php if ($_SESSION['crear_editar_solicitudes'] == 1) { ?>
           <a class="collapse-item" href="page-admin-student-edit-solicitud.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Solicitud</a>
           <?php } ?>
-
+          <?php if ($_SESSION['editar_correoContra_alumno'] == 1) { ?>
           <a class="collapse-item" href="page-admin-student-edit-pass.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Correo /
             Contraseña</a>
+            <?php } ?>
+
         </div>
       </div>
     </li>

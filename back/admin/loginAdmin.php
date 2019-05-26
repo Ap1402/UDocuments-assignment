@@ -31,6 +31,8 @@ if ($usuario == $userBD and password_verify($contrasena, $passwordBD)) {
     $_SESSION['edicion_creacion_admin'] = $datos['edicion_creacion_admin'];
     $_SESSION['metodos_ingreso'] = $datos['metodos_ingreso'];
     $_SESSION['edicion_carreras'] = $datos['edicion_carreras'];
+    $_SESSION['editar_correoContra_alumno'] = $datos['editar_correoContra_alumno'];
+
 
 
 
