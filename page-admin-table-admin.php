@@ -84,6 +84,32 @@
                     </tr>
                   </thead>
                   <tbody>
+<<<<<<< HEAD
+=======
+                    <?php
+                    include 'back/conexion.php';
+                    $sql = "SELECT *
+                            FROM administradores LEFT JOIN rol_admin ON rol_admin.id = administradores.rol";
+                    $result = mysqli_query($conexion, $sql);
+                    if ($result->num_rows > 0) {
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+
+                        <tr>
+                          <td><?= $row['usuario'] ?></td>
+                          <td><?= $row['nombre'] ?></td>
+                          <td>
+                            <?= $row['rol_name']?>
+                          </td>
+                          <td><?= ($row['estatus']) ? 'Activo' : 'Inactivo' ?></td>
+                          <td><a href="<?= 'page-admin-edit-pass.php?id_admin=' . $row['id_admin'] ?>"><i class="fas fa-user-cog"></i></a> </td>
+                        </tr>
+
+                      <?php
+                    };
+                  };
+                  ?>
+>>>>>>> 27ecf63ed7f2a2763375a7c793726e87d0d07eb7
 
                   </tbody>
                 </table>
@@ -379,14 +405,16 @@
     var editor;
 
     $(document).ready(function() {
+<<<<<<< HEAD
 
 
       tablaInicio();
 
+=======
+>>>>>>> 27ecf63ed7f2a2763375a7c793726e87d0d07eb7
       $(document).on('click', '#btnCrearAdmin', function() {
         $('#crearAdminModal').modal('toggle');
       });
-
     });
   </script>
 

@@ -48,16 +48,16 @@ $(document).ready(function () {
     function ejecutarAjaxLog(event){
     
         var formData = new FormData(document.getElementById("crearAdmin"));
-    
+
         $.ajax({
             type: 'POST',
-            url : './back/admin/crearAdmin.php',
-            data :formData,
+            url: './back/admin/crearAdmin.php',
+            data: formData,
             encode: true,
             cache: false,
             contentType: false,
             processData: false,
-            dataType : 'json',
+            dataType: 'json',
         })
         .done(function(datosRecibidos){
             if(datosRecibidos.exito){
@@ -70,8 +70,7 @@ $(document).ready(function () {
                 $('#resultadoCrear').text(datosRecibidos.message);
             }
 
-        });
-    
         event.preventDefault();
     };
-    });
+});
+});
