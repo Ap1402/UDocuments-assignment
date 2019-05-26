@@ -28,6 +28,8 @@
 
   <link href="css/jquery.datatable.min.css" rel="stylesheet">
   <link href="css/responsive.dataTables.min.css" rel="stylesheet">
+  <link href="css/fixedHeader.css" rel="stylesheet">
+
 
 
 </head>
@@ -453,6 +455,8 @@
         ],
         "language": idioma
       });
+      new $.fn.dataTable.FixedHeader( table );
+
       obtener_data_editar("#adminTable tbody", table);
     };
 
