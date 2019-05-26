@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Tabla de Administradores </title>
-	<?php require('back/admin/restriccionAcceso.php');?>
+  <?php require('back/admin/restriccionAcceso.php');?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -55,8 +55,11 @@
 
           <!-- Título de página -->
           <div class="d-sm-flex align-items-center justify-content-between mb-2 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Tabla de Administradores</h1>
-            <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i></a>
+            <h1 class="h3 mb-0 text-gray-800">Tabla Administradores</h1>
+            <a id="btnCrearAdmin" href="#" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+              <i class="fas fa-user-cog fa-sm"></i>
+              Registrar administrador
+            </a>
           </div>
           <!-- /.Título de página -->
 
@@ -90,7 +93,7 @@
                       <td><?=$row['usuario']?></td>
                       <td><?=$row['nombre']?></td>
                       <td>
-                      <?php
+                        <?php
                       switch ($row['rol']) {
     case 1:
         echo 'Personal';
@@ -105,7 +108,8 @@
                       ?>
                       </td>
                       <td><?=($row['estatus']) ? 'Activo' : 'Inactivo'?></td>
-                      <td><a href="<?='page-admin-edit-pass.php?id_admin='.$row['id_admin']?>"><i class="fas fa-user-cog"></i></a> </td>
+                      <td><a href="<?='page-admin-edit-pass.php?id_admin='.$row['id_admin']?>"><i
+                            class="fas fa-user-cog"></i></a> </td>
                     </tr>
 
                     <?php
@@ -127,6 +131,102 @@
 
       </div>
       <!-- End of Main Content -->
+
+      <!-- Modal de advertencia de cambios -->
+      <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCrearAdmin">Registrar nuevo administrador</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <form id="crearAdmin" method="POST" class="user needs-validation" novalidate>
+
+              <div class="modal-body">
+              <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
+
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <label class="pl-2"><small>Nombre</small></label><br>
+                  <input type="text" id="nombre" name="nombre" class="form-control form-control-user"
+                    placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
+                    required>
+                  <div class="invalid-feedback">
+                    Este campo debe tener al menos 2 caracteres.
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <label class="pl-2"><small>Nombre de ususario</small></label><br>
+                  <input type="text" id="username" name="username" class="form-control form-control-user"
+                    placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip" data-placement="top"
+                    title="Nombre de usuario" required>
+                  <div class="invalid-feedback">
+                    Este campo debe tener al menos 4 caracteres.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="pl-2"><small>Contraseña</small></label><br>
+                <div class="input-group">
+                  <input type="password" id="contrasena" name="contrasena" minlength="4"
+                    class="form-control form-control-user" placeholder="Contraseña" required>
+                  <div class="input-group-append">
+                    <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                      <i id="showpass" class="fas fa-eye-slash"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="invalid-feedback">
+                  Este campo debe tener al menos 4 caracteres.
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                <div class="input-group">
+                  <input type="password" id="contrasena2" name="contrasena2" minlength="4"
+                    class="form-control form-control-user" placeholder="Repetir contraseña" required>
+                  <div class="input-group-append">
+                    <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                      <i id="showpass2" class="fas fa-eye-slash"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="invalid-feedback">
+                  Este campo debe tener al menos 4 caracteres.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="pl-2"><small>Rol</small></label><br>
+                <select id="rol_admin" name="rol_admin" class="form-control" required>
+                  <option value="1">Personal</option>
+                  <option value="2">Asistente</option>
+                  <option value="3">Administrador</option>
+                </select>
+                <div class="invalid-feedback">
+                  Seleccione una opción.
+                </div>
+              </div>
+
+
+              <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
+              </div>
+              <br>
+              </div>
+              <div class="modal-footer">
+                <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
+                <label><button type="submit" id="registroAdmin"
+                    class="btn btn-primary text-white">Registrar</button></label>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
       <?php require 'front/general/footer.php'; ?>
@@ -159,7 +259,7 @@
 
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
-  
+
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
@@ -167,6 +267,32 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/front/table.js"></script>
+  <script src="scripts/crearAdmin.js"></script>
+
+  <script type="text/javascript">
+    function mostrarPassword() {
+      var pass = document.getElementById("contrasena");
+      var pass2 = document.getElementById("contrasena2");
+      if (pass.type == "password") {
+        pass.type = "text";
+        pass2.type = "text";
+        $('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+      } else {
+        pass.type = "password";
+        pass2.type = "password";
+        $('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+      }
+    }
+  </script>
+  <script>
+    $(document).ready(function () {
+
+      $(document).on('click', '#btnCrearAdmin', function () {
+        $('#crearAdminModal').modal('toggle');
+      });
+
+    });
+  </script>
 
 </body>
 

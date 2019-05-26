@@ -216,13 +216,6 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
       <span>Tabla Admin</span></a>
   </li>
 
-  <!-- Nav Item - Crear Admin -->
-  <li class="nav-item">
-    <a id="sdAdmin" class="nav-link" href="page-admin-crear-admin.php">
-      <i class="fas fa-user-cog"></i>
-      <span>Registrar Admin</span></a>
-  </li>
-
   <!-- Nav Item - Edit Solicitudes -->
   <li class="nav-item">
     <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitud.php">
