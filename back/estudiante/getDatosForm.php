@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 //$cedula = trim($_POST['cedula']);
 
 $estado_civil = filter_var($_POST['estado_civil'], FILTER_SANITIZE_NUMBER_INT);
-if ($estado_civil<1 or $estado_civil>4){
-    $errores['estado']="Error en el estado civil";
+if ($estado_civil < 1 or $estado_civil > 4) {
+    $errores['estado'] = "Error en el estado civil";
 };
 
 
@@ -31,10 +31,10 @@ $postal = filter_var($_POST['nac_postal'], FILTER_SANITIZE_NUMBER_INT);
 $estado = filter_var($_POST['nac_estado'], FILTER_SANITIZE_STRING);
 $ciudad = filter_var($_POST['nac_ciudad'], FILTER_SANITIZE_STRING);
 $municipio = filter_var($_POST['nac_municipio'], FILTER_SANITIZE_STRING);
-$postal_hab= filter_var($_POST['nac_postal'], FILTER_SANITIZE_STRING);
-$urbanizacion=filter_var($_POST['nac_urbanizacion'], FILTER_SANITIZE_STRING);
-$aptcasa=filter_var($_POST['nac_aptcasa'], FILTER_SANITIZE_STRING);
-$calle=filter_var($_POST['nac_calle'], FILTER_SANITIZE_STRING);
+$postal_hab = filter_var($_POST['nac_postal'], FILTER_SANITIZE_STRING);
+$urbanizacion = filter_var($_POST['nac_urbanizacion'], FILTER_SANITIZE_STRING);
+$aptcasa = filter_var($_POST['nac_aptcasa'], FILTER_SANITIZE_STRING);
+$calle = filter_var($_POST['nac_calle'], FILTER_SANITIZE_STRING);
 
 
 // Telefono 
@@ -65,6 +65,3 @@ $i_egreso = filter_var($_POST['i_egreso'], FILTER_SANITIZE_NUMBER_INT);
 $i_codigo = filter_var($_POST['i_codigo'], FILTER_SANITIZE_STRING);
 $i_estado = filter_var($_POST['i_estado'], FILTER_SANITIZE_STRING);
 $tipo_inst = filter_var($_POST['tipo_inst'], FILTER_SANITIZE_NUMBER_INT);
-
-
-?>

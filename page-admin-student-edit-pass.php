@@ -33,7 +33,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require 'front/general/sidebar.php';?>
+    <?php require 'front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -43,34 +43,33 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php';?>
+        <?php require 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-student-edit-pass" class="container-fluid">
 
-        <?php
-include 'back/conexion.php';
+          <?php
+          include 'back/conexion.php';
 
-if (isset($_SESSION['cedula'])) {
-    $cedula = $_SESSION['cedula'];
-}else{
-  $cedula = $_GET['ci'];
+          if (isset($_SESSION['cedula'])) {
+            $cedula = $_SESSION['cedula'];
+          } else {
+            $cedula = $_GET['ci'];
+          }
 
-}
+          $consulta = "SELECT id_alumno, cedula, correo FROM `alumnos` WHERE cedula='" . $cedula . "'";
+          $resultado = mysqli_query($conexion, $consulta);
+          $datos = mysqli_fetch_array($resultado);
 
-$consulta = "SELECT id_alumno, cedula, correo FROM `alumnos` WHERE cedula='" . $cedula . "'";
-$resultado = mysqli_query($conexion, $consulta);
-$datos = mysqli_fetch_array($resultado);
-
-$id = $datos['id_alumno'];
-$correo = $datos['correo'];
+          $id = $datos['id_alumno'];
+          $correo = $datos['correo'];
 
 
-$verificar_check = 1; // verificar si fue o no chequeado por control de estudios
+          $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
-?>
+          ?>
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
@@ -86,26 +85,20 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                 <div class="p-4">
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" style="display:none;"></div>
-                    <input id="ida" name="ida" value ="<?php echo $id ?>" hidden>
-                   <div class="form-group">
+                    <input id="ida" name="ida" value="<?php echo $id ?>" hidden>
+                    <div class="form-group">
                       <label class="pl-2"><small>Correo</small></label><br>
-                      <input type="email" id="correo" name="correo" class="form-control form-control-user"
-                        placeholder="Correo" data-toggle="tooltip" data-placement="top" title="Correo"
-                        value="<?php echo $correo ?>"
-                        <?php echo ($rol >= 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                      <input type="email" id="correo" name="correo" class="form-control form-control-user" placeholder="Correo" data-toggle="tooltip" data-placement="top" title="Correo" value="<?php echo $correo ?>" <?php echo ($rol >= 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                       <div class="invalid-feedback">
                         Por favor introduzca un correo válido.
                       </div>
                     </div>
 
 
-                   <div class="form-group">
+                    <div class="form-group">
                       <label class="pl-2"><small>Contraseña</small></label><br>
                       <div class="input-group">
-                        <input type="password" id="contrasena" name="contrasena" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Contraseña" value=""
-                          <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                        <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="" <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass" class="fas fa-eye-slash"></i>
@@ -117,13 +110,10 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
-                     <div class="form-group">
-                       <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                    <div class="form-group">
+                      <label class="pl-2"><small>Repetir contraseña</small></label><br>
                       <div class="input-group">
-                        <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                          class="form-control form-control-user" placeholder="Repetir contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Repetir contraseña" value=""
-                          <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                        <input type="password" id="contrasena2" name="contrasena2" minlength="4" class="form-control form-control-user" placeholder="Repetir contraseña" data-toggle="tooltip" data-placement="top" title="Repetir contraseña" value="" <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
                         <div class="input-group-append">
                           <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass2" class="fas fa-eye-slash"></i>
@@ -157,7 +147,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php';?>
+      <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -172,7 +162,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php';?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
 
   <!-- Bootstrap core JavaScript-->
@@ -186,81 +176,83 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
   <script src="js/sb-admin-2.js"></script>
 
 
- <script type="text/javascript">
-		function mostrarPassword() {
-			var pass = document.getElementById("contrasena");
-			var pass2 = document.getElementById("contrasena2");
-			if (pass.type == "password") {
-				pass.type = "text";
-				pass2.type = "text";
-				$('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
-			} else {
-				pass.type = "password";
-				pass2.type = "password";
-				$('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
-			}
-		}
-	</script>
-<script>
-$(document).ready(function () {
-
-// $('#datosForm').on('submit',ejecutarAjaxLog);
-
-// ----------------- Form Validation -------------------
-
-'use strict';
-
-$('#passEditForm')[0].addEventListener('submit', function (event) {
-    if ($('#passEditForm')[0].checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-    } else {
-        ejecutarAjaxLog(event);
+  <script type="text/javascript">
+    function mostrarPassword() {
+      var pass = document.getElementById("contrasena");
+      var pass2 = document.getElementById("contrasena2");
+      if (pass.type == "password") {
+        pass.type = "text";
+        pass2.type = "text";
+        $('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+      } else {
+        pass.type = "password";
+        pass2.type = "password";
+        $('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+      }
     }
-    $('#passEditForm')[0].classList.add('was-validated');
-}, false);
+  </script>
+  <script>
+    $(document).ready(function() {
 
-// ----------------- /Form Validation -------------------
+      // $('#datosForm').on('submit',ejecutarAjaxLog);
 
+      // ----------------- Form Validation -------------------
 
+      'use strict';
 
-function ejecutarAjaxLog(event){
-
-    var formData = new FormData(document.getElementById("passEditForm"));
-
-
-    $.ajax({
-        type: 'POST',
-        url : './back/estudiante/editAlumno.php',
-        data :formData,
-        encode: true,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType : 'json',
-
-    })
-    .done(function(datosRecibidos){
-        if(!datosRecibidos.exito){
-            $('#exito').hide();
-
-            $('#resultado').show();
-            $('#resultado').text(datosRecibidos.message);
-        }else{
-            $('#resultado').hide();
-
-            $('#exito').show();
-            $('#exito').text(datosRecibidos.message);
-            $('html, body').animate( { scrollTop : 0 }, 800 );
-
+      $('#passEditForm')[0].addEventListener('submit', function(event) {
+        if ($('#passEditForm')[0].checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          ejecutarAjaxLog(event);
         }
-        
-    });
+        $('#passEditForm')[0].classList.add('was-validated');
+      }, false);
 
-    event.preventDefault();
-};
-});
-</script>
+      // ----------------- /Form Validation -------------------
+
+
+
+      function ejecutarAjaxLog(event) {
+
+        var formData = new FormData(document.getElementById("passEditForm"));
+
+
+        $.ajax({
+            type: 'POST',
+            url: './back/estudiante/editAlumno.php',
+            data: formData,
+            encode: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+
+          })
+          .done(function(datosRecibidos) {
+            if (!datosRecibidos.exito) {
+              $('#exito').hide();
+
+              $('#resultado').show();
+              $('#resultado').text(datosRecibidos.message);
+            } else {
+              $('#resultado').hide();
+
+              $('#exito').show();
+              $('#exito').text(datosRecibidos.message);
+              $('html, body').animate({
+                scrollTop: 0
+              }, 800);
+
+            }
+
+          });
+
+        event.preventDefault();
+      };
+    });
+  </script>
 </body>
 
 </html>

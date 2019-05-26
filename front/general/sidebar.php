@@ -7,8 +7,8 @@ include 'back/sessionController.php';
 <?php
 $rol = $_SESSION['rol']; // Limitar los enlaces del sidebar de acuerdo al rol
 
-if ( $rol > 0 && isset($_GET['ida']) ) {
-  $ida=$_GET['ida']; // id_alumno
+if ($rol > 0 && isset($_GET['ida'])) {
+  $ida = $_GET['ida']; // id_alumno
 
   include 'back/conexion.php';
   $sql_alumno = "SELECT p_nombre, p_apellido, cedula, documento, ultActualizacion FROM alumnos
@@ -16,15 +16,13 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
 
   $result_alumno = mysqli_query($conexion, $sql_alumno);
   if ($result_alumno->num_rows > 0) {
-  $row_alumno = mysqli_fetch_assoc($result_alumno);
-  $p_nombre = $row_alumno['p_nombre'];
-  $p_apellido = $row_alumno['p_apellido'];
-  $ci = $row_alumno['cedula'];
-  $idd = $row_alumno['documento'];  
-  ($row_alumno['ultActualizacion'] == '0000-00-00') ? $datosLlenados = 0 : $datosLlenados = 1;
-
+    $row_alumno = mysqli_fetch_assoc($result_alumno);
+    $p_nombre = $row_alumno['p_nombre'];
+    $p_apellido = $row_alumno['p_apellido'];
+    $ci = $row_alumno['cedula'];
+    $idd = $row_alumno['documento'];
+    ($row_alumno['ultActualizacion'] == '0000-00-00') ? $datosLlenados = 0 : $datosLlenados = 1;
   }
-
 }
 ?>
 
@@ -40,27 +38,29 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
 
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
-  
+
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline mt-2">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
   </div>
 
+  <?php if ($rol > 0) { ?>
+
   <!-- ============================== Solo para ADMINISTRADORES ============================== -->
 
-  <?php if ($rol > 0) { // Mostrar solo para administradores ?>
+    <!-- ============================== Para TODOS los ADMINISTRADORES ============================== -->
 
-  <!-- ============================== Para TODOS los ADMINISTRADORES ============================== -->
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
-  <!-- Divider -->
-  <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link" href="page-dashboard.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
 
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item active">
-    <a class="nav-link" href="page-dashboard.php">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
-  </li>
+
 
   <!-- Divider -->
   <hr class="sidebar-divider">
@@ -70,174 +70,214 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
     Control
   </div>
 
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a id="sbtable" class="nav-link" href="page-admin-table.php">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Tabla alumnos</span></a>
-  </li>
+  <?php if ($_SESSION['validacion'] ==1 ) {  ?>
 
-  <?php }?>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+      <a id="sbtable" class="nav-link" href="page-admin-table.php">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Tabla alumnos</span></a>
+    </li>
+
+  <?php } ?>
+
 
   <!-- ============================== /.Para TODOS los ADMINISTRADORES ============================== -->
 
-  <?php if (($rol >= 1 && isset($_GET['ida']) || $rol >= 2)) { // Mostrar solo para admin $rol='1' ?>
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+  <?php if (($_SESSION['crea_editar_alumno'] == 1 && isset($_GET['ida']) || $_SESSION['crea_editar_alumno'] == 1)) { 
+    ?>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-  <!-- Students -->
-  <div class="sidebar-heading">
-    Alumnos
-  </div>
+    <!-- Students -->
+    <div class="sidebar-heading">
+      Alumnos
+    </div>
 
-  <?php }?>
+  <?php } ?>
 
   <!-- ============================== Para los ADMINISTRADORES $rol='2' ============================== -->
 
-  <?php if ($rol >= 2) { // Mostrar solo para administradores $rol='2' ?>
+  <?php if ($_SESSION['crea_editar_alumno'] == 1) { 
+    ?>
 
-  <!-- Nav Item - Crear Alumno -->
-  <li class="nav-item">
-    <a id="sdcrearAlumno" class="nav-link" href="page-admin-crear-alumno.php">
-      <i class="fas fa-user"></i>
-      <span>Registrar Alumno</span></a>
-  </li>
+    <!-- Nav Item - Crear Alumno -->
+    <li class="nav-item">
+      <a id="sdcrearAlumno" class="nav-link" href="page-admin-crear-alumno.php">
+        <i class="fas fa-user"></i>
+        <span>Registrar Alumno</span></a>
+    </li>
 
-  <?php }?>
+  <?php } ?>
 
   <!-- ============================== /.Para los ADMINISTRADORES $rol='2' ============================== -->
 
   <!-- ============================== Para los ADMINISTRADORES $rol='1' ============================== -->
 
-  <?php if ($rol >= 1 && isset($_GET['ida'])) { // Mostrar solo para admin $rol='1' ?>
+  <?php if ($_SESSION['crea_editar_alumno'] == 1 && isset($_GET['ida'])) { 
+    ?>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider bg-white">
+    <!-- Divider -->
+    <hr class="sidebar-divider bg-white">
 
-  <!-- Students -->
-  <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center text-white pt-2"
-    href="page-student-perfil.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">
-    <div class="sidebar-brand-icon align-items-center">
-      <i class="far fa-user-circle"></i>
+    <!-- Students -->
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center text-white pt-2" href="page-student-perfil.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">
+      <div class="sidebar-brand-icon align-items-center">
+        <i class="far fa-user-circle"></i>
+      </div>
+    </a>
+    <div class="sidebar-heading text-center text-white pb-2">
+      <b class="h6">Panel del Alumno</b><br>
+      <span>
+        <?= $p_nombre . ' ' . $p_apellido ?><br>
+        <?= $ci ?>
+      </span>
     </div>
-  </a>
-  <div class="sidebar-heading text-center text-white pb-2">
-    <b class="h6">Panel del Alumno</b><br>
-    <span>
-      <?=$p_nombre . ' ' . $p_apellido?><br>
-      <?=$ci?>
-    </span>
-  </div>
 
-  <?php }?>
+  <?php } ?>
 
   <!-- ============================== /.Para los ADMINISTRADORES $rol='1' ============================== -->
 
   <!-- ============================== Para los ADMINISTRADORES $rol='2' ============================== -->
 
-  <?php if ($rol >= 2 && isset($_GET['ida'])) { // Mostrar solo para admin $rol='2' ?>
-    <?php if ($datosLlenados == 0) { ?>
+  <?php if ($_SESSION['crea_editar_alumno'] == 1 && isset($_GET['ida'])) { 
+    ?>
     <!-- Nav Item - Datos -->
     <li class="nav-item">
-      <a id="sddatosAlumno" class="nav-link" href="page-student-datos.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">
+      <a id="sddatosAlumno" class="nav-link" href="page-student-datos.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">
         <i class="fas fa-file-alt"></i>
         <span>Datos</span></a>
     </li>
-    <?php }; ?>   
-  <!-- Nav Item - Documentos -->
-  <li class="nav-item">
-    <a id="sddocsAlumno" class="nav-link" href="page-admin-student-docs.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">
-      <i class="far fa-folder-open"></i>
-      <span>Documentos</span></a>
-  </li>
-  <?php };?>
+
+  <?php }; ?>
+
+
+  <?php if ($_SESSION['subir_edicion_documentos'] == 1 && isset($_GET['ida'])) { 
+    ?>
+
+    <?php if ($datosLlenados == 0) { ?>
+
+      <!-- Nav Item - Documentos -->
+      <li class="nav-item">
+        <a id="sddocsAlumno" class="nav-link" href="page-admin-student-docs.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">
+          <i class="far fa-folder-open"></i>
+          <span>Documentos</span></a>
+      </li>
+    <?php }; ?>
+  <?php }; ?>
+
 
   <!-- ============================== /.Para los ADMINISTRADORES $rol='2' ============================== -->
 
   <!-- ============================== Para los ADMINISTRADORES $rol='1' ============================== -->
 
-  <?php if ($rol >= 1 && isset($_GET['ida'])) { // Mostrar solo para admin $rol='1' ?>
-  <!-- Nav Item - Solicitud -->
-  <li class="nav-item">
-    <a id="sdsolicitud" class="nav-link" href="page-admin-student-solicitud.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">
-      <i class="fas fa-vote-yea"></i>
-      <span>Crear Solicitud</span></a>
-  </li>
+  <?php if ($_SESSION['crear_editar_solicitudes'] == 1 && isset($_GET['ida'])) { 
+    ?>
+    <!-- Nav Item - Solicitud -->
+    <li class="nav-item">
+      <a id="sdsolicitud" class="nav-link" href="page-admin-student-solicitud.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">
+        <i class="fas fa-vote-yea"></i>
+        <span>Crear Solicitud</span></a>
+    </li>
 
+  <?php } ?>
 
-  <!-- Nav Item - Edicion Datos/Documentos -->
-  <li class="nav-item">
-    <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-      aria-controls="collapseOne">
-      <i class="fas fa-fw fa-cog"></i>
-      <span>Modificar</span>
-    </a>
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item"
-          href="page-student-edit-datos.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">Datos</a>
-        <?php if ($rol >= 2) { // Mostrar solo para admin $rol='2' ?>
-        <a class="collapse-item"
-          href="page-admin-student-edit-docs.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">Documentos</a>
-        <?php }?>
-        <a class="collapse-item"
-          href="page-admin-student-edit-solicitud.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">Solicitud</a>
-        <a class="collapse-item" href="page-admin-student-edit-pass.php?ida=<?=$ida . '&ci=' . $ci . '&idd=' . $idd?>">Correo /
-          Contraseña</a>
+  <?php if ($rol >= 1 && isset($_GET['ida'])) { 
+    ?>
+
+    <!-- Nav Item - Edicion Datos/Documentos -->
+    <li class="nav-item">
+      <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Modificar</span>
+      </a>
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+
+          <?php if ($_SESSION['crea_editar_alumno'] == 1) { 
+            ?>
+
+            <a class="collapse-item" href="page-student-edit-datos.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Datos</a>
+          <?php } ?>
+
+          <?php if ($_SESSION['subir_edicion_documentos'] == 1) { 
+            ?>
+            <a class="collapse-item" href="page-admin-student-edit-docs.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Documentos</a>
+          <?php } ?>
+          
+
+          <?php if ($_SESSION['crear_editar_solicitudes'] == 1) { ?>
+          <a class="collapse-item" href="page-admin-student-edit-solicitud.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Solicitud</a>
+          <?php } ?>
+          <?php if ($_SESSION['editar_correoContra_alumno'] == 1) { ?>
+          <a class="collapse-item" href="page-admin-student-edit-pass.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Correo /
+            Contraseña</a>
+            <?php } ?>
+
+        </div>
       </div>
-    </div>
-  </li>
+    </li>
 
- <!-- Divider -->
-  <hr class="sidebar-divider bg-white">
+    <!-- Divider -->
+    <hr class="sidebar-divider bg-white">
 
-  <?php }?>
+  <?php } ?>
 
 
   <!-- ============================== /.Para los ADMINISTRADORES $rol='1' ============================== -->
 
   <!-- ============================== Para los ADMINISTRADORES $rol='3' ============================== -->
 
-  <?php if ($rol >= 3) { // Mostrar solo para administradores $rol='3' ?>
+  <?php if ($_SESSION['metodos_ingreso'] == 1 || $_SESSION['edicion_carreras'] == 1 || $_SESSION['edicion_creacion_admin'] == 1) { 
+    ?>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-  <!-- Students -->
-  <div class="sidebar-heading">
-    Admin
-  </div>
+    <!-- Students -->
+    <div class="sidebar-heading">
+      Admin
+    </div>
 
-  <!-- Nav Item - Tables -->
-  <li class="nav-item">
-    <a id="sbtableAdmin" class="nav-link" href="page-admin-table-admin.php">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Tabla Admin</span></a>
-  </li>
+    <?php if ($_SESSION['edicion_creacion_admin'] == 1) { ?>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a id="sbtableAdmin" class="nav-link" href="page-admin-table-admin.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tabla Admin</span></a>
+      </li>
+    <?php } ?>
 
-  <!-- Nav Item - Edit Solicitudes -->
-  <li class="nav-item">
-    <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitud.php">
-      <i class="fas fa-vote-yea"></i>
-      <span>Editar solicitudes</span></a>
-  </li>
+    <!-- Nav Item - Edit Solicitudes -->
+    <?php if ($_SESSION['metodos_ingreso'] == 1) { ?>
 
-  <!-- Nav Item - Editar Turnos / Carreras -->
-  <li class="nav-item">
-    <a id="sdEditCarAdmin" class="nav-link" href="page-admin-edit-carrera.php">
-      <i class="fas fa-list-alt"></i>
-      <span>Editar carreras</span></a>
-  </li>
+      <li class="nav-item">
+        <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitud.php">
+          <i class="fas fa-vote-yea"></i>
+          <span>Editar solicitudes</span></a>
+      </li>
+    <?php } ?>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+    <!-- Nav Item - Editar Turnos / Carreras -->
+    <?php if ($_SESSION['edicion_carreras'] == 1) { ?>
 
- <?php }?>
+      <li class="nav-item">
+        <a id="sdEditCarAdmin" class="nav-link" href="page-admin-edit-carrera.php">
+          <i class="fas fa-list-alt"></i>
+          <span>Editar carreras</span></a>
+      </li>
+    <?php } ?>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+  <?php } ?>
 
   <!-- ============================== /.Para los ADMINISTRADORES $rol='3' ============================== -->
+  <?php } ?>
 
- 
+
 
   <!-- ============================== /.Solo para ADMINISTRADORES ============================== -->
 
@@ -246,59 +286,59 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
 
   <!-- ============================== Solo para ALUMNOS ============================== -->
 
-  <?php if ($rol == 0) { // Mostrar solo para alumnos ?>
+  <?php if ($rol == 0) { 
+    ?>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-  <!-- Students -->
-  <!-- Nav Item - Datos -->
-  <?php if($_SESSION['datosLlenados']==0){    ?>
+    <!-- Students -->
+    <!-- Nav Item - Datos -->
+    <?php if ($_SESSION['datosLlenados'] == 0) {    ?>
 
-  <li class="nav-item">
-    <a id="sddatos" class="nav-link" href="page-student-datos.php">
-      <i class="fas fa-file-alt"></i>
-      <span>Llenar datos</span></a>
-  </li>
+      <li class="nav-item">
+        <a id="sddatos" class="nav-link" href="page-student-datos.php">
+          <i class="fas fa-file-alt"></i>
+          <span>Llenar datos</span></a>
+      </li>
+    <?php } ?>
+
+    <?php if ($_SESSION['datosLlenados'] == 1) {    ?>
+      <!-- Nav Item - Documentos -->
+      <li class="nav-item">
+        <a id="sdstudentDocs" class="nav-link" href="page-student-docs.php">
+          <i class="far fa-folder-open"></i>
+          <span>Documentos</span></a>
+      </li>
+
+      <!-- Nav Item - Solicitud -->
+      <li class="nav-item">
+        <a id="sdstudentSolicitud" class="nav-link" href="page-student-solicitud.php">
+          <i class="fas fa-vote-yea"></i>
+          <span>Crear Solicitud</span></a>
+      </li>
+
+      <!-- Nav Item - Edicion Datos/Documentos -->
+      <li class="nav-item">
+        <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseStudentEdit" aria-expanded="true" aria-controls="collapseStudentEdit">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Modificar</span>
+        </a>
+        <div id="collapseStudentEdit" class="collapse" aria-labelledby="headingStudentEdit" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="page-student-edit-datos.php">Datos</a>
+            <a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>
+            <a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>
+            <a class="collapse-item" href="page-student-edit-pass.php">Correo / Contraseña</a>
+          </div>
+        </div>
+      </li>
+    <?php } ?>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
   <?php } ?>
-
-    <?php if($_SESSION['datosLlenados']==1){    ?>
-  <!-- Nav Item - Documentos -->
-  <li class="nav-item">
-    <a id="sdstudentDocs" class="nav-link" href="page-student-docs.php">
-      <i class="far fa-folder-open"></i>
-      <span>Documentos</span></a>
-  </li>
-
-  <!-- Nav Item - Solicitud -->
-  <li class="nav-item">
-    <a id="sdstudentSolicitud" class="nav-link" href="page-student-solicitud.php">
-      <i class="fas fa-vote-yea"></i>
-      <span>Crear Solicitud</span></a>
-  </li>
-
-  <!-- Nav Item - Edicion Datos/Documentos -->
-  <li class="nav-item">
-    <a href="#" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseStudentEdit" aria-expanded="true"
-      aria-controls="collapseStudentEdit">
-      <i class="fas fa-fw fa-cog"></i>
-      <span>Modificar</span>
-    </a>
-    <div id="collapseStudentEdit" class="collapse" aria-labelledby="headingStudentEdit" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="page-student-edit-datos.php">Datos</a>
-        <a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>
-        <a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>
-        <a class="collapse-item" href="page-student-edit-pass.php">Correo / Contraseña</a>
-      </div>
-    </div>
-  </li>
-    <?php }?>
-
-  <!-- Divider -->
-  <hr class="sidebar-divider">
-
-  <?php }?>
 
   <!-- ============================== /.Solo para ALUMNOS ============================== -->
 
