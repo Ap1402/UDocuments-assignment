@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     // $('#crearAdmin').on('submit',ejecutarAjaxLog);
     'use strict';
-
         // ----------------- Form Validation -------------------
         $('#contrasena2').keyup(function(){
             var contrasena2= $('#contrasena2').val();
@@ -68,9 +67,9 @@ $(document).ready(function () {
                 $('#exitoCrear').hide();
                 $('#resultadoCrear').show();
                 $('#resultadoCrear').text(datosRecibidos.message);
-            }
+            };
+    });
+    event.preventDefault();
 
-        event.preventDefault();
-    };
-});
+};
 });

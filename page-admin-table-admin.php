@@ -84,32 +84,6 @@
                     </tr>
                   </thead>
                   <tbody>
-<<<<<<< HEAD
-=======
-                    <?php
-                    include 'back/conexion.php';
-                    $sql = "SELECT *
-                            FROM administradores LEFT JOIN rol_admin ON rol_admin.id = administradores.rol";
-                    $result = mysqli_query($conexion, $sql);
-                    if ($result->num_rows > 0) {
-                      while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
-
-                        <tr>
-                          <td><?= $row['usuario'] ?></td>
-                          <td><?= $row['nombre'] ?></td>
-                          <td>
-                            <?= $row['rol_name']?>
-                          </td>
-                          <td><?= ($row['estatus']) ? 'Activo' : 'Inactivo' ?></td>
-                          <td><a href="<?= 'page-admin-edit-pass.php?id_admin=' . $row['id_admin'] ?>"><i class="fas fa-user-cog"></i></a> </td>
-                        </tr>
-
-                      <?php
-                    };
-                  };
-                  ?>
->>>>>>> 27ecf63ed7f2a2763375a7c793726e87d0d07eb7
 
                   </tbody>
                 </table>
@@ -364,7 +338,6 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/front/table.js"></script>
-  <script src="scripts/crearAdmin.js"></script>
 
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
@@ -405,13 +378,10 @@
     var editor;
 
     $(document).ready(function() {
-<<<<<<< HEAD
 
 
       tablaInicio();
 
-=======
->>>>>>> 27ecf63ed7f2a2763375a7c793726e87d0d07eb7
       $(document).on('click', '#btnCrearAdmin', function() {
         $('#crearAdminModal').modal('toggle');
       });
@@ -538,6 +508,7 @@
 
                 $('#resultado').show();
                 $('#resultado').text(datosRecibidos.message);
+
             }else{
                 $('#resultado').hide();
 
@@ -590,6 +561,83 @@
       }
     });
   </script>
+
+
+  <script >
+
+$('#contrasena2').keyup(function(){
+            var contrasena2= $('#contrasena2').val();
+            var contrasena= $('#contrasena').val();
+            if (contrasena2==contrasena){
+                $('#registroAdmin').prop( "disabled", false);
+                $('#resultadoCrear').hide();
+
+            }else{
+                $('#registroAdmin').prop( "disabled", true);
+                $('#resultadoCrear').show();
+                $('#resultadoCrear').text('Las contraseñas deben coincidir');
+            }
+        });
+
+        $('#contrasena').keyup(function(){
+            var contrasena2= $('#contrasena2').val();
+            var contrasena= $('#contrasena').val();
+            if (contrasena2==contrasena){
+                $('#registroAdmin').prop( "disabled", false);
+                $('#resultadoCrear').hide();
+
+            }else{
+                $('#registroAdmin').prop( "disabled", true);
+                $('#resultadoCrear').show();
+                $('#resultadoCrear').text('Las contraseñas deben coincidir');
+            }
+        });
+        
+        $('#crearAdmin')[0].addEventListener('submit', function (event) {
+            if ($('#crearAdmin')[0].checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                ejecutarAjaxCrear(event);
+            }
+            $('#crearAdmin')[0].classList.add('was-validated');
+        }, false);
+    
+        // ----------------- /Form Validation -------------------
+    
+    
+    function ejecutarAjaxCrear(event){
+    
+        var formData = new FormData(document.getElementById("crearAdmin"));
+
+        $.ajax({
+            type: 'POST',
+            url: './back/admin/crearAdmin.php',
+            data: formData,
+            encode: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+        })
+        .done(function(datosRecibidos){
+            if(datosRecibidos.exito){
+                $('#resultadoCrear').hide();
+                $('#exitoCrear').show();
+                $('#exitoCrear').text(datosRecibidos.message);
+                tablaInicio();
+
+            }else{
+                $('#exitoCrear').hide();
+                $('#resultadoCrear').show();
+                $('#resultadoCrear').text(datosRecibidos.message);
+                tablaInicio();
+            };
+    });
+    event.preventDefault();
+
+};
+     </script>
 
 </body>
 

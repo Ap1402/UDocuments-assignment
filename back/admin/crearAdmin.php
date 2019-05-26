@@ -18,13 +18,16 @@ $check = mysqli_num_rows($result);
 
 if ($check > 0) {
     return print_r(json_encode(['message' => 'Usuario ya registrado', 'exito' => FALSE]));
+}else{
+    $crearUser = "INSERT INTO administradores (usuario, contrasena, nombre, rol, estatus) VALUES('$usuario','$contrasena','$nombre','$rol','1')";
+    $result = mysqli_query($conexion, $crearUser);
+
+    return print_r(json_encode(['message' => 'Usuario registrado correctamente', 'exito' => TRUE]));
+
 }
 
 
-$crearUser = "INSERT INTO administradores (usuario, contrasena, nombre, rol, estatus) VALUES('$usuario','$contrasena','$nombre','$rol','1')";
-$result = mysqli_query($conexion, $crearUser);
 
-return print_r(json_encode(['message' => 'Usuario registrado correctamente', 'exito' => TRUE]));
 
 
 
