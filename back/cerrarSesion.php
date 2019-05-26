@@ -16,4 +16,3 @@ mysqli_close($conexion);
 //Redireccionamos a el index
 header("Location: ../index.php");
 die();
-?>

@@ -13,11 +13,11 @@ $datos = mysqli_fetch_array($resultado);
 $userBD = $datos['usuario'];
 $passwordBD = $datos['contrasena'];
 
-if (!($usuario == $userBD and password_verify($contrasena, $passwordBD)and $datos['rol']==3)) {
+if (!($usuario == $userBD and password_verify($contrasena, $passwordBD) and $datos['rol'] == 3)) {
     return print_r(json_encode([
-        'message'=> 'La contraseña no es correcta o no tiene los privilegios para realizar esta accion'
+        'message' => 'La contraseña no es correcta o no tiene los privilegios para realizar esta accion'
     ]));
-} 
+}
 
 //Example Usage/s
 $backup = new BackupMyProject('../documentos', TRUE);
@@ -47,7 +47,8 @@ BackupMyProject('./path/to/project/yada', true);
  * @author Lawrence Cherone
  * @version 0.1
  */
-class BackupMyProject{
+class BackupMyProject
+{
     // project files working directory - automatically created
     const PWD = "./project_backups/";
 
@@ -57,41 +58,42 @@ class BackupMyProject{
      * @param string $path
      * @param bool $download
      */
-    function __construct($path=null, $download=false){
+    function __construct($path = null, $download = false)
+    {
         // check construct argument
-        if(!$path) die(__CLASS__.' Error: Missing construct param: $path');
-        if(!file_exists($path)) die(__CLASS__.' Error: Path not found: '.htmlentities($path));
-        if(!is_readable($path)) die(__CLASS__.' Error: Path not readable: '.htmlentities($path));
+        if (!$path) die(__CLASS__ . ' Error: Missing construct param: $path');
+        if (!file_exists($path)) die(__CLASS__ . ' Error: Path not found: ' . htmlentities($path));
+        if (!is_readable($path)) die(__CLASS__ . ' Error: Path not readable: ' . htmlentities($path));
 
-        $filename='RespaldoBD_'.date('h-d-m-y').'.sql';
-        $result=exec('C:\xampp\mysql\bin\mysqldump --user=admin --password=admin --host=localhost controlest > C:\xampp\htdocs\controlest\back\documentos\BackupDB\\'.$filename);
+        $filename = 'RespaldoBD_' . date('h-d-m-y') . '.sql';
+        $result = exec('C:\xampp\mysql\bin\mysqldump --user=admin --password=admin --host=localhost controlest > C:\xampp\htdocs\controlest\back\documentos\BackupDB\\' . $filename);
 
         // set working vars
         $this->project_path = rtrim($path, '/');
-        $this->backup_file  = self::PWD.basename($this->project_path).'.zip';
+        $this->backup_file  = self::PWD . basename($this->project_path) . '.zip';
 
         // make project backup folder
-        if(!file_exists(self::PWD)){
+        if (!file_exists(self::PWD)) {
             mkdir(self::PWD, 0775, true);
         }
 
         // zip project files
-        try{
+        try {
             $this->zipcreate($this->project_path, $this->backup_file);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             die($e->getMessage());
         }
 
-        if($download !== false){
+        if ($download !== false) {
             // send zip to user
             header('Content-Description: File Transfer');
             header('Content-Type: application/zip');
-            header('Content-Disposition: attachment; filename="'.basename($this->backup_file).'"');
+            header('Content-Disposition: attachment; filename="' . basename($this->backup_file) . '"');
             header('Content-Transfer-Encoding: binary');
             header('Expires: 0');
             header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
             header('Pragma: public');
-            header('Content-Length: '.sprintf("%u", filesize($this->backup_file)));
+            header('Content-Length: ' . sprintf("%u", filesize($this->backup_file)));
             readfile($this->backup_file);
             // cleanup
             unlink($this->backup_file);
@@ -107,13 +109,14 @@ class BackupMyProject{
      * @param string $destination
      * @return bool
      */
-    function zipcreate($source, $destination) {
+    function zipcreate($source, $destination)
+    {
         if (!extension_loaded('zip') || !file_exists($source)) {
-            throw new Exception(__CLASS__.' Fatal error: ZipArchive required to use BackupMyProject class');
+            throw new Exception(__CLASS__ . ' Fatal error: ZipArchive required to use BackupMyProject class');
         }
         $zip = new ZipArchive();
         if (!$zip->open($destination, ZIPARCHIVE::CREATE)) {
-            throw new Exception(__CLASS__. ' Error: ZipArchive::open() failed to open path');
+            throw new Exception(__CLASS__ . ' Error: ZipArchive::open() failed to open path');
         }
         $source = str_replace('\\', '/', realpath($source));
         if (is_dir($source) === true) {
@@ -121,13 +124,12 @@ class BackupMyProject{
             foreach ($files as $file) {
                 $file = str_replace('\\', '/', realpath($file));
                 if (is_dir($file) === true) {
-                    $zip->addEmptyDir(str_replace($source.'/', '', $file.'/'));
+                    $zip->addEmptyDir(str_replace($source . '/', '', $file . '/'));
                 } else if (is_file($file) === true) {
-                    $zip->addFromString(str_replace($source.'/', '', $file), file_get_contents($file));
+                    $zip->addFromString(str_replace($source . '/', '', $file), file_get_contents($file));
                 }
             }
         }
         return $zip->close();
     }
-
 }

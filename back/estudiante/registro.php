@@ -29,12 +29,12 @@ if ($check == 1) {
 }
 
 if (empty($errores)) {
-    $fecha= date("Y-m-d");
+    $fecha = date("Y-m-d");
 
 
     $instDoc = "INSERT INTO documentos (foto) VALUES('')";
     $result = mysqli_query($conexion, $instDoc);
-    $lastid = mysqli_insert_id($conexion); 
+    $lastid = mysqli_insert_id($conexion);
 
     $instAlumn = "INSERT INTO alumnos(username, contrasena,p_nombre,s_nombre,p_apellido,s_apellido,cedula,correo,fechacreacion,documento,pregunta,respuesta) VALUES ('$username','$contrasena','$p_nombre','$s_nombre','$p_apellido','$s_apellido','$cedula','$correo','$fecha','$lastid','$pregunta','$respuesta')";
     $result = mysqli_query($conexion, $instAlumn);
@@ -49,5 +49,3 @@ if (empty($errores)) {
 
 //dar respuesta:
 echo json_encode($datos);
-
-?>

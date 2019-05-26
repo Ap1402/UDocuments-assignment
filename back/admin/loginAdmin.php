@@ -14,14 +14,12 @@ $passwordBD = $datos['contrasena'];
 if ($usuario == $userBD and password_verify($contrasena, $passwordBD)) {
     session_start();
     $_SESSION['username'] = $usuario;
-    $_SESSION['nombre']=$datos['nombre'];
+    $_SESSION['nombre'] = $datos['nombre'];
     $_SESSION['estado'] = 1;
-    $_SESSION['rol']=$datos['rol'];
-    $_SESSION['id_admin']=$datos['id_admin'];
+    $_SESSION['rol'] = $datos['rol'];
+    $_SESSION['id_admin'] = $datos['id_admin'];
 
     echo "1";
 } else {
     echo "2";
 }
-
-?>

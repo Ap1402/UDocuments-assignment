@@ -14,7 +14,6 @@ if (isset($_SESSION['cedula'])) {
     // ci= cedula / ida=id_alumnos
     $cedula = filter_var($_POST['ci'], FILTER_SANITIZE_NUMBER_INT);
     $id = filter_var($_POST['ida'], FILTER_SANITIZE_NUMBER_INT);
-
 }
 
 //Actualizacion de datos tabla alumno

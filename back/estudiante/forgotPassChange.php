@@ -15,7 +15,7 @@ $resultado = mysqli_query($conexion, $consulta);
 if ($resultado->num_rows > 0) {
 
     $row = mysqli_fetch_assoc($resultado);
-    if($row['respuesta']==$respuesta){
+    if ($row['respuesta'] == $respuesta) {
         $contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
         $update = "UPDATE alumnos SET contrasena='$contrasena' WHERE cedula=$cedula AND username='$username'";
         $resultado = mysqli_query($conexion, $update);
@@ -25,28 +25,20 @@ if ($resultado->num_rows > 0) {
                 'message' => 'Contraseña modificada correctamente',
                 'exito' => true
             ]
-            ));
-
-    }else{
+        ));
+    } else {
         print_r(json_encode(
             [
                 'message' => 'Respuesta incorrecta',
                 'exito' => false
             ]
-            ));
-
+        ));
     }
-
-
-}else {
+} else {
     print_r(json_encode(
         [
             'message' => 'La cedula no está registrada, por favor vuelve atrás y reingresala',
             'exito' => false
         ]
-        ));
-    
+    ));
 };
-
-
-?>

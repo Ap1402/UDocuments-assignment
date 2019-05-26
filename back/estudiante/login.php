@@ -12,26 +12,24 @@ $datos = mysqli_fetch_array($resultado);
 
 $userBD = $datos['username'];
 $passwordBD = $datos['contrasena'];
-$cedula =$datos['cedula'];
+$cedula = $datos['cedula'];
 if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
     session_start();
     $_SESSION['username'] = $username;
     $_SESSION['estado'] = 1;
     $_SESSION['cedula'] = $cedula;
     $_SESSION['id'] = $datos['id_alumno'];
-    $_SESSION['rol']=0;
-    $_SESSION['docId']=$datos['documento'];
-    $_SESSION['correo']=$datos['correo'];
+    $_SESSION['rol'] = 0;
+    $_SESSION['docId'] = $datos['documento'];
+    $_SESSION['correo'] = $datos['correo'];
 
-    if ($datos['ultActualizacion'] == '0000-00-00'){
-        $_SESSION['datosLlenados']=0;
-    }else{
-        $_SESSION['datosLlenados']=1;
+    if ($datos['ultActualizacion'] == '0000-00-00') {
+        $_SESSION['datosLlenados'] = 0;
+    } else {
+        $_SESSION['datosLlenados'] = 1;
     }
 
-    return print_r(json_encode(['message'=>'Datos correctos', 'exito'=>TRUE]));
+    return print_r(json_encode(['message' => 'Datos correctos', 'exito' => TRUE]));
 } else {
-    return print_r(json_encode(['message'=>'Usuario o contraseña incorrecto', 'exito'=>FALSE]));
+    return print_r(json_encode(['message' => 'Usuario o contraseña incorrecto', 'exito' => FALSE]));
 }
-
-?>

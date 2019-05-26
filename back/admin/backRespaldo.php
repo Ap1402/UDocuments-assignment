@@ -18,18 +18,16 @@ $passwordBD = $datos['contrasena'];
 
 if ($usuario == $userBD and password_verify($contrasena, $passwordBD)) {
     print_r(json_encode(
-    [
-        'message' => 'Contraseña correcta',
-        'exito' => true,
-    ]
+        [
+            'message' => 'Contraseña correcta',
+            'exito' => true,
+        ]
     ));
-
 } else {
-   print_r(json_encode(
-    [
-        'message' => 'Contraseña incorrecta',
-        'exito' => false,
-    ]
+    print_r(json_encode(
+        [
+            'message' => 'Contraseña incorrecta',
+            'exito' => false,
+        ]
     ));
-
 };
