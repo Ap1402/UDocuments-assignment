@@ -55,7 +55,7 @@
 
           if (($_SESSION['edicion_creacion_admin'] == 1) && (isset($_GET['id_admin']))) {
             $id_admin = $_GET['id_admin'];
-          } elseif ($_SESSION['edicion_creacion_admin'] == 0 && !(isset($_GET['id_admin']))) {
+          } elseif ($_SESSION['edicion_creacion_admin'] == 1 && !(isset($_GET['id_admin']))) {
             $id_admin = $_SESSION['id_admin'];
           };
 
@@ -92,7 +92,7 @@
                     <input name="adminId" id="adminId" value="<?php echo $id_admin ?>" hidden>
                     <div class="form-group">
                       <label class="pl-2"><small>Nombre</small></label><br>
-                      <input type="text" id="nombre" name="nombre" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" value="<?php echo $nombre ?>" required>
+                      <input type="text" id="nombreEdit" name="nombreEdit" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" value="<?php echo $nombre ?>" required>
                       <div class="invalid-feedback">
                         Este campo debe tener al menos 2 caracteres.
                       </div>
@@ -115,7 +115,7 @@
                       <div class="form-group">
                         <label class="pl-2"><small>Contraseña</small></label><br>
                         <div class="input-group">
-                          <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="">
+                          <input type="password" id="contrasenaEdit" name="contrasenaEdit" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="">
                           <div class="input-group-append">
                             <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                               <i id="showpass" class="fas fa-eye-slash"></i>

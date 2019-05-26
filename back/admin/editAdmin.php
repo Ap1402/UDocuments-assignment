@@ -5,17 +5,17 @@ session_start();
 
 //Tomando datos y eliminado espacios en blanco final e inicio.
 //$correo = filter_var($_POST['correo'], FILTER_SANITIZE_STRING);
+    $nombre = filter_var($_POST['nombreEdit'], FILTER_SANITIZE_STRING);
 
-$nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
 $idAdmin = filter_var($_POST['adminId'], FILTER_SANITIZE_STRING);
 
 if ($_SESSION['id_admin'] != $idAdmin && $_SESSION['edicion_creacion_admin'] != 1) {
     return print_r(json_encode(['message' => 'No tiene los permisos necesarios para modificar otro admin', 'exito' => FALSE]));
 } else {
 
-    if (isset($_POST['rol_admin'])) {
+    if (isset($_POST['rol_adminEdit'])) {
         if ($_SESSION['edicion_creacion_admin'] == 1) {
-            $rolInput = filter_var($_POST['rol_admin'], FILTER_SANITIZE_STRING);
+            $rolInput = filter_var($_POST['rol_adminEdit'], FILTER_SANITIZE_STRING);
         } else {
             return print_r(json_encode(['message' => 'No tiene los permisos necesarios para cambiar el rol de un admin', 'exito' => FALSE]));
         }
@@ -29,9 +29,9 @@ if ($_SESSION['id_admin'] != $idAdmin && $_SESSION['edicion_creacion_admin'] != 
         }
     }
 
-    if (isset($_POST['contrasena']) && $_POST['contrasena'] != '' && isset($rolInput) && isset($estatus)) {
+    if (isset($_POST['contrasenaEdit']) && $_POST['contrasenaEdit'] != '' && isset($rolInput) && isset($estatus)) {
 
-        $contrasena = filter_var($_POST['contrasena'], FILTER_SANITIZE_STRING);
+        $contrasena = filter_var($_POST['contrasenaEdit'], FILTER_SANITIZE_STRING);
         $contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
         $modificarUser = "UPDATE administradores SET contrasena='$contrasena', nombre='$nombre', rol='$rolInput', estatus='$estatus' WHERE id_admin='$idAdmin'";
         $result = mysqli_query($conexion, $modificarUser);
@@ -41,8 +41,8 @@ if ($_SESSION['id_admin'] != $idAdmin && $_SESSION['edicion_creacion_admin'] != 
         $modificarUser = "UPDATE administradores SET  nombre='$nombre', rol='$rolInput', estatus='$estatus' WHERE id_admin='$idAdmin'";
         $result = mysqli_query($conexion, $modificarUser);
         return print_r(json_encode(['message' => 'Datos modificados correctamente', 'exito' => TRUE]));
-    } elseif (isset($_POST['contrasena']) && $_POST['contrasena'] != '') {
-        $contrasena = filter_var($_POST['contrasena'], FILTER_SANITIZE_STRING);
+    } elseif (isset($_POST['contrasenaEdit']) && $_POST['contrasenaEdit'] != '') {
+        $contrasena = filter_var($_POST['contrasenaEdit'], FILTER_SANITIZE_STRING);
         $contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
         $modificarUser = "UPDATE administradores SET contrasena='$contrasena', nombre='$nombre' WHERE id_admin='$idAdmin'";
         $result = mysqli_query($conexion, $modificarUser);

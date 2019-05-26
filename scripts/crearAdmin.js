@@ -9,12 +9,12 @@ $(document).ready(function () {
             var contrasena= $('#contrasena').val();
             if (contrasena2==contrasena){
                 $('#registroAdmin').prop( "disabled", false);
-                $('#resultado').hide();
+                $('#resultadoCrear').hide();
 
             }else{
                 $('#registroAdmin').prop( "disabled", true);
-                $('#resultado').show();
-                $('#resultado').text('Las contraseñas deben coincidir');
+                $('#resultadoCrear').show();
+                $('#resultadoCrear').text('Las contraseñas deben coincidir');
             }
         });
 
@@ -23,12 +23,12 @@ $(document).ready(function () {
             var contrasena= $('#contrasena').val();
             if (contrasena2==contrasena){
                 $('#registroAdmin').prop( "disabled", false);
-                $('#resultado').hide();
+                $('#resultadoCrear').hide();
 
             }else{
                 $('#registroAdmin').prop( "disabled", true);
-                $('#resultado').show();
-                $('#resultado').text('Las contraseñas deben coincidir');
+                $('#resultadoCrear').show();
+                $('#resultadoCrear').text('Las contraseñas deben coincidir');
             }
         });
         
@@ -61,13 +61,13 @@ $(document).ready(function () {
         })
         .done(function(datosRecibidos){
             if(datosRecibidos.exito){
-                $('#resultado').hide();
-                $('#exito').show();
-                $('#exito').text(datosRecibidos.message);
+                $('#resultadoCrear').hide();
+                $('#exitoCrear').show();
+                $('#exitoCrear').text(datosRecibidos.message);
             }else{
-                $('#exito').hide();
-                $('#resultado').show();
-                $('#resultado').text(datosRecibidos.message);
+                $('#exitoCrear').hide();
+                $('#resultadoCrear').show();
+                $('#resultadoCrear').text(datosRecibidos.message);
             }
 
         });

@@ -6,9 +6,10 @@ INNER JOIN documentos ON alumnos.documento=documentos.id_documento;";
 
 $result = mysqli_query($conexion, $sql);
 
-if (!$result) {
-    die("Error");
-} else {
+if (mysqli_num_rows($result) == 0) {
+    $arreglo["data"] = [];
+    echo json_encode($arreglo);
+}else {
     while ($data = mysqli_fetch_assoc($result)) {
         $data["irCheck"] = '<a href="page-admin-check.php?idd=' . $data['id_documento'] . '&ida=' . $data['id_alumno'] . '&ci=' . $data['cedula'] . '&mi=' . $data['metodo_ingreso'] . '"><i class="fas fa-clipboard-list"></i></a>';
 
