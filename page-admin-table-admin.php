@@ -83,10 +83,6 @@
                     include 'back/conexion.php';
                     $sql = "SELECT *
                             FROM administradores LEFT JOIN rol_admin ON rol_admin.id = administradores.rol";
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ef5fbca593ac10f9df8894f5a0ddc6edaf6d9bf
                     $result = mysqli_query($conexion, $sql);
                     if ($result->num_rows > 0) {
                       while ($row = mysqli_fetch_assoc($result)) {
