@@ -33,7 +33,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require 'front/general/sidebar.php';?>
+    <?php require 'front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -43,7 +43,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php';?>
+        <?php require 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -51,38 +51,28 @@
         <div id="page-student-edit-pass" class="container-fluid">
 
           <?php
-include 'back/conexion.php';
+          include 'back/conexion.php';
 
-if (($rol >= 3) && (isset($_GET['id_admin']))) {
-    $id_admin = $_GET['id_admin'];
-} elseif ($rol >= 1 && !(isset($_GET['id_admin']))) {
-    $id_admin = $_SESSION['id_admin'];
-}
-;
+          if (($_SESSION['edicion_creacion_admin'] == 1) && (isset($_GET['id_admin']))) {
+            $id_admin = $_GET['id_admin'];
+          } elseif ($_SESSION['edicion_creacion_admin'] == 0 && !(isset($_GET['id_admin']))) {
+            $id_admin = $_SESSION['id_admin'];
+          };
 
-$consulta = "SELECT * FROM administradores WHERE id_admin='" . $id_admin . "'";
-$resultado = mysqli_query($conexion, $consulta);
-$datos = mysqli_fetch_array($resultado);
+          $consulta = "SELECT *
+            FROM administradores LEFT JOIN rol_admin ON rol_admin.id = administradores.rol
+                WHERE administradores.id_admin ='$id_admin'";
+          $resultado = mysqli_query($conexion, $consulta);
+          $datos = mysqli_fetch_array($resultado);
 
-// Iniciando valores
-$nombre = $datos['nombre'];
-$contrasena = $datos['contrasena'];
-$estatus = $datos['estatus'];
-$rol_admin = $datos['rol']; // no usar $rol porque $rol = $_SESSION['rol]
+          // Iniciando valores
+          $nombre = $datos['nombre'];
+          $contrasena = $datos['contrasena'];
+          $estatus = $datos['estatus'];
+          $rol_admin = $datos['rol']; // no usar $rol porque $rol = $_SESSION['rol]
+          $rol_admin_name =  $datos['rol_name'];
 
-switch ($rol_admin) {
-    case 1:
-        $rol_admin_name = 'Personal';
-        break;
-    case 2:
-        $rol_admin_name = 'Asistente';
-        break;
-    case 3:
-        $rol_admin_name = 'Administrador';
-        break;
-};
-
-?>
+          ?>
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
@@ -102,9 +92,7 @@ switch ($rol_admin) {
                     <input name="adminId" id="adminId" value="<?php echo $id_admin ?>" hidden>
                     <div class="form-group">
                       <label class="pl-2"><small>Nombre</small></label><br>
-                      <input type="text" id="nombre" name="nombre" class="form-control form-control-user"
-                        placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
-                        value="<?php echo $nombre ?>" required>
+                      <input type="text" id="nombre" name="nombre" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" value="<?php echo $nombre ?>" required>
                       <div class="invalid-feedback">
                         Este campo debe tener al menos 2 caracteres.
                       </div>
@@ -127,9 +115,7 @@ switch ($rol_admin) {
                       <div class="form-group">
                         <label class="pl-2"><small>Contraseña</small></label><br>
                         <div class="input-group">
-                          <input type="password" id="contrasena" name="contrasena" minlength="4"
-                            class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                            data-placement="top" title="Contraseña" value="">
+                          <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="">
                           <div class="input-group-append">
                             <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                               <i id="showpass" class="fas fa-eye-slash"></i>
@@ -143,9 +129,7 @@ switch ($rol_admin) {
                       <div class="form-group">
                         <label class="pl-2"><small>Repetir contraseña</small></label><br>
                         <div class="input-group">
-                          <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                            class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                            data-placement="top" title="Repetir contraseña" value="">
+                          <input type="password" id="contrasena2" name="contrasena2" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Repetir contraseña" value="">
                           <div class="input-group-append">
                             <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                               <i id="showpass2" class="fas fa-eye-slash"></i>
@@ -157,36 +141,43 @@ switch ($rol_admin) {
                         </div>
                       </div>
                     </div>
-                    <?php if ($rol >= 3 && isset($_GET['id_admin'])) {?>
-                    <div class="form-group">
-                      <label class="pl-2"><small>Rol</small></label><br>
-                      <select id="rol_admin" name="rol_admin" class="form-control">
-                        <option selected value="<?php echo $rol_admin ?>"><?php echo $rol_admin_name ?></option>
-                        <option value="1">Personal</option>
-                        <option value="2">Asistente</option>
-                        <option value="3">Administrador</option>
-                      </select>
-                      <div class="invalid-feedback">
+                    <?php if ($_SESSION['edicion_creacion_admin'] == 1 && isset($_GET['id_admin'])) { ?>
+                      <div class="form-group">
+                        <label class="pl-2"><small>Rol</small></label><br>
+                        <select id="rol_admin" name="rol_admin" class="form-control">
+                          <option selected value="<?php echo $rol_admin ?>"><?php echo $rol_admin_name ?></option>
+                          <?php
+                          $consulta = "SELECT id, rol_name FROM rol_admin";
+                          $resultado = mysqli_query($conexion, $consulta);
+                          if ($resultado->num_rows > 0) {
+                            while ($row = mysqli_fetch_assoc($resultado)) {
+                              echo "<option value=" . $row["id"] . ">" . $row["rol_name"] . "</option>";
+                            };
+                          };
+                          ?>
+                        </select>
+                        <div class="invalid-feedback">
                           Seleccione una opción.
                         </div>
-                    </div>
-                    <?php };?>
+                      </div>
+                    <?php }; ?>
 
 
-                    <?php if ($rol >= 3 && isset($_GET['id_admin'])) {?>
-                    <div class="form-group">
-                      <label class="pl-2"><small>Estado</small></label><br>
-                      <select id="estatus" name="estatus" class="form-control">
-                        <option selected value="<?php echo $estatus ?>">
-                          <?php echo (($estatus==1)?'Activo':'Inactivo') ?></option>
-                        <option value="1">Activo</option>
-                        <option value="0">Inactivo</option>
-                      </select>
-                      <div class="invalid-feedback">
+                    <?php if ($_SESSION['edicion_creacion_admin'] == 1 && isset($_GET['id_admin'])) { ?>
+                      <div class="form-group">
+
+                        <label class="pl-2"><small>Estado</small></label><br>
+                        <select id="estatus" name="estatus" class="form-control">
+                          <option selected value="<?php echo $estatus ?>">
+                            <?php echo (($estatus == 1) ? 'Activo' : 'Inactivo') ?></option>
+                          <option value="1">Activo</option>
+                          <option value="0">Inactivo</option>
+                        </select>
+                        <div class="invalid-feedback">
                           Seleccione una opción.
                         </div>
-                    </div>
-                    <?php };?>
+                      </div>
+                    <?php }; ?>
 
                     <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
                     </div>
@@ -211,7 +202,7 @@ switch ($rol_admin) {
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php';?>
+      <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -226,7 +217,7 @@ switch ($rol_admin) {
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php';?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
 
   <!-- Bootstrap core JavaScript-->
@@ -259,7 +250,7 @@ switch ($rol_admin) {
     }
   </script>
   <script type="text/javascript">
-    $("#botonMostrarContrasena").click(function () {
+    $("#botonMostrarContrasena").click(function() {
       if ($("#botonMostrarContrasena").is(':checked')) {
         $('#contrasenaMostrar').show();
         $('#contrasena').val('');

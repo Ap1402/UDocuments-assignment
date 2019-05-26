@@ -81,8 +81,8 @@
                   <tbody>
                     <?php
                     include 'back/conexion.php';
-
-                    $sql = "SELECT * FROM administradores";
+                    $sql = "SELECT *
+                            FROM administradores LEFT JOIN rol_admin ON rol_admin.id = administradores.rol";
 
                     $result = mysqli_query($conexion, $sql);
                     if ($result->num_rows > 0) {
@@ -93,19 +93,7 @@
                           <td><?= $row['usuario'] ?></td>
                           <td><?= $row['nombre'] ?></td>
                           <td>
-                            <?php
-                            switch ($row['rol']) {
-                              case 1:
-                                echo 'Personal';
-                                break;
-                              case 2:
-                                echo 'Asistente';
-                                break;
-                              case 3:
-                                echo 'Administrador';
-                                break;
-                            };
-                            ?>
+                            <?= $row['rol_name']?>
                           </td>
                           <td><?= ($row['estatus']) ? 'Activo' : 'Inactivo' ?></td>
                           <td><a href="<?= 'page-admin-edit-pass.php?id_admin=' . $row['id_admin'] ?>"><i class="fas fa-user-cog"></i></a> </td>
@@ -131,7 +119,7 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Modal de advertencia de cambios -->
+      <!-- Modal CREAR ADMIN-->
       <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -217,7 +205,14 @@
           </div>
         </div>
       </div>
-      <!-- /.Modal de advertencia de cambios -->
+      <!-- /.Modal CREAR ADMIN-->
+      <!-- /.Modal EDITAR ADMIN-->
+
+                  
+
+        <!-- /.Modal EDITAR ADMIN-->
+
+
 
       <!-- Footer -->
       <?php require 'front/general/footer.php'; ?>
