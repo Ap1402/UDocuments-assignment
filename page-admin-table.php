@@ -297,7 +297,7 @@ $('#tablaValidaciones').DataTable( {
      "infoFiltered": "(Filtrado de _MAX_ total entradas)",
      "infoPostFix": "",
      "thousands": ",",
-     "lengthMenu": "Mostrar _MENU_ Entradas",
+     "lengthMenu": "Mostrar _MENU_",
      "loadingRecords": "Cargando...",
      "processing": "Procesando...",
      "search": "Buscar:",
