@@ -63,6 +63,11 @@ table {
     font-size: .85em;
 }
 
+.table th,
+.table td {
+    padding: 0.5rem;
+}
+
 @media (max-width: 970px) {
     #page-contenido {
         overflow-x: scroll;

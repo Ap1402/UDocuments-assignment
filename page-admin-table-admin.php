@@ -54,7 +54,7 @@
 
 
           <!-- Título de página -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex align-items-center justify-content-between mb-2 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Tabla de Administradores</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i></a>
           </div>
@@ -62,7 +62,7 @@
 
 
           <!-- Tabla de Admin -->
-          <div class="card shadow mb-4">
+          <div class="card shadow mb-2">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

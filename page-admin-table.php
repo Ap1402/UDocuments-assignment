@@ -54,14 +54,14 @@
 
 
           <!-- Título de página -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex align-items-center justify-content-between mb-2 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Tabla de alumnos</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
 
 <!-- Búsquedas específicas -->
-          <div class="card shadow mb-4">
+          <div class="card shadow mb-2">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardBE" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardBE">
                   <h6 class="m-0 font-weight-bold text-primary">Búsquedas específicas</h6>

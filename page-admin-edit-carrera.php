@@ -54,7 +54,7 @@
 
 
           <!-- Título de página -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex align-items-center justify-content-between mb-2 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Tabla de Carreras</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i> </a>
           </div>
@@ -62,7 +62,7 @@
 
 
           <!-- Tabla de Admin -->
-          <div class="card shadow mb-4">
+          <div class="card shadow mb-2">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -76,16 +76,6 @@
                       <th>Noche</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Código</th>
-                      <th>Carrera</th>
-                      <th>Estatus</th>
-                      <th>Mañana</th>
-                      <th>Tarde</th>
-                      <th>Noche</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
                     <?php
 include 'back/conexion.php';
@@ -177,14 +167,14 @@ if ($result->num_rows > 0) {
           <!-- /.Tabla de Admin -->
 
           <!-- Título de página -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-2 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Tabla de Solicitudes</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i> </a>
           </div>
           <!-- /.Título de página -->
 
           <!-- Tabla de Admin -->
-          <div class="card shadow mb-4">
+          <div class="card shadow mb-2">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
@@ -195,13 +185,6 @@ if ($result->num_rows > 0) {
                       <th>Estado de solicitud</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>#</th>
-                      <th>Nombre de solicitud</th>
-                      <th>Estado de solicitud</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
                     <?php
                       include 'back/conexion.php';
