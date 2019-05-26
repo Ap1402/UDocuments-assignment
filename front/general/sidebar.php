@@ -38,6 +38,14 @@ if ( $rol > 0 && isset($_GET['ida']) ) {
     </div>
   </a>
 
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+  
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline mt-2">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+
   <!-- ============================== Solo para ADMINISTRADORES ============================== -->
 
   <?php if ($rol > 0) { // Mostrar solo para administradores ?>
