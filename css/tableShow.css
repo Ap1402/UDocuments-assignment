@@ -8,6 +8,10 @@ text-align:center;
 color:red;
 }
 
+thead {
+    color:rgba(0, 93, 151, 0.8);
+}
+
 .table th {
     border: 0;
 }
@@ -21,13 +25,32 @@ color:red;
     background-color: rgba(2, 2, 2, 0.808);
 }
 
-.odd a i,
-.even a i {
-    color: rgba(0, 0, 0, 0.7);
+.odd {
+    background-color: rgba(0, 93, 151, 0.8) !important;
+    color: #ffffff;
+}
+
+.even {
+    background-color: rgb(255, 255, 255);
+    color: #383838;
+}
+
+.odd a i {
+    color: rgb(255, 255, 255);
     font-size: 1.2rem;
 }
 
-.odd a i:hover,
+.odd a i:hover {
+    color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.2);
+    transition: 1s;
+}
+
+.even a i {
+    color: rgb(3, 119, 191);
+    font-size: 1.2rem;
+}
+
 .even a i:hover {
     color: rgb(121, 121, 121);
     transform: scale(1.2);
