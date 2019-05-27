@@ -72,12 +72,3 @@ table {
 .table th {
     border: 0;
 }
-
-@media (max-width: 970px) {
-    #page-contenido {
-        overflow-x: scroll;
-    }
-
-    /*#wrapper.toggled #page-content-wrapper {}*/
-
-}

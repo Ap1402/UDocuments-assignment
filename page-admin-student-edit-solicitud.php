@@ -74,7 +74,7 @@ if ($result_sol->num_rows > 0) {
     $nombre_solicitud = $row_sol['nombreSolicitud'];
     $turno = $row_sol['turno'];
     $carreraNombre = $row_sol['carreraNombre'];
-
+    $mensaje = '';
 } else {
     $mensaje = "Este alumno no tiene ninguna solicitud";
     $carrera = '';
@@ -82,9 +82,7 @@ if ($result_sol->num_rows > 0) {
     $nombre_solicitud = '';
     $turno = '';
     $carreraNombre = '';
-
-}
-;
+};
 
 
 switch ($turno) {

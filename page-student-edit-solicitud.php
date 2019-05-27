@@ -68,13 +68,13 @@ $sql_sol = "SELECT carrera, turno, solicitudes.tipo, tipo_solicitud.nombre_solic
 $result_sol = mysqli_query($conexion, $sql_sol);
 if ($result_sol->num_rows > 0) {
     $row_sol = mysqli_fetch_assoc($result_sol);
-    
+
     $carrera = $row_sol['carrera'];
     $tipo = $row_sol['tipo']; // metodo_ingreso
     $nombre_solicitud = $row_sol['nombreSolicitud'];
     $turno = $row_sol['turno'];
     $carreraNombre = $row_sol['carreraNombre'];
-
+    $mensaje = '';
 } else {
     $mensaje = "Este alumno no tiene ninguna solicitud";
     $carrera = '';
@@ -82,9 +82,8 @@ if ($result_sol->num_rows > 0) {
     $nombre_solicitud = '';
     $turno = '';
     $carreraNombre = '';
+};
 
-}
-;
 switch ($turno) {
     case 1:
         $turno_name = 'Mañana';

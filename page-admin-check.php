@@ -699,10 +699,10 @@ if ($result_metodoing->num_rows > 0) {
 
           
           <br>
-          <input type="text" id="idDoc" value=<?php echo $idd ?> hidden>
-          <input type="text" id="tipoSolicitud" value=<?php echo $rowSolicitud['tipo'] ?> hidden>
-          <input type="text" id="carrera" value=<?php echo $rowSolicitud['carrera']  ?> hidden>
-          <input type="text" id="ida" value=<?php echo $ida  ?> hidden>
+          <input type="hidden" id="idDoc" value="<?php echo $idd?>">
+          <input type="hidden" id="tipoSolicitud" value="<?php echo $rowSolicitud['tipo']?>">
+          <input type="hidden" id="carrera" value="<?php echo $rowSolicitud['carrera'] ?>">
+          <input type="hidden" id="ida" value="<?php echo $ida ?>">
 
           <div class="alert alert-info" role="alert" id="resultadoCheck" style="display: none"></div>
 

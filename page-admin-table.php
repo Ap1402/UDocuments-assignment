@@ -63,61 +63,23 @@
           <!-- Título de página -->
           <div class="d-sm-flex align-items-center justify-content-between mb-2 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Tabla de alumnos</h1>
-            <a class="d-none d-sm-inline-block"><i class="fas fa-fw fa-table fa-2x text-gray-300"></i></a>
+            <!-- Búsquedas específicas -->
+            <div class="dropdown no-arrow">
+              <a id="dropdownMenuButton" class="btn btn-primary text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Busquedas especificas</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">
+              <a id="docTodos" class="dropdown-item" href="#">Mostrar todos</a>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-header">Alumnos con:</div>
+              <a id="docFaltante" class="dropdown-item" href="#">Documentos faltantes</a>
+              <a id="docFaltante50" class="dropdown-item" href="#">Documentos faltantes mayor a 50%</a>
+              <a id="docCompletos" class="dropdown-item" href="#">Documentos completos</a>
+              <a id="mesActual" class="dropdown-item" href="#">Datos actualizados este mes</a>
+            </div>
+            </div>
+            
+             <!-- /.Búsquedas específicas -->
           </div>
           <!-- /.Título de página -->
-
-<!-- Búsquedas específicas -->
-          <div class="card shadow mb-2">
-                <!-- Card Header - Accordion -->
-                <a href="#collapseCardBE" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardBE">
-                  <h6 class="m-0 font-weight-bold text-primary">Búsquedas específicas</h6>
-                </a>
-                <!-- Card Content - Collapse -->
-                <div class="collapse" id="collapseCardBE">
-                  <div class="card-body row justify-content-center">
-                  
-                    <a id="docTodos" href="#" class="btn btn-info btn-icon-split m-2">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Mostrar todos</span>
-                    </a>
-
-                    <a id="docFaltante" href="#" class="btn btn-danger btn-icon-split m-2">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Alumnos con documentos faltantes</span>
-                    </a>
-
-                    <a id="docFaltante50" href="#" class="btn btn-warning btn-icon-split m-2">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Alumnos con documentos faltantes mayor a 50%</span>
-                    </a>
-
-                    <a id="docCompletos" href="#" class="btn btn-success btn-icon-split m-2">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Alumnos con documentos completos</span>
-                    </a>
-
-                    <a id="mesActual" href="#" class="btn btn-info btn-icon-split m-2">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-search"></i>
-                      </span>
-                      <span class="text">Alumnos con datos actualizados este mes</span>
-                    </a>
-
-
-
-                  </div>
-                </div>
-              </div>
-              <!-- /.Búsquedas específicas -->
 
 
           <!-- Tabla de alumnos -->

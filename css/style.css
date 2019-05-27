@@ -77,9 +77,8 @@ input[type=password]:disabled {
  background-color: #ffffff;
  font-size: 0.8rem;
  border-radius: 10rem;
- padding-right: 1rem;
- padding-left: 1rem;
- height: 3rem;
+ padding: .5rem 1rem !important;
+ height: 2rem !important;
  width: 100%;
 }
 
