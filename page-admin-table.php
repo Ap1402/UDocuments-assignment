@@ -27,10 +27,9 @@
   <link href="css/style.css" rel="stylesheet">
 
   <link href="css/jquery.datatable.min.css" rel="stylesheet">
-  <link href="css/tableShow.css" rel="stylesheet">
+  
   <link href="css/responsive.dataTables.min.css" rel="stylesheet">
-  <link href="css/table.css" rel="stylesheet">
-
+  <link href="css/tableShow.css" rel="stylesheet">
 
 
 
@@ -100,19 +99,6 @@
                       <th>Ver perfil</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                    <th></th>
-
-                      <th>Cédula</th>
-                      <th>Nombres</th>
-                      <th>Apellidos</th>
-                      <th>% Documentos</th>
-                      <th>Última Actualización</th>
-                      <th>Validar Docs</th>
-                      <th>Ver perfil</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
 
                   </tbody>

@@ -28,6 +28,7 @@
 
   <link href="css/jquery.datatable.min.css" rel="stylesheet">
   <link href="css/responsive.dataTables.min.css" rel="stylesheet">
+  <link href="css/tableShow.css" rel="stylesheet">
   <link href="css/fixedHeader.css" rel="stylesheet">
 
 
