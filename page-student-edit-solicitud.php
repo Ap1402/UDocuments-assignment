@@ -68,19 +68,23 @@ $sql_sol = "SELECT carrera, turno, solicitudes.tipo, tipo_solicitud.nombre_solic
 $result_sol = mysqli_query($conexion, $sql_sol);
 if ($result_sol->num_rows > 0) {
     $row_sol = mysqli_fetch_assoc($result_sol);
+    
+    $carrera = $row_sol['carrera'];
+    $tipo = $row_sol['tipo']; // metodo_ingreso
+    $nombre_solicitud = $row_sol['nombreSolicitud'];
+    $turno = $row_sol['turno'];
+    $carreraNombre = $row_sol['carreraNombre'];
+
 } else {
-    $mensaje = "Ocurrió un error al cargar datos de solicitud";
-    echo ($mensaje);
+    $mensaje = "Este alumno no tiene ninguna solicitud";
+    $carrera = '';
+    $tipo = ''; // metodo_ingreso
+    $nombre_solicitud = '';
+    $turno = '';
+    $carreraNombre = '';
+
 }
 ;
-
-$carrera = $row_sol['carrera'];
-
-$tipo = $row_sol['tipo']; // metodo_ingreso
-$nombre_solicitud = $row_sol['nombreSolicitud'];
-$turno = $row_sol['turno'];
-$carrera = $row_sol['carrera'];
-$carreraNombre = $row_sol['carreraNombre'];
 switch ($turno) {
     case 1:
         $turno_name = 'Mañana';
@@ -113,15 +117,32 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                 <div class="p-4">
                   <form id="solicitudForm" method="POST" class="user needs-validation" novalidate>
                   <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
+<?php
+// ---------------Hacer si el alumno no tiene ninguna solicitud
+if ($mensaje != '') {
 
+    ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Advertencia!</strong>
+                    Este alumno no tiene ninguna solicitud.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      &times;
+                    </button>
+                  </div>
+  <?php
+}
+;
+// --------------- /.Hacer si el alumno no tiene ninguna solicitud
+?>
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
                         <label class="pl-2"><small>Carrera</small></label><br>
                         <select id="carrera" name="carrera" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Carrera"
                           <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option  value="<?php echo $carrera ?>"><?php echo $row_sol['carreraNombre'] ?></option>
-                           <?php 
+                          <option  value="<?php echo $carrera ?>"><?php echo $carreraNombre ?></option>
+                            <?php 
                             include 'back/conexion.php';
 
                             $sql = "SELECT * FROM carreras WHERE estatus=1";
@@ -130,8 +151,9 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                             $i=1;
                             if ($result->num_rows > 0) {
                               while ($row = mysqli_fetch_assoc($result)) {
-                              echo "<option value=". $row["codigo"] .">".$row["nombre"]."</option>";
+                              echo "<option data-id=".$i." value=". $row["codigo"] .">".$row["nombre"]."</option>";
                               $resultArray[]=array("codigo"=>$row["codigo"],"nombre"=>$row["nombre"],"manana"=>$row["manana"],"tarde"=>$row["tarde"],"noche"=>$row["noche"]);
+                              $i++;
                               };                            
                             };
                           ?>
@@ -238,27 +260,9 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
 
       var carreras = <?php echo json_encode($resultArray) ?> ;
 
-      var codigo = $("#carrera").val();      
-        var nuevasopciones = "";
-
-        if (carreras[codigo - 1]["manana"] == 1) {
-          nuevasopciones += "<option value='1'>Mañana</option>";
-        }
-        if (carreras[codigo - 1]["tarde"] == 1) {
-          nuevasopciones += "<option value='2'>Tarde</option>";
-        }
-        if (carreras[codigo - 1]["noche"] == 1) {
-          nuevasopciones += "<option value='3'>Noche</option>";
-        }
-
-        $("select#turno").html(nuevasopciones);
-        $("select#turno").val(<?php echo $turno?>);
-
-
-
       $("#carrera").change(function () {
 
-        var codigo = $("#carrera").val();      
+        var codigo = $("#carrera option:selected").attr('data-id');        
         var nuevasopciones = "";
 
         if (carreras[codigo - 1]["manana"] == 1) {
@@ -273,9 +277,6 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
 
         $("select#turno").html(nuevasopciones);
       });
-
-
-
     });
   </script>
 <script src="scripts/modificarSolicitudEstudiante.js"> </script>

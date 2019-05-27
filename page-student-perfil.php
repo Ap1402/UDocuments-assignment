@@ -142,7 +142,7 @@
           ?>
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 col-lg-10 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Perfil del alumno</h1>
             <!-- Boton para el alumno (Imprimir perfil) -->
             <?php if ($rol == 0) { ?>
@@ -164,10 +164,25 @@
           <!-- /.Título de página -->
 
           <!-- Perfil alumno -->
-          <div id="imprimirPerfil" class="col-sm-12 col-lg-10 mx-auto">
+          <div id="imprimirPerfil" class="col-sm-12 px-2 mx-auto">
 
-            <!-- Header Status de Datos -->
-            <div class="card border-left-primary py-2">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link font-weight-bolder active" href="#informacionAlumno" role="tab" data-toggle="tab">Informacion</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link font-weight-bolder" href="#documentosAlumno" role="tab" data-toggle="tab">Documentos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link font-weight-bolder" href="#solicitudAlumno" role="tab" data-toggle="tab">Solicitud</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade show active" id="informacionAlumno">
+              <!-- Header Status de Datos -->
+            <div class="card">
               <div class="card-body">
                 <div class="row no-gutters align-items-center px-2">
                   <div class="col pr-2">
@@ -201,7 +216,7 @@
             <!-- /Header Status de Datos -->
 
             <!-- Tabla de Status de Datos -->
-            <div class="card border-left-primary shadow mb-4">
+            <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-3 py-2">
 
@@ -441,11 +456,13 @@
                 </div>
               </div>
             </div>
-            <!-- /Tabla de Status de Datos -->
+            <!-- /Tabla de Status de Datos -->  
 
-            <!-- Header Status de Documentos -->
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="documentosAlumno">
+              <!-- Header Status de Documentos -->
 
-            <div class="card border-left-info py-2">
+            <div class="card">
               <div class="card-body">
                 <div class="row no-gutters align-items-center px-2">
                   <div class="col pr-2">
@@ -480,9 +497,8 @@
             </div>
             <!-- /Header Status de Documentos -->
 
-
             <!-- Tabla de Status de Documentos -->
-            <div class="card border-left-info shadow mb-4">
+            <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-3 py-2">
                   <!-- Foto -->
@@ -789,11 +805,13 @@
                 </div>
               </div>
             </div>
-            <!-- /Tabla de Status de Documentos -->
+            <!-- /Tabla de Status de Documentos -->  
 
-            <!-- Header Status de Solicitudes -->
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="solicitudAlumno">
+                <!-- Header Status de Solicitudes -->
 
-            <div class="card border-left-success py-2">
+            <div class="card">
               <div class="card-body">
                 <div class="row no-gutters align-items-center px-2">
                   <div class="col pr-2">
@@ -820,7 +838,7 @@
 
 
             <!-- Tabla de Status de Solicitudes -->
-            <div class="card border-left-success shadow mb-4">
+            <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-3 py-2">
                   <!-- Solicitud -->
@@ -896,6 +914,9 @@
               </div>
             </div>
             <!-- /Tabla de Status de Solicitudes -->
+
+              </div>
+            </div>
 
           </div>
           <!-- /.Perfil alumno -->

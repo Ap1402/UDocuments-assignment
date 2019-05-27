@@ -177,7 +177,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="p_nombre" name="p_nombre" class="form-control form-control-user"
                           placeholder="Primer nombre" minlength="2" data-toggle="tooltip" data-placement="top"
                           title="Primer nombre" value="<?php echo $p_nombre ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 2 caracteres.
                         </div>
@@ -187,7 +187,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
                           placeholder="Segundo nombre" data-toggle="tooltip" data-placement="top" title="Segundo nombre"
                           value="<?php echo $s_nombre ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                          <?php echo '' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 2 caracteres.
                         </div>
@@ -199,7 +199,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="p_apellido" name="p_apellido" class="form-control form-control-user"
                           placeholder="Primer apellido" minlength="2" data-toggle="tooltip" data-placement="top"
                           title="Primer apellido" value="<?php echo $p_apellido ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 2 caracteres.
                         </div>
@@ -209,7 +209,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="s_apellido" name="s_apellido" class="form-control form-control-user"
                           placeholder="Segundo apellido" minlength="2" data-toggle="tooltip" data-placement="top"
                           title="Segundo apellido" value="<?php echo $s_apellido ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 2 caracteres.
                         </div>
@@ -242,7 +242,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           value="<?php echo $fecha_nacimiento ?>"
                           min="<?php echo date('Y-m-d', strtotime('-150 year')) ?>"
                           max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca una fecha de nacimiento válida.
                         </div>
@@ -311,7 +311,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="pais" name="pais" class="form-control form-control-user"
                           placeholder="País" minlength="4" data-toggle="tooltip" data-placement="top" title="País"
                           value="<?php echo $pais ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 4 caracteres.
                         </div>
@@ -321,7 +321,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="estado" name="estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" data-toggle="tooltip" data-placement="top" title="Estado"
                           value="<?php echo $estado ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 4 caracteres.
                         </div>
@@ -334,7 +334,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" data-toggle="tooltip" data-placement="top" title="Ciudad"
                           value="<?php echo $ciudad ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 4 caracteres.
                         </div>
@@ -344,7 +344,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
                           placeholder="Municipio" minlength="4" data-toggle="tooltip" data-placement="top"
                           title="Municipio" value="<?php echo $municipio ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 4 caracteres.
                         </div>
@@ -543,7 +543,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Nombre de la institución (no abreviar)" minlength="11" data-toggle="tooltip"
                           data-placement="top" title="Nombre de la institución (no abreviar)"
                           value="<?php echo $i_nombre ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 11 caracteres.
                         </div>
@@ -558,7 +558,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                           placeholder="Año de egreso" min="1930" max="<?php echo date('Y') ?>" pattern="\d*.{4,4}"
                           data-toggle="tooltip" data-placement="top" title="Año de egreso"
                           value="<?php echo $i_egreso ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener solo 4 cifras.
                         </div>
@@ -568,7 +568,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
                           placeholder="Código de la institución" minlength="6" data-toggle="tooltip"
                           data-placement="top" title="Código de la institución" value="<?php echo $i_codigo ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 6 caracteres.
                         </div>
@@ -582,7 +582,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" data-toggle="tooltip" data-placement="top" title="Estado"
                           value="<?php echo $i_estado ?>"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 4 caracteres.
                         </div>
@@ -591,7 +591,7 @@ $nac_postal = $datosDirecc['postal_hab'];
                         <label class="pl-2"><small>Tipo de institución</small></label><br>
                         <select id="tipo_inst" name="tipo_inst" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Tipo de institución"
-                          <?php echo ($_SESSION['nivel'] == 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                          <?php echo 'required' ?>>
                           <option selected value="<?php echo $tipo_inst ?>"><?php echo $tipo_inst_name ?>
                           </option>
                           <option value="1">Privada</option>

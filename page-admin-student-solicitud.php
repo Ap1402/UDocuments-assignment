@@ -118,7 +118,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                         <select id="carrera" name="carrera" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Carrera"
                           <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option disabled selected value="<?php echo $carrera ?>"><?php echo $carrera ?></option>
+                          <option disabled selected value="<?php echo $carrera ?>"><?php echo $carreraNombre ?></option>
                            <?php 
                             include 'back/conexion.php';
 
