@@ -152,27 +152,42 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 ?>
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-md-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Documentos del alumno</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
 
           <!-- Formulario Editar Documentos -->
-          <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+          <div class="col-sm-12 col-md-10 mx-auto">
             <div class="card mb-4 py-1 border-bottom-primary">
-                <div class="card-body">
-                  <h5 class="font-weight-bolder">Indicaciones</h5>
-                  <b>Formatos permitidos:</b> .JPG y .PNG<br>
-                  <b>Tamaño máximo por imagen:</b> 3MB<br>
-                  <b>Número máximo por tipo documento:</b><br>
-                  Cédula, Foto, Partida y Certificado de salud -> 1 foto.<br>
-                  Notas, Rusnies y Método de ingreso -> 5 fotos.<br>
+              <div class="card-body">
+                <div class="row justify-content-between px-4">
+
+                  <div class="col-12">
+                    <h5 class="font-weight-bolder">Indicaciones</h5>
+                  </div>
+                  <div class="col-12">
+                    <b>Formatos permitidos:</b> .JPG y .PNG
+                  </div>
+                  <div class="col-auto">
+                    <b>Tamaño máximo por imagen:</b> 3MB
+                  </div>
+                  <div class="col-12">
+                    <b>Número máximo por tipo documento:</b>
+                  </div>
+                  <div class="col-auto flex-fill">
+                    Cédula, Foto, Partida y Certificado de salud -> 1 foto.
+                  </div>
+                  <div class="col-auto flex-fill">
+                    Notas, Rusnies y Método de ingreso -> 5 fotos.
+                  </div>
                 </div>
               </div>
+            </div>
             <div class="card shadow mb-4">
               <div class="card-body">
-                <div class="p-4">
+                <div class="px-4 py-2">
 
                 <?php
 // ---------------Hacer si todos los documentos estan validados

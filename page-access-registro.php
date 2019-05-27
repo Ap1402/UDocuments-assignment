@@ -43,7 +43,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xs-12 col-md-10 px-3">
+      <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 mx-5 px-3">
 
         <div class="card o-hidden border-0 shadow-lg">
           <div class="card-body p-0">

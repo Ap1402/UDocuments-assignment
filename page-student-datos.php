@@ -51,7 +51,7 @@
         <div id="page-student-datos" class="container-fluid">
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 col-md-10 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Datos del alumno<br><small class="text-muted"> asegúrese de rellenar
                 correctamente sus datos</small></h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
@@ -59,15 +59,15 @@
           <!-- /.Título de página -->
 
           <!-- Formulario Datos -->
-          <div class="col-sm-12 col-md-10 mx-auto">
+          <div class="col-sm-12 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
-                <div class="p-4">
+                <div class="px-4 py-2">
                   <form id="datosForm" method="POST" class="user needs-validation" novalidate>
                   <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 pt-1">
+                      <div class="col-sm-6">
                         <label class="pl-2"><small>Estado civil</small></label><br>
                         <select id="estado_civil" name="estado_civil" class="form-control" required>
                           <option disabled selected value="">Estado civil</option>
@@ -78,7 +78,7 @@
                         </select>
 
                       </div>
-                      <div class="col-sm-6 pt-1">
+                      <div class="col-sm-6">
                         <label class="pl-2"><small>Fecha nacimiento</small></label><br>
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
                           class="form-control" placeholder="Fecha nacimiento"
@@ -90,7 +90,7 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-4">
                         <label class="pl-2"><small>Teléfono de habitación</small></label><br>
                         <input type="number" id="habitacion" name="habitacion" class="form-control"
                           placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,13}">
@@ -98,7 +98,7 @@
                           Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-4">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="movil" name="movil" class="form-control"
                           placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" required>
@@ -106,7 +106,7 @@
                           Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
+                      <div class="col-sm-12 col-md-12 col-lg-4">
                         <label class="pl-2"><small>Teléfono de trabajo</small></label><br>
                         <input type="number" id="trabajo" name="trabajo" class="form-control"
                           placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,13}">
@@ -122,8 +122,6 @@
                       <h5 class="text-gray-900 mb-4">Discapacidad</h5>
                     </div>
                     <hr class="sidebar-divider">
-                    <br>
-
                     <div class="form-group row">
                       <div class="col-12">
                         <select id="discapacidad" name="discapacidad" class="form-control" required>
@@ -148,10 +146,8 @@
                       <h5 class="text-gray-900 mb-4">Lugar de nacimiento(*)</h5>
                     </div>
                     <hr class="sidebar-divider">
-                    <br>
-
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>País</small></label><br>
                         <input type="text" id="pais" name="pais" class="form-control form-control-user"
                           placeholder="País" minlength="4" required>
@@ -159,7 +155,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Estado</small></label><br>
                         <input type="text" id="estado" name="estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
@@ -167,7 +163,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Ciudad</small></label><br>
                         <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
@@ -175,7 +171,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
                           placeholder="Municipio" minlength="4" required>
@@ -191,10 +187,8 @@
                       <h5 class="text-gray-900 mb-4">Dirección de habitación(*)</h5>
                     </div>
                     <hr class="sidebar-divider">
-                    <br>
-
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Zona postal</small></label><br>
                         <input type="text" id="nac_postal" name="nac_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4" required>
@@ -202,7 +196,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Estado</small></label><br>
                         <input type="text" id="nac_estado" name="nac_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
@@ -210,7 +204,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Ciudad</small></label><br>
                         <input type="text" id="nac_ciudad" name="nac_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4" required>
@@ -218,7 +212,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="nac_municipio" name="nac_municipio"
                           class="form-control form-control-user" placeholder="Municipio" minlength="4" required>
@@ -228,7 +222,7 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-4">
                         <label class="pl-2"><small>Urbanización</small></label><br>
                         <input type="text" id="nac_urbanizacion" name="nac_urbanizacion"
                           class="form-control form-control-user" placeholder="Urbanización" minlength="4" required>
@@ -236,7 +230,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-4">
                         <label class="pl-2"><small>Casa o Apartamento</small></label><br>
                         <input type="text" id="nac_aptcasa" name="nac_aptcasa" class="form-control form-control-user"
                           placeholder="Casa o Apartamento" minlength="4" required>
@@ -244,7 +238,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4 pt-1">
+                      <div class="col-sm-12 col-md-12 col-lg-4">
                         <label class="pl-2"><small>Calle</small></label><br>
                         <input type="text" id="nac_calle" name="nac_calle" class="form-control form-control-user"
                           placeholder="Calle" minlength="4" required>
@@ -258,10 +252,8 @@
                       <h5 class="text-gray-900 mb-4">Dirección de trabajo</h5>
                     </div>
                     <hr class="sidebar-divider">
-                    <br>
-
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Zona postal</small></label><br>
                         <input type="text" id="t_postal" name="t_postal" class="form-control form-control-user"
                           placeholder="Zona postal" minlength="4">
@@ -269,7 +261,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Estado</small></label><br>
                         <input type="text" id="t_estado" name="t_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4">
@@ -277,7 +269,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Ciudad</small></label><br>
                         <input type="text" id="t_ciudad" name="t_ciudad" class="form-control form-control-user"
                           placeholder="Ciudad" minlength="4">
@@ -285,7 +277,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                         <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="t_municipio" name="t_municipio" class="form-control form-control-user"
                           placeholder="Municipio" minlength="4">
@@ -304,7 +296,7 @@
 
 
                     <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Nombre y apellido</small></label><br>
                         <input type="text" id="e_nombre" name="e_nombre" class="form-control form-control-user"
                           placeholder="Nombre y apellido" minlength="8" required>
@@ -312,7 +304,7 @@
                           Este campo debe tener al menos 8 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Parentesco</small></label><br>
                         <input type="text" id="parentesco" name="parentesco" minlength="3" class="form-control form-control-user"
                           placeholder="Parentesco" required>
@@ -320,7 +312,7 @@
                           Este campo debe tener al menos 3 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Teléfono local</small></label><br>
                         <input type="number" id="e_local" name="e_local" class="form-control"
                           placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,13}">
@@ -328,7 +320,7 @@
                           Este campo debe tener al menos 11 cifras.
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 pt-1">
+                      <div class="col-sm-12 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Teléfono móvil</small></label><br>
                         <input type="number" id="e_movil" name="e_movil" class="form-control"
                           placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" required>
@@ -344,8 +336,6 @@
                       <h5 class="text-gray-900 mb-4">Datos título de bachiller(*)</h5>
                     </div>
                     <hr class="sidebar-divider">
-                    <br>
-
 
                     <div class="form-group row">
                       <div class="col">
@@ -360,7 +350,7 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 pt-1">
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Año de egreso</small></label><br>
                         <input type="number" id="i_egreso" name="i_egreso" class="form-control"
                           placeholder="Año de egreso" min="1930" pattern="\d*.{4,4}" max="<?php echo date('Y') ?>" required>
@@ -368,7 +358,7 @@
                           Este campo debe tener solo 4 cifras.
                         </div>
                       </div>
-                      <div class="col-sm-6 pt-1">
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Código de la institución</small></label><br>
                         <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
                           placeholder="Código de la institución" minlength="6" required>
@@ -376,11 +366,8 @@
                           Este campo debe tener al menos 6 caracteres.
                         </div>
                       </div>
-                    </div>
-
-                    <div class="form-group row">
-
-                      <div class="col-sm-6 pt-1">
+                      
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Municipio</small></label><br>
                         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
                           placeholder="Estado" minlength="4" required>
@@ -388,7 +375,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-6 pt-1">
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Tipo de institución</small></label><br>
                         <select id="tipo_inst" name="tipo_inst" class="form-control" required>
                           <option disabled selected value="">Tipo de institución</option>

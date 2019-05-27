@@ -58,7 +58,7 @@
 
               <!-- Formulario Forgot -->
               <div class="col-lg-2 d-none d-lg-block bg-password-image"></div>
-              <div class="col-sm-10 col-md-9 col-lg-10">
+              <div class="col-sm-12 col-md-10 col-lg-10">
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-2">¿Olvidó la contraseña?</h1>

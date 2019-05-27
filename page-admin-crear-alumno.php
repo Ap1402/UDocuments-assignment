@@ -52,14 +52,14 @@
         <div id="page-admin-crear-alumno" class="container-fluid">
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 col-md-10 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Registrar alumno</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
 
           <!-- Formulario Crear Alumnos -->
-          <div class="col-sm-12 col-md-10 mx-auto">
+          <div class="col-sm-12 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
@@ -68,7 +68,7 @@
                     <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Primer nombre</small></label>
                         <input type="text" id="p_nombre" name="p_nombre" class="form-control form-control-user"
                           placeholder="Primer nombre" minlength="2" required>
@@ -76,17 +76,15 @@
                           Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Segundo nombre</small></label>
                         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
                           placeholder="Segundo nombre">
                         <div class="invalid-feedback">
                           Este campo debe tener al menos 2 caracteres.
                         </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-sm-6">
+                      </div>                    
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Primer apellido</small></label>
                         <input type="text" id="p_apellido" name="p_apellido" class="form-control form-control-user"
                           placeholder="Primer apellido" minlength="2" required>
@@ -94,7 +92,7 @@
                           Este campo debe tener al menos 2 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Segundo apellido</small></label>
                         <input type="text" id="s_apellido" name="s_apellido" class="form-control form-control-user"
                           placeholder="Segundo apellido" minlength="2" required>

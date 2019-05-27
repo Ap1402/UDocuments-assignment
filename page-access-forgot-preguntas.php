@@ -47,7 +47,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-8 col-lg-10 col-md-10 mx-5 px-5">
+      <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 mx-5 px-3">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -69,8 +69,8 @@
             <div id="page-forgot" class="row justify-content-center">
 
               <!-- Formulario Forgot -->
-              <div class="col-lg-3 d-none d-lg-block bg-password-image"></div>
-              <div class="col-sm-10 col-md-9 col-lg-9">
+              <div class="col-lg-2 d-none d-lg-block bg-password-image"></div>
+              <div class="col-sm-12 col-md-10 col-lg-10">
                 <div class="p-5">
                   <div class="text-center pb-4">
                     <h1 class="h4 text-gray-900 mb-2">Recuperación de contraseña</h1>

@@ -45,7 +45,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-8 col-lg-10 col-md-10 mx-5 px-3">
+      <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 mx-5 px-3">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
 
