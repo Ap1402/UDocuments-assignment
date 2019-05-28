@@ -45,7 +45,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 mx-5 px-3">
+      <div class="col-xl-8 col-lg-8 col-md-10 col-sm-12 mx-5 px-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
 
@@ -55,11 +55,11 @@
             <div id="page-login" class="row justify-content-center">
 
               <!-- Formulario Login -->
-              <div class="col-lg-2 d-none d-lg-block bg-login-image"></div>
-              <div class="col-sm-12 col-md-10 col-lg-10">
+              <div class="col-lg-3 d-none d-lg-block bg-login-image"></div>
+              <div class="col-sm-12 col-md-10 col-lg-9">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Bienvenido</h1>
                   </div>
                   <form id="loginForm" method="POST" class="user needs-validation" novalidate>
 
@@ -99,7 +99,7 @@
                     <a href="page-access-forgot.php" class="small">¿Olvidó la contraseña?</a>
                   </div>
                   <div class="text-center">
-                    <a href="page-access-registro.php" class="small">Crear una cuenta!</a>
+                    <a href="page-access-registro.php" class="small">Crear una cuenta</a>
                   </div>
                 </div>
               </div>

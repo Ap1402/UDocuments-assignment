@@ -44,7 +44,7 @@
 
 
   <div class="form-group row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <label class="pl-2"><small>Estado civil</small></label><br>
       <select id="estado_civil" name="estado_civil" class="form-control" data-toggle="tooltip" data-placement="top"
         title="Estado civil" required>
@@ -60,7 +60,7 @@
         Por favor seleccione una opción.
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <label class="pl-2"><small>Fecha de nacimiento</small></label><br>
       <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" data-toggle="tooltip"
         data-placement="top" title="Fecha de nacimiento" value="<?php echo $fecha_nacimiento ?>"
@@ -68,6 +68,17 @@
         max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>" <?php echo 'required' ?>>
       <div class="invalid-feedback">
         Por favor introduzca una fecha de nacimiento válida.
+      </div>
+    </div>
+    <div class="col-sm-4" id="tipo_disc" name="tipo_disc">
+      <label class="pl-2"><small>Tipo de discapacidad</small></label><br>
+      <input type='text' id='tipo_discapacidad' name='tipo_discapacidad' class='form-control form-control-user'
+        placeholder='Tipo discapacidad' minlength='4'
+        value="<?php echo ($discapacidad!=0) ? $discapacidad : 'Ninguna' ?>">
+      <div class='invalid-feedback'>
+        <div class="invalid-feedback">
+          Este campo debe tener al menos 4 caracteres.
+        </div>
       </div>
     </div>
   </div>
@@ -101,25 +112,6 @@
     </div>
   </div>
 
-  <!-- DISCAPACIDAD ---->
-  <?php if ($discapacidad != '0') {?>
-  <br>
-
-  <div class="text-center">
-    <h5 class="text-gray-900 mb-4">Discapacidad</h5>
-  </div>
-  <hr class="sidebar-divider">
-
-  <div class="form-group row">
-    <div class="col-12" id="tipo_disc" name="tipo_disc">
-      <input type='text' id='tipo_discapacidad' name='tipo_discapacidad' class='form-control form-control-user'
-        placeholder='Tipo discapacidad' minlength='4' value="<?php echo $discapacidad ?>">
-      <div class='invalid-feedback'>
-        Este campo debe tener al menos 4 caracteres.
-      </div>
-    </div>
-  </div>
-  <?php }?>
   <br>
   <div class="text-center">
     <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>

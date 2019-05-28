@@ -149,7 +149,7 @@
           ?>
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-md-12 col-lg-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Perfil del alumno</h1>
             <!-- Boton para el alumno (Imprimir perfil) -->
             <?php if ($rol == 0) { ?>
@@ -172,7 +172,7 @@
           <!-- /.Título de página -->
 
           <!-- Perfil alumno (Resumen/Chart) -->
-          <div class="col-sm-12 px-2 mx-auto mb-2">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10 px-2 mx-auto mb-2">
 
             <div class="row mb-3">
 
@@ -265,7 +265,7 @@
           </div>
 <!-- /.Perfil alumno (Resumen/Chart) -->
           <!-- Perfil alumno -->
-          <div id="imprimirPerfil" class="col-sm-12 px-2 mx-auto">
+          <div id="imprimirPerfil" class="col-sm-12 col-md-12 col-lg-12 col-xl-10 px-2 mx-auto">
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
               <li class="nav-item">

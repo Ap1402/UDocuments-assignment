@@ -156,7 +156,7 @@ $nac_postal = $datosDirecc['postal_hab'];
 ?>
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Editar - Datos del alumno<br><small class="text-muted"> asegúrese de
                 rellenar correctamente sus datos</small></h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
@@ -164,7 +164,7 @@ $nac_postal = $datosDirecc['postal_hab'];
           <!-- /.Título de página -->
 
           <!-- Formulario Editar Datos -->
-          <div class="col-sm-12 mx-auto">
+          <div class="col-sm-12 col-xl-10 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">

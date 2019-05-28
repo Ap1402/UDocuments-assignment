@@ -114,7 +114,6 @@ $i_egreso=$datos['anoEgreso'];
 $i_codigo=$datos['codigoInst'];
 $i_estado=$datos['estadoInst'];
 $tipo_inst=$datos['tipoInst'];
-$discapacidad=$datos['discapacidad'];
 
 
 switch ($tipo_inst) {
@@ -160,7 +159,7 @@ $nac_postal=$datosDirecc['postal_hab'];
 ?>
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Editar - Datos del alumno<br><small class="text-muted"> asegúrese de
                 rellenar correctamente sus datos</small></h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
@@ -168,7 +167,7 @@ $nac_postal=$datosDirecc['postal_hab'];
           <!-- /.Título de página -->
 
           <!-- Formulario Editar Datos -->
-          <div class="col-sm-12 mx-auto">
+          <div class="col-sm-12 col-xl-10 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
@@ -235,7 +234,7 @@ $nac_postal=$datosDirecc['postal_hab'];
 
 
                     <div class="form-group row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                         <label class="pl-2"><small>Estado civil</small></label><br>
                         <select id="estado_civil" name="estado_civil" class="form-control" data-toggle="tooltip"
                           data-placement="top" title="Estado civil" required>
@@ -251,7 +250,7 @@ $nac_postal=$datosDirecc['postal_hab'];
                           Por favor seleccione una opción.
                         </div>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                         <label class="pl-2"><small>Fecha de nacimiento</small></label><br>
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control"
                           data-toggle="tooltip" data-placement="top" title="Fecha de nacimiento"
@@ -261,6 +260,17 @@ $nac_postal=$datosDirecc['postal_hab'];
                           <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
                         <div class="invalid-feedback">
                           Por favor introduzca un fecha de nacimiento válido.
+                        </div>
+                      </div>
+                      <div class="col-4" id="tipo_disc" name="tipo_disc">
+                        <label class="pl-2"><small>Tipo de discapacidad</small></label><br>
+                        <input type='text' id='tipo_discapacidad' name='tipo_discapacidad'
+                          class='form-control form-control-user' placeholder='Tipo discapacidad' minlength='4'
+                          value="<?php echo ($discapacidad!=0) ? $discapacidad : 'Ninguna' ?>">
+                        <div class='invalid-feedback'>
+                          <div class="invalid-feedback">
+                            Este campo debe tener al menos 4 caracteres.
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -295,28 +305,7 @@ $nac_postal=$datosDirecc['postal_hab'];
                       </div>
                     </div>
 
-                    <!-- DISCAPACIDAD ---->
-                    <?php if($discapacidad!='0'){ ?>
-                    <br>
-
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Discapacidad</h5>
-                    </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col-12" id="tipo_disc" name="tipo_disc">
-                        <input type='text' id='tipo_discapacidad' name='tipo_discapacidad'
-                          class='form-control form-control-user' placeholder='Tipo discapacidad' minlength='4'
-                          value="<?php echo $discapacidad ?>">
-                        <div class='invalid-feedback'>
-                          <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                        </div>
-                      </div>
-                    </div>
-                    <?php } ?>
+                    
                     <br>
                     <div class="text-center">
                       <h5 class="text-gray-900 mb-4">Lugar de nacimiento</h5>

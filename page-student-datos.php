@@ -51,7 +51,7 @@
         <div id="page-student-datos" class="container-fluid">
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Datos del alumno<br><small class="text-muted"> asegúrese de rellenar
                 correctamente sus datos</small></h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
@@ -59,7 +59,7 @@
           <!-- /.Título de página -->
 
           <!-- Formulario Datos -->
-          <div class="col-sm-12 mx-auto">
+          <div class="col-sm-12 col-xl-10 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
@@ -67,7 +67,7 @@
                   <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6">
+                      <div class="col-sm-12 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Estado civil</small></label><br>
                         <select id="estado_civil" name="estado_civil" class="form-control" required>
                           <option disabled selected value="">Estado civil</option>
@@ -78,7 +78,7 @@
                         </select>
 
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-12 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Fecha nacimiento</small></label><br>
                         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
                           class="form-control" placeholder="Fecha nacimiento"
@@ -88,7 +88,28 @@
                           Por favor introduzca un fecha de nacimiento válido.
                         </div>
                       </div>
+
+                      <div class="col-sm-12 col-md-6 col-lg-3">
+                        <label class="pl-2"><small>Discapacidad</small></label><br>
+                        <select id="discapacidad" name="discapacidad" class="form-control" required>
+                          <option value="1">No</option>
+                          <option value="2">Sí</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Por favor introduzca una opción.
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6 col-lg-3" id="tipo_disc" name="tipo_disc">
+                        <label class="pl-2"><small>Tipo de discapacidad</small></label><br>
+                        <input type='text' id='tipo_discapacidad' name='tipo_discapacidad' class='form-control form-control-user'
+                          placeholder='Tipo discapacidad' minlength='4' disabled>
+                        <div class='invalid-feedback'>
+                          Por favor introduzca un Tipo de discapacidad válida.
+                        </div>
+                      </div>
+
                     </div>
+
                     <div class="form-group row">
                       <div class="col-sm-12 col-md-6 col-lg-4">
                         <label class="pl-2"><small>Teléfono de habitación</small></label><br>
@@ -116,30 +137,6 @@
                       </div>
 
                     </div>
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Discapacidad</h5>
-                    </div>
-                    <hr class="sidebar-divider">
-                    <div class="form-group row">
-                      <div class="col-12">
-                        <select id="discapacidad" name="discapacidad" class="form-control" required>
-                          <option value="1">No</option>
-                          <option value="2">Sí</option>
-                        </select>
-                        <div class="invalid-feedback">
-                          Por favor introduzca una opción.
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-12" id="tipo_disc" name="tipo_disc">
-
-                      </div>
-                    </div>
-
 
                     <br>
                     <div class="text-center">
@@ -455,11 +452,11 @@
       $("#discapacidad").change(function () {
         var selectedOpt = $(this).val();
         if (selectedOpt == 2) {
-          var html =
-            "<input type='text' id='tipo_discapacidad' name='tipo_discapacidad' class='form-control form-control-user' placeholder='Tipo discapacidad' minlength='4' required><div class='invalid-feedback'>Por favor introduzca un Tipo de discapacidad válida.</div>";
-          $("#tipo_disc").prepend(html);
+          $("#tipo_discapacidad").removeAttr('disabled');
+          $("#tipo_discapacidad").attr('required','true');
         } else {
-          $("#tipo_discapacidad").remove();
+          $("#tipo_discapacidad").attr('disabled','true');
+          $("#tipo_discapacidad").removeAttr('required');
         };
       });
     });

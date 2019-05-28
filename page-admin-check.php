@@ -211,7 +211,7 @@ $nac_postal = $datosDirecc['postal_hab'];
 ?>
 
 <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Validar documentos <small> / <b>Cédula:</b> <?=$ci?></small></h1>
             <!-- Boton para el admin (Ir a perfil) -->
             <a href="<?='page-student-perfil.php?ida='.$ida?>" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
@@ -223,7 +223,7 @@ $nac_postal = $datosDirecc['postal_hab'];
           <!-- /.Título de página -->
 
           <!-- Datos del alumno (Editable) -->
-          <div class="col-sm-12 mx-auto">
+          <div class="col-sm-12 col-xl-10 mx-auto">
           <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardDAE" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardDAE">
@@ -248,7 +248,7 @@ $nac_postal = $datosDirecc['postal_hab'];
               <!-- /.Datos del alumno (Editable) -->
 
 <!-- Formulario Check Documentos -->
-<div class="col-sm-12 mx-auto">
+<div class="col-sm-12 col-xl-10 mx-auto">
   <div class="card shadow mb-4">
     <div class="card-body">
 

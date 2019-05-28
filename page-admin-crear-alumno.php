@@ -52,14 +52,14 @@
         <div id="page-admin-crear-alumno" class="container-fluid">
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-md-10 col-xl-8 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Registrar alumno</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-user fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
 
           <!-- Formulario Crear Alumnos -->
-          <div class="col-sm-12 mx-auto">
+          <div class="col-sm-12 col-md-10 col-xl-8 mx-auto">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
