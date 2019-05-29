@@ -1,29 +1,15 @@
 $(document).ready(function () {
-
-    // $('#datosForm').on('submit',ejecutarAjaxLog);
-
-    // ----------------- Form Validation -------------------
-
     'use strict';
 
-    $('#datosForm')[0].addEventListener('submit', function (event) {
-        if ($('#datosForm')[0].checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            ejecutarAjaxLog(event);
-        }
-        $('#datosForm')[0].classList.add('was-validated');
-    }, false);
+    $('#datosForm').on('submit',ejecutarAjaxLog);
 
-    // ----------------- /Form Validation -------------------
-
-    
-    
     function ejecutarAjaxLog(event){
     
         var formData = new FormData(document.getElementById("datosForm"));
-
+        
+        document.getElementById("prevBtn").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+        preload.classList.add('activate-preload');
     
         $.ajax({
             type: 'POST',
@@ -42,12 +28,42 @@ $(document).ready(function () {
 
                 $('#resultado').show();
                 $('#resultado').text(datosRecibidos.message);
+
+                document.getElementById("prevBtn").style.display = "inline";
+                document.getElementById("nextBtn").style.display = "inline";
             }else{
                 $('#resultado').hide();
 
                 $('#exito').show();
                 $('#exito').text(datosRecibidos.message);
                 $('html, body').animate( { scrollTop : 0 }, 800 );
+                
+                preload.classList.remove('activate-preload');
+
+                // --------- Mostrar el inicio del formulario
+                var x = document.getElementsByClassName("tab");
+                x[0].style.display = "block";
+                currentTab = 0;
+
+                document.getElementById("nextBtn").style.display = "inline";
+                $("#nextBtn").attr('type', 'button');
+
+                if (x.length == 1) {
+
+                    document.getElementById("nextBtn").innerHTML = "Enviar";
+
+                    $('#ver-todo').hide();
+                    $('#ver-secciones').show();
+
+                } else {
+                    document.getElementById("nextBtn").innerHTML = "Siguiente";
+
+                    $('#ver-todo').show();
+                    $('#ver-secciones').hide();
+
+                }
+
+                // --------- /.Mostrar el inicio del formulario
 
             }
             

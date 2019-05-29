@@ -236,9 +236,9 @@
 
                   <div class="text-gray-900">
                     <h6 class="font-weight-bolder"><i class="fas fa-mobile-alt"></i> Numeros de contacto</h6>
-                    <b><small>Local:</small></b> <?= $turno ?><br>
-                    <b><small>Movil:</small></b> <?= $turno ?><br>
-                    <b><small>Trabajo:</small></b> <?= $turno ?><br>
+                    <b><small>Local:</small></b> <?= ($row['num_habitacion']==0) ? '': $row['num_habitacion'] ?><br>
+                    <b><small>Movil:</small></b> <?= ($row['num_movil']==0) ? '': $row['num_movil'] ?><br>
+                    <b><small>Trabajo:</small></b> <?= ($row['num_trabajo']==0) ? '': $row['num_trabajo'] ?><br>
                   </div>
                 </div>
                 <div class="flex-fill my-auto py-1">
@@ -254,7 +254,7 @@
                   <div class="text-gray-900">
                     <h6 class="font-weight-bolder"><i class="fas fa-graduation-cap"></i> <?= $row['nombre'] ?></h6>
                     <b><small>Turno:</small></b> <?= $turno ?><br>
-                    <b><small>Método de ingreso:</small></b> <?= $turno ?>
+                    <b><small>Método de ingreso:</small></b> <?= $row['nombre_solicitud'] ?>
                   </div>
                 </div>
 

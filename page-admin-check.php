@@ -212,7 +212,7 @@ $nac_postal = $datosDirecc['postal_hab'];
 
 <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
-            <h1 class="h3 mb-0 text-gray-800">Validar documentos <small> / <b>Cédula:</b> <?=$ci?></small></h1>
+            <h1 class="h3 mb-0 text-gray-800">Validaciones <small> / <b>Cédula:</b> <?=$ci?></small></h1>
             <!-- Boton para el admin (Ir a perfil) -->
             <a href="<?='page-student-perfil.php?ida='.$ida?>" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
               <i class="fas fa-user fa-sm"></i>
@@ -227,7 +227,7 @@ $nac_postal = $datosDirecc['postal_hab'];
           <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardDAE" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardDAE">
-                  <h6 class="m-0 font-weight-bold text-primary">Datos del alumno (Editable)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Datos del alumno</h6>
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse" id="collapseCardDAE" style="">
@@ -758,6 +758,143 @@ if ($result_metodoing->num_rows > 0) {
   <script src="scripts/editDatos.js"></script>
   <script src="scripts/checkAdmin.js"></script>
 
+    <!-- Formulario STEPS -->
+  <script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    var currentTabAux = currentTab;
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+    // This function will display the specified tab of the form ...
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    // ... and fix the Previous/Next buttons:
+    if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+    } else {
+    document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Enviar";   
+    } else {
+    document.getElementById("nextBtn").innerHTML = "Siguiente";
+    $("#nextBtn").attr('type','button');
+    }
+    // ... and run a function that displays the correct step indicator:
+    fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+    // This function will figure out which tab to display
+    var x = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (n == 1 && !validateForm()) return false;
+    // Hide the current tab:
+    x[currentTab].style.display = "none";
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + n;
+    // if you have reached the end of the form... :
+    if (currentTab >= x.length) {
+    //...the form gets submitted:
+      $("#nextBtn").attr('type','submit');
+    // document.getElementById("datosEditForm").submit();
+    return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+    }
+
+    function validateForm() {
+    // This function deals with validation of the form fields
+    var x, y, z, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    z = x[currentTab].getElementsByTagName("select");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < z.length; i++) { 
+      // If a field is empty... 
+      if (!z[i].validity.valid) {
+          // and set the current valid status to false:
+          valid=false;
+          $('#datosEditForm')[0].classList.add('was-validated');   
+    } 
+  }
+    for (i = 0; i < y.length; i++) { 
+      // If a field is empty... 
+      if (!y[i].validity.valid) {
+          // and set the current valid status to false:
+          valid=false;
+          $('#datosEditForm')[0].classList.add('was-validated');   
+    } 
+  } 
+      // If the valid status is true, mark the step as finished and valid: 
+      if (valid) {
+      document.getElementsByClassName("step")[currentTab].className +=" finish";
+      $('#datosEditForm')[0].classList.remove('was-validated');
+    } 
+    return valid; // return the valid status 
+  }
+  
+  function fixStepIndicator(n) { 
+        // This function removes the "active" class of all steps... 
+        var i, x=document.getElementsByClassName("step"); 
+      for (i=0; i < x.length; i++) { 
+        x[i].className=x[i].className.replace(" active", ""); 
+      } 
+      //... and adds the "active" class to the current step: 
+      x[n].className +=" active"; 
+    }
+  </script>
+<!-- /.Formulario STEPS -->
+
+<script>
+  $(document).ready(function () {
+
+    $('#ver-secciones').hide();    
+
+    $('#ver-todo').on('click', function (e) {
+      var i, x = $(".tab"),
+        y = $(".tabignore");
+      console.log(x);
+      console.log(x.length);
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "block";
+        x[i].className = x[i].className.replace("tab", "tabignore");
+      }
+      currentTabAux = currentTab;
+      currentTab = 0;
+      y[0].className = y[0].className.replace("tabignore", "tab");
+      y[0].style.display = "block";
+      document.getElementById("nextBtn").innerHTML = "Enviar";
+      $("#prevBtn").hide();
+      $("#stepcircle").hide();
+      $('#ver-todo').hide();
+      $('#ver-secciones').show();
+      e.preventDefault();
+    });
+
+    $('#ver-secciones').on('click', function (e) {
+      var i, x = $(".tabignore"),
+        y = $(".tab");
+      console.log(x);
+      console.log(x.length);
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        x[i].className = x[i].className.replace("tabignore", "tab");
+      }
+      currentTab = currentTabAux;
+      x[currentTab].style.display = "block";
+      if (currentTab > 0) $("#prevBtn").show();;
+      y[0].className = y[0].className.replace("tab", "tabignore");
+      document.getElementById("nextBtn").innerHTML = "Siguiente";
+      $("#stepcircle").show();
+      $('#ver-todo').show();
+      $('#ver-secciones').hide();
+      e.preventDefault();
+    });
+    
+  });
+</script>
 
 </body>
 

@@ -63,345 +63,9 @@
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
-                  <form id="datosForm" method="POST" class="user needs-validation" novalidate>
-                  <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Estado civil</small></label><br>
-                        <select id="estado_civil" name="estado_civil" class="form-control" required>
-                          <option disabled selected value="">Estado civil</option>
-                          <option value="1">Casado</option>
-                          <option value="2">Soltero</option>
-                          <option value="3">Divorciado</option>
-                          <option value="4">Viudo</option>
-                        </select>
-
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Fecha nacimiento</small></label><br>
-                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"
-                          class="form-control" placeholder="Fecha nacimiento"
-                          min="<?php echo date('Y-m-d', strtotime('-150 year')) ?>"
-                          max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>" required>
-                        <div class="invalid-feedback">
-                          Por favor introduzca un fecha de nacimiento válido.
-                        </div>
-                      </div>
-
-                      <div class="col-sm-12 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Discapacidad</small></label><br>
-                        <select id="discapacidad" name="discapacidad" class="form-control" required>
-                          <option value="1">No</option>
-                          <option value="2">Sí</option>
-                        </select>
-                        <div class="invalid-feedback">
-                          Por favor introduzca una opción.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-3" id="tipo_disc" name="tipo_disc">
-                        <label class="pl-2"><small>Tipo de discapacidad</small></label><br>
-                        <input type='text' id='tipo_discapacidad' name='tipo_discapacidad' class='form-control form-control-user'
-                          placeholder='Tipo discapacidad' minlength='4' disabled>
-                        <div class='invalid-feedback'>
-                          Por favor introduzca un Tipo de discapacidad válida.
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2"><small>Teléfono de habitación</small></label><br>
-                        <input type="number" id="habitacion" name="habitacion" class="form-control"
-                          placeholder="Teléfono de habitación" min="2400000000" pattern="\d*.{11,13}">
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 11 cifras.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2"><small>Teléfono móvil</small></label><br>
-                        <input type="number" id="movil" name="movil" class="form-control"
-                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 11 cifras.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4">
-                        <label class="pl-2"><small>Teléfono de trabajo</small></label><br>
-                        <input type="number" id="trabajo" name="trabajo" class="form-control"
-                          placeholder="Teléfono de trabajo" min="2400000000" pattern="\d*.{11,13}">
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 11 cifras.
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Lugar de nacimiento(*)</h5>
-                    </div>
-                    <hr class="sidebar-divider">
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>País</small></label><br>
-                        <input type="text" id="pais" name="pais" class="form-control form-control-user"
-                          placeholder="País" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Estado</small></label><br>
-                        <input type="text" id="estado" name="estado" class="form-control form-control-user"
-                          placeholder="Estado" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Ciudad</small></label><br>
-                        <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user"
-                          placeholder="Ciudad" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Municipio</small></label><br>
-                        <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
-                          placeholder="Municipio" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Dirección de habitación(*)</h5>
-                    </div>
-                    <hr class="sidebar-divider">
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Zona postal</small></label><br>
-                        <input type="text" id="nac_postal" name="nac_postal" class="form-control form-control-user"
-                          placeholder="Zona postal" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Estado</small></label><br>
-                        <input type="text" id="nac_estado" name="nac_estado" class="form-control form-control-user"
-                          placeholder="Estado" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Ciudad</small></label><br>
-                        <input type="text" id="nac_ciudad" name="nac_ciudad" class="form-control form-control-user"
-                          placeholder="Ciudad" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Municipio</small></label><br>
-                        <input type="text" id="nac_municipio" name="nac_municipio"
-                          class="form-control form-control-user" placeholder="Municipio" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2"><small>Urbanización</small></label><br>
-                        <input type="text" id="nac_urbanizacion" name="nac_urbanizacion"
-                          class="form-control form-control-user" placeholder="Urbanización" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-4">
-                        <label class="pl-2"><small>Casa o Apartamento</small></label><br>
-                        <input type="text" id="nac_aptcasa" name="nac_aptcasa" class="form-control form-control-user"
-                          placeholder="Casa o Apartamento" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-12 col-lg-4">
-                        <label class="pl-2"><small>Calle</small></label><br>
-                        <input type="text" id="nac_calle" name="nac_calle" class="form-control form-control-user"
-                          placeholder="Calle" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Dirección de trabajo</h5>
-                    </div>
-                    <hr class="sidebar-divider">
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Zona postal</small></label><br>
-                        <input type="text" id="t_postal" name="t_postal" class="form-control form-control-user"
-                          placeholder="Zona postal" minlength="4">
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Estado</small></label><br>
-                        <input type="text" id="t_estado" name="t_estado" class="form-control form-control-user"
-                          placeholder="Estado" minlength="4">
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Ciudad</small></label><br>
-                        <input type="text" id="t_ciudad" name="t_ciudad" class="form-control form-control-user"
-                          placeholder="Ciudad" minlength="4">
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                        <label class="pl-2"><small>Municipio</small></label><br>
-                        <input type="text" id="t_municipio" name="t_municipio" class="form-control form-control-user"
-                          placeholder="Municipio" minlength="4">
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Contacto en caso de emergencia(*)</h5>
-                    </div>
-                    <hr class="sidebar-divider">
-
-
-                    <div class="form-group row">
-                      <div class="col-sm-12 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Nombre y apellido</small></label><br>
-                        <input type="text" id="e_nombre" name="e_nombre" class="form-control form-control-user"
-                          placeholder="Nombre y apellido" minlength="8" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 8 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Parentesco</small></label><br>
-                        <input type="text" id="parentesco" name="parentesco" minlength="3" class="form-control form-control-user"
-                          placeholder="Parentesco" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 3 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Teléfono local</small></label><br>
-                        <input type="number" id="e_local" name="e_local" class="form-control"
-                          placeholder="Teléfono local" min="2400000000" pattern="\d*.{11,13}">
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 11 cifras.
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Teléfono móvil</small></label><br>
-                        <input type="number" id="e_movil" name="e_movil" class="form-control"
-                          placeholder="Teléfono móvil" min="4100000000" pattern="\d*.{11,13}" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 11 cifras.
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <br>
-                    <div class="text-center">
-                      <h5 class="text-gray-900 mb-4">Datos título de bachiller(*)</h5>
-                    </div>
-                    <hr class="sidebar-divider">
-
-                    <div class="form-group row">
-                      <div class="col">
-                        <label class="pl-2"><small>Nombre de la institución (no abreviar)</small></label><br>
-                        <input type="text" id="i_nombre" name="i_nombre" class="form-control form-control-user"
-                          placeholder="Nombre de la institución (no abreviar)" minlength="11" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 11 caracteres.
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-sm-6 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Año de egreso</small></label><br>
-                        <input type="number" id="i_egreso" name="i_egreso" class="form-control"
-                          placeholder="Año de egreso" min="1930" pattern="\d*.{4,4}" max="<?php echo date('Y') ?>" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener solo 4 cifras.
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Código de la institución</small></label><br>
-                        <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
-                          placeholder="Código de la institución" minlength="6" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 6 caracteres.
-                        </div>
-                      </div>
-                      
-                      <div class="col-sm-6 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Municipio</small></label><br>
-                        <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user"
-                          placeholder="Estado" minlength="4" required>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-3">
-                        <label class="pl-2"><small>Tipo de institución</small></label><br>
-                        <select id="tipo_inst" name="tipo_inst" class="form-control" required>
-                          <option disabled selected value="">Tipo de institución</option>
-                          <option value="1">Privada</option>
-                          <option value="2">Pública</option>
-                        </select>
-                        <div class="invalid-feedback">
-                          Por favor seleccione una opción.
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
-                    <!-- </div> No dejar div regados :( -->
-                    <br>
-
-                    <button id="enviarDat" type="submit" class="btn btn-primary btn-user btn-block">
-                      Guardar
-                    </button>
-                    
-                    <?php if (isset($_GET['ci'])) {?>
-                      <input id="cedula " name="cedula " value="<?php echo $_GET['ci'] ?>" hidden >
-                    <?php }?>
-
-                    <?php if (isset($_GET['ida'])) {?>
-                      <input id="id" name="id" value="<?php echo $_GET['ida'] ?>" hidden >
-                    <?php }?>
-
-                  </form>
+                  <!-- Form Datos -->
+                  <?php require 'form-student-datos.php'; ?>
+                  <!-- End of Form Datos -->
                 </div>
               </div>
             </div>
@@ -454,14 +118,149 @@
         if (selectedOpt == 2) {
           $("#tipo_discapacidad").removeAttr('disabled');
           $("#tipo_discapacidad").attr('required','true');
-        } else {
+        } else if (selectedOpt == 1) {
           $("#tipo_discapacidad").attr('disabled','true');
           $("#tipo_discapacidad").removeAttr('required');
         };
       });
     });
   </script>
+<!-- Formulario STEPS -->
+  <script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)    
+    var currentTabAux = currentTab;
+    showTab(currentTab); // Display the current tab
 
+    function showTab(n) {
+    // This function will display the specified tab of the form ...
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    // ... and fix the Previous/Next buttons:
+    if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+    } else {
+    document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Enviar";   
+    } else {
+    document.getElementById("nextBtn").innerHTML = "Siguiente";
+    $("#nextBtn").attr('type','button');
+    }
+    // ... and run a function that displays the correct step indicator:
+    fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+    // This function will figure out which tab to display
+    var x = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (n == 1 && !validateForm()) return false;
+    // Hide the current tab:
+    x[currentTab].style.display = "none";
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + n;
+    // if you have reached the end of the form... :
+    if (currentTab >= x.length) {
+    //...the form gets submitted:
+      $("#nextBtn").attr('type','submit');
+    // document.getElementById("datosForm").submit();
+    return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+    }
+
+    function validateForm() {
+    // This function deals with validation of the form fields
+    var x, y, z, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    z = x[currentTab].getElementsByTagName("select");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < z.length; i++) { 
+      // If a field is empty... 
+      if (!z[i].validity.valid) {
+          // and set the current valid status to false:
+          valid=false;
+          $('#datosForm')[0].classList.add('was-validated');   
+    } 
+  }
+    for (i = 0; i < y.length; i++) { 
+      // If a field is empty... 
+      if (!y[i].validity.valid) {
+          // and set the current valid status to false:
+          valid=false;
+          $('#datosForm')[0].classList.add('was-validated');   
+    } 
+  } 
+      // If the valid status is true, mark the step as finished and valid: 
+      if (valid) {
+      document.getElementsByClassName("step")[currentTab].className +=" finish";
+      $('#datosForm')[0].classList.remove('was-validated');
+    } 
+    return valid; // return the valid status 
+  }
+  
+  function fixStepIndicator(n) { 
+        // This function removes the "active" class of all steps... 
+        var i, x=document.getElementsByClassName("step"); 
+      for (i=0; i < x.length; i++) { 
+        x[i].className=x[i].className.replace("active", ""); 
+      } 
+      //... and adds the "active" class to the current step: 
+      x[n].className +=" active"; 
+    }
+  </script>
+<!-- /.Formulario STEPS -->
+<script>
+  $(document).ready(function () {
+
+    $('#ver-secciones').hide();    
+
+    $('#ver-todo').on('click', function (e) {
+      var i, x = $(".tab"),
+        y = $(".tabignore");
+      console.log(x);
+      console.log(x.length);
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "block";
+        x[i].className = x[i].className.replace("tab", "tabignore");
+      }
+      currentTabAux = currentTab;
+      currentTab = 0;
+      y[0].className = y[0].className.replace("tabignore", "tab");
+      y[0].style.display = "block";
+      document.getElementById("nextBtn").innerHTML = "Enviar";
+      $("#prevBtn").hide();
+      $("#stepcircle").hide();
+      $('#ver-todo').hide();
+      $('#ver-secciones').show();
+      e.preventDefault();
+    });
+
+    $('#ver-secciones').on('click', function (e) {
+      var i, x = $(".tabignore"),
+        y = $(".tab");
+      console.log(x);
+      console.log(x.length);
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        x[i].className = x[i].className.replace("tabignore", "tab");
+      }
+      currentTab = currentTabAux;
+      x[currentTab].style.display = "block";
+      if (currentTab > 0) $("#prevBtn").show();;
+      y[0].className = y[0].className.replace("tab", "tabignore");
+      document.getElementById("nextBtn").innerHTML = "Siguiente";
+      $("#stepcircle").show();
+      $('#ver-todo').show();
+      $('#ver-secciones').hide();
+      e.preventDefault();
+    });
+    
+  });
+</script>
 </body>
 
 </html>

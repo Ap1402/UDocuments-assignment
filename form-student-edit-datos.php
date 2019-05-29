@@ -34,7 +34,7 @@
         <label class="pl-2"><small>Primer nombre <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="p_nombre" name="p_nombre" class="form-control form-control-user"
           placeholder="Primer nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Primer nombre"
-          value="<?php echo $p_nombre ?>" <?php echo 'required' ?>>
+          value="<?php echo $p_nombre ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 2 caracteres.
         </div>
@@ -53,7 +53,7 @@
         <label class="pl-2"><small>Primer apellido <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="p_apellido" name="p_apellido" class="form-control form-control-user"
           placeholder="Primer apellido" minlength="2" data-toggle="tooltip" data-placement="top" title="Primer apellido"
-          value="<?php echo $p_apellido ?>" <?php echo 'required' ?>>
+          value="<?php echo $p_apellido ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 2 caracteres.
         </div>
@@ -62,7 +62,7 @@
         <label class="pl-2"><small>Segundo apellido <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="s_apellido" name="s_apellido" class="form-control form-control-user"
           placeholder="Segundo apellido" minlength="2" data-toggle="tooltip" data-placement="top"
-          title="Segundo apellido" value="<?php echo $s_apellido ?>" <?php echo 'required' ?>>
+          title="Segundo apellido" value="<?php echo $s_apellido ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 2 caracteres.
         </div>
@@ -93,7 +93,7 @@
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" data-toggle="tooltip"
           data-placement="top" title="Fecha de nacimiento" value="<?php echo $fecha_nacimiento ?>"
           min="<?php echo date('Y-m-d', strtotime('-150 year')) ?>"
-          max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>" <?php echo 'required' ?>>
+          max="<?php echo date('Y-m-d', strtotime('-10 year')) ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Por favor introduzca una fecha de nacimiento válida.
         </div>
@@ -144,7 +144,7 @@
       <div class="col-sm-6 col-md-6 col-lg-3">
         <label class="pl-2"><small>País <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="pais" name="pais" class="form-control form-control-user" placeholder="País" minlength="4"
-          data-toggle="tooltip" data-placement="top" title="País" value="<?php echo $pais ?>" <?php echo 'required' ?>>
+          data-toggle="tooltip" data-placement="top" title="País" value="<?php echo $pais ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 4 caracteres.
         </div>
@@ -153,7 +153,7 @@
         <label class="pl-2"><small>Estado <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="estado" name="estado" class="form-control form-control-user" placeholder="Estado"
           minlength="4" data-toggle="tooltip" data-placement="top" title="Estado" value="<?php echo $estado ?>"
-          <?php echo 'required' ?>>
+          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 4 caracteres.
         </div>
@@ -163,7 +163,7 @@
         <label class="pl-2"><small>Ciudad <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="ciudad" name="ciudad" class="form-control form-control-user" placeholder="Ciudad"
           minlength="4" data-toggle="tooltip" data-placement="top" title="Ciudad" value="<?php echo $ciudad ?>"
-          <?php echo 'required' ?>>
+          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 4 caracteres.
         </div>
@@ -172,7 +172,7 @@
         <label class="pl-2"><small>Municipio <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="municipio" name="municipio" class="form-control form-control-user"
           placeholder="Municipio" minlength="4" data-toggle="tooltip" data-placement="top" title="Municipio"
-          value="<?php echo $municipio ?>" <?php echo 'required' ?>>
+          value="<?php echo $municipio ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 4 caracteres.
         </div>
@@ -378,7 +378,7 @@
         <label class="pl-2"><small>Nombre de la institución (no abreviar) <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="i_nombre" name="i_nombre" class="form-control form-control-user"
           placeholder="Nombre de la institución (no abreviar)" minlength="11" data-toggle="tooltip" data-placement="top"
-          title="Nombre de la institución (no abreviar)" value="<?php echo $i_nombre ?>" <?php echo 'required' ?>>
+          title="Nombre de la institución (no abreviar)" value="<?php echo $i_nombre ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 11 caracteres.
         </div>
@@ -388,7 +388,7 @@
         <label class="pl-2"><small>Año de egreso <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="number" id="i_egreso" name="i_egreso" class="form-control" placeholder="Año de egreso" min="1930"
           max="<?php echo date('Y') ?>" pattern="\d*.{4,4}" data-toggle="tooltip" data-placement="top"
-          title="Año de egreso" value="<?php echo $i_egreso ?>" <?php echo 'required' ?>>
+          title="Año de egreso" value="<?php echo $i_egreso ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener solo 4 cifras.
         </div>
@@ -397,7 +397,7 @@
         <label class="pl-2"><small>Código de la institución <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="i_codigo" name="i_codigo" class="form-control form-control-user"
           placeholder="Código de la institución" minlength="6" data-toggle="tooltip" data-placement="top"
-          title="Código de la institución" value="<?php echo $i_codigo ?>" <?php echo 'required' ?>>
+          title="Código de la institución" value="<?php echo $i_codigo ?>" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 6 caracteres.
         </div>
@@ -407,7 +407,7 @@
         <label class="pl-2"><small>Estado <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="i_estado" name="i_estado" class="form-control form-control-user" placeholder="Estado"
           minlength="4" data-toggle="tooltip" data-placement="top" title="Estado" value="<?php echo $i_estado ?>"
-          <?php echo 'required' ?>>
+          <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
         <div class="invalid-feedback">
           Este campo debe tener al menos 4 caracteres.
         </div>
@@ -415,7 +415,7 @@
       <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <label class="pl-2"><small>Tipo de institución <span class="text-xs text-danger"> *</span></small></label><br>
         <select id="tipo_inst" name="tipo_inst" class="form-control" data-toggle="tooltip" data-placement="top"
-          title="Tipo de institución" <?php echo 'required' ?>>
+          title="Tipo de institución" <?php echo ($check_datos == 0) ? 'required' : 'readonly disabled' ?>>
           <option selected value="<?php echo $tipo_inst ?>"><?php echo $tipo_inst_name ?>
           </option>
           <option value="1">Privada</option>
