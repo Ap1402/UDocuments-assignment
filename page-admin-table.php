@@ -132,8 +132,11 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require_once('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -152,6 +155,7 @@
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
   <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
 
 

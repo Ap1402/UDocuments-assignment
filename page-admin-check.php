@@ -743,6 +743,9 @@ if ($result_metodoing->num_rows > 0) {
   <!-- Logout Modal-->
   <?php require('front/general/modal-logout.php'); ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -755,6 +758,7 @@ if ($result_metodoing->num_rows > 0) {
   <script src="js/sb-admin-2.js"></script>
 
   <script src="js/lightbox-plus-jquery.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
   <script src="scripts/editDatos.js"></script>
   <script src="scripts/checkAdmin.js"></script>
 

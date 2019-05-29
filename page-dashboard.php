@@ -296,8 +296,11 @@ require 'front/admin/dashboard/card-barras.php';
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -316,6 +319,7 @@ require 'front/admin/dashboard/card-barras.php';
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
   <script src="js/demo/chart-bar-demo.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
   <script type="text/javascript">
     function mostrarPassword() {

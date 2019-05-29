@@ -54,7 +54,7 @@
                 <div class="dropdown-divider"></div>
                 <?php } ?>
                 <?php if ($rol >= 1) { // Mostrar solo para admin ?>
-                  <a class="dropdown-item" href="page-admin-edit-pass.php">
+                  <a id="btnEditarSelf" class="dropdown-item" href="#">
                     <i class="fas fa-user-lock fa-sm fa-fw mr-2 text-gray-400"></i>
                     Editar mis datos
                   </a>

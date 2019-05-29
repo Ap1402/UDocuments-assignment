@@ -331,8 +331,11 @@ if ($porcentaje == 100) {
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -353,6 +356,7 @@ if ($porcentaje == 100) {
   <script src="js/front/file-upload-edit.js"></script>
 
   <script src="js/front/deleteImage.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
 
   <script> 

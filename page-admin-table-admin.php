@@ -104,7 +104,8 @@
       <!-- End of Main Content -->
 
       <!-- Modal CREAR ADMIN-->
-      <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin" aria-hidden="true">
+      <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -116,73 +117,81 @@
             <form id="crearAdmin" method="POST" class="user needs-validation" novalidate>
 
               <div class="modal-body">
-                <div class="alert alert-success" role="alert" id="exitoCrear" style="display: none;"></div>
+                <div class="px-4 py-2">
+                  <div class="alert alert-success" role="alert" id="exitoCrear" style="display: none;"></div>
 
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <label class="pl-2"><small>Nombre</small></label><br>
-                    <input type="text" id="nombre" name="nombre" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" required>
-                    <div class="invalid-feedback">
-                      Este campo debe tener al menos 2 caracteres.
+                  <div class="form-group row">
+                    <div class="col-sm-6">
+                      <label class="pl-2"><small>Nombre</small></label><br>
+                      <input type="text" id="nombre" name="nombre" class="form-control form-control-user"
+                        placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
+                        required>
+                      <div class="invalid-feedback">
+                        Este campo debe tener al menos 2 caracteres.
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="pl-2"><small>Nombre de ususario</small></label><br>
+                      <input type="text" id="username" name="username" class="form-control form-control-user"
+                        placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip" data-placement="top"
+                        title="Nombre de usuario" required>
+                      <div class="invalid-feedback">
+                        Este campo debe tener al menos 4 caracteres.
+                      </div>
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <label class="pl-2"><small>Nombre de ususario</small></label><br>
-                    <input type="text" id="username" name="username" class="form-control form-control-user" placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip" data-placement="top" title="Nombre de usuario" required>
+                  <div class="form-group">
+                    <label class="pl-2"><small>Contraseña</small></label><br>
+                    <div class="input-group">
+                      <input type="password" id="contrasena" name="contrasena" minlength="4"
+                        class="form-control form-control-user" placeholder="Contraseña" required>
+                      <div class="input-group-append">
+                        <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                          <i id="showpass" class="fas fa-eye-slash"></i>
+                        </a>
+                      </div>
+                    </div>
                     <div class="invalid-feedback">
                       Este campo debe tener al menos 4 caracteres.
                     </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label class="pl-2"><small>Contraseña</small></label><br>
-                  <div class="input-group">
-                    <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" required>
-                    <div class="input-group-append">
-                      <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                        <i id="showpass" class="fas fa-eye-slash"></i>
-                      </a>
+                  <div class="form-group">
+                    <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                    <div class="input-group">
+                      <input type="password" id="contrasena2" name="contrasena2" minlength="4"
+                        class="form-control form-control-user" placeholder="Repetir contraseña" required>
+                      <div class="input-group-append">
+                        <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
+                          <i id="showpass2" class="fas fa-eye-slash"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="invalid-feedback">
+                      Este campo debe tener al menos 4 caracteres.
                     </div>
                   </div>
-                  <div class="invalid-feedback">
-                    Este campo debe tener al menos 4 caracteres.
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="pl-2"><small>Repetir contraseña</small></label><br>
-                  <div class="input-group">
-                    <input type="password" id="contrasena2" name="contrasena2" minlength="4" class="form-control form-control-user" placeholder="Repetir contraseña" required>
-                    <div class="input-group-append">
-                      <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
-                        <i id="showpass2" class="fas fa-eye-slash"></i>
-                      </a>
+
+                  <div class="form-group">
+                    <label class="pl-2"><small>Rol</small></label><br>
+                    <select id="rol_admin" name="rol_admin" class="form-control" required>
+                      <option value="1">Personal</option>
+                      <option value="2">Asistente</option>
+                      <option value="3">Administrador</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Seleccione una opción.
                     </div>
                   </div>
-                  <div class="invalid-feedback">
-                    Este campo debe tener al menos 4 caracteres.
-                  </div>
+
+                  <div class="alert alert-danger" role="alert" id="resultadoCrear" style="display: none;"></div>
+
                 </div>
 
-                <div class="form-group">
-                  <label class="pl-2"><small>Rol</small></label><br>
-                  <select id="rol_admin" name="rol_admin" class="form-control" required>
-                    <option value="1">Personal</option>
-                    <option value="2">Asistente</option>
-                    <option value="3">Administrador</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Seleccione una opción.
-                  </div>
-                </div>
-
-
-                <div class="alert alert-danger" role="alert" id="resultadoCrear" style="display: none;">
-                </div>
-                <br>
               </div>
               <div class="modal-footer">
                 <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
-                <label><button type="submit" id="registroAdmin" class="btn btn-primary text-white">Registrar</button></label>
+                <label><button type="submit" id="registroAdmin"
+                    class="btn btn-primary text-white">Registrar</button></label>
               </div>
 
             </form>
@@ -190,9 +199,11 @@
         </div>
       </div>
       <!-- /.Modal CREAR ADMIN-->
+
       <!-- /.Modal EDITAR ADMIN-->
 
-      <div class="modal fade" id="editarAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalEditarAdmin" aria-hidden="true">
+      <div class="modal fade" id="editarAdminModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalEditarAdmin" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -204,89 +215,98 @@
             <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
 
               <div class="modal-body">
-                <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
-                <input type="hidden" id="adminId" name="adminId" value="">
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <label class="pl-2"><small>Nombre</small></label><br>
-                    <input type="text" id="nombreEdit" name="nombreEdit" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" required>
-                    <div class="invalid-feedback">
-                      Este campo debe tener al menos 2 caracteres.
+                <div class="px-4 py-2">
+                  <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
+                  <input type="hidden" id="adminId" name="adminId" value="">
+                  <div class="form-group row">
+                    <div class="col-sm-12">
+                      <label class="pl-2"><small>Nombre</small></label><br>
+                      <input type="text" id="nombreEdit" name="nombreEdit" class="form-control form-control-user"
+                        placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
+                        required>
+                      <div class="invalid-feedback">
+                        Este campo debe tener al menos 2 caracteres.
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="form-group row pt-2">
-                      <div class="col-11">
-                        <label for="botonMostrarContrasena">
-                          <h5 class="text-gray-900 pl-2">Modificar Contraseña</h5>
+                  <div class="form-group row pt-2">
+                    <div class="col-11">
+                      <label for="botonMostrarContrasena">
+                        <h5 class="text-gray-900 pl-2">Modificar Contraseña</h5>
+                      </label>
+                    </div>
+                    <div class="col-1 text-center">
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="botonMostrarContrasena">
+                        <label class="custom-control-label" for="botonMostrarContrasena">
                         </label>
                       </div>
-                      <div class="col-1 text-center">
-                        <div class="custom-control custom-switch">
-                          <input type="checkbox" class="custom-control-input" id="botonMostrarContrasena">
-                          <label class="custom-control-label" for="botonMostrarContrasena">
-                          </label>
+                    </div>
+                  </div>
+                  <div id="contrasenaMostrar" style="display: none;">
+                    <div class="form-group">
+                      <label class="pl-2"><small>Contraseña</small></label><br>
+                      <div class="input-group">
+                        <input type="password" id="contrasenaEdit" name="contrasenaEdit" minlength="4"
+                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                          data-placement="top" title="Contraseña" value="">
+                        <div class="input-group-append">
+                          <a id="showEdit" onclick="mostrarContrasenaEdit()"
+                            class="btn btn-primary text-center align-middle">
+                            <i id="showpassEdit" class="fas fa-eye-slash"></i>
+                          </a>
                         </div>
+                      </div>
+                      <div class="invalid-feedback">
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
-                    <div id="contrasenaMostrar" style="display: none;">
-                      <div class="form-group">
-                        <label class="pl-2"><small>Contraseña</small></label><br>
-                        <div class="input-group">
-                          <input type="password" id="contrasenaEdit" name="contrasenaEdit" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="">
-                          <div class="input-group-append">
-                            <a id="show" onclick="mostrarContrasenaEdit()" class="btn btn-primary text-center align-middle">
-                              <i id="showpass" class="fas fa-eye-slash"></i>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
+                    <div class="form-group">
+                      <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                      <div class="input-group">
+                        <input type="password" id="contrasena2Edit" name="contrasena2Edit" minlength="4"
+                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                          data-placement="top" title="Repetir contraseña" value="">
+                        <div class="input-group-append">
+                          <a id="show2Edit" onclick="mostrarContrasenaEdit()"
+                            class="btn btn-primary text-center align-middle">
+                            <i id="showpass2Edit" class="fas fa-eye-slash"></i>
+                          </a>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="pl-2"><small>Repetir contraseña</small></label><br>
-                        <div class="input-group">
-                          <input type="password" id="contrasena2Edit" name="contrasena2Edit" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Repetir contraseña" value="">
-                          <div class="input-group-append">
-                            <a id="show2" onclick="mostrarContrasenaEdit()" class="btn btn-primary text-center align-middle">
-                              <i id="showpass2" class="fas fa-eye-slash"></i>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="invalid-feedback">
-                          Este campo debe tener al menos 4 caracteres.
-                        </div>
+                      <div class="invalid-feedback">
+                        Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
-
-                <div class="form-group">
-                  <label class="pl-2"><small>Rol</small></label><br>
-                  <select id="rol_adminEdit" name="rol_adminEdit" class="form-control" required>
-                    <option value="1">Personal</option>
-                    <option value="2">Asistente</option>
-                    <option value="3">Administrador</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Seleccione una opción.
                   </div>
-                </div>
 
-                <div class="form-group">
-
-                  <label class="pl-2"><small>Estado</small></label><br>
-                  <select id="estatus" name="estatus" class="form-control">
-                    <option value="1">Activo</option>
-                    <option value="0">Inactivo</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Seleccione una opción.
+                  <div class="form-group">
+                    <label class="pl-2"><small>Rol</small></label><br>
+                    <select id="rol_adminEdit" name="rol_adminEdit" class="form-control" required>
+                      <option value="1">Personal</option>
+                      <option value="2">Asistente</option>
+                      <option value="3">Administrador</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Seleccione una opción.
+                    </div>
                   </div>
-                </div>
 
-                <div class="alert alert-danger" role="alert" id="resultado" style="display: none;">
+                  <div class="form-group">
+
+                    <label class="pl-2"><small>Estado</small></label><br>
+                    <select id="estatus" name="estatus" class="form-control">
+                      <option value="1">Activo</option>
+                      <option value="0">Inactivo</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Seleccione una opción.
+                    </div>
+                  </div>
+
+                  <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
+
                 </div>
-                <br>
               </div>
               <div class="modal-footer">
                 <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
@@ -318,8 +338,11 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require_once('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -345,6 +368,7 @@
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
   <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
   <script type="text/javascript">
     function mostrarPassword() {
@@ -368,11 +392,11 @@
       if (pass.type == "password") {
         pass.type = "text";
         pass2.type = "text";
-        $('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+        $('i#showpassEdit,i#showpass2Edit').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
       } else {
         pass.type = "password";
         pass2.type = "password";
-        $('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+        $('i#showpassEdit,i#showpass2Edit').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
       }
     }
   </script>
@@ -380,19 +404,19 @@
   <script>
     var editor;
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
 
       tablaInicio();
 
-      $(document).on('click', '#btnCrearAdmin', function() {
+      $(document).on('click', '#btnCrearAdmin', function () {
         $('#crearAdminModal').modal('toggle');
       });
     });
   </script>
 
   <script>
-    var tablaInicio = function() {
+    var tablaInicio = function () {
       var table = $('#adminTable').DataTable({
         "destroy": true,
         "ajax": {
@@ -404,8 +428,8 @@
           details: {
             type: 'column',
             target: 'tr',
-            renderer: function(api, rowIdx, columns) {
-              var data = $.map(columns, function(col, i) {
+            renderer: function (api, rowIdx, columns) {
+              var data = $.map(columns, function (col, i) {
                 return col.hidden ?
                   '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                   '<td>' + col.title + ':' + '</td> ' +
@@ -456,13 +480,13 @@
         ],
         "language": idioma
       });
-      new $.fn.dataTable.FixedHeader( table );
+      new $.fn.dataTable.FixedHeader(table);
 
       obtener_data_editar("#adminTable tbody", table);
     };
 
-    var obtener_data_editar = function(tbody, table) {
-      $(tbody).on("click", "#btnEditar", function() {
+    var obtener_data_editar = function (tbody, table) {
+      $(tbody).on("click", "#btnEditar", function () {
         $('#editarAdminModal').modal('toggle');
         var data = table.row($(this).parents("tr")).data();
         var idAdmin = $("#adminId").val(data.id_admin);
@@ -476,56 +500,58 @@
       });
     };
 
-/// AJAX-------------------------------------------------------------------------
+    /// AJAX-------------------------------------------------------------------------
     $('#passEditForm')[0].addEventListener('submit', function (event) {
-        if ($('#passEditForm')[0].checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            ejecutarAjaxLog(event);
-        }
-        $('#passEditForm')[0].classList.add('was-validated');
+      if ($('#passEditForm')[0].checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        ejecutarAjaxLog(event);
+      }
+      $('#passEditForm')[0].classList.add('was-validated');
     }, false);
 
-// ----------------- /Form Validation -------------------
+    // ----------------- /Form Validation -------------------
 
 
 
-    function ejecutarAjaxLog(event){
+    function ejecutarAjaxLog(event) {
 
-        var formData = new FormData(document.getElementById("passEditForm"));
+      var formData = new FormData(document.getElementById("passEditForm"));
 
 
-        $.ajax({
-            type: 'POST',
-            url : './back/admin/editAdmin.php',
-            data :formData,
-            encode: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            dataType : 'json',
+      $.ajax({
+          type: 'POST',
+          url: './back/admin/editAdmin.php',
+          data: formData,
+          encode: true,
+          cache: false,
+          contentType: false,
+          processData: false,
+          dataType: 'json',
 
         })
-        .done(function(datosRecibidos){
-            if(!datosRecibidos.exito){
-                $('#exito').hide();
+        .done(function (datosRecibidos) {
+          if (!datosRecibidos.exito) {
+            $('#exito').hide();
 
-                $('#resultado').show();
-                $('#resultado').text(datosRecibidos.message);
+            $('#resultado').show();
+            $('#resultado').text(datosRecibidos.message);
 
-            }else{
-                $('#resultado').hide();
+          } else {
+            $('#resultado').hide();
 
-                $('#exito').show();
-                $('#exito').text(datosRecibidos.message);
-                $('html, body').animate( { scrollTop : 0 }, 800 );
-                tablaInicio();
-            }
-            
+            $('#exito').show();
+            $('#exito').text(datosRecibidos.message);
+            $('html, body').animate({
+              scrollTop: 0
+            }, 800);
+            tablaInicio();
+          }
+
         });
 
-        event.preventDefault();
+      event.preventDefault();
     };
     //_--------------------------------AJAXX FINAL
 
@@ -552,7 +578,7 @@
   </script>
 
   <script type="text/javascript">
-    $("#botonMostrarContrasena").click(function() {
+    $("#botonMostrarContrasena").click(function () {
       if ($("#botonMostrarContrasena").is(':checked')) {
         $('#contrasenaMostrar').show();
         $('#contrasena').val('');
@@ -568,81 +594,80 @@
   </script>
 
 
-  <script >
+  <script>
+    $('#contrasena2').keyup(function () {
+      var contrasena2 = $('#contrasena2').val();
+      var contrasena = $('#contrasena').val();
+      if (contrasena2 == contrasena) {
+        $('#registroAdmin').prop("disabled", false);
+        $('#resultadoCrear').hide();
 
-$('#contrasena2').keyup(function(){
-            var contrasena2= $('#contrasena2').val();
-            var contrasena= $('#contrasena').val();
-            if (contrasena2==contrasena){
-                $('#registroAdmin').prop( "disabled", false);
-                $('#resultadoCrear').hide();
-
-            }else{
-                $('#registroAdmin').prop( "disabled", true);
-                $('#resultadoCrear').show();
-                $('#resultadoCrear').text('Las contraseñas deben coincidir');
-            }
-        });
-
-        $('#contrasena').keyup(function(){
-            var contrasena2= $('#contrasena2').val();
-            var contrasena= $('#contrasena').val();
-            if (contrasena2==contrasena){
-                $('#registroAdmin').prop( "disabled", false);
-                $('#resultadoCrear').hide();
-
-            }else{
-                $('#registroAdmin').prop( "disabled", true);
-                $('#resultadoCrear').show();
-                $('#resultadoCrear').text('Las contraseñas deben coincidir');
-            }
-        });
-        
-        $('#crearAdmin')[0].addEventListener('submit', function (event) {
-            if ($('#crearAdmin')[0].checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            } else {
-                ejecutarAjaxCrear(event);
-            }
-            $('#crearAdmin')[0].classList.add('was-validated');
-        }, false);
-    
-        // ----------------- /Form Validation -------------------
-    
-    
-    function ejecutarAjaxCrear(event){
-    
-        var formData = new FormData(document.getElementById("crearAdmin"));
-
-        $.ajax({
-            type: 'POST',
-            url: './back/admin/crearAdmin.php',
-            data: formData,
-            encode: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            dataType: 'json',
-        })
-        .done(function(datosRecibidos){
-            if(datosRecibidos.exito){
-                $('#resultadoCrear').hide();
-                $('#exitoCrear').show();
-                $('#exitoCrear').text(datosRecibidos.message);
-                tablaInicio();
-
-            }else{
-                $('#exitoCrear').hide();
-                $('#resultadoCrear').show();
-                $('#resultadoCrear').text(datosRecibidos.message);
-                tablaInicio();
-            };
+      } else {
+        $('#registroAdmin').prop("disabled", true);
+        $('#resultadoCrear').show();
+        $('#resultadoCrear').text('Las contraseñas deben coincidir');
+      }
     });
-    event.preventDefault();
 
-};
-     </script>
+    $('#contrasena').keyup(function () {
+      var contrasena2 = $('#contrasena2').val();
+      var contrasena = $('#contrasena').val();
+      if (contrasena2 == contrasena) {
+        $('#registroAdmin').prop("disabled", false);
+        $('#resultadoCrear').hide();
+
+      } else {
+        $('#registroAdmin').prop("disabled", true);
+        $('#resultadoCrear').show();
+        $('#resultadoCrear').text('Las contraseñas deben coincidir');
+      }
+    });
+
+    $('#crearAdmin')[0].addEventListener('submit', function (event) {
+      if ($('#crearAdmin')[0].checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        ejecutarAjaxCrear(event);
+      }
+      $('#crearAdmin')[0].classList.add('was-validated');
+    }, false);
+
+    // ----------------- /Form Validation -------------------
+
+
+    function ejecutarAjaxCrear(event) {
+
+      var formData = new FormData(document.getElementById("crearAdmin"));
+
+      $.ajax({
+          type: 'POST',
+          url: './back/admin/crearAdmin.php',
+          data: formData,
+          encode: true,
+          cache: false,
+          contentType: false,
+          processData: false,
+          dataType: 'json',
+        })
+        .done(function (datosRecibidos) {
+          if (datosRecibidos.exito) {
+            $('#resultadoCrear').hide();
+            $('#exitoCrear').show();
+            $('#exitoCrear').text(datosRecibidos.message);
+            tablaInicio();
+
+          } else {
+            $('#exitoCrear').hide();
+            $('#resultadoCrear').show();
+            $('#resultadoCrear').text(datosRecibidos.message);
+            tablaInicio();
+          };
+        });
+      event.preventDefault();
+
+    };
+  </script>
 
 </body>
 

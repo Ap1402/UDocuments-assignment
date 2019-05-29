@@ -99,8 +99,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       </div>
                     </div>
 
-                    <div class="form-group">
-                      <label class="pl-2"><small>Contraseña</small></label><br>
+                    <div class="form-group row">
+                      <div class="col-sm-12 col-md-6">
+                        <label class="pl-2"><small>Contraseña</small></label><br>
                       <div class="input-group">
                         <input type="password" id="contrasena" name="contrasena" minlength="4"
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
@@ -114,9 +115,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                       <div class="invalid-feedback">
                         Este campo debe tener al menos 4 caracteres.
                       </div>
-                    </div>
+                      </div>
 
-                     <div class="form-group">
+                      <div class="col-sm-12 col-md-6">
                        <label class="pl-2"><small>Repetir contraseña</small></label><br>
                       <div class="input-group">
                         <input type="password" id="contrasena2" name="contrasena2" minlength="4"
@@ -133,6 +134,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
                         Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
+                    </div>
+
+                     
 
                     <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
 
@@ -174,6 +178,9 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
   <!-- Logout Modal-->
   <?php require 'front/general/modal-logout.php';?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -184,6 +191,7 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
 
  <script type="text/javascript">

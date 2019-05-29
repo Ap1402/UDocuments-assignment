@@ -262,8 +262,11 @@ if ($porcentaje == 100) {
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -278,6 +281,7 @@ if ($porcentaje == 100) {
   <script src="js/lightbox-plus-jquery.js"></script>
 
   <script src="js/front/file-upload.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
   <!-- script de select-option esta en js/front/file-upload.js  -->
 

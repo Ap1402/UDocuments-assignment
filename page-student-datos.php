@@ -97,6 +97,9 @@
   <!-- Logout Modal-->
   <?php require 'front/general/modal-logout.php';?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -110,6 +113,7 @@
 
   <!-- Page level custom scripts -->
   <script src="scripts/datos.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
   <script>
     $(document).ready(function () {
@@ -253,7 +257,7 @@
       x[currentTab].style.display = "block";
 
       if (currentTab > 0) $("#prevBtn").show();
-      
+
       y[0].className = y[0].className.replace("tab", "tabignore");
       document.getElementById("nextBtn").innerHTML = "Siguiente";
       $("#stepcircle").show();

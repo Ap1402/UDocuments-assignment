@@ -84,21 +84,27 @@
               <div class="card-body">
                 <div class="p-4">
                   <form id="passEditForm" method="POST" class="user needs-validation" novalidate>
-                    <div class="alert alert-success" role="alert" id="exito" style="display:none;"></div>
-                    <input id="ida" name="ida" value="<?php echo $id ?>" hidden>
+                    <div class="alert alert-success" role="alert" id="exito" style="display: none"></div>
+   <?php if(isset($_GET['ida'])) { ?>
+                  <input id="ida" name="ida" value="<?php echo $_GET['ida'] ?>" hidden>
+                  <?php }?>
                     <div class="form-group">
                       <label class="pl-2"><small>Correo</small></label><br>
-                      <input type="email" id="correo" name="correo" class="form-control form-control-user" placeholder="Correo" data-toggle="tooltip" data-placement="top" title="Correo" value="<?php echo $correo ?>" <?php echo ($rol >= 1 || $verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
+                      <input type="email" id="correo" name="correo" class="form-control form-control-user"
+                        placeholder="Correo" data-toggle="tooltip" data-placement="top" title="Correo"
+                        value="<?php echo $correo ?>" required>
                       <div class="invalid-feedback">
                         Por favor introduzca un correo válido.
                       </div>
                     </div>
 
-
-                    <div class="form-group">
-                      <label class="pl-2"><small>Contraseña</small></label><br>
+                    <div class="form-group row">
+                      <div class="col-sm-12 col-md-6">
+                        <label class="pl-2"><small>Contraseña</small></label><br>
                       <div class="input-group">
-                        <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="" <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                        <input type="password" id="contrasena" name="contrasena" minlength="4"
+                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
+                          data-placement="top" title="Contraseña" value="">
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass" class="fas fa-eye-slash"></i>
@@ -108,12 +114,15 @@
                       <div class="invalid-feedback">
                         Este campo debe tener al menos 4 caracteres.
                       </div>
-                    </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label class="pl-2"><small>Repetir contraseña</small></label><br>
+                      <div class="col-sm-12 col-md-6">
+                       <label class="pl-2"><small>Repetir contraseña</small></label><br>
                       <div class="input-group">
-                        <input type="password" id="contrasena2" name="contrasena2" minlength="4" class="form-control form-control-user" placeholder="Repetir contraseña" data-toggle="tooltip" data-placement="top" title="Repetir contraseña" value="" <?php echo ($rol >= 1 || $verificar_check == 0) ? '' : 'readonly disabled' ?>>
+                        <input type="password" id="contrasena2" name="contrasena2" minlength="4"
+                          class="form-control form-control-user" placeholder="Repetir contraseña" data-toggle="tooltip"
+                          data-placement="top" title="Repetir contraseña" value=""
+                          >
                         <div class="input-group-append">
                           <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                             <i id="showpass2" class="fas fa-eye-slash"></i>
@@ -124,8 +133,12 @@
                         Este campo debe tener al menos 4 caracteres.
                       </div>
                     </div>
-                    <div class="alert alert-danger" role="alert" id="resultado" style="display:none;">
                     </div>
+
+                     
+
+                    <div class="alert alert-danger" role="alert" id="resultado" style="display: none;"></div>
+
                     <br>
 
                     <button id="editPass" type="submit" class="btn btn-primary btn-user btn-block">
@@ -164,6 +177,9 @@
   <!-- Logout Modal-->
   <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -174,6 +190,7 @@
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
 
   <script type="text/javascript">

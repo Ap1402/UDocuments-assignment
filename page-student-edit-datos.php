@@ -204,8 +204,11 @@ $nac_postal=$datosDirecc['postal_hab'];
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
+  <!-- Edit Admin Self Modal-->
+  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -217,6 +220,7 @@ $nac_postal=$datosDirecc['postal_hab'];
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
   <!-- Page level custom scripts -->
       <!-- Formulario STEPS -->
@@ -331,7 +335,7 @@ $nac_postal=$datosDirecc['postal_hab'];
             $("#stepcircle").hide();
             $('#ver-todo').hide();
             $('#ver-secciones').show();
-            
+
             e.preventDefault();
           });
 
