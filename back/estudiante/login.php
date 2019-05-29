@@ -29,7 +29,7 @@ if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
         $_SESSION['datosLlenados'] = 1;
     }
 
-    return print_r(json_encode(['message' => 'Datos correctos', 'exito' => TRUE]));
+    return print_r(json_encode(['message' => 'Datos correctos', 'exito' => TRUE, 'datosLlenados' => $_SESSION['datosLlenados']]));
 } else {
-    return print_r(json_encode(['message' => 'Usuario o contraseña incorrecto', 'exito' => FALSE]));
+    return print_r(json_encode(['message' => 'Usuario o contraseña incorrecto', 'exito' => FALSE, 'datosLlenados' => $_SESSION['datosLlenados']]));
 }

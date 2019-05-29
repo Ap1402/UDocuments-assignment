@@ -316,12 +316,12 @@ $nac_postal=$datosDirecc['postal_hab'];
           $('#ver-todo').on('click', function (e) {
             var i, x = $(".tab"),
               y = $(".tabignore");
-            console.log(x);
-            console.log(x.length);
+            
             for (i = 0; i < x.length; i++) {
               x[i].style.display = "block";
               x[i].className = x[i].className.replace("tab", "tabignore");
             }
+
             currentTabAux = currentTab;
             currentTab = 0;
             y[0].className = y[0].className.replace("tabignore", "tab");
@@ -331,26 +331,30 @@ $nac_postal=$datosDirecc['postal_hab'];
             $("#stepcircle").hide();
             $('#ver-todo').hide();
             $('#ver-secciones').show();
+            
             e.preventDefault();
           });
 
           $('#ver-secciones').on('click', function (e) {
             var i, x = $(".tabignore"),
               y = $(".tab");
-            console.log(x);
-            console.log(x.length);
+        
             for (i = 0; i < x.length; i++) {
               x[i].style.display = "none";
               x[i].className = x[i].className.replace("tabignore", "tab");
             }
+
             currentTab = currentTabAux;
             x[currentTab].style.display = "block";
-            if (currentTab > 0) $("#prevBtn").show();;
+
+            if (currentTab > 0) $("#prevBtn").show();
+
             y[0].className = y[0].className.replace("tab", "tabignore");
             document.getElementById("nextBtn").innerHTML = "Siguiente";
             $("#stepcircle").show();
             $('#ver-todo').show();
             $('#ver-secciones').hide();
+
             e.preventDefault();
           });
 
