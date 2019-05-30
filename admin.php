@@ -82,10 +82,10 @@
                             <i id="showpass" class="fas fa-eye-slash"></i>
                           </a>
                         </div>
-                      </div>
-                      <div class="invalid-feedback">
+                        <div class="invalid-feedback">
                         Este campo debe tener al menos 4 caracteres.
                       </div>
+                      </div>                      
                     </div>
 
                     <div class="alert alert-danger" role="alert" id="resultadoLogAdmin" style="display: none;"></div>
