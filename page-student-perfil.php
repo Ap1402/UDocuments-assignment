@@ -1045,22 +1045,25 @@
           <!-- /.Perfil alumno -->
 
           </div>
-        <!-- /.Contenido Variable - Todo lo demas es fijo -->
-        <!-- /.container-fluid -->
+        
 
         </div>
+        <!-- /.Contenido Variable - Todo lo demas es fijo -->
+        <!-- /.container-fluid -->    
+
+      </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
       <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
-      </div>
-    <!-- End of Content Wrapper -->
-
     </div>
-  <!-- End of Page Wrapper -->
+  <!-- End of Content Wrapper -->
+
   </div>
+<!-- End of Page Wrapper -->  
+
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -1082,17 +1085,44 @@
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
+  
   <script src="vendor/chart.js/Chart.min.js"></script>
-  <script src="js/lightbox-plus-jquery.js"></script>
+  <script src="js/lightbox-plus-jquery.js"></script> 
   <script src="scripts/editAdminPassSelf.js"></script>
+
+  <script>
+// ---------------------- Evitando conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Evitando conflictos con lightbox
+</script>
 
   <script>
   var arrayDataPendientes= <?=json_encode($array_pendientes)?>;
   </script>
 
-
   <script src="js/demo/chart-pie-docs.js"></script>
-
+  
   
 
   <?php if ($rol == 0) { ?>

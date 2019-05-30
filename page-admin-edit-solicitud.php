@@ -238,10 +238,35 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/front/table.js"></script>
-  <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
-  <!-- End of Edit Admin Self Modal-->
+  
 <script src="scripts/editAdminPassSelf.js"></script>
+
+<script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Sin conflictos con lightbox
+</script>
 
 <script>
     $(document).ready(function () {      

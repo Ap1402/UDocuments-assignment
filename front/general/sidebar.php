@@ -212,8 +212,7 @@ if ($rol > 0 && isset($_GET['ida'])) {
           <a class="collapse-item" href="page-admin-student-edit-solicitud.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Solicitud</a>
           <?php } ?>
           <?php if ($_SESSION['editar_correoContra_alumno'] == 1) { ?>
-          <a class="collapse-item" href="page-admin-student-edit-pass.php?ida=<?= $ida . '&ci=' . $ci . '&idd=' . $idd ?>">Correo /
-            Contraseña</a>
+          <a id="btnEditarBoth2" class="collapse-item" href="#">Correo / Contraseña</a>
             <?php } ?>
 
         </div>
@@ -329,7 +328,7 @@ if ($rol > 0 && isset($_GET['ida'])) {
             <a class="collapse-item" href="page-student-edit-datos.php">Datos</a>
             <a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>
             <a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>
-            <a class="collapse-item" href="page-student-edit-pass.php">Correo / Contraseña</a>
+            <a id="btnEditarBoth3" class="collapse-item" href="#">Correo / Contraseña</a>
           </div>
         </div>
       </li>

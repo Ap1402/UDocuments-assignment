@@ -37,7 +37,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require('front/general/sidebar.php'); ?>
+    <?php require 'front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -339,7 +339,7 @@ if ($porcentaje == 100) {
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
   <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
@@ -365,6 +365,33 @@ if ($porcentaje == 100) {
 
   <script src="js/front/deleteImage.js"></script>
   <script src="scripts/editAdminPassSelf.js"></script>
+
+  <script>
+// ---------------------- Evitando conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Evitando conflictos con lightbox
+</script>
 
 
   <script> 

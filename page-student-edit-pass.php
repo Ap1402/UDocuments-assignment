@@ -193,6 +193,33 @@ $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
   <script src="js/sb-admin-2.js"></script>
   <script src="scripts/editAdminPassSelf.js"></script>
 
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Sin conflictos con lightbox
+</script>
+
 
  <script type="text/javascript">
 		function mostrarPassword() {

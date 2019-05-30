@@ -36,7 +36,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require('front/general/sidebar.php'); ?>
+    <?php require 'front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -282,6 +282,33 @@ if ($porcentaje == 100) {
 
   <script src="js/front/file-upload.js"></script>
   <script src="scripts/editAdminPassSelf.js"></script>
+
+  <script>
+// ---------------------- Evitando conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Evitando conflictos con lightbox
+</script>
 
   <!-- script de select-option esta en js/front/file-upload.js  -->
 

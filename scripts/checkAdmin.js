@@ -33,7 +33,7 @@ $(document).ready(function () {
             'check_solicitud': $("#check_solicitud").is(":checked"),
 
             'idDoc':$("#idDoc").val(),
-            'ida':$("#ida").val(),
+            'ida': $("#idaCheck").val(),
 
             'porcentaje':$("#porcentaje").val(),
             'tipoSolicitud':$("#tipoSolicitud").val(),

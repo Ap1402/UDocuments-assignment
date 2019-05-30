@@ -64,7 +64,7 @@
               <div class="card-body">
                 <div class="px-4 py-2">
                   <!-- Form Datos -->
-                  <?php require 'form-student-datos.php'; ?>
+                  <?php require 'form-student-datos.php';?>
                   <!-- End of Form Datos -->
                 </div>
               </div>
@@ -114,6 +114,33 @@
   <!-- Page level custom scripts -->
   <script src="scripts/datos.js"></script>
   <script src="scripts/editAdminPassSelf.js"></script>
+
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Sin conflictos con lightbox
+</script>
 
   <script>
     $(document).ready(function () {

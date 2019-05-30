@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Validar documentos </title>
-	<?php require('back/admin/restriccionAcceso.php');?>
+	<?php require 'back/admin/restriccionAcceso.php';?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -36,7 +36,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require('front/general/sidebar.php'); ?>
+    <?php require 'front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -205,7 +205,7 @@ $t_ciudad = $datosDirecc['ciudad_trabajo'];
 $nac_postal = $datosDirecc['postal_hab'];
 
 
-//----------------------------******************************=========== /.Datos **********************
+//---------------------********=========== /.Datos **********************
 
 
 ?>
@@ -699,10 +699,10 @@ if ($result_metodoing->num_rows > 0) {
 
           
           <br>
-          <input type="hidden" id="idDoc" value="<?php echo $idd?>">
-          <input type="hidden" id="tipoSolicitud" value="<?php echo $rowSolicitud['tipo']?>">
-          <input type="hidden" id="carrera" value="<?php echo $rowSolicitud['carrera'] ?>">
-          <input type="hidden" id="ida" value="<?php echo $ida ?>">
+          <input type="hidden" id="idDoc" name="idDoc" value="<?php echo $idd?>">
+          <input type="hidden" id="tipoSolicitud" name="tipoSolicitud" value="<?php echo $rowSolicitud['tipo']?>">
+          <input type="hidden" id="carrera" name="carrera" value="<?php echo $rowSolicitud['carrera'] ?>">
+          <input type="hidden" id="idaCheck" name="idaCheck" value="<?php echo $ida ?>">
 
           <div class="alert alert-info" role="alert" id="resultadoCheck" style="display: none"></div>
 
@@ -741,7 +741,7 @@ if ($result_metodoing->num_rows > 0) {
   </a>
 
   <!-- Logout Modal-->
-  <?php require('front/general/modal-logout.php'); ?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
   <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
@@ -758,9 +758,37 @@ if ($result_metodoing->num_rows > 0) {
   <script src="js/sb-admin-2.js"></script>
 
   <script src="js/lightbox-plus-jquery.js"></script>
-  <script src="scripts/editAdminPassSelf.js"></script>
+  
   <script src="scripts/editDatos.js"></script>
   <script src="scripts/checkAdmin.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
+
+<script>
+// ---------------------- Evitando conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Evitando conflictos con lightbox
+</script>
 
     <!-- Formulario STEPS -->
   <script>
@@ -859,12 +887,12 @@ if ($result_metodoing->num_rows > 0) {
     $('#ver-todo').on('click', function (e) {
       var i, x = $(".tab"),
         y = $(".tabignore");
-      console.log(x);
-      console.log(x.length);
+        
       for (i = 0; i < x.length; i++) {
         x[i].style.display = "block";
         x[i].className = x[i].className.replace("tab", "tabignore");
       }
+
       currentTabAux = currentTab;
       currentTab = 0;
       y[0].className = y[0].className.replace("tabignore", "tab");
@@ -874,26 +902,30 @@ if ($result_metodoing->num_rows > 0) {
       $("#stepcircle").hide();
       $('#ver-todo').hide();
       $('#ver-secciones').show();
+
       e.preventDefault();
     });
 
     $('#ver-secciones').on('click', function (e) {
       var i, x = $(".tabignore"),
         y = $(".tab");
-      console.log(x);
-      console.log(x.length);
+        
       for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
         x[i].className = x[i].className.replace("tabignore", "tab");
       }
+
       currentTab = currentTabAux;
       x[currentTab].style.display = "block";
-      if (currentTab > 0) $("#prevBtn").show();;
+
+      if (currentTab > 0) $("#prevBtn").show();
+
       y[0].className = y[0].className.replace("tab", "tabignore");
       document.getElementById("nextBtn").innerHTML = "Siguiente";
       $("#stepcircle").show();
       $('#ver-todo').show();
       $('#ver-secciones').hide();
+
       e.preventDefault();
     });
     

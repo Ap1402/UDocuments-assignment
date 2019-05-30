@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Tabla de Administradores </title>
-  <?php require('back/admin/restriccionAcceso.php'); ?>
+  <?php require 'back/admin/restriccionAcceso.php'; ?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -369,6 +369,33 @@
   <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
   <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
   <script src="scripts/editAdminPassSelf.js"></script>
+
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    $("#btnEditarBoth").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth2").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+    $("#btnEditarBoth3").on("click", function (e) {
+        e.preventDefault();
+        
+        $("#editarAlumnoBothModal").modal("toggle");
+    });
+});
+// ---------------------- /.Sin conflictos con lightbox
+</script>
 
   <script type="text/javascript">
     function mostrarPassword() {

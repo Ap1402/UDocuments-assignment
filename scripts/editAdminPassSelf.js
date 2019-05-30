@@ -1,8 +1,50 @@
-$(document).ready(function () {
+// ------------------- Funciones para Edit Admin Self
+function mostrarContrasenaEditSelf() {
+    var pass = document.getElementById("contrasenaEditSelf");
+    var pass2 = document.getElementById("contrasena2EditSelf");
+    if (pass.type == "password") {
+        pass.type = "text";
+        pass2.type = "text";
+        $('i#showpassSelf,i#showpass2Self').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+    } else {
+        pass.type = "password";
+        pass2.type = "password";
+        $('i#showpassSelf,i#showpass2Self').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+    }
+}
 
-    $('#btnEditarSelf').on("click", function () {
-        $('#editarAdminSelfModal').modal('toggle');
-    });
+$("#botonMostrarContrasenaEditSelf").click(function () {
+    if ($("#botonMostrarContrasenaEditSelf").is(':checked')) {
+        $('#contrasenaMostrarEditSelf').show();
+        $('#contrasenaEditSelf').val('');
+        $('#contrasena2EditSelf').val('');
+
+    } else {
+        $('#contrasenaMostrarEditSelf').hide();
+        $('#contrasenaEditSelf').val('');
+        $('#contrasena2EditSelf').val('');
+
+    }
+});
+// ------------------- /.Funciones para Edit Admin Self
+
+// ------------------- Funciones para Edit Alumno Both
+function mostrarContrasenaEditBoth() {
+    var pass = document.getElementById("contrasenaEditBoth");
+    var pass2 = document.getElementById("contrasena2EditBoth");
+    if (pass.type == "password") {
+        pass.type = "text";
+        pass2.type = "text";
+        $('i#showpassBoth,i#showpass2Both').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+    } else {
+        pass.type = "password";
+        pass2.type = "password";
+        $('i#showpassBoth,i#showpass2Both').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+    }
+}
+    // ------------------- /.Funciones para Edit Alumno Both
+
+$(document).ready(function () {
 
     // ------------------Ajax Edit Admin Self
 
@@ -40,20 +82,20 @@ $(document).ready(function () {
         })
             .done(function (datosRecibidos) {
                 if (!datosRecibidos.exito) {
-                    $('#exito').hide();
+                    $('#exitoAdminSelf').hide();
 
-                    $('#resultado').show();
-                    $('#resultado').text(datosRecibidos.message);
+                    $('#resultadoAdminSelf').show();
+                    $('#resultadoAdminSelf').text(datosRecibidos.message);
 
                 } else {
-                    $('#resultado').hide();
+                    $('#resultadoAdminSelf').hide();
 
-                    $('#exito').show();
-                    $('#exito').text(datosRecibidos.message);
+                    $('#exitoAdminSelf').show();
+                    $('#exitoAdminSelf').text(datosRecibidos.message);
                     $('html, body').animate({
                         scrollTop: 0
                     }, 800);
-                    tablaInicio();
+                    
                 }
 
             });
@@ -63,31 +105,62 @@ $(document).ready(function () {
     //----------------------- /.Ajax Edit Admin Self
 
 
-    function mostrarContrasenaEditSelf() {
-        var pass = document.getElementById("contrasenaEditSelf");
-        var pass2 = document.getElementById("contrasena2EditSelf");
-        if (pass.type == "password") {
-            pass.type = "text";
-            pass2.type = "text";
-            $('i#showpassSelf,i#showpass2Self').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+    // ------------------Ajax Edit Alumno Both
+
+    // ----------------- Form Validation -------------------
+
+    $('#passEditFormBoth')[0].addEventListener('submit', function (event) {
+        if ($('#passEditFormBoth')[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
         } else {
-            pass.type = "password";
-            pass2.type = "password";
-            $('i#showpassSelf,i#showpass2Self').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+            ejecutarAjaxPassEditFormBoth(event);
         }
-    }
+        $('#passEditFormBoth')[0].classList.add('was-validated');
+    }, false);
 
-    $("#botonMostrarContrasenaEditSelf").click(function () {
-        if ($("#botonMostrarContrasenaEditSelf").is(':checked')) {
-            $('#contrasenaMostrarEditSelf').show();
-            $('#contrasenaEditSelf').val('');
-            $('#contrasena2EditSelf').val('');
+    // ----------------- /.Form Validation -------------------
 
-        } else {
-            $('#contrasenaMostrarEditSelf').hide();
-            $('#contrasenaEditSelf').val('');
-            $('#contrasena2EditSelf').val('');
 
-        }
-    });
+
+    function ejecutarAjaxPassEditFormBoth(event) {
+
+        var formData = new FormData(document.getElementById("passEditFormBoth"));
+
+
+        $.ajax({
+            type: 'POST',
+            url: './back/estudiante/editAlumno.php',
+            data: formData,
+            encode: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+
+        })
+            .done(function (datosRecibidos) {
+                if (!datosRecibidos.exito) {
+                    $('#exitoAlumnoBoth').hide();
+
+                    $('#resultadoAlumnoBoth').show();
+                    $('#resultadoAlumnoBoth').text(datosRecibidos.message);
+
+                } else {
+                    $('#resultadoAlumnoBoth').hide();
+
+                    $('#exitoAlumnoBoth').show();
+                    $('#exitoAlumnoBoth').text(datosRecibidos.message);
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 800);
+                    
+                }
+
+            });
+
+        event.preventDefault();
+    };
+    //----------------------- /.Ajax Edit Alumno Both
+
 });

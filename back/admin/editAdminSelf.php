@@ -14,11 +14,14 @@ if (isset($_SESSION['id_admin']) && $_SESSION['id_admin'] == $_POST['adminIdSelf
         $contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
         $modificarUser = "UPDATE administradores SET contrasena='$contrasena', nombre='$nombre' WHERE id_admin='$id_admin'";
         $result = mysqli_query($conexion, $modificarUser);
+        $_SESSION['nombre'] = $nombre;
         return print_r(json_encode(['message' => 'Nombre y contraseña modificado correctamente', 'exito' => TRUE]));
     } else {
 
         $modificarUser = "UPDATE administradores SET  nombre='$nombre' WHERE id_admin='$id_admin'";
         $result = mysqli_query($conexion, $modificarUser);
+        $_SESSION['nombre'] = $nombre;
+
         return print_r(json_encode(['message' => 'Nombre modificado correctamente', 'exito' => TRUE]));
     }
 }else {

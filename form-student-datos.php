@@ -366,11 +366,11 @@
     </div>
 
     <?php if (isset($_GET['ci'])) {?>
-    <input id="ci" name="ci" value="<?php echo $_GET['ci'] ?>" hidden>
+    <input id="ciDatos" name="ciDatos" value="<?php echo $_GET['ci'] ?>" hidden>
     <?php }?>
 
     <?php if (isset($_GET['ida'])) {?>
-    <input id="ida" name="ida" value="<?php echo $_GET['ida'] ?>" hidden>
+    <input id="idaDatos" name="idaDatos" value="<?php echo $_GET['ida'] ?>" hidden>
     <?php }?>
 
   </div>
