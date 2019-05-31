@@ -290,7 +290,6 @@
             renderer: function(api, rowIdx, columns) {
               var data = $.map(columns, function(col, i) {
                 if (col.hidden) {
-
                   return '     ' +
                     '<td>' + col.title + ':' + '</td> ' +
                     '<td>' + col.data + '</td>';
