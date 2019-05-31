@@ -66,11 +66,11 @@
 
 
           <ul class="nav nav-tabs nav-justified" role="tablist">
+            <!-- <li class="nav-item">
+              <a class="nav-link font-weight-bolder" href="#solicitudesAlumno" role="tab" data-toggle="tab">Solicitudes</a>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link font-weight-bolder active" href="#solicitudesAlumno" role="tab" data-toggle="tab">Solicitudes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link font-weight-bolder" href="#carrerasAdmin" role="tab" data-toggle="tab">Carreras</a>
+              <a class="nav-link font-weight-bolder active" href="#carrerasAdmin" role="tab" data-toggle="tab">Carreras</a>
             </li>
             <li class="nav-item">
               <a class="nav-link font-weight-bolder" href="#metodosAdmin" role="tab" data-toggle="tab">Metodos de
@@ -79,7 +79,7 @@
           </ul>
           <!-- Tab panes -->
           <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade show active" id="solicitudesAlumno">
+            <div role="tabpanel" class="tab-pane fade" id="solicitudesAlumno">
               <!-- Tabla de Admin -->
               <div class="card shadow mb-2">
                 <div class="card-body">
@@ -111,7 +111,7 @@
               </div>
               <!-- /.Tabla de Admin -->
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="carrerasAdmin">
+            <div role="tabpanel" class="tab-pane fade show active" id="carrerasAdmin">
               <!-- Tabla de Admin -->
               <div class="card shadow mb-2">
                 <div class="card-body">
@@ -246,17 +246,12 @@
 
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/front/table.js"></script>
-  <script src="scripts/editAdminPassSelf.js"></script>
-
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
   <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
-
+  <script src="scripts/editAdminPassSelf.js"></script>
 
   <script>
     // ---------------------- Sin conflictos con lightbox
