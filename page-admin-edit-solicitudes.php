@@ -152,7 +152,6 @@
                 <table class="table table-bordered" id="dataMetodos" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th></th>
 
                       <th>#</th>
                       <th>Nombre de solicitud</th>
@@ -478,12 +477,7 @@
              }
            }
          },
-         "columns": [{
-             "class": "control",
-             "orderable": false,
-             "data": null,
-             "defaultContent": ""
-           },
+         "columns": [
            {
              "data": "tipo",
 
@@ -537,14 +531,7 @@
        });
        });
        
-       // On each draw, loop over the `detailRows` array and show any child rows
-       dt.on('draw', function () {
-         $.each(detailRows, function (i, id) {
-           console.log(detailRows);
 
-           $('#' + id + ' td.details-control').trigger('click');
-         });
-       });
        
        // On each draw, loop over the `detailRows` array and show any child rows
       dtc.on('draw', function() {
