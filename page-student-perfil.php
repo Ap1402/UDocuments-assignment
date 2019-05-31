@@ -187,8 +187,8 @@
                         <canvas id="myPieChart"></canvas>
                       </div>
                       <div class="mt-4 text-center small">
-                        <span class="mr-2">
-                          Documentos cargados
+                        <span class="mr-2 font-weight-bolder">
+                          Documentos
                         </span>
                         <br>
                         <span class="mr-2">
@@ -196,7 +196,7 @@
                         </span>
 
                         <span class="mr-2">
-                          <i class="fas fa-circle text-danger"></i> Faltantes
+                          <i class="fas fa-circle text-danger"></i> Pendientes
                         </span>
                       </div>
                     </div>

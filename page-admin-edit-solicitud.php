@@ -24,7 +24,6 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/table.css" rel="stylesheet">
   <link href="css/jquery.datatable.min.css" rel="stylesheet">
 
   <link href="css/responsive.dataTables.min.css" rel="stylesheet">
@@ -210,7 +209,7 @@
   <script>
     $(document).ready(function() {
 
-      var dt = $('#dataSolicitudes').DataTable({
+      var dts = $('#dataSolicitudes').DataTable({
 
         "ajax": {
           "method": "POST",
@@ -248,8 +247,7 @@
             "defaultContent": ""
           },
           {
-            "data": "cedula",
-
+            "data": "cedula"
           },
           {
             "data": "nombre"
@@ -258,57 +256,39 @@
             "data": "fechaCreacion"
           },
           {
-            "data": "estadoSolicitud",
-
+            "data": "estadoSolicitud"
           },
           {
             "data": "fechaAtencion",
             className: 'none'
-
           },
           {
             "data": "nombre_solicitud",
             className: 'none'
-
-
-
           },
           {
-            "data": "carreraNombre",
-
-
+            "data": "carreraNombre"
           },
           {
             "data": "turno",
-
-
           },
           {
             "data": "personalAtencion",
             className: 'none'
-
-
-
           },
           {
             "data": "irCheck",
             className: 'none'
-
-
-
           },
           {
             "data": "irPerfil",
             className: 'none'
-
-
           }
         ],
         "order": [
           [1, 'asc']
         ],
         "language": idioma
-
       });
 
 
@@ -337,7 +317,7 @@
 
       $('#dataSolicitudes tbody').on('click', 'tr td.control', function() {
         var tr = $(this).closest('tr');
-        var row = dt.row(tr);
+        var row = dts.row(tr);
         var idx = $.inArray(tr.attr('id'), detailRows);
 
         if (row.child.isShown()) {
@@ -355,7 +335,7 @@
       });
 
       // On each draw, loop over the `detailRows` array and show any child rows
-      dt.on('draw', function() {
+      dts.on('draw', function() {
         $.each(detailRows, function(i, id) {
           console.log(detailRows);
 
@@ -406,7 +386,7 @@
           })
           .done(function(dataS) {
 
-            dt.ajax.reload(null, false);
+            dts.ajax.reload(null, false);
             $('#cambiosModal').modal('toggle');
           })
           .fail(function(err) {

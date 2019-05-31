@@ -32,9 +32,9 @@ if (mysqli_num_rows($result) == 0) {
 
         if ($data['estadoSolicitud'] == 0) {
 
-            $data['estadoSolicitud'] = '<small><a id="estadoSolicitud" class="toggle-modal" data-active="false" data-id="' . $data['id_solicitud'] . '" data-role="update" data-prueba="' . $data['id_alumno'] . '"><i class="fas fa-minus-circle text-secondary"></i> Pendiente</a></small>';
+            $data['estadoSolicitud'] = '<a id="estadoSolicitud" class="toggle-modal" data-active="false" data-id="' . $data['id_solicitud'] . '" data-role="update" data-prueba="' . $data['id_alumno'] . '"><i class="fas fa-minus-circle"></i> Pendiente</a>';
         } elseif ($data['estadoSolicitud'] == 1) {
-            $data['estadoSolicitud'] = '<small><a id="estadoSolicitud" class="toggle-modal" data-active="true" data-id="' . $data['id_solicitud'] . '" data-role="update" data-prueba="' . $data['id_alumno'] . '"><i class="fas fa-check-circle text-success"></i> Pendiente</a></small>';
+            $data['estadoSolicitud'] = '<a id="estadoSolicitud" class="toggle-modal" data-active="true" data-id="' . $data['id_solicitud'] . '" data-role="update" data-prueba="' . $data['id_alumno'] . '"><i class="fas fa-check-circle"></i> Atendida</a>';
         }
 
         $data["irCheck"] = '<a href="page-admin-check.php?idd=' . $data['documento'] . '&ida=' . $data['id_alumno'] . '&ci=' . $data['cedula'] . '&mi=' . $data['tipo'] . '"><i class="fas fa-clipboard-list"></i></a>';

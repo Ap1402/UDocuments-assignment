@@ -25,7 +25,6 @@
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/table.css" rel="stylesheet">
   <link href="css/jquery.datatable.min.css" rel="stylesheet">
 
   <link href="css/responsive.dataTables.min.css" rel="stylesheet">
@@ -132,11 +131,11 @@
 
                             <?php if ($row['activa'] == 0) { ?>
 
-                              <small><a id="activa" class="toggle-modal" data-active="false" data-id="<?= $row['tipo'] ?>" data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivada</a></small>
+                              <small><a id="activa" class="toggle-modal" data-active="false" data-id="<?= $row['tipo'] ?>" data-role="update"><i class="fas fa-minus-circle"></i> Desactivada</a></small>
 
                             <?php } elseif ($row['activa'] == 1) { ?>
 
-                              <small><a id="activa" class="toggle-modal" data-active="true" data-id="<?= $row['tipo'] ?>" data-role="update"><i class="fas fa-check-circle text-success"></i> Activa</a></small>
+                              <small><a id="activa" class="toggle-modal" data-active="true" data-id="<?= $row['tipo'] ?>" data-role="update"><i class="fas fa-check-circle"></i> Activa</a></small>
 
                             <?php } ?>
 
@@ -191,8 +190,6 @@
           </div>
         </div>
       </div>
-
-
       <!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
@@ -274,7 +271,7 @@
   <script>
     $(document).ready(function() {
 
-      var dt = $('#dataCarreras').DataTable({
+      var dtc = $('#dataCarreras').DataTable({
 
         "ajax": {
           "method": "POST",
@@ -370,7 +367,7 @@
 
       $('#dataCarreras tbody').on('click', 'tr td.control', function() {
         var tr = $(this).closest('tr');
-        var row = dt.row(tr);
+        var row = dtc.row(tr);
         var idx = $.inArray(tr.attr('id'), detailRows);
 
         if (row.child.isShown()) {
@@ -388,7 +385,7 @@
       });
 
       // On each draw, loop over the `detailRows` array and show any child rows
-      dt.on('draw', function() {
+      dtc.on('draw', function() {
         $.each(detailRows, function(i, id) {
           console.log(detailRows);
 
@@ -442,7 +439,7 @@
           })
           .done(function(data) {
 
-            dt.ajax.reload(null, false);
+            dtc.ajax.reload(null, false);
             // user paging is not reset on reload
 
             $('#cambiosModal').modal('toggle');
@@ -474,11 +471,11 @@
             if (datosRecibidosS.estado == 0) {
               $('#solicitud-' + codigo + ' #' + elemento).attr('data-active', 'false');
               $('#solicitud-' + codigo + ' #' + elemento).html(
-                '<i class="fas fa-minus-circle text-secondary"></i> Desactivo</a>');
+                '<i class="fas fa-minus-circle"></i> Desactivo</a>');
             } else if (datosRecibidosS.estado == 1) {
               $('#solicitud-' + codigo + ' #' + elemento).attr('data-active', 'true');
               $('#solicitud-' + codigo + ' #' + elemento).html(
-                '<i class="fas fa-check-circle text-success"></i> Activo</a>');
+                '<i class="fas fa-check-circle"></i> Activo</a>');
             }
             $('#cambiosModal').modal('toggle');
           })

@@ -253,7 +253,7 @@ if ($rol > 0 && isset($_GET['ida'])) {
     <?php if ($_SESSION['metodos_ingreso'] == 1) { ?>
 
       <li class="nav-item">
-        <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitudes.php">
+        <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitud.php">
           <i class="fas fa-vote-yea"></i>
           <span>Editar solicitudes</span></a>
       </li>
@@ -263,9 +263,9 @@ if ($rol > 0 && isset($_GET['ida'])) {
     <?php if ($_SESSION['edicion_carreras'] == 1) { ?>
 
       <li class="nav-item">
-        <a id="sdEditCarAdmin" class="nav-link" href="page-admin-edit-carrera.php">
+        <a id="sdEditCarAdmin" class="nav-link" href="page-admin-edit-solicitudes.php">
           <i class="fas fa-list-alt"></i>
-          <span>Editar carreras</span></a>
+          <span>Herramientas admin</span></a>
       </li>
     <?php } ?>
     <!-- Divider -->
