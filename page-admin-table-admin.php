@@ -113,7 +113,7 @@
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <form id="crearAdmin" method="POST" class="user needs-validation" novalidate>
+            <form  id="crearAdmin" method="POST" class="user needs-validation" novalidate>
 
               <div class="modal-body">
                 <div class="px-4 py-2">
@@ -138,7 +138,7 @@
                   <div class="form-group">
                     <label class="pl-2"><small>Contraseña</small></label><br>
                     <div class="input-group">
-                      <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" required>
+                      <input autocomplete="new-password"  type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" required>
                       <div class="input-group-append">
                         <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                           <i id="showpass" class="fas fa-eye-slash"></i>
