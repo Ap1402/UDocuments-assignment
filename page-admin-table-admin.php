@@ -251,7 +251,7 @@
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
                           data-placement="top" title="Contraseña" value="">
                         <div class="input-group-append">
-                          <a id="showEdit" onclick="mostrarContrasenaEdit()"
+                          <a id="show" onclick="mostrarContrasenaEdit()"
                             class="btn btn-primary text-center align-middle">
                             <i id="showpassEdit" class="fas fa-eye-slash"></i>
                           </a>
@@ -268,7 +268,7 @@
                           class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
                           data-placement="top" title="Repetir contraseña" value="">
                         <div class="input-group-append">
-                          <a id="show2Edit" onclick="mostrarContrasenaEdit()"
+                          <a id="show2" onclick="mostrarContrasenaEdit()"
                             class="btn btn-primary text-center align-middle">
                             <i id="showpass2Edit" class="fas fa-eye-slash"></i>
                           </a>

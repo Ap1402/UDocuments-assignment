@@ -20,7 +20,11 @@
 }
 
 #sidebar-brand-header {
- background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.157)) !important;
+ background: rgba(255, 255, 255, 0) !important;
+}
+
+#dropdownMenuButton {
+  padding: .2rem .5rem !important;
 }
 
 
@@ -136,6 +140,12 @@ select {
   /* Hide all steps by default: */
   .tab {
    display: none;
+   transition: all 1s;
+  }
+
+  .tabignore {
+    display: block;
+    transition: all 1s;
   }
 
   /* Make circles that indicate the steps of the form: */

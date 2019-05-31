@@ -19,7 +19,7 @@
   <link href="css/font.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
 
@@ -55,8 +55,7 @@
             <div id="page-login" class="row justify-content-center">
 
               <!-- Formulario Login -->
-              <div class="col-lg-3 d-none d-lg-block bg-login-image"></div>
-              <div class="col-sm-12 col-md-10 col-lg-9">
+              <div class="col-sm-12">
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Bienvenido</h1>

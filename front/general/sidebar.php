@@ -253,7 +253,7 @@ if ($rol > 0 && isset($_GET['ida'])) {
     <?php if ($_SESSION['metodos_ingreso'] == 1) { ?>
 
       <li class="nav-item">
-        <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitud.php">
+        <a id="sdEditSolAdmin" class="nav-link" href="page-admin-edit-solicitudes.php">
           <i class="fas fa-vote-yea"></i>
           <span>Editar solicitudes</span></a>
       </li>
