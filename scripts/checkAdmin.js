@@ -31,6 +31,8 @@ $(document).ready(function () {
             'check_metodo': $("#check_metodo").is(":checked"),
             'check_certificado_s': $("#check_certificado_s").is(":checked"),
             'check_solicitud': $("#check_solicitud").is(":checked"),
+            'check_datos': $("#check_datos").is(":checked"),
+
 
             'idDoc':$("#idDoc").val(),
             'ida': $("#idaCheck").val(),

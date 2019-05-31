@@ -129,6 +129,8 @@ $s_apellido = $datos['s_apellido'];
 $cedula = $datos['cedula'];
 $correo = $datos['correo'];
 $estado_civild = $datos['estado_civil'];
+$check_datos = $datos['check_datos'];
+
 
 switch ($estado_civild) {
     case 1:
@@ -165,7 +167,6 @@ $i_codigo = $datos['codigoInst'];
 $i_estado = $datos['estadoInst'];
 $tipo_inst = $datos['tipoInst'];
 $discapacidad = $datos['discapacidad'];
-$check_datos = $datos['check_datos'];
 
 
 switch ($tipo_inst) {

@@ -13,6 +13,8 @@ $check_notas = ($_POST['check_notas'] == 'true') ? 1 : 0;
 $check_partida = ($_POST['check_partida'] == 'true') ? 1 : 0;
 $check_rusnies = ($_POST['check_rusnies'] == 'true') ? 1 : 0;
 $check_metodo = ($_POST['check_metodo'] == 'true') ? 1 : 0;
+$check_datos = ($_POST['check_datos'] == 'true') ? 1 : 0;
+
 $check_certificado_s = ($_POST['check_certificado_s'] == 'true') ? 1 : 0;
 
 $id_doc = $_POST['idDoc'];
@@ -55,9 +57,13 @@ $fecha = date("Y-m-d");
 $consulta = "UPDATE solicitudes SET estadoSolicitud=$estado, `personalAtencion`='$personalAtencion', fechaAtencion='$fecha' WHERE alumno=$ida";
 $resultado = mysqli_query($conexion, $consulta);
 
-$cambiarAlumno = "UPDATE alumnos t1, solicitudes t2 SET t1.carrera = t2.carrera, t1.metodo_ingreso=t2.tipo, t1.turno=t2.turno WHERE t2.alumno=t1.id_alumno AND t2.alumno=$ida;";
+$cambiarAlumno = "UPDATE alumnos t1, solicitudes t2 SET  t1.carrera = t2.carrera, t1.metodo_ingreso=t2.tipo, t1.turno=t2.turno WHERE t2.alumno=t1.id_alumno AND t2.alumno=$ida;";
 
 $resultado = mysqli_query($conexion, $cambiarAlumno);
+
+$cambiarAlumno = "UPDATE alumnos SET check_datos=$check_datos WHERE id_alumno=$ida;";
+$resultado = mysqli_query($conexion, $cambiarAlumno);
+
 
 if ($estado == 1) {
     print_r(json_encode(['message' => 'Archivos validados con éxito y solicitud marcada como atendida', 'exito' => TRUE]));
