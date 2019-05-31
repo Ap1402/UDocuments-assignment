@@ -14,11 +14,6 @@ $userBD = $datos['username'];
 $passwordBD = $datos['contrasena'];
 $cedula = $datos['cedula'];
 
-if ($datos['ultActualizacion'] == '0000-00-00') {
-        $_SESSION['datosLlenados'] = 0;
-    } else {
-        $_SESSION['datosLlenados'] = 1;
-    }
 
 if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
     session_start();
@@ -29,8 +24,14 @@ if ($username == $userBD and password_verify($contrasena, $passwordBD)) {
     $_SESSION['rol'] = 0;
     $_SESSION['docId'] = $datos['documento'];
     $_SESSION['correo'] = $datos['correo'];
-    
+
+    if ($datos['ultActualizacion'] == '0000-00-00') {
+        $_SESSION['datosLlenados'] = 0;
+    } else {
+        $_SESSION['datosLlenados'] = 1;
+    }
+
     return print_r(json_encode(['message' => 'Datos correctos', 'exito' => TRUE, 'datosLlenados' => $_SESSION['datosLlenados']]));
 } else {
-    return print_r(json_encode(['message' => 'Usuario o contraseña incorrecto', 'exito' => FALSE, 'datosLlenados' => $_SESSION['datosLlenados']]));
+    return print_r(json_encode(['message' => 'Usuario o contraseña incorrecto', 'exito' => FALSE, 'datosLlenados' => 0]));
 }
