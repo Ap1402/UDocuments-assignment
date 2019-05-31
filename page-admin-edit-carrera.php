@@ -289,11 +289,15 @@
             target: 'tr',
             renderer: function(api, rowIdx, columns) {
               var data = $.map(columns, function(col, i) {
-                return col.hidden ?
-                  '     ' +
-                  '<td>' + col.title + ':' + '</td> ' +
-                  '<td>' + col.data + '</td>' :
-                  '';
+                if (col.hidden) {
+
+                  return '     ' +
+                    '<td>' + col.title + ':' + '</td> ' +
+                    '<td>' + col.data + '</td>';
+
+                } else {
+                  return '';
+                }
               }).join('');
 
               return data ?
