@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Tabla de Solicitudes Alumno </title>
-  <?php require 'back/admin/restriccionAcceso.php';?>
+  <?php require 'back/admin/restriccionAcceso.php'; ?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -20,12 +20,16 @@
   <link href="css/font.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-
   <link href="css/sb-admin-2.css" rel="stylesheet">
   <link href="css/dash.css" rel="stylesheet">
 
   <link href="css/style.css" rel="stylesheet">
   <link href="css/table.css" rel="stylesheet">
+  <link href="css/jquery.datatable.min.css" rel="stylesheet">
+
+  <link href="css/responsive.dataTables.min.css" rel="stylesheet">
+  <link href="css/tableShow.css" rel="stylesheet">
+
 
 </head>
 
@@ -35,7 +39,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require_once 'front/general/sidebar.php';?>
+    <?php require_once 'front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -45,7 +49,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php';?>
+        <?php require 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -65,9 +69,11 @@
           <div class="card shadow mb-2">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataSolicitudes" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th></th>
+
                       <th>Cédula</th>
                       <th>Alumno</th>
                       <th>Fecha de creación</th>
@@ -82,75 +88,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-                      include 'back/conexion.php';
-
-                      $sql = "SELECT carreras.nombre as carreraNombre, id_alumno, alumno, cedula, p_nombre, p_apellido, documento, solicitudes.fechaCreacion, id_solicitud, estadoSolicitud, fechaAtencion, solicitudes.tipo, nombre_solicitud, solicitudes.carrera, alumnos.turno, personalAtencion FROM alumnos
-                              INNER JOIN solicitudes ON alumnos.id_alumno = solicitudes.alumno
-                              LEFT JOIN tipo_solicitud ON tipo_solicitud.tipo = solicitudes.tipo
-                              LEFT JOIN carreras ON solicitudes.carrera = carreras.codigo";
-
-                      $result = mysqli_query($conexion, $sql);
-                      if ($result->num_rows > 0) {
-                          while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-
-                    <tr id="solicitudA-<?=$row['id_solicitud']?>">
-                      
-                      <td><?=$row['cedula']?></td>
-                      <td><?=$row['p_nombre'].' '.$row['p_apellido']?></td>
-                      <td><?=$row['fechaCreacion']?></td>
-
-                      <td>
-
-                        <?php if ($row['estadoSolicitud'] == 0) {?>
-
-                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="false" data-id="<?=$row['id_solicitud']?>"
-                            data-role="update" data-prueba="<?=$row['id_alumno']?>"><i class="fas fa-minus-circle text-secondary"></i> Pendiente</a></small>
-
-                        <?php } elseif ($row['estadoSolicitud'] == 1) {?>
-
-                        <small><a id="estadoSolicitud" class="toggle-modal" data-active="true" data-id="<?=$row['id_solicitud']?>"
-                            data-role="update" data-prueba="<?=$row['id_alumno']?>"><i class="fas fa-check-circle text-success"></i> Atendida</a></small>
-
-                        <?php }?>
-
-                      </td>
-
-                      <td> <a id="fechaActualizacion" data-active="false" data-id="<?=$row['id_solicitud']?>"
-                            data-role="update"><?=$row['fechaAtencion']?></a></td>                      
-                      <td><?=$row['nombre_solicitud']?></td>
-                      <td><?=$row['carreraNombre']?></td>
-                      <td>
-                      <?php
-                      switch ($row['turno']) {
-                        case 1:
-                            $turno = 'Mañana';
-                            break;
-                        case 2:
-                            $turno = 'Tarde';
-                            break;
-                        case 3:
-                            $turno = 'Noche';
-                            break;
-                        default:
-                            $turno = '';
-                            break;
-                    };
-                    echo $turno;
-                      ?>
-                      </td>
-                      <td><?=$row['personalAtencion']?></td>
-                      <td><a href="<?='page-admin-check.php?idd='.$row['documento'].'&ida='.$row['id_alumno'].'&ci='.$row['cedula'].'&mi='.$row['tipo']?>"><i class="fas fa-clipboard-list"></i></a> </td>
-                      <td><a href="<?='page-student-perfil.php?ida='.$row['id_alumno']?>"><i class="fas fa-id-card"></i></a> </td>
-
-                    </tr>
-                    
-
-                    <?php
-};
-};
-?>
 
                   </tbody>
                 </table>
@@ -159,7 +96,7 @@
           </div>
           <!-- /.Tabla de Admin -->
 
-        
+
         </div>
         <!-- /.Contenido Variable - Todo lo demas es fijo -->
         <!-- /.container-fluid -->
@@ -168,8 +105,7 @@
       <!-- End of Main Content -->
 
       <!-- Modal de advertencia de cambios -->
-      <div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+      <div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -197,7 +133,7 @@
       <!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php';?>
+      <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -212,7 +148,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require_once 'front/general/modal-logout.php';?>
+  <?php require_once 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
   <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
@@ -238,39 +174,199 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/front/table.js"></script>
-  
-<script src="scripts/editAdminPassSelf.js"></script>
+  <script src="scripts/editAdminPassSelf.js"></script>
 
-<script>
-// ---------------------- Sin conflictos con lightbox
-$(window).on("load", function () {
-    $("#btnEditarSelf").on("click", function (e) {
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
+  <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
+
+  <script>
+    // ---------------------- Sin conflictos con lightbox
+    $(window).on("load", function() {
+      $("#btnEditarSelf").on("click", function(e) {
         e.preventDefault();
-        
+
         $("#editarAdminSelfModal").modal("toggle");
-    });
-    $("#btnEditarBoth").on("click", function (e) {
+      });
+      $("#btnEditarBoth").on("click", function(e) {
         e.preventDefault();
-        
-        $("#editarAlumnoBothModal").modal("toggle");
-    });
-    $("#btnEditarBoth2").on("click", function (e) {
-        e.preventDefault();
-        
-        $("#editarAlumnoBothModal").modal("toggle");
-    });
-    $("#btnEditarBoth3").on("click", function (e) {
-        e.preventDefault();
-        
-        $("#editarAlumnoBothModal").modal("toggle");
-    });
-});
-// ---------------------- /.Sin conflictos con lightbox
-</script>
 
-<script>
-    $(document).ready(function () {      
-      $(document).on('click', 'a[data-role=update]', function () {
+        $("#editarAlumnoBothModal").modal("toggle");
+      });
+      $("#btnEditarBoth2").on("click", function(e) {
+        e.preventDefault();
+
+        $("#editarAlumnoBothModal").modal("toggle");
+      });
+      $("#btnEditarBoth3").on("click", function(e) {
+        e.preventDefault();
+
+        $("#editarAlumnoBothModal").modal("toggle");
+      });
+    });
+    // ---------------------- /.Sin conflictos con lightbox
+  </script>
+
+  <script>
+    $(document).ready(function() {
+
+      var dt = $('#dataSolicitudes').DataTable({
+
+        "ajax": {
+          "method": "POST",
+          "url": "back/admin/tablaUtilidades/tabla_solicitudes.php"
+
+        },
+        rowId: 'id_solicitud',
+
+        responsive: {
+          details: {
+            type: 'column',
+            target: 'tr',
+            renderer: function(api, rowIdx, columns) {
+              var data = $.map(columns, function(col, i) {
+                if (col.hidden) {
+                  return '     ' +
+                    '<td>' + col.title + ':' + '</td> ' +
+                    '<td>' + col.data + '</td>';
+
+                } else {
+                  return '';
+                }
+              }).join('');
+
+              return data ?
+                $('<table/>').append(data) :
+                false;
+            }
+          }
+        },
+        "columns": [{
+            "class": "control",
+            "orderable": false,
+            "data": null,
+            "defaultContent": ""
+          },
+          {
+            "data": "cedula",
+
+          },
+          {
+            "data": "nombre"
+          },
+          {
+            "data": "fechaCreacion"
+          },
+          {
+            "data": "estadoSolicitud",
+
+          },
+          {
+            "data": "fechaAtencion",
+            className: 'none'
+
+          },
+          {
+            "data": "nombre_solicitud",
+            className: 'none'
+
+
+
+          },
+          {
+            "data": "carreraNombre",
+
+
+          },
+          {
+            "data": "turno",
+
+
+          },
+          {
+            "data": "personalAtencion",
+            className: 'none'
+
+
+
+          },
+          {
+            "data": "irCheck",
+            className: 'none'
+
+
+
+          },
+          {
+            "data": "irPerfil",
+            className: 'none'
+
+
+          }
+        ],
+        "order": [
+          [1, 'asc']
+        ],
+        "language": idioma
+
+      });
+
+
+      var idioma = {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+          "first": "Primero",
+          "last": "Ultimo",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        }
+      }
+
+      var detailRows = [];
+
+      $('#dataSolicitudes tbody').on('click', 'tr td.control', function() {
+        var tr = $(this).closest('tr');
+        var row = dt.row(tr);
+        var idx = $.inArray(tr.attr('id'), detailRows);
+
+        if (row.child.isShown()) {
+
+          // Remove from the 'open' array
+          detailRows.splice(idx, 1);
+        } else {
+          console.log(detailRows);
+
+          // Add to the 'open' array
+          if (idx === -1) {
+            detailRows.push(tr.attr('id'));
+          }
+        }
+      });
+
+      // On each draw, loop over the `detailRows` array and show any child rows
+      dt.on('draw', function() {
+        $.each(detailRows, function(i, id) {
+          console.log(detailRows);
+
+          $('#' + id + ' td.details-control').trigger('click');
+        });
+      });
+
+
+
+
+      $(document).on('click', 'a[data-role=update]', function() {
         var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
         var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
         var estadoElemento = $(this).attr('data-active');
@@ -299,7 +395,7 @@ $(window).on("load", function () {
           'codigo': codigo,
           'elemento': elemento,
           'estado': estado,
-          'id_alumno':id_alumno,
+          'id_alumno': id_alumno,
           'personalAtencion': personalAtencion
         };
 
@@ -308,27 +404,12 @@ $(window).on("load", function () {
             url: './back/admin/backSolicitudAlumno.php',
             data: datosEnviadosS
           })
-          .done(function (dataS) {
-            var datosRecibidosS = $.parseJSON(dataS);
-            if (datosRecibidosS.estado == 0) {
-              $('#solicitudA-' + codigo + ' #' + elemento).attr('data-active', 'false');
-              $('#solicitudA-' + codigo + ' #' + elemento).html(
-                '<i class="fas fa-minus-circle text-secondary"></i> Pendiente</a>');
-                var d = new Date();
-              var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
-              $('#fechaAtencion-' + codigo + ' #' + elemento).html(strDate);
-            } else if (datosRecibidosS.estado == 1) {
-              var d = new Date();
-              var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
-              $('#fechaAtencion-' + codigo + ' #' + elemento).html(strDate);
+          .done(function(dataS) {
 
-              $('#solicitudA-' + codigo + ' #' + elemento).attr('data-active', 'true');
-              $('#solicitudA-' + codigo + ' #' + elemento).html(
-                '<i class="fas fa-check-circle text-success"></i> Atendida</a>');
-            }
+            dt.ajax.reload(null, false);
             $('#cambiosModal').modal('toggle');
           })
-          .fail(function (err) {
+          .fail(function(err) {
             console.log(err);
           });
 
