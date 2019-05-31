@@ -104,8 +104,7 @@
       <!-- End of Main Content -->
 
       <!-- Modal CREAR ADMIN-->
-      <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin"
-        aria-hidden="true">
+      <div class="modal fade" id="crearAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCrearAdmin" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -123,18 +122,14 @@
                   <div class="form-group row">
                     <div class="col-sm-6">
                       <label class="pl-2"><small>Nombre</small></label><br>
-                      <input type="text" id="nombre" name="nombre" class="form-control form-control-user"
-                        placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
-                        required>
+                      <input type="text" id="nombre" name="nombre" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" required>
                       <div class="invalid-feedback">
                         Este campo debe tener al menos 2 caracteres.
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <label class="pl-2"><small>Nombre de ususario</small></label><br>
-                      <input type="text" id="username" name="username" class="form-control form-control-user"
-                        placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip" data-placement="top"
-                        title="Nombre de usuario" required>
+                      <input type="text" id="username" name="username" class="form-control form-control-user" placeholder="Nombre de usuario" minlength="4" data-toggle="tooltip" data-placement="top" title="Nombre de usuario" required>
                       <div class="invalid-feedback">
                         Este campo debe tener al menos 4 caracteres.
                       </div>
@@ -143,8 +138,7 @@
                   <div class="form-group">
                     <label class="pl-2"><small>Contraseña</small></label><br>
                     <div class="input-group">
-                      <input type="password" id="contrasena" name="contrasena" minlength="4"
-                        class="form-control form-control-user" placeholder="Contraseña" required>
+                      <input type="password" id="contrasena" name="contrasena" minlength="4" class="form-control form-control-user" placeholder="Contraseña" required>
                       <div class="input-group-append">
                         <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                           <i id="showpass" class="fas fa-eye-slash"></i>
@@ -158,8 +152,7 @@
                   <div class="form-group">
                     <label class="pl-2"><small>Repetir contraseña</small></label><br>
                     <div class="input-group">
-                      <input type="password" id="contrasena2" name="contrasena2" minlength="4"
-                        class="form-control form-control-user" placeholder="Repetir contraseña" required>
+                      <input type="password" id="contrasena2" name="contrasena2" minlength="4" class="form-control form-control-user" placeholder="Repetir contraseña" required>
                       <div class="input-group-append">
                         <a id="show2" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
                           <i id="showpass2" class="fas fa-eye-slash"></i>
@@ -190,8 +183,7 @@
               </div>
               <div class="modal-footer">
                 <label><button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button></label>
-                <label><button type="submit" id="registroAdmin"
-                    class="btn btn-primary text-white">Registrar</button></label>
+                <label><button type="submit" id="registroAdmin" class="btn btn-primary text-white">Registrar</button></label>
               </div>
 
             </form>
@@ -202,8 +194,7 @@
 
       <!-- /.Modal EDITAR ADMIN-->
 
-      <div class="modal fade" id="editarAdminModal" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalEditarAdmin" aria-hidden="true">
+      <div class="modal fade" id="editarAdminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalEditarAdmin" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -221,9 +212,7 @@
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <label class="pl-2"><small>Nombre</small></label><br>
-                      <input type="text" id="nombreEdit" name="nombreEdit" class="form-control form-control-user"
-                        placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre"
-                        required>
+                      <input type="text" id="nombreEdit" name="nombreEdit" class="form-control form-control-user" placeholder="Nombre" minlength="2" data-toggle="tooltip" data-placement="top" title="Nombre" required>
                       <div class="invalid-feedback">
                         Este campo debe tener al menos 2 caracteres.
                       </div>
@@ -247,12 +236,9 @@
                     <div class="form-group">
                       <label class="pl-2"><small>Contraseña</small></label><br>
                       <div class="input-group">
-                        <input type="password" id="contrasenaEdit" name="contrasenaEdit" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Contraseña" value="">
+                        <input type="password" id="contrasenaEdit" name="contrasenaEdit" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="">
                         <div class="input-group-append">
-                          <a id="showEdit" onclick="mostrarContrasenaEdit()"
-                            class="btn btn-primary text-center align-middle">
+                          <a id="showEdit" onclick="mostrarContrasenaEdit()" class="btn btn-primary text-center align-middle">
                             <i id="showpassEdit" class="fas fa-eye-slash"></i>
                           </a>
                         </div>
@@ -264,12 +250,9 @@
                     <div class="form-group">
                       <label class="pl-2"><small>Repetir contraseña</small></label><br>
                       <div class="input-group">
-                        <input type="password" id="contrasena2Edit" name="contrasena2Edit" minlength="4"
-                          class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip"
-                          data-placement="top" title="Repetir contraseña" value="">
+                        <input type="password" id="contrasena2Edit" name="contrasena2Edit" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Repetir contraseña" value="">
                         <div class="input-group-append">
-                          <a id="show2Edit" onclick="mostrarContrasenaEdit()"
-                            class="btn btn-primary text-center align-middle">
+                          <a id="show2Edit" onclick="mostrarContrasenaEdit()" class="btn btn-primary text-center align-middle">
                             <i id="showpass2Edit" class="fas fa-eye-slash"></i>
                           </a>
                         </div>
@@ -371,31 +354,31 @@
   <script src="scripts/editAdminPassSelf.js"></script>
 
   <script>
-// ---------------------- Sin conflictos con lightbox
-$(window).on("load", function () {
-    $("#btnEditarSelf").on("click", function (e) {
+    // ---------------------- Sin conflictos con lightbox
+    $(window).on("load", function() {
+      $("#btnEditarSelf").on("click", function(e) {
         e.preventDefault();
-        
+
         $("#editarAdminSelfModal").modal("toggle");
-    });
-    $("#btnEditarBoth").on("click", function (e) {
+      });
+      $("#btnEditarBoth").on("click", function(e) {
         e.preventDefault();
-        
+
         $("#editarAlumnoBothModal").modal("toggle");
-    });
-    $("#btnEditarBoth2").on("click", function (e) {
+      });
+      $("#btnEditarBoth2").on("click", function(e) {
         e.preventDefault();
-        
+
         $("#editarAlumnoBothModal").modal("toggle");
-    });
-    $("#btnEditarBoth3").on("click", function (e) {
+      });
+      $("#btnEditarBoth3").on("click", function(e) {
         e.preventDefault();
-        
+
         $("#editarAlumnoBothModal").modal("toggle");
+      });
     });
-});
-// ---------------------- /.Sin conflictos con lightbox
-</script>
+    // ---------------------- /.Sin conflictos con lightbox
+  </script>
 
   <script type="text/javascript">
     function mostrarPassword() {
@@ -431,19 +414,45 @@ $(window).on("load", function () {
   <script>
     var editor;
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-
-      tablaInicio();
-
-      $(document).on('click', '#btnCrearAdmin', function () {
+      $(document).on('click', '#btnCrearAdmin', function() {
         $('#crearAdminModal').modal('toggle');
       });
+
+      $("#editarAdminModal").on("hidden.bs.modal", function() {
+        $('#passEditForm')[0].classList.remove('was-validated');
+
+        $("#adminId").val('');
+        $("#nombreEdit").val('');
+        $("#rol_adminEdit").val('');
+        $("#estatus").val('');            
+        $('#exito').hide();
+        $('#resultado').hide();
+
+        
+        });
     });
+
+
   </script>
 
   <script>
-    var tablaInicio = function () {
+        var obtener_data_editar = function(tbody, table) {
+      $(tbody).on("click", "#btnEditar", function() {
+
+        var data = table.row($(this).parents("tr")).data();
+        var idAdmin = $("#adminId").val(data.id_admin);
+        $("#nombreEdit").val(data.nombre);
+        $("#rol_adminEdit").val(data.rol);
+        $("#estatus").val(data.estatusValor);
+
+        $('#editarAdminModal').modal('toggle');
+
+
+      });
+    };
+
       var table = $('#adminTable').DataTable({
         "destroy": true,
         "ajax": {
@@ -455,8 +464,8 @@ $(window).on("load", function () {
           details: {
             type: 'column',
             target: 'tr',
-            renderer: function (api, rowIdx, columns) {
-              var data = $.map(columns, function (col, i) {
+            renderer: function(api, rowIdx, columns) {
+              var data = $.map(columns, function(col, i) {
                 return col.hidden ?
                   '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                   '<td>' + col.title + ':' + '</td> ' +
@@ -507,28 +516,14 @@ $(window).on("load", function () {
         ],
         "language": idioma
       });
+      obtener_data_editar("#adminTable tbody", table);
+
       new $.fn.dataTable.FixedHeader(table);
 
-      obtener_data_editar("#adminTable tbody", table);
-    };
 
-    var obtener_data_editar = function (tbody, table) {
-      $(tbody).on("click", "#btnEditar", function () {
-        $('#editarAdminModal').modal('toggle');
-        var data = table.row($(this).parents("tr")).data();
-        var idAdmin = $("#adminId").val(data.id_admin);
-        $("#nombreEdit").val(data.nombre);
-        $("#rol_adminEdit").val(data.rol);
-        $("#estatus").val(data.estatusValor);
-
-
-        $('#editarAdminModal').modal('toggle');
-
-      });
-    };
 
     /// AJAX-------------------------------------------------------------------------
-    $('#passEditForm')[0].addEventListener('submit', function (event) {
+    $('#passEditForm')[0].addEventListener('submit', function(event) {
       if ($('#passEditForm')[0].checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
@@ -558,7 +553,7 @@ $(window).on("load", function () {
           dataType: 'json',
 
         })
-        .done(function (datosRecibidos) {
+        .done(function(datosRecibidos) {
           if (!datosRecibidos.exito) {
             $('#exito').hide();
 
@@ -573,8 +568,8 @@ $(window).on("load", function () {
             $('html, body').animate({
               scrollTop: 0
             }, 800);
-            tablaInicio();
-          }
+            table.ajax.reload();          
+            }
 
         });
 
@@ -605,7 +600,7 @@ $(window).on("load", function () {
   </script>
 
   <script type="text/javascript">
-    $("#botonMostrarContrasena").click(function () {
+    $("#botonMostrarContrasena").click(function() {
       if ($("#botonMostrarContrasena").is(':checked')) {
         $('#contrasenaMostrar').show();
         $('#contrasena').val('');
@@ -622,7 +617,7 @@ $(window).on("load", function () {
 
 
   <script>
-    $('#contrasena2').keyup(function () {
+    $('#contrasena2').keyup(function() {
       var contrasena2 = $('#contrasena2').val();
       var contrasena = $('#contrasena').val();
       if (contrasena2 == contrasena) {
@@ -636,7 +631,7 @@ $(window).on("load", function () {
       }
     });
 
-    $('#contrasena').keyup(function () {
+    $('#contrasena').keyup(function() {
       var contrasena2 = $('#contrasena2').val();
       var contrasena = $('#contrasena').val();
       if (contrasena2 == contrasena) {
@@ -650,7 +645,7 @@ $(window).on("load", function () {
       }
     });
 
-    $('#crearAdmin')[0].addEventListener('submit', function (event) {
+    $('#crearAdmin')[0].addEventListener('submit', function(event) {
       if ($('#crearAdmin')[0].checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
@@ -677,19 +672,18 @@ $(window).on("load", function () {
           processData: false,
           dataType: 'json',
         })
-        .done(function (datosRecibidos) {
+        .done(function(datosRecibidos) {
           if (datosRecibidos.exito) {
             $('#resultadoCrear').hide();
             $('#exitoCrear').show();
             $('#exitoCrear').text(datosRecibidos.message);
-            tablaInicio();
-
+            table.ajax.reload();
           } else {
             $('#exitoCrear').hide();
             $('#resultadoCrear').show();
             $('#resultadoCrear').text(datosRecibidos.message);
-            tablaInicio();
-          };
+            table.ajax.reload();          
+            };
         });
       event.preventDefault();
 

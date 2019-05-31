@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Tabla de Carreras / Solicitud </title>
-  <?php require 'back/admin/restriccionAcceso.php';?>
+  <?php require 'back/admin/restriccionAcceso.php'; ?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -26,6 +26,10 @@
 
   <link href="css/style.css" rel="stylesheet">
   <link href="css/table.css" rel="stylesheet">
+  <link href="css/jquery.datatable.min.css" rel="stylesheet">
+
+  <link href="css/responsive.dataTables.min.css" rel="stylesheet">
+  <link href="css/tableShow.css" rel="stylesheet">
 
 </head>
 
@@ -35,7 +39,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require_once 'front/general/sidebar.php';?>
+    <?php require_once 'front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -45,7 +49,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php';?>
+        <?php require 'front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -65,99 +69,22 @@
           <div class="card shadow mb-2">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataCarreras" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th></th>
+
                       <th>Código</th>
                       <th>Carrera</th>
                       <th>Estatus</th>
                       <th>Mañana</th>
                       <th>Tarde</th>
                       <th>Noche</th>
+
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-include 'back/conexion.php';
 
-$sql = "SELECT * FROM carreras";
-
-$result = mysqli_query($conexion, $sql);
-if ($result->num_rows > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-
-                    <tr id="carrera-<?=$row['codigo']?>">
-                      <td><?=$row['codigo']?></td>
-                      <td><?=$row['nombre']?></td>
-                      <td>
-
-                        <?php if ($row['estatus'] == 0) {?>
-
-                        <small><a id="estatus" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
-
-                        <?php } elseif ($row['estatus'] == 1) {?>
-
-                        <small><a id="estatus" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
-
-                        <?php }?>
-
-                      </td>
-                      <td>
-
-                        <?php if ($row['manana'] == 0) {?>
-
-                        <small><a id="manana" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
-
-                        <?php } elseif ($row['manana'] == 1) {?>
-
-                        <small><a id="manana" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
-
-                        <?php }?>
-
-                      </td>
-                      <td>
-
-                        <?php if ($row['tarde'] == 0) {?>
-
-                        <small><a id="tarde" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
-
-                        <?php } elseif ($row['tarde'] == 1) {?>
-
-                        <small><a id="tarde" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
-
-                        <?php }?>
-
-                      </td>
-                      <td>
-
-                        <?php if ($row['noche'] == 0) {?>
-
-                        <small><a id="noche" class="toggle-modal" data-active="false" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivo</a></small>
-
-                        <?php } elseif ($row['noche'] == 1) {?>
-
-                        <small><a id="noche" class="toggle-modal" data-active="true" data-id="<?=$row['codigo']?>"
-                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activo</a></small>
-
-                        <?php }?>
-
-                      </td>
-                    </tr>
-
-                    <?php
-}
-    ;
-}
-;
-?>
 
                   </tbody>
                 </table>
@@ -187,43 +114,41 @@ if ($result->num_rows > 0) {
                   </thead>
                   <tbody>
                     <?php
-                      include 'back/conexion.php';
+                    include 'back/conexion.php';
 
-                      $sql = "SELECT * FROM tipo_solicitud";
+                    $sql = "SELECT * FROM tipo_solicitud";
 
-                      $result = mysqli_query($conexion, $sql);
-                      if ($result->num_rows > 0) {
-                          while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
+                    $result = mysqli_query($conexion, $sql);
+                    if ($result->num_rows > 0) {
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
 
-                    <tr id="solicitud-<?=$row['tipo']?>">
+                        <tr id="solicitud-<?= $row['tipo'] ?>">
 
-                      <td><?=$row['tipo']?></td>
-                      <td><?=$row['nombre_solicitud']?></td>
+                          <td><?= $row['tipo'] ?></td>
+                          <td><?= $row['nombre_solicitud'] ?></td>
 
-                      <td>
+                          <td>
 
-                        <?php if ($row['activa'] == 0) {?>
+                            <?php if ($row['activa'] == 0) { ?>
 
-                        <small><a id="activa" class="toggle-modal" data-active="false" data-id="<?=$row['tipo']?>"
-                            data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactiva</a></small>
+                              <small><a id="activa" class="toggle-modal" data-active="false" data-id="<?= $row['tipo'] ?>" data-role="update"><i class="fas fa-minus-circle text-secondary"></i> Desactivada</a></small>
 
-                        <?php } elseif ($row['activa'] == 1) {?>
+                            <?php } elseif ($row['activa'] == 1) { ?>
 
-                        <small><a id="activa" class="toggle-modal" data-active="true" data-id="<?=$row['tipo']?>"
-                            data-role="update"><i class="fas fa-check-circle text-success"></i> Activa</a></small>
+                              <small><a id="activa" class="toggle-modal" data-active="true" data-id="<?= $row['tipo'] ?>" data-role="update"><i class="fas fa-check-circle text-success"></i> Activa</a></small>
 
-                        <?php }?>
+                            <?php } ?>
 
-                      </td>
+                          </td>
 
-                    </tr>
+                        </tr>
 
 
-                    <?php
-};
-};
-?>
+                      <?php
+                    };
+                  };
+                  ?>
 
                   </tbody>
                 </table>
@@ -241,8 +166,7 @@ if ($result->num_rows > 0) {
       <!-- End of Main Content -->
 
       <!-- Modal de advertencia de cambios -->
-      <div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+      <div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -268,10 +192,11 @@ if ($result->num_rows > 0) {
         </div>
       </div>
 
+
       <!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php';?>
+      <?php require 'front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -286,7 +211,7 @@ if ($result->num_rows > 0) {
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php';?>
+  <?php require 'front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
   <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
@@ -314,44 +239,150 @@ if ($result->num_rows > 0) {
   <script src="js/front/table.js"></script>
   <script src="scripts/editAdminPassSelf.js"></script>
 
-  <script>
-// ---------------------- Sin conflictos con lightbox
-$(window).on("load", function () {
-    $("#btnEditarSelf").on("click", function (e) {
-        e.preventDefault();
-        
-        $("#editarAdminSelfModal").modal("toggle");
-    });
-    $("#btnEditarBoth").on("click", function (e) {
-        e.preventDefault();
-        
-        $("#editarAlumnoBothModal").modal("toggle");
-    });
-    $("#btnEditarBoth2").on("click", function (e) {
-        e.preventDefault();
-        
-        $("#editarAlumnoBothModal").modal("toggle");
-    });
-    $("#btnEditarBoth3").on("click", function (e) {
-        e.preventDefault();
-        
-        $("#editarAlumnoBothModal").modal("toggle");
-    });
-});
-// ---------------------- /.Sin conflictos con lightbox
-</script>
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
+  <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
 
   <script>
-    $(document).ready(function () {
-      $(document).on('click', '#dataTable a', function () {
+    // ---------------------- Sin conflictos con lightbox
+    $(window).on("load", function() {
+      $("#btnEditarSelf").on("click", function(e) {
+        e.preventDefault();
+
+        $("#editarAdminSelfModal").modal("toggle");
+      });
+      $("#btnEditarBoth").on("click", function(e) {
+        e.preventDefault();
+
+        $("#editarAlumnoBothModal").modal("toggle");
+      });
+      $("#btnEditarBoth2").on("click", function(e) {
+        e.preventDefault();
+
+        $("#editarAlumnoBothModal").modal("toggle");
+      });
+      $("#btnEditarBoth3").on("click", function(e) {
+        e.preventDefault();
+
+        $("#editarAlumnoBothModal").modal("toggle");
+      });
+    });
+    // ---------------------- /.Sin conflictos con lightbox
+  </script>
+
+
+  <script>
+    $(document).ready(function() {
+
+      var dt = $('#dataCarreras').DataTable({
+
+        "ajax": {
+          "method": "POST",
+          "url": "back/admin/tablaUtilidades/tabla_carreras.php"
+
+        },
+        rowId: 'codigo',
+
+        responsive: {
+          details: {
+            type: 'column',
+            target: 'tr',
+            renderer: function(api, rowIdx, columns) {
+              var data = $.map(columns, function(col, i) {
+                return col.hidden ?
+                  '     ' +
+                  '<td>' + col.title + ':' + '</td> ' +
+                  '<td>' + col.data + '</td>' :
+                  '';
+              }).join('');
+
+              return data ?
+                $('<table/>').append(data) :
+                false;
+            }
+          }
+        },
+        "columns": [{
+            "class": "control",
+            "orderable": false,
+            "data": null,
+            "defaultContent": ""
+          },
+          {
+            "data": "codigo",
+
+          },
+          {
+            "data": "nombre"
+          },
+          {
+            "data": "estadoHTML"
+          },
+          {
+            "data": "mananaHTML",
+            className: 'none'
+
+          },
+          {
+            "data": "tardeHTML",
+            className: 'none'
+
+          },
+          {
+            "data": "nocheHTML",
+            className: 'none'
+
+          },
+        ],
+        "order": [
+          [1, 'asc']
+        ]
+      });
+
+      var detailRows = [];
+
+      $('#dataCarreras tbody').on('click', 'tr td.control', function() {
+        var tr = $(this).closest('tr');
+        var row = dt.row(tr);
+        var idx = $.inArray(tr.attr('id'), detailRows);
+
+        if (row.child.isShown()) {
+
+          // Remove from the 'open' array
+          detailRows.splice(idx, 1);
+        } else {
+          console.log(detailRows);
+
+          // Add to the 'open' array
+          if (idx === -1) {
+            detailRows.push(tr.attr('id'));
+          }
+        }
+      });
+
+      // On each draw, loop over the `detailRows` array and show any child rows
+      dt.on('draw', function() {
+        $.each(detailRows, function(i, id) {
+          console.log(detailRows);
+
+          $('#' + id + ' td.details-control').trigger('click');
+        });
+      });
+
+
+
+
+      /// ------------------------------------------------------
+      $(document).on('click', '#dataCarreras a', function() {
         $('#ejecutarCambioCarrera').removeAttr('hidden');
         $('#ejecutarCambioSolicitud').attr('hidden', 'true');
       });
-      $(document).on('click', '#dataTable2 a', function () {
+      $(document).on('click', '#dataTable2 a', function() {
         $('#ejecutarCambioSolicitud').removeAttr('hidden');
         $('#ejecutarCambioCarrera').attr('hidden', 'true');
       });
-      $(document).on('click', 'a[data-role=update]', function () {
+
+      $(document).on('click', 'a[data-role=update]', function() {
         var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
         var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
         var estadoElemento = $(this).attr('data-active'); // data-active (row['idemento']) activo o no
@@ -382,20 +413,14 @@ $(window).on("load", function () {
             url: './back/admin/backCarrera.php',
             data: datosEnviados
           })
-          .done(function (data) {
-            var datosRecibidos = $.parseJSON(data);
-            if (datosRecibidos.estado == 0) {
-              $('#carrera-' + codigo + ' #' + elemento).attr('data-active', 'false');
-              $('#carrera-' + codigo + ' #' + elemento).html(
-                '<i class="fas fa-minus-circle text-secondary"></i> Desactivo</a>');
-            } else if (datosRecibidos.estado == 1) {
-              $('#carrera-' + codigo + ' #' + elemento).attr('data-active', 'true');
-              $('#carrera-' + codigo + ' #' + elemento).html(
-                '<i class="fas fa-check-circle text-success"></i> Activo</a>');
-            }
+          .done(function(data) {
+
+            dt.ajax.reload(null, false);
+            // user paging is not reset on reload
+
             $('#cambiosModal').modal('toggle');
           })
-          .fail(function (err) {
+          .fail(function(err) {
             console.log(err);
           });
 
@@ -417,7 +442,7 @@ $(window).on("load", function () {
             url: './back/admin/backSolicitud.php',
             data: datosEnviadosS
           })
-          .done(function (dataS) {
+          .done(function(dataS) {
             var datosRecibidosS = $.parseJSON(dataS);
             if (datosRecibidosS.estado == 0) {
               $('#solicitud-' + codigo + ' #' + elemento).attr('data-active', 'false');
@@ -430,7 +455,7 @@ $(window).on("load", function () {
             }
             $('#cambiosModal').modal('toggle');
           })
-          .fail(function (err) {
+          .fail(function(err) {
             console.log(err);
           });
 
@@ -439,6 +464,8 @@ $(window).on("load", function () {
 
     });
   </script>
+
+
 </body>
 
 </html>
