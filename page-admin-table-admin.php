@@ -236,7 +236,7 @@
                     <div class="form-group">
                       <label class="pl-2"><small>Contraseña</small></label><br>
                       <div class="input-group">
-                        <input type="password" id="contrasenaEdit" name="contrasenaEdit" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="">
+                        <input autocomplete="new-password" type="password" id="contrasenaEdit" name="contrasenaEdit" minlength="4" class="form-control form-control-user" placeholder="Contraseña" data-toggle="tooltip" data-placement="top" title="Contraseña" value="">
                         <div class="input-group-append">
                           <a id="show" onclick="mostrarContrasenaEdit()"
                             class="btn btn-primary text-center align-middle">

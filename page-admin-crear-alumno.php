@@ -159,7 +159,7 @@
                       <div class="col-sm-6">
                         <label class="pl-2"><small>Contraseña</small></label>
                         <div class="input-group">
-                          <input type="password" id="contrasena" name="contrasena" minlength="4"
+                          <input autocomplete="new-password" type="password" id="contrasena" name="contrasena" minlength="4"
                             class="form-control form-control-user" placeholder="Contraseña" required>
                           <div class="input-group-append">
                             <a id="show" onclick="mostrarPassword()" class="btn btn-primary text-center align-middle">
