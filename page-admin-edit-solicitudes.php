@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <title> Tabla de solicitudes </title>
-  <?php require 'back/admin/restriccionAcceso.php'; ?>
+  <?php require 'back/admin/restriccionAcceso.php';?>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -144,27 +144,28 @@
             <div role="tabpanel" class="tab-pane fade" id="metodosAdmin">
 
               <!-- Tabla de Solicitudes -->
-              <div class="card shadow mb-2">
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered" id="dataMetodos" width="100%" cellspacing="0">
-                      <thead>
-                        <tr>
+          <div class="card shadow mb-2">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataMetodos" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th></th>
 
-                          <th>#</th>
-                          <th>Nombre de solicitud</th>
-                          <th>Estado de solicitud</th>
-                        </tr>
-                      </thead>
-                      <tbody>
+                      <th>#</th>
+                      <th>Nombre de solicitud</th>
+                      <th>Estado de solicitud</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                  </tbody>
+                </table>
               </div>
-              <!-- /.Tabla de Solicitudes -->
             </div>
+          </div>
+          <!-- /.Tabla de Solicitudes -->
+            </div> 
 
           </div>
 
@@ -179,35 +180,36 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Modal de advertencia de cambios -->
-      <div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Seleccione "Guardar cambios" a continuación si está seguro de continuar con la operación.<br>
-              <b>Este cambio se hace de manera inmediata y puede ser revertido.</b>
-              <input type="hidden" id="codigo">
-              <input type="hidden" id="elemento">
-              <input type="hidden" id="estado">
-              <input type="hidden" id="id_alumno">
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary text-white" type="button" data-dismiss="modal">Cancelar</button>
-              <a href="#" id="ejecutarCambioCarrera" data-do="" class="btn btn-primary text-white" hidden="false">Guardar
-                cambios</a>
-              <a href="#" id="ejecutarCambioSolicitud" class="btn btn-primary text-white" hidden="true">Guardar cambios</a>
-              <a id="ejecutarCambioSolicitudA" class="btn btn-primary text-white" hidden="true">Guardar cambios</a>
-            </div>
-          </div>
-        </div>
+<!-- Modal de advertencia de cambios -->
+<div class="modal fade" id="cambiosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
-      <!-- /.Modal de advertencia de cambios -->
+      <div class="modal-body">
+        Seleccione "Guardar cambios" a continuación si está seguro de continuar con la operación.<br>
+        <b>Este cambio se hace de manera inmediata y puede ser revertido.</b>
+        <input type="hidden" id="codigo">
+        <input type="hidden" id="elemento">
+        <input type="hidden" id="estado">
+        <input type="hidden" id="id_alumno">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary text-white" type="button" data-dismiss="modal">Cancelar</button>
+        <a href="#" id="ejecutarCambioCarrera" data-do="" class="btn btn-primary text-white" hidden="false">Guardar
+          cambios</a>
+        <a href="#" id="ejecutarCambioSolicitud" class="btn btn-primary text-white" hidden="true">Guardar cambios</a>
+        <a id="ejecutarCambioSolicitudA" class="btn btn-primary text-white" hidden="true">Guardar cambios</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
       <?php require 'front/general/footer.php'; ?>
@@ -253,39 +255,39 @@
   <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
   <script src="scripts/editAdminPassSelf.js"></script>
 
-  <script>
-    // ---------------------- Sin conflictos con lightbox
-    $(window).on("load", function() {
-      $("#btnEditarSelf").on("click", function(e) {
-        e.preventDefault();
+   <script>
+     // ---------------------- Sin conflictos con lightbox
+     $(window).on("load", function () {
+       $("#btnEditarSelf").on("click", function (e) {
+         e.preventDefault();
 
-        $("#editarAdminSelfModal").modal("toggle");
-      });
-      $("#btnEditarBoth").on("click", function(e) {
-        e.preventDefault();
+         $("#editarAdminSelfModal").modal("toggle");
+       });
+       $("#btnEditarBoth").on("click", function (e) {
+         e.preventDefault();
 
-        $("#editarAlumnoBothModal").modal("toggle");
-      });
-      $("#btnEditarBoth2").on("click", function(e) {
-        e.preventDefault();
+         $("#editarAlumnoBothModal").modal("toggle");
+       });
+       $("#btnEditarBoth2").on("click", function (e) {
+         e.preventDefault();
 
-        $("#editarAlumnoBothModal").modal("toggle");
-      });
-      $("#btnEditarBoth3").on("click", function(e) {
-        e.preventDefault();
+         $("#editarAlumnoBothModal").modal("toggle");
+       });
+       $("#btnEditarBoth3").on("click", function (e) {
+         e.preventDefault();
 
-        $("#editarAlumnoBothModal").modal("toggle");
-      });
-    });
-    // ---------------------- /.Sin conflictos con lightbox
-  </script>
+         $("#editarAlumnoBothModal").modal("toggle");
+       });
+     });
+     // ---------------------- /.Sin conflictos con lightbox
+   </script>
 
 
-  <!-- TABLA AJAX -->
+<!-- TABLA AJAX -->
 
-  <script>
-    $(document).ready(function() {
-      // -------------- TABLAS 
+   <script>
+     $(document).ready(function () {
+// -------------- TABLAS 
       var dts = $('#dataSolicitudes').DataTable({
 
         "ajax": {
@@ -365,7 +367,26 @@
         "order": [
           [1, 'asc']
         ],
-        "language": idioma
+        "language": {
+         "decimal": "",
+         "emptyTable": "No hay información",
+         "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+         "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+         "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+         "infoPostFix": "",
+         "thousands": ",",
+         "lengthMenu": "Mostrar _MENU_",
+         "loadingRecords": "Cargando...",
+         "processing": "Procesando...",
+         "search": "Buscar:",
+         "zeroRecords": "Sin resultados encontrados",
+         "paginate": {
+           "first": "Primero",
+           "last": "Ultimo",
+           "next": "Siguiente",
+           "previous": "Anterior"
+         }
+       }
       });
 
       var dtc = $('#dataCarreras').DataTable({
@@ -434,97 +455,131 @@
         "order": [
           [1, 'asc']
         ],
-        "language": idioma
+        "language": {
+         "decimal": "",
+         "emptyTable": "No hay información",
+         "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+         "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+         "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+         "infoPostFix": "",
+         "thousands": ",",
+         "lengthMenu": "Mostrar _MENU_",
+         "loadingRecords": "Cargando...",
+         "processing": "Procesando...",
+         "search": "Buscar:",
+         "zeroRecords": "Sin resultados encontrados",
+         "paginate": {
+           "first": "Primero",
+           "last": "Ultimo",
+           "next": "Siguiente",
+           "previous": "Anterior"
+         }
+       }
 
       });
 
-      var dt = $('#dataMetodos').DataTable({
+       var dt = $('#dataMetodos').DataTable({
 
-        "ajax": {
-          "method": "POST",
-          "url": "back/admin/tablaUtilidades/tablaMetodos.php"
+         "ajax": {
+           "method": "POST",
+           "url": "back/admin/tablaUtilidades/tablaMetodos.php"
 
-        },
-        rowId: 'id_metodo',
+         },
+         rowId: 'id_metodo',
 
-        responsive: {
-          details: {
-            type: 'column',
-            target: 'tr',
-            renderer: function(api, rowIdx, columns) {
-              var data = $.map(columns, function(col, i) {
-                if (col.hidden) {
-                  return '     ' +
-                    '<td>' + col.title + ':' + '</td> ' +
-                    '<td>' + col.data + '</td>';
+         responsive: {
+           details: {
+             type: 'column',
+             target: 'tr',
+             renderer: function (api, rowIdx, columns) {
+               var data = $.map(columns, function (col, i) {
+                 if (col.hidden) {
+                   return '     ' +
+                     '<td>' + col.title + ':' + '</td> ' +
+                     '<td>' + col.data + '</td>';
 
-                } else {
-                  return '';
-                }
-              }).join('');
+                 } else {
+                   return '';
+                 }
+               }).join('');
 
-              return data ?
-                $('<table/>').append(data) :
-                false;
-            }
-          }
-        },
-        "columns": [{
-            "data": "tipo",
+               return data ?
+                 $('<table/>').append(data) :
+                 false;
+             }
+           }
+         },
+         "columns": [{
+             "class": "control",
+             "orderable": false,
+             "data": null,
+             "defaultContent": ""
+           },
+           {
+             "data": "tipo",
 
-          },
-          {
-            "data": "nombre_solicitud"
-          },
-          {
-            "data": "estadoNombre"
-          }
-        ],
-        "order": [
-          [1, 'asc']
-        ],
-        "language": idioma
+           },
+           {
+             "data": "nombre_solicitud"
+           },
+           {
+             "data": "estadoNombre"
+           }
+         ],
+         "order": [
+           [1, 'asc']
+         ],
+         "language": {
+         "decimal": "",
+         "emptyTable": "No hay información",
+         "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+         "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+         "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+         "infoPostFix": "",
+         "thousands": ",",
+         "lengthMenu": "Mostrar _MENU_",
+         "loadingRecords": "Cargando...",
+         "processing": "Procesando...",
+         "search": "Buscar:",
+         "zeroRecords": "Sin resultados encontrados",
+         "paginate": {
+           "first": "Primero",
+           "last": "Ultimo",
+           "next": "Siguiente",
+           "previous": "Anterior"
+         }
+       }
 
-      });
-      // -------------- /.TABLAS 
+         
 
-      // -------------   Funciones
+       });
+// -------------- /.TABLAS 
 
-      var idioma = {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-          "first": "Primero",
-          "last": "Ultimo",
-          "next": "Siguiente",
-          "previous": "Anterior"
-        }
-      }
+// -------------   Funciones
 
-      var detailRows = [];
+     
 
-      // On each draw, loop over the `detailRows` array and show any child rows
-      dts.on('draw', function() {
-        $.each(detailRows, function(i, id) {
-          console.log(detailRows);
+       var detailRows = [];    
+       
+       // On each draw, loop over the `detailRows` array and show any child rows
+       dts.on('draw', function() {
+       $.each(detailRows, function(i, id) {
+       console.log(detailRows);
 
-          $('#' + id + ' td.details-control').trigger('click');
-        });
-      });
+       $('#' + id + ' td.details-control').trigger('click');
+       });
+       });
+       
+       // On each draw, loop over the `detailRows` array and show any child rows
+       dt.on('draw', function () {
+         $.each(detailRows, function (i, id) {
+           console.log(detailRows);
 
-
-
-      // On each draw, loop over the `detailRows` array and show any child rows
+           $('#' + id + ' td.details-control').trigger('click');
+         });
+       });
+       
+       // On each draw, loop over the `detailRows` array and show any child rows
       dtc.on('draw', function() {
         $.each(detailRows, function(i, id) {
           console.log(detailRows);
@@ -532,77 +587,77 @@
           $('#' + id + ' td.details-control').trigger('click');
         });
       });
-      // -------------   /.Funciones
+// -------------   /.Funciones
 
-      // -------------Eventos click
+// -------------Eventos click
 
       $('#dataSolicitudes tbody').on('click', 'tr td.control', function() {
-        var tr = $(this).closest('tr');
-        var row = dts.row(tr);
-        var idx = $.inArray(tr.attr('id'), detailRows);
+var tr = $(this).closest('tr');
+var row = dts.row(tr);
+var idx = $.inArray(tr.attr('id'), detailRows);
 
-        if (row.child.isShown()) {
+if (row.child.isShown()) {
 
-          // Remove from the 'open' array
-          detailRows.splice(idx, 1);
-        } else {
-          console.log(detailRows);
+// Remove from the 'open' array
+detailRows.splice(idx, 1);
+} else {
+console.log(detailRows);
 
-          // Add to the 'open' array
-          if (idx === -1) {
-            detailRows.push(tr.attr('id'));
-          }
-        }
-      });
+// Add to the 'open' array
+if (idx === -1) {
+detailRows.push(tr.attr('id'));
+}
+}
+});
 
       $('#dataCarreras tbody').on('click', 'tr td.control', function() {
-        var tr = $(this).closest('tr');
-        var row = dtc.row(tr);
-        var idx = $.inArray(tr.attr('id'), detailRows);
+       var tr = $(this).closest('tr');
+       var row = dtc.row(tr);
+       var idx = $.inArray(tr.attr('id'), detailRows);
 
-        if (row.child.isShown()) {
+       if (row.child.isShown()) {
 
-          // Remove from the 'open' array
-          detailRows.splice(idx, 1);
-        } else {
-          console.log(detailRows);
+       // Remove from the 'open' array
+       detailRows.splice(idx, 1);
+       } else {
+       console.log(detailRows);
 
-          // Add to the 'open' array
-          if (idx === -1) {
-            detailRows.push(tr.attr('id'));
-          }
-        }
-      });
+       // Add to the 'open' array
+       if (idx === -1) {
+       detailRows.push(tr.attr('id'));
+       }
+       }
+       });
 
       $(document).on('click', '#dataSolicitudes a', function() {
-        $('#ejecutarCambioSolicitudA').removeAttr('hidden');
-        $('#ejecutarCambioSolicitud').attr('hidden', 'true');
-        $('#ejecutarCambioCarrera').attr('hidden', 'true');
+      $('#ejecutarCambioSolicitudA').removeAttr('hidden');
+      $('#ejecutarCambioSolicitud').attr('hidden', 'true');
+      $('#ejecutarCambioCarrera').attr('hidden', 'true');
       });
       $(document).on('click', '#dataCarreras a', function() {
-        $('#ejecutarCambioCarreraA').attr('hidden', 'true');
-        $('#ejecutarCambioCarrera').removeAttr('hidden');
-        $('#ejecutarCambioSolicitud').attr('hidden', 'true');
+      $('#ejecutarCambioCarreraA').attr('hidden', 'true');
+      $('#ejecutarCambioCarrera').removeAttr('hidden');
+      $('#ejecutarCambioSolicitud').attr('hidden', 'true');
       });
       $(document).on('click', '#dataMetodos a', function() {
-        $('#ejecutarCambioSolicitudA').attr('hidden', 'true');
-        $('#ejecutarCambioSolicitud').removeAttr('hidden');
-        $('#ejecutarCambioCarrera').attr('hidden', 'true');
+      $('#ejecutarCambioSolicitudA').attr('hidden', 'true');
+      $('#ejecutarCambioSolicitud').removeAttr('hidden');
+      $('#ejecutarCambioCarrera').attr('hidden', 'true');
       });
 
-
+      
       $(document).on('click', 'a[data-role=update]', function() {
-        var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
-        var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
-        var estadoElemento = $(this).attr('data-active');
-        var id_alumno = $(this).attr('data-prueba') // data-active (row['idemento']) activo o no
+      var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
+      var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
+      var estadoElemento = $(this).attr('data-active');
+      var id_alumno = $(this).attr('data-prueba') // data-active (row['idemento']) activo o no
 
-        $('#codigo').val(codigoCarrera);
-        $('#elemento').val(idElemento);
-        $('#estado').val(estadoElemento);
-        $('#id_alumno').val(id_alumno);
+      $('#codigo').val(codigoCarrera);
+      $('#elemento').val(idElemento);
+      $('#estado').val(estadoElemento);
+      $('#id_alumno').val(id_alumno);
 
-        $('#cambiosModal').modal('toggle');
+      $('#cambiosModal').modal('toggle');
       });
 
       $('#ejecutarCambioSolicitudA').on('click', ejecutarAjaxSolicitudA);
@@ -612,67 +667,67 @@
       // -------------Eventos click
       // ------------- Ejecutar AJAX
       function ejecutarAjaxSolicitudA(event) {
-        var codigo = $('#codigo').val();
-        var elemento = $('#elemento').val();
-        var estado = $('#estado').val();
-        var id_alumno = $('#id_alumno').val();
+      var codigo = $('#codigo').val();
+      var elemento = $('#elemento').val();
+      var estado = $('#estado').val();
+      var id_alumno = $('#id_alumno').val();
 
-        var personalAtencion = $('span[id=usernameActual]').text();
+      var personalAtencion = $('span[id=usernameActual]').text();
 
-        var datosEnviadosS = {
-          'codigo': codigo,
-          'elemento': elemento,
-          'estado': estado,
-          'id_alumno': id_alumno,
-          'personalAtencion': personalAtencion
-        };
+      var datosEnviadosS = {
+      'codigo': codigo,
+      'elemento': elemento,
+      'estado': estado,
+      'id_alumno': id_alumno,
+      'personalAtencion': personalAtencion
+      };
 
-        $.ajax({
-            type: 'POST',
-            url: './back/admin/backSolicitudAlumno.php',
-            data: datosEnviadosS
-          })
-          .done(function(dataS) {
+      $.ajax({
+      type: 'POST',
+      url: './back/admin/backSolicitudAlumno.php',
+      data: datosEnviadosS
+      })
+      .done(function(dataS) {
 
-            dts.ajax.reload(null, false);
-            $('#cambiosModal').modal('toggle');
-          })
-          .fail(function(err) {
-            console.log(err);
-          });
+      dts.ajax.reload(null, false);
+      $('#cambiosModal').modal('toggle');
+      })
+      .fail(function(err) {
+      console.log(err);
+      });
 
-        event.preventDefault();
+      event.preventDefault();
       };
 
       function ejecutarAjaxCarerra(event) {
-        var codigo = $('#codigo').val();
-        var elemento = $('#elemento').val();
-        var estado = $('#estado').val();
+            var codigo = $('#codigo').val();
+            var elemento = $('#elemento').val();
+            var estado = $('#estado').val();
 
-        var datosEnviados = {
-          'codigo': codigo,
-          'elemento': elemento,
-          'estado': estado
-        };
+            var datosEnviados = {
+            'codigo': codigo,
+            'elemento': elemento,
+            'estado': estado
+            };
 
-        $.ajax({
+            $.ajax({
             type: 'POST',
             url: './back/admin/backCarrera.php',
             data: datosEnviados
-          })
-          .done(function(data) {
+            })
+            .done(function(data) {
 
             dtc.ajax.reload(null, false);
             // user paging is not reset on reload
 
             $('#cambiosModal').modal('toggle');
-          })
-          .fail(function(err) {
+            })
+            .fail(function(err) {
             console.log(err);
-          });
+            });
 
-        event.preventDefault();
-      };
+            event.preventDefault();
+            };
 
       function ejecutarAjaxSolicitud(event) {
         var codigo = $('#codigo').val();
@@ -680,32 +735,34 @@
         var estado = $('#estado').val();
 
         var datosEnviadosS = {
-          'codigo': codigo,
-          'estado': estado
+        'codigo': codigo,
+        'estado': estado
         };
 
         $.ajax({
-            type: 'POST',
-            url: './back/admin/backSolicitud.php',
-            data: datosEnviadosS
-          })
-          .done(function(dataS) {
-            var datosRecibidosS = $.parseJSON(dataS);
-            dt.ajax.reload()
-            $('#cambiosModal').modal('toggle');
-          })
-          .fail(function(err) {
-            console.log(err);
-          });
+        type: 'POST',
+        url: './back/admin/backSolicitud.php',
+        data: datosEnviadosS
+        })
+        .done(function(dataS) {
+        var datosRecibidosS = $.parseJSON(dataS);
+        dt.ajax.reload()
+        $('#cambiosModal').modal('toggle');
+        })
+        .fail(function(err) {
+        console.log(err);
+        });
 
         event.preventDefault();
-      };
-      // ------------- Ejecutar AJAX
-    });
-  </script>
+        };
+// ------------- Ejecutar AJAX
+     });
 
 
-  <!-- /.TABLA AJAX -->
+   </script>
+
+
+   <!-- /.TABLA AJAX -->
 
 </body>
 
