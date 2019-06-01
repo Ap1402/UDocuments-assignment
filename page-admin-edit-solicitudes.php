@@ -386,7 +386,8 @@
            "next": "Siguiente",
            "previous": "Anterior"
          }
-       }
+       },
+       "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
       });
 
       var dtc = $('#dataCarreras').DataTable({
@@ -474,7 +475,8 @@
            "next": "Siguiente",
            "previous": "Anterior"
          }
-       }
+       },
+       "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
 
       });
 
@@ -548,7 +550,8 @@
            "next": "Siguiente",
            "previous": "Anterior"
          }
-       }
+       },
+       "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
 
          
 

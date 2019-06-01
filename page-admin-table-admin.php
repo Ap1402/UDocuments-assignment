@@ -535,7 +535,8 @@
            "next": "Siguiente",
            "previous": "Anterior"
          }
-       }
+       },
+       "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
       });
       obtener_data_editar("#adminTable tbody", table);
 

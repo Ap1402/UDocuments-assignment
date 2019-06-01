@@ -79,9 +79,9 @@
                       <div class="col-sm-6 col-md-6 col-lg-3">
                         <label class="pl-2"><small>Segundo nombre</small></label>
                         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
-                          placeholder="Segundo nombre">
+                          placeholder="Segundo nombre" required>
                         <div class="invalid-feedback">
-                          Este campo debe tener al menos 2 caracteres.
+                          Este campo debe tener al menos 1 caracter, sino tiene segundo nombre coloque un espacio en blanco.
                         </div>
                       </div>                    
                       <div class="col-sm-6 col-md-6 col-lg-3">
@@ -101,16 +101,16 @@
                         </div>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="pl-2"><small>Correo</small></label>
+                    <div class="form-group row">
+                      <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label class="pl-2"><small>Correo</small></label>
                       <input type="email" id="correo" name="correo" class="form-control form-control-user"
                         placeholder="Correo" required>
                       <div class="invalid-feedback">
                         Por favor introduzca un correo válido.
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-sm-6">
+                      </div>                      
+                      <div class="col-xs-12 col-md-4">
                         <label class="pl-2"><small>Nombre de ususario</small></label>
                         <input type="text" id="username" name="username" class="form-control form-control-user"
                           placeholder="Nombre de ususario" minlength="4" required>
@@ -118,7 +118,7 @@
                           Este campo debe tener al menos 4 caracteres.
                         </div>
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-xs-12 col-md-4">
                         <label class="pl-2"><small>Cédula</small></label>
                         <input type="number" id="cedula" name="cedula" pattern="\d*.{7,11}" class="form-control"
                           placeholder="Cédula" required>

@@ -9,12 +9,12 @@ $alumnos_pendientes = $row_pendientes['COUNT(*)'];
 
 ?>
 <!-- Earnings (Monthly) Card Example -->
-<div class="col-xs-12 col-md-6 col-xl-6 mb-4">
+<div class="col-xs-12 col-md-6 col-xl-6 mb-3">
  <div class="card border-left-danger shadow h-100 py-2">
   <div class="card-body">
    <div class="row no-gutters align-items-center">
     <div class="col mr-2">
-     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Alumnos con documentos faltantes</div>
+     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Alumnos con documentos faltantes </div>
      <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$alumnos_pendientes?></div>
     </div>
     <div class="col-auto">
@@ -42,7 +42,7 @@ $alumnos_sol_pendientes = $row_sol_pendientes['COUNT(*)'];
 
 ?>
 <!-- Earnings (Monthly) Card Example -->
-<div class="col-xs-12 col-md-6 col-xl-6 mb-4">
+<div class="col-xs-12 col-md-6 col-xl-6 mb-3">
  <div class="card border-left-warning shadow h-100 py-2">
   <div class="card-body">
    <div class="row no-gutters align-items-center">

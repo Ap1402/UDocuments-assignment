@@ -3,6 +3,7 @@
 $array_carreras = [];
 $reg_carreras = [];
 $name_carreras = [];
+$reg_carreras_atendidas = [];
 $var_mes = 6;
 
 $dt_mesAntes = date('Y-m-d', strtotime('-' . ($var_mes) . ' month')); // resto var_mes mes
@@ -26,7 +27,7 @@ if ($result_cerreraa->num_rows > 0) {
 
 foreach ($array_carreras as $key => $value) {
 
-  $sql_reg_car = "SELECT COUNT(*) FROM alumnos LEFT JOIN carreras ON alumnos.carrera = carreras.codigo WHERE (codigo = $value) AND (fechaCreacion > '$fecha_car')";
+  $sql_reg_car = "SELECT COUNT(*) FROM alumnos WHERE (carrera = $value) AND (fechaCreacion > '$fecha_car')";
 
   $result_reg_car = mysqli_query($conexion, $sql_reg_car);
   $row_reg_car = mysqli_fetch_assoc($result_reg_car);
@@ -34,18 +35,31 @@ foreach ($array_carreras as $key => $value) {
 
 };
 
+foreach ($array_carreras as $key => $value) {
+
+    $sql_reg_atendidas = "SELECT COUNT(*) FROM solicitudes WHERE (carrera = $value) AND (estadoSolicitud = 1) AND (fechaCreacion > '$fecha_car')";
+
+    $result_reg_atendidas = mysqli_query($conexion, $sql_reg_atendidas);
+    $row_reg_atendidas = mysqli_fetch_assoc($result_reg_atendidas);
+    array_push($reg_carreras_atendidas, $row_reg_atendidas['COUNT(*)']);
+
+}
+;
+
+
 
 ?>
 
 <script>
   var arrayDataCarerras = <?= json_encode($name_carreras) ?> ;
   var arrayDataRegCar = <?= json_encode($reg_carreras) ?> ;
+  var arrayDataRegCarAten = <?= json_encode($reg_carreras_atendidas) ?> ;
 </script>
 
-  <div class="col-12 mb-4">
+  <div class="col-12 mb-3">
 
     <!-- Project Card Facultades -->
-     <div class="card shadow mb-4">
+     <div class="card shadow">
        <div class="card-header py-3">
          <h6 class="m-0 font-weight-bold text-primary">Registro por carreras <small>(últimos 6 meses)</small></h6>
        </div>

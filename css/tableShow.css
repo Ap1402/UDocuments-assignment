@@ -9,7 +9,8 @@ color:#E74C3C !important;
 }
 
 thead {
-    color:rgba(18, 86, 153,.9);
+    border: 0;
+    color:rgba(52, 152, 219,.9);
 }
 
 .table th {
@@ -26,7 +27,8 @@ thead {
 }
 
 .odd {
-    background-color: rgb(18, 86, 153) !important;
+    border: 0;
+    background-color: rgb(52, 152, 219) !important;
     color: #ffffff;
 }
 
@@ -47,12 +49,14 @@ thead {
 }
 
 .even a i {
-    color: rgb(18, 86, 153,.9);
+    border: 0;
+    color: rgb(52, 152, 219,.9);
     font-size: 1.2rem;
 }
 
 .even a i:hover {
-    color: rgba(18, 86, 153, 0.7);
+    border: 0;
+    color: rgba(52, 152, 219, 0.7);
     transform: scale(1.2);
     transition: 1s;
 }
@@ -68,6 +72,8 @@ thead {
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
     color: rgb(255, 255, 255) !important;
     border: 1px solid #ffffff !important;
-    background: rgb(18, 86, 153,.9) !important;
-    background-color: rgb(18, 86, 153,.9) !important;
+    border: 0;
+    background: rgb(52, 152, 219,.9) !important;
+    border: 0;
+    background-color: rgb(52, 152, 219,.9) !important;
 }

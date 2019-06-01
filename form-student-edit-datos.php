@@ -43,9 +43,9 @@
         <label class="pl-2"><small>Segundo nombre <span class="text-xs text-danger"> *</span></small></label><br>
         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
           placeholder="Segundo nombre" data-toggle="tooltip" data-placement="top" title="Segundo nombre"
-          value="<?php echo $s_nombre ?>" <?php echo '' ?>>
+          value="<?php echo $s_nombre ?>" <?php echo ' ' ?> required>
         <div class="invalid-feedback">
-          Este campo debe tener al menos 2 caracteres.
+          Este campo debe tener al menos 1 caracter, sino tiene segundo nombre coloque un espacio en blanco.
         </div>
       </div>
 

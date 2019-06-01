@@ -71,9 +71,9 @@
                       </div>
                       <div class="col-xs-12 col-md-6 pt-1">
                         <input type="text" id="s_nombre" name="s_nombre" class="form-control form-control-user"
-                          placeholder="Segundo nombre">
+                          placeholder="Segundo nombre" required>
                         <div class="invalid-feedback">
-                          Este campo debe tener al menos 2 caracteres.
+                          Este campo debe tener al menos 1 caracter, sino tiene segundo nombre coloque un espacio en blanco.
                         </div>
                       </div>
                       <div class="col-xs-12 col-md-6 pt-1">

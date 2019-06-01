@@ -60,10 +60,10 @@
 
 
           <!-- Título de página -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-2 mx-auto">
+          <div class="d-sm-flex align-items-center justify-content-between mb-3 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Tabla de alumnos</h1>
             <!-- Búsquedas específicas -->
-            <div class="dropdown no-arrow">
+            <div class="dropdown">
               <a id="dropdownMenuButton" class="btn btn-primary text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Busquedas especificas</a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">
                 <a id="docTodos" class="dropdown-item" href="#">Mostrar todos</a>
@@ -297,7 +297,8 @@
         "order": [
           [1, 'asc']
         ],
-        "language": idioma
+        "language": idioma,
+        "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
       });
     };
 
@@ -396,7 +397,8 @@
         "order": [
           [1, 'asc']
         ],
-        "language": idioma
+        "language": idioma,
+        "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
       });
     };
 
@@ -499,7 +501,8 @@
         "order": [
           [1, 'asc']
         ],
-        "language": idioma
+        "language": idioma,
+        "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
       });
     };
 

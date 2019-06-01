@@ -307,7 +307,8 @@
            "next": "Siguiente",
            "previous": "Anterior"
          }
-       }
+       },
+       "lengthMenu": [[8, 16, 30, 50, 100], [8, 16, 30, 50, 100]]
       });
 
       var detailRows = [];
