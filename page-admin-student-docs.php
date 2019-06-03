@@ -66,15 +66,22 @@ include 'back/conexion.php';
 
 // ------------ Obtener la id del documento
 if (isset($_SESSION['docId'])) {
+  $ida = $_SESSION['id'];
     $idd = $_SESSION['docId'];
     $cedula = $_SESSION['cedula'];
 
 }else{
+  $ida = $_GET['ida'];
   $idd=$_GET['idd'];
   $cedula=$_GET['ci'];
 }
 
+$sqlSolicitud = "SELECT tipo_solicitud.tipo AS tipoSolicitud, solicitudes.tipo, carrera, nombre, nombre_solicitud, estadoSolicitud FROM solicitudes 
+LEFT JOIN tipo_solicitud ON solicitudes.tipo=tipo_solicitud.tipo 
+LEFT JOIN carreras ON solicitudes.carrera=carreras.codigo WHERE alumno='$ida'";
+$resultSolicitud =  mysqli_query($conexion, $sqlSolicitud);
 
+$solicitud = mysqli_fetch_assoc($resultSolicitud);
 
 $sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
 $result = mysqli_query($conexion, $sql);
@@ -208,6 +215,13 @@ if ($porcentaje == 100) {
 // --------------- /.Hacer si todos los documentos estan validados
 ?>
 
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <?= ($solicitud['estadoSolicitud']==0 || $solicitud['estadoSolicitud']==null) ? '<i class="fas fa-minus-circle"></i>' : '<i class="fas fa-check-circle"></i>'?>
+                    <strong>Solicitud: </strong> <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      &times;
+                    </button>
+                  </div>
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">
                       <?php echo ($porcentaje == 100) ? 'Todos los ducumentos han sido validados' : 'Elija el documento a editar' ?>

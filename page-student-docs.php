@@ -59,17 +59,22 @@ include 'back/conexion.php';
 
 // ------------ Obtener la id del documento
 if (isset($_SESSION['docId'])) {
+    $ida = $_SESSION['id'];
     $idd = $_SESSION['docId'];
     $alumno=$_SESSION['id'];
 }
 
-$sql = "SELECT check_foto,check_cedula,check_fondo,check_nota,check_partida,check_rusinies,check_metodo,check_certificado_s,porcentaje FROM documentos WHERE id_documento='$idd'";
-$result = mysqli_query($conexion, $sql);
-
-$sqlSolicitud = "SELECT tipo, carrera FROM solicitudes WHERE alumno='$alumno'";
+$sqlSolicitud = "SELECT tipo_solicitud.tipo AS tipoSolicitud, solicitudes.tipo, carrera, nombre, nombre_solicitud, estadoSolicitud FROM solicitudes 
+LEFT JOIN tipo_solicitud ON solicitudes.tipo=tipo_solicitud.tipo 
+LEFT JOIN carreras ON solicitudes.carrera=carreras.codigo WHERE alumno='$ida'";
 $resultSolicitud =  mysqli_query($conexion, $sqlSolicitud);
 
 $solicitud = mysqli_fetch_assoc($resultSolicitud);
+
+$sql = "SELECT check_foto,check_cedula,check_fondo,check_nota,check_partida,check_rusinies,check_metodo,check_certificado_s,porcentaje FROM documentos WHERE id_documento='$idd'";
+$result = mysqli_query($conexion, $sql);
+
+
 
 
 if ($result->num_rows > 0) {
@@ -161,7 +166,13 @@ if ($porcentaje == 100) {
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
-
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <?= ($solicitud['estadoSolicitud']==0 || $solicitud['estadoSolicitud']==null) ? '<i class="fas fa-minus-circle"></i>' : '<i class="fas fa-check-circle"></i>'?>
+                    <strong>Solicitud: </strong> <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      &times;
+                    </button>
+                  </div>
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a subir</option>
                     <option value="1">Cédula</option>

@@ -76,16 +76,15 @@ if (isset($_SESSION['docId'])) {
   $cedula=$_GET['ci'];
 }
 
-
-
-$sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
-$result = mysqli_query($conexion, $sql);
-
-$sqlSolicitud = "SELECT tipo, carrera FROM solicitudes WHERE alumno='$ida'";
+$sqlSolicitud = "SELECT tipo_solicitud.tipo AS tipoSolicitud, solicitudes.tipo, carrera, nombre, nombre_solicitud, estadoSolicitud FROM solicitudes 
+LEFT JOIN tipo_solicitud ON solicitudes.tipo=tipo_solicitud.tipo 
+LEFT JOIN carreras ON solicitudes.carrera=carreras.codigo WHERE alumno='$ida'";
 $resultSolicitud =  mysqli_query($conexion, $sqlSolicitud);
 
 $solicitud = mysqli_fetch_assoc($resultSolicitud);
 
+$sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
+$result = mysqli_query($conexion, $sql);
 
 if ($result->num_rows > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -145,18 +144,6 @@ $notas= array();
 while ($row = mysqli_fetch_assoc($result)) {
   array_push($notas, $path_general.$row['nota']);
 };
-
-
-
-
-
-
-// rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-
-
-
-
-
 
 ?>
           <!-- Título de página -->
@@ -219,6 +206,14 @@ if ($porcentaje == 100) {
                     <i class="fas fa-exclamation-triangle"></i>
                     <strong>Advertencia!</strong>
                     Todos los cambios realizados en este formulario se hacen de manera <strong>permanente!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      &times;
+                    </button>
+                  </div>
+
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <?= ($solicitud['estadoSolicitud']==0 || $solicitud['estadoSolicitud']==null) ? '<i class="fas fa-minus-circle"></i>' : '<i class="fas fa-check-circle"></i>'?>
+                    <strong>Solicitud: </strong> <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       &times;
                     </button>
