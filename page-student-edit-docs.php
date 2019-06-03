@@ -66,10 +66,12 @@ include 'back/conexion.php';
 
 // ------------ Obtener la id del documento
 if (isset($_SESSION['docId'])) {
+    $ida = $_SESSION['id'];
     $idd = $_SESSION['docId'];
     $cedula = $_SESSION['cedula'];
 
 }else{
+  $ida = $_GET['ida'];
   $idd=$_GET['idd'];
   $cedula=$_GET['ci'];
 }
@@ -78,6 +80,12 @@ if (isset($_SESSION['docId'])) {
 
 $sql = "SELECT * FROM documentos WHERE id_documento='$idd'";
 $result = mysqli_query($conexion, $sql);
+
+$sqlSolicitud = "SELECT tipo, carrera FROM solicitudes WHERE alumno='$ida'";
+$resultSolicitud =  mysqli_query($conexion, $sqlSolicitud);
+
+$solicitud = mysqli_fetch_assoc($resultSolicitud);
+
 
 if ($result->num_rows > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -225,9 +233,18 @@ if ($porcentaje == 100) {
                      <?php echo ($check_notas == 0) ? '<option value="3">Notas certificadas de bachillerato (1er a 5to)</option>' : '' ?>
                      <?php echo ($check_fondo == 0) ? '<option value="4">Título de bachillerato autenticado</option>' : '' ?>
                      <?php echo ($check_rusnies == 0) ? '<option value="5">Resultado del RUSNIES</option>' : '' ?>
-                     <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '' ?>
-                     <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '' ?>
-                     <?php echo ($check_certificado_s == 0) ? '<option value="8">Certificado de Salud</option>' : '' ?>
+                     <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '' ?>  
+
+                     <?php 
+                  if (isset($solicitud)){
+                  
+                  if($solicitud['tipo']==4 or $solicitud['tipo']==5 ){?>
+                    <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '' ?>
+                    <?php }; ?>
+                    <?php if($solicitud['carrera']==10){?>
+                    <?php echo ($check_certificado_s == 0) ? '<option value="8">Certificado de Salud</option>' : '' ?>
+
+                    <?php }} ?>
                   </select>
                   <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>

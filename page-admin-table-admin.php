@@ -167,9 +167,16 @@
                   <div class="form-group">
                     <label class="pl-2"><small>Rol</small></label><br>
                     <select id="rol_admin" name="rol_admin" class="form-control" required>
-                      <option value="1">Personal</option>
-                      <option value="2">Asistente</option>
-                      <option value="3">Administrador</option>
+                      <?php
+                          include 'back/conexion.php';
+                          $consulta = "SELECT id, rol_name FROM rol_admin";
+                          $resultado = mysqli_query($conexion, $consulta);
+                          if ($resultado->num_rows > 0) {
+                            while ($row = mysqli_fetch_assoc($resultado)) {
+                              echo "<option value=" . $row["id"] . ">" . $row["rol_name"] . "</option>";
+                            };
+                          };
+                          ?>
                     </select>
                     <div class="invalid-feedback">
                       Seleccione una opción.
@@ -268,9 +275,15 @@
                   <div class="form-group">
                     <label class="pl-2"><small>Rol</small></label><br>
                     <select id="rol_adminEdit" name="rol_adminEdit" class="form-control" required>
-                      <option value="1">Personal</option>
-                      <option value="2">Asistente</option>
-                      <option value="3">Administrador</option>
+                      <?php
+                          $consulta = "SELECT id, rol_name FROM rol_admin";
+                          $resultado = mysqli_query($conexion, $consulta);
+                          if ($resultado->num_rows > 0) {
+                            while ($row = mysqli_fetch_assoc($resultado)) {
+                              echo "<option value=" . $row["id"] . ">" . $row["rol_name"] . "</option>";
+                            };
+                          };
+                          ?>
                     </select>
                     <div class="invalid-feedback">
                       Seleccione una opción.

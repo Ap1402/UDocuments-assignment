@@ -66,9 +66,9 @@
 
 
           <ul class="nav nav-tabs nav-justified" role="tablist">
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link font-weight-bolder" href="#solicitudesAlumno" role="tab" data-toggle="tab">Solicitudes</a>
-            </li> -->
+            </li>
             <li class="nav-item">
               <a class="nav-link font-weight-bolder active" href="#carrerasAdmin" role="tab" data-toggle="tab">Carreras</a>
             </li>
@@ -89,17 +89,17 @@
                         <tr>
                           <th></th>
 
-                          <th>Cédula</th>
-                          <th>Alumno</th>
-                          <th>Fecha de creación</th>
-                          <th>Estado de solicitud</th>
-                          <th>Fecha de Atención</th>
-                          <th>Tipo</th>
-                          <th>Carrera</th>
-                          <th>Turno</th>
-                          <th>Personal de atención</th>
-                          <th>Validar Docs</th>
-                          <th>Ver perfil</th>
+                          <th>Rol</th>
+                          <th>Estado</th>
+                          <th>Validaciones</th>
+                          <th>Ver perfil alumno</th>
+                          <th>Crear/editar alumno</th>
+                          <th>Cargar/editar documentos</th>
+                          <th>Crear/editar solicitudes</th>
+                          <th>Crear/editar admin</th>
+                          <th>Editar metodos ingreso</th>
+                          <th>Editar carreras</th>
+                          <th>Editar correo y contraseña</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -197,7 +197,6 @@
         <input type="hidden" id="codigo">
         <input type="hidden" id="elemento">
         <input type="hidden" id="estado">
-        <input type="hidden" id="id_alumno">
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary text-white" type="button" data-dismiss="modal">Cancelar</button>
@@ -292,10 +291,10 @@
 
         "ajax": {
           "method": "POST",
-          "url": "back/admin/tablaUtilidades/tabla_solicitudes.php"
+          "url": "back/admin/tablaUtilidades/tabla_roles.php"
 
         },
-        rowId: 'id_solicitud',
+        rowId: 'id',
 
         responsive: {
           details: {
@@ -304,9 +303,10 @@
             renderer: function(api, rowIdx, columns) {
               var data = $.map(columns, function(col, i) {
                 if (col.hidden) {
-                  return '     ' +
-                    '<td>' + col.title + ':' + '</td> ' +
-                    '<td>' + col.data + '</td>';
+                  return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                  '<td>' + col.title + ':' + '</td> ' +
+                  '<td>' + col.data + '</td>' +
+                  '</tr>'
 
                 } else {
                   return '';
@@ -320,48 +320,59 @@
           }
         },
         "columns": [{
-            "class": "control",
+             "class": "control",
             "orderable": false,
             "data": null,
             "defaultContent": ""
           },
           {
-            "data": "cedula"
+            "data": "rol_name"
           },
           {
-            "data": "nombre"
+            "data": "rolActivoHTML"
           },
           {
-            "data": "fechaCreacion"
+            "data": "validacionHTML"
+
           },
           {
-            "data": "estadoSolicitud"
+            "data": "ver_perfil_alumnoHTML"
+
           },
           {
-            "data": "fechaAtencion",
+            "data": "crea_editar_alumnoHTML",
             className: 'none'
+
           },
           {
-            "data": "nombre_solicitud",
+            "data": "subir_edicion_documentosHTML",
             className: 'none'
+
           },
           {
-            "data": "carreraNombre"
-          },
-          {
-            "data": "turno",
-          },
-          {
-            "data": "personalAtencion",
+            "data": "crear_editar_solicitudesHTML",
             className: 'none'
+
           },
           {
-            "data": "irCheck",
+            "data": "edicion_creacion_adminHTML",
             className: 'none'
+
           },
           {
-            "data": "irPerfil",
+            "data": "metodos_ingresoHTML",
             className: 'none'
+
+          },
+          {
+            "data": "edicion_carrerasHTML",
+            className: 'none'
+
+          },
+          {
+            "data": "editar_correoContra_alumnoHTML",
+            className: 'none'
+
           }
         ],
         "order": [
@@ -406,9 +417,10 @@
             renderer: function(api, rowIdx, columns) {
               var data = $.map(columns, function(col, i) {
                 if (col.hidden) {
-                  return '     ' +
-                    '<td>' + col.title + ':' + '</td> ' +
-                    '<td>' + col.data + '</td>';
+                  return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                  '<td>' + col.title + ':' + '</td> ' +
+                  '<td>' + col.data + '</td>' +
+                  '</tr>'
 
                 } else {
                   return '';
@@ -496,9 +508,10 @@
              renderer: function (api, rowIdx, columns) {
                var data = $.map(columns, function (col, i) {
                  if (col.hidden) {
-                   return '     ' +
-                     '<td>' + col.title + ':' + '</td> ' +
-                     '<td>' + col.data + '</td>';
+                   return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                  '<td>' + col.title + ':' + '</td> ' +
+                  '<td>' + col.data + '</td>' +
+                  '</tr>'
 
                  } else {
                    return '';
@@ -567,8 +580,7 @@
        // On each draw, loop over the `detailRows` array and show any child rows
        dts.on('draw', function() {
        $.each(detailRows, function(i, id) {
-       console.log(detailRows);
-
+       //console.log(detailRows);
        $('#' + id + ' td.details-control').trigger('click');
        });
        });
@@ -576,7 +588,7 @@
        // On each draw, loop over the `detailRows` array and show any child rows
        dt.on('draw', function () {
          $.each(detailRows, function (i, id) {
-           console.log(detailRows);
+           //console.log(detailRows);
 
            $('#' + id + ' td.details-control').trigger('click');
          });
@@ -585,7 +597,7 @@
        // On each draw, loop over the `detailRows` array and show any child rows
       dtc.on('draw', function() {
         $.each(detailRows, function(i, id) {
-          console.log(detailRows);
+          //console.log(detailRows);
 
           $('#' + id + ' td.details-control').trigger('click');
         });
@@ -604,7 +616,7 @@ if (row.child.isShown()) {
 // Remove from the 'open' array
 detailRows.splice(idx, 1);
 } else {
-console.log(detailRows);
+//console.log(detailRows);
 
 // Add to the 'open' array
 if (idx === -1) {
@@ -623,7 +635,7 @@ detailRows.push(tr.attr('id'));
        // Remove from the 'open' array
        detailRows.splice(idx, 1);
        } else {
-       console.log(detailRows);
+       //console.log(detailRows);
 
        // Add to the 'open' array
        if (idx === -1) {
@@ -653,12 +665,10 @@ detailRows.push(tr.attr('id'));
       var codigoCarrera = $(this).attr('data-id'); // data-id (row['codigo']) codigo de la carrera
       var idElemento = $(this).attr('id'); // id (estatus, manana,tarde,noche)
       var estadoElemento = $(this).attr('data-active');
-      var id_alumno = $(this).attr('data-prueba') // data-active (row['idemento']) activo o no
 
       $('#codigo').val(codigoCarrera);
       $('#elemento').val(idElemento);
       $('#estado').val(estadoElemento);
-      $('#id_alumno').val(id_alumno);
 
       $('#cambiosModal').modal('toggle');
       });
@@ -673,22 +683,17 @@ detailRows.push(tr.attr('id'));
       var codigo = $('#codigo').val();
       var elemento = $('#elemento').val();
       var estado = $('#estado').val();
-      var id_alumno = $('#id_alumno').val();
 
-      var personalAtencion = $('span[id=usernameActual]').text();
-
-      var datosEnviadosS = {
+      var datosEnviadosR = {
       'codigo': codigo,
       'elemento': elemento,
-      'estado': estado,
-      'id_alumno': id_alumno,
-      'personalAtencion': personalAtencion
+      'estado': estado
       };
 
       $.ajax({
       type: 'POST',
-      url: './back/admin/backSolicitudAlumno.php',
-      data: datosEnviadosS
+      url: './back/admin/backRoles.php',
+      data: datosEnviadosR
       })
       .done(function(dataS) {
 
@@ -696,7 +701,7 @@ detailRows.push(tr.attr('id'));
       $('#cambiosModal').modal('toggle');
       })
       .fail(function(err) {
-      console.log(err);
+      //console.log(err);
       });
 
       event.preventDefault();
@@ -726,7 +731,7 @@ detailRows.push(tr.attr('id'));
             $('#cambiosModal').modal('toggle');
             })
             .fail(function(err) {
-            console.log(err);
+            //console.log(err);
             });
 
             event.preventDefault();
@@ -749,11 +754,11 @@ detailRows.push(tr.attr('id'));
         })
         .done(function(dataS) {
         var datosRecibidosS = $.parseJSON(dataS);
-        dt.ajax.reload()
+        dt.ajax.reload(null, false);
         $('#cambiosModal').modal('toggle');
         })
         .fail(function(err) {
-        console.log(err);
+        //console.log(err);
         });
 
         event.preventDefault();
