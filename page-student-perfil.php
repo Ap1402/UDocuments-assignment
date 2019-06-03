@@ -60,8 +60,10 @@
           // ------------ Obtener la id del alumno dependiendo la sesion
           if (isset($_GET['ida'])) {
             $ida = $_GET['ida'];
+            
           } elseif (isset($_SESSION['id'])) {
             $ida = $_SESSION['id'];
+            $ci = $_SESSION['cedula'];
           };
           // ------------ /.Obtener la id del alumno dependiendo la sesion
 
@@ -149,13 +151,13 @@
           ?>
 
           <!-- Título de página -->
-          <div class="d-sm-flex col-sm-12 col-md-12 col-lg-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-flex col-sm-12 col-md-12 col-lg-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Perfil del alumno</h1>
             <!-- Boton para el alumno (Imprimir perfil) -->
             <?php if ($rol == 0) { ?>
-            <a id="btnImprimirPerfil" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
+            <a id="btnImprimirConstancia2" class="d-sm-inline-block btn btn-sm btn-primary text-white shadow-sm">
               <i class="fas fa-download fa-sm"></i>
-              Imprimir perfil
+              Imprimir constancia
             </a>
             <?php }; ?>
             <!-- /.Boton para el alumno (Imprimir perfil) -->
@@ -204,17 +206,6 @@
                 </div>
               </div>
 
-              
-              <!-- <div class="col-xs-12 col-sm-4">
-                <div class="card shadow">
-                  <?php if ($row['foto']=='') { ?>
-                  <img src="img/varias/noPicture.png" class="img-thumbnail mh-100" alt="img/varias/noPicture.png">
-                  <?php } else {  ?>
-                  <img src="<?= 'back/documentos/' . $row['foto'] ?>" class="img-thumbnail mh-100" alt="">
-                  <?php }; ?>
-                </div>
-              </div> -->
-
               <div class="col-sm-12 col-md-6 align-self-center text-sm-center mb-4">
 <div class="px-5">
                 <div class="flex-fill my-auto py-1">
@@ -228,6 +219,15 @@
                 <div class="flex-fill my-auto py-1">
 
                   <div class="text-gray-900">
+                    <h6 class="font-weight-bolder"><i class="fas fa-address-card"></i>
+                       <?= $row['ci'] ?>
+                    </h6>
+                  </div>
+
+                </div>
+                <div class="flex-fill my-auto py-1">
+
+                  <div class="text-gray-900">
                     <h6 class="font-weight-bolder"><i class="fas fa-envelope"></i> <?= $row['correo'] ?></h6>
 
                   </div>
@@ -236,9 +236,9 @@
 
                   <div class="text-gray-900">
                     <h6 class="font-weight-bolder"><i class="fas fa-mobile-alt"></i> Numeros de contacto</h6>
-                    <b><small>Local:</small></b> <?= ($row['num_habitacion']==0) ? '': $row['num_habitacion'] ?><br>
-                    <b><small>Movil:</small></b> <?= ($row['num_movil']==0) ? '': $row['num_movil'] ?><br>
-                    <b><small>Trabajo:</small></b> <?= ($row['num_trabajo']==0) ? '': $row['num_trabajo'] ?><br>
+                    <?= ($row['num_habitacion']==0) ? '': '<b><small>Local:</small></b> '.$row['num_habitacion'].'<br>' ?>
+                    <?= ($row['num_movil']==0) ? '': '<b><small>Movil:</small></b> '.$row['num_movil'].'<br>' ?>
+                    <?= ($row['num_trabajo']==0) ? '': '<b><small>Trabajo:</small></b> '.$row['num_trabajo'] ?>
                   </div>
                 </div>
                 <div class="flex-fill my-auto py-1">
@@ -279,6 +279,10 @@
               <li class="nav-item">
                 <a class="nav-link font-weight-bolder" href="#solicitudAlumno" role="tab"
                   data-toggle="tab">Solicitud</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link font-weight-bolder" href="#constanciaAlumno" role="tab"
+                  data-toggle="tab">Constancia</a>
               </li>
             </ul>
 
@@ -1040,6 +1044,230 @@
                 <!-- /Tabla de Status de Solicitudes -->
 
               </div>
+              <div role="tabpanel" class="tab-pane fade" id="constanciaAlumno">
+                <!-- Header Status de Constancia -->
+
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center px-2">
+                      <div class="col pr-2">
+                        <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">Constancia del alumno</div>
+                      </div>
+                      <div class="col-auto">
+                        <a id="btnImprimirConstancia" href="#" data-toggle="tooltip" data-placement="top" title="Imprimir constancia">
+                          <i class="fas fa-download fa-2x text-gray-300"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Header Status de Constancia -->
+
+
+                <!-- Tabla de Status de Constancia -->
+                <div class="card shadow mb-4">
+                  <div class="card-body">
+                    <div class="px-3 py-5">
+                      <!-- Constancia -->
+                     <div id="imprimirConstanciaHeader">
+                       <div class="row align-items-center">
+
+
+                       <div class="col-4 text-right">
+                        <img src="img/varias/logo_ujap.png" class="img-responsive" height="100px" width="90px" alt="img/varias/logo_ujap.png">
+                        
+                       </div>
+
+
+                       <div class="col-8 text-dark font-weight-bolder pl-2">
+                            REPÚBLICA BOLIVARIANA DE VENEZUELA<br>
+                            UNIVERSIDAD JOSÉ ANTONIO PÁEZ<br>
+                            DEPARTAMENTO DE CONTROL DE ESTUDIOS<br>
+                       </div>
+
+
+                     </div>
+                      </div>
+
+                     <div id="imprimirConstanciaTitle">
+                       <div class="row align-items-center justify-content-center">
+                      <div class="text-center text-dark font-weight-bolder p-5 my-5">
+                        CONSTANCIA DE ARCHIVO DIGITAL
+                      </div>                       
+                     </div>
+                     </div>
+
+                     <div id="imprimirConstanciaBody">
+                       <div class="row align-items-center justify-content-center">
+                       <div class="col-9 px-2 pt-2 pb-5 pl-2 ml-5">
+                         <div class="flex-fill my-auto">
+                           <div class="text-gray-900">
+                             <h6 class="text-left">
+                               <b>Alumno:</b> <?= $row['p_nombre'].' '.$row['s_nombre'].' '.$row['p_apellido'].' '.$row['s_apellido'].'' ?>
+                             </h6>
+
+                           </div>
+                         </div>
+                         <div class="flex-fill my-auto">
+                           <div class="text-gray-900">
+                             <h6 class="text-left">
+                               <b>Cédula:</b> <?= $row['ci'] ?>
+                             </h6>
+                           </div>
+                         </div>
+                         <div class="flex-fill my-auto">
+                           <div class="text-gray-900">
+                             <h6 class="text-left">
+                               <b>Correo:</b> <?= $row['correo'] ?>
+                              </h6>
+                           </div>
+                         </div>
+                         <div class="flex-fill my-auto">
+                           <div class="text-gray-900">
+                             <h6 class="text-left">
+                               <b>Dirección:</b> <?= $row['estado'].' '.$row['ciudad'].' '.$row['municipio'].' '.$row['urbanizacion'].' '.$row['aptcasa'].' '.$row['calle'] ?>
+                             </h6>
+                           </div>
+                         </div>
+
+                       </div>
+
+                     <div class="col-9 px-2 pt-2 pb-5 pl-2 ml-5">
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3 font-weight-bolder">
+                                  Estado
+                                </div>
+                                <div class="col-9 text-justify font-weight-bolder">Nombre</div>
+                              </h6>
+                            </div>
+                            <hr class="sidebar-divider">
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_datos'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Datos del alumno</div>
+                              </h6>
+                            </div>
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                    <?php echo ($row['check_foto'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Foto reciente tipo carnet</div>
+                              </h6>
+                            </div>
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_cedula'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Cédula</div>
+                              </h6>
+                            </div>
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_nota'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Notas certificadas de bachillerato (1er a 5to)</div>
+                              </h6>
+                            </div>
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_fondo'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Título de bachillerato autenticado</div>
+                              </h6>
+                            </div>
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_rusinies'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Resultado del RUSNIES</div>
+                              </h6>
+                            </div>
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_partida'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Partida de nacimiento</div>
+                              </h6>
+                            </div>
+                           
+                            <?php if($row['codigo']==10){?>
+
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_certificado_s'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Certificado de salud
+                                </div>
+                              </h6>
+                            </div>
+
+                            <?php }?>
+
+                            <?php
+                            if($row['metodo_ingreso']==4 or $row['metodo_ingreso']==5 ){?>
+                            <div class="col-md-12 my-auto">
+                              <h6 class="text-gray-900 row">
+                                <div class="col-3">
+                                  <?php echo ($row['check_metodo'] == 0) ? '<i class="fas fa-minus text-secondary pr-3"></i> Pendiente' : '<i class="fas fa-check text-success pr-3"></i> Validado' ?>
+                                </div>
+                                <div class="col-9 text-justify">Método de ingreso: <br>
+                                  <small> <?= '<b>'.$row['nombre_solicitud'].'</b> | carrera: <b>'.$row['nombre'].'</b> | turno: <b>'.$turno.'</b>' ?></small>
+                                </div>
+                              </h6>
+                            </div>
+                            <?php } ?>
+
+                            
+
+                     </div>
+
+                      
+
+                     </div>
+                     </div>
+
+                     <div id="imprimirConstanciaFooter">
+                       <div class="row align-items-end pb-4 mt-4" style="height: 200px;">
+                       <div class="col-4 text-center text-dark pt-5">
+                        <div class="pb-4">
+                          <div class="text-sm font-weight-bold text-uppercase mb-1">Firma</div>
+                        </div>                                                
+                        </div>
+
+                        <div class="col-4 text-center text-dark pt-5">
+                        <div class="pb-4">
+                          <div class="text-sm font-weight-bold text-uppercase mb-1">Sello</div>
+                        </div>
+                        </div>
+
+                        <div class="col-4 text-center text-dark pt-5">
+                        <div class="pb-4">
+                          <div class="text-sm font-weight-bold text-uppercase mb-1"><?=date("d-m-Y")?></div>
+                          <div class="text-sm font-weight-bold text-uppercase mb-1">Fecha</div>
+                        </div>
+                       </div>
+                     </div>
+                     </div>
+
+                      <!-- End Constancia -->
+
+                    </div>
+                  </div>
+                </div>
+                <!-- /Tabla de Status de Constancia -->
+
+
+              </div>
 
             </div>
           <!-- /.Perfil alumno -->
@@ -1125,35 +1353,50 @@ $(window).on("load", function () {
   
   
 
-  <?php if ($rol == 0) { ?>
+
   <!-- Imprimir Areas Especeficas -->
   <script>
-    document.querySelector("#btnImprimirPerfil").addEventListener("click", function () {
-      var div = document.querySelector("#imprimirPerfil");
-      imprimirElemento(div);
+    document.querySelector("#btnImprimirConstancia").addEventListener("click", function () {
+      var divHeader = document.querySelector("#imprimirConstanciaHeader");
+      var divTitle = document.querySelector("#imprimirConstanciaTitle");
+      var divBody = document.querySelector("#imprimirConstanciaBody");
+      var divFooter = document.querySelector("#imprimirConstanciaFooter");
+      imprimirElemento(divHeader, divTitle, divBody, divFooter);
     });
 
-    function imprimirElemento(elemento) {
-      var ventana = window.open('', 'PRINT', 'height=400,width=600');
-      ventana.document.write('<html><head><title>' + document.title + '</title>');
-      ventana.document.write(
-        '<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">'); //Aquí agregué la hoja de estilos
-      ventana.document.write('<link rel="stylesheet" href="css/font.css">');
+    document.querySelector("#btnImprimirConstancia2").addEventListener("click", function () {
+    var divHeader = document.querySelector("#imprimirConstanciaHeader");
+    var divTitle = document.querySelector("#imprimirConstanciaTitle");
+    var divBody = document.querySelector("#imprimirConstanciaBody");
+    var divFooter = document.querySelector("#imprimirConstanciaFooter");
+    imprimirElemento(divHeader, divTitle, divBody, divFooter);
+    });
+
+    function imprimirElemento(divHeader, divTitle, divBody, divFooter) {
+      var ventana = window.open('', 'PRINT', 'height=700,width=600');
+      ventana.document.write('<html><head><title>' + 'Constancia de archivo digital de la Universidad José Antonio Páez' + '</title>');
+      ventana.document.write('<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">'); //Aquí agregué la hoja de estilos
       ventana.document.write('<link rel="stylesheet" href="css/sb-admin-2.css">');
       ventana.document.write('<link rel="stylesheet" href="css/style.css">');
       ventana.document.write('<link rel="stylesheet" href="css/check.css">');
 
       ventana.document.write('</head><body >');
-      ventana.document.write(
-        '<div class="container-fluid bg-white align-items-center text-center topbar mb-2 px-5">');
-      ventana.document.write('<a class="navbar-brand align-items-center">');
-      ventana.document.write(
-        '<img src="img/varias/logo_ujap_peq.png" width="35" height="40" class="d-inline-block align-items-center">');
-      ventana.document.write('<b class="pl-4">Control de estudios / Sistema de archivo digital</b>');
-      ventana.document.write('</a>');
-      ventana.document.write('</div>');
+      ventana.document.write('<br><br><br><br><br>');
 
-      ventana.document.write(elemento.innerHTML);
+      ventana.document.write('<div class="mb-4">');
+      ventana.document.write('<div class="px-3 py-2">');
+
+      ventana.document.write(divHeader.innerHTML);
+      ventana.document.write('<br><br><br>');
+
+      ventana.document.write(divTitle.innerHTML);
+      ventana.document.write(divBody.innerHTML);
+
+      ventana.document.write('<br><br><br>');
+      ventana.document.write(divFooter.innerHTML);
+      
+      ventana.document.write('</div>');
+      ventana.document.write('</div>');
       ventana.document.write('</body></html>');
       ventana.document.close();
       ventana.focus();
@@ -1165,7 +1408,7 @@ $(window).on("load", function () {
     };
   </script>
   <!-- /.Imprimir Areas Especeficas -->
-  <?php }; ?>
+
 </body>
 
 </html>
