@@ -116,24 +116,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                 <div class="p-4">
                   <form id="solicitudForm" method="POST" class="user needs-validation" novalidate>
                   <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
-<?php
-// ---------------Hacer si el alumno no tiene ninguna solicitud
-if ($mensaje != '') {
 
-    ?>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <strong>Advertencia!</strong>
-                    Este alumno no tiene ninguna solicitud.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      &times;
-                    </button>
-                  </div>
-  <?php
-}
-;
-// --------------- /.Hacer si el alumno no tiene ninguna solicitud
-?>
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
                         <label class="pl-2"><small>Carrera</small></label><br>

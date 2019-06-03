@@ -12,8 +12,8 @@ if ($rol > 0 && isset($_GET['ida'])) {
 
   include 'back/conexion.php';
   $sql_alumno = "SELECT p_nombre, p_apellido, alumnos.cedula, documento, ultActualizacion, check_datos, porcentaje, estadoSolicitud FROM alumnos 
-INNER JOIN documentos ON alumnos.documento=documentos.id_documento 
-INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
+LEFT JOIN documentos ON alumnos.documento=documentos.id_documento 
+LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
                  WHERE id_alumno = '$ida';";
 
   $result_alumno = mysqli_query($conexion, $sql_alumno);
@@ -291,14 +291,14 @@ INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
   <!-- ============================== Solo para ALUMNOS ============================== -->
 
   <?php if ($rol == 0) {
-
+    
 if (isset($_SESSION['id'])) {
     $ida = $_SESSION['id']; // id_alumno
 
     include 'back/conexion.php';
-    $sql_alumno = "SELECT alumnos.cedula, documento, ultActualizacion, check_datos, porcentaje, estadoSolicitud FROM alumnos
-INNER JOIN documentos ON alumnos.documento=documentos.id_documento
-INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
+    $sql_alumno = "SELECT alumnos.cedula, documento, ultActualizacion, check_datos, porcentaje, estadoSolicitud, ultActDoc FROM alumnos
+LEFT JOIN documentos ON alumnos.documento=documentos.id_documento
+LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
                  WHERE id_alumno = '$ida';";
 
     $result_alumno = mysqli_query($conexion, $sql_alumno);
@@ -310,6 +310,7 @@ INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
         $porcentaje = $row_alumno['porcentaje'];
         $check_datos = $row_alumno['check_datos'];
         $estadoSolicitud = $row_alumno['estadoSolicitud'];
+        $ultActDoc = $row_alumno['ultActDoc'];
     }
 }
  
@@ -331,7 +332,7 @@ INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
 
     <?php if ($_SESSION['datosLlenados'] == 1) {    ?>
 
-      <?php if ($porcentaje != 100) {    ?>
+      <?php if ($porcentaje != 100 && $estadoSolicitud != null && $ultActDoc=='0000-00-00') {    ?>
       <!-- Nav Item - Documentos -->
       <li class="nav-item">
         <a id="sdstudentDocs" class="nav-link" href="page-student-docs.php">
@@ -340,7 +341,7 @@ INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
       </li>
       <?php };?>
 
-       <?php if ($estadoSolicitud != 1) {    ?>
+       <?php if ($estadoSolicitud == null) {    ?>
       <!-- Nav Item - Solicitud -->
       <li class="nav-item">
         <a id="sdstudentSolicitud" class="nav-link" href="page-student-solicitud.php">
@@ -358,8 +359,8 @@ INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
         <div id="collapseStudentEdit" class="collapse" aria-labelledby="headingStudentEdit" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <?= ($check_datos != 1) ? '<a class="collapse-item" href="page-student-edit-datos.php">Datos</a>' : '' ?>
-            <?= ($porcentaje != 100) ? '<a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>' : '' ?>
-            <?= ($estadoSolicitud != 1) ? '<a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>' : '' ?>
+            <?= ($porcentaje != 100 && $estadoSolicitud != null && $ultActDoc!='0000-00-00') ? '<a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>' : '' ?>
+            <?= ($estadoSolicitud != 1 && $estadoSolicitud != null) ? '<a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>' : '' ?>
             <a id="btnEditarBoth3" class="collapse-item" href="#">Correo / Contraseña</a>
           </div>
         </div>
