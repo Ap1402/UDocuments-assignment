@@ -110,11 +110,11 @@ if ($porcentaje == 100) {
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-check-circle"></i>
-                  <strong>Éxito!</strong></h5>
+                  <strong>Éxito</strong></h5>
               </div>
               <label for="continuar">
                 <div class="modal-body">
-                  Todos los documentos han sido validados con éxito!.
+                  Todos los documentos han sido validados con éxito.
                   <br>
                   Para ver los documentos dirijase al perfil, seleccionando el botón "Ir a perfil".
                 </div>
@@ -158,7 +158,12 @@ if ($porcentaje == 100) {
                   Cédula, Foto, Partida y Certificado de salud -> 1 foto.
                 </div>
                 <div class="col-auto flex-fill">
-                  Notas, Rusnies y Método de ingreso -> 5 fotos.
+                  Notas, Rusnies y Método de ingreso (
+                      <?php if ($solicitud['estadoSolicitud']==null) {?>
+                    Sin solicitud registrada.
+                    <?php }else{ ?>
+                    <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
+                    <?php }?>) -> 5 fotos.
                 </div>
                  </div>
               </div>

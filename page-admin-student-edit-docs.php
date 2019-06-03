@@ -188,7 +188,12 @@ while ($row = mysqli_fetch_assoc($result)) {
                     Cédula, Foto, Partida y Certificado de salud -> 1 foto.
                   </div>
                   <div class="col-auto flex-fill">
-                    Notas, Rusnies y Método de ingreso -> 5 fotos.
+                    Notas, Rusnies y Método de ingreso (
+                      <?php if ($solicitud['estadoSolicitud']==null) {?>
+                    Sin solicitud registrada.
+                    <?php }else{ ?>
+                    <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
+                    <?php }?>) -> 5 fotos.
                   </div>
                 </div>
               </div>
@@ -197,39 +202,29 @@ while ($row = mysqli_fetch_assoc($result)) {
               <div class="card-body">
                 <div class="px-4 py-2">
 
-                <?php
-// ---------------Hacer si todos los documentos estan validados
-if ($porcentaje == 100) {
-
-    ?>
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fas fa-check-circle"></i>
-                    <strong>Éxito!</strong>
-                    Todos los documentos han sido validados. Si desea ver sus documentos dirijase a su perfil.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      &times;
-                    </button>
-                  </div>
-  <?php
-}
-;
-// --------------- /.Hacer si todos los documentos estan validados
-?>
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <strong>Advertencia!</strong>
-                    Todos los cambios realizados en este formulario se hacen de manera <strong>permanente!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      &times;
-                    </button>
-                  </div>
-                  <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <?= ($solicitud['estadoSolicitud']==0 || $solicitud['estadoSolicitud']==null) ? '<i class="fas fa-minus-circle"></i>' : '<i class="fas fa-check-circle"></i>'?>
-                    <strong>Solicitud: </strong> <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      &times;
-                    </button>
-                  </div>
+                  <!-- Modal -->
+                  <div class="modal fade" id="advertenciaModal" tabindex="-1" role="dialog" aria-labelledby="advertenciaModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                  <i class="fas fa-exclamation-triangle"></i>
+                    <strong> Advertencia</strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+              </div>
+              <label for="continuar">
+                <div class="modal-body">
+                  Todos los cambios realizados en este formulario se hacen de manera <strong>permanente.</strong>
+                </div>
+              </label>
+              <div class="modal-footer">
+                <button type="button" id="continuar" class="btn btn-primary" data-dismiss="modal">Entendido</button>
+              </div>
+            </div>
+          </div>
+</div>
 
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">
@@ -384,6 +379,8 @@ if ($porcentaje == 100) {
   <script>
 // ---------------------- Evitando conflictos con lightbox
 $(window).on("load", function () {
+  jQuery.noConflict(); 
+  $('#advertenciaModal').modal('show');
     $("#btnEditarSelf").on("click", function (e) {
         e.preventDefault();
         jQuery.noConflict();

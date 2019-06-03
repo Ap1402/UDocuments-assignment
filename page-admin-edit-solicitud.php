@@ -323,7 +323,7 @@
           // Remove from the 'open' array
           detailRows.splice(idx, 1);
         } else {
-          console.log(detailRows);
+          //console.log(detailRows);
 
           // Add to the 'open' array
           if (idx === -1) {
@@ -335,7 +335,7 @@
       // On each draw, loop over the `detailRows` array and show any child rows
       dts.on('draw', function() {
         $.each(detailRows, function(i, id) {
-          console.log(detailRows);
+          //console.log(detailRows);
 
           $('#' + id + ' td.details-control').trigger('click');
         });
@@ -388,7 +388,7 @@
             $('#cambiosModal').modal('toggle');
           })
           .fail(function(err) {
-            console.log(err);
+            //console.log(err);
           });
 
         event.preventDefault();

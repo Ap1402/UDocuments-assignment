@@ -40,7 +40,7 @@ $(document).ready(function () {
             encode: true
         })
             .done(function (datosRecibidos) {
-                console.log(datosRecibidos);
+                //console.log(datosRecibidos);
                 // if(datosEnviados.exito){
                 //     $('#exito').removeAttr('hidden');
                 //     $('#exito').text(datosEnviados.mensaje);

@@ -187,7 +187,12 @@ while ($row = mysqli_fetch_assoc($result)) {
                     Cédula, Foto, Partida y Certificado de salud -> 1 foto.
                   </div>
                   <div class="col-auto flex-fill">
-                    Notas, Rusnies y Método de ingreso -> 5 fotos.
+                    Notas, Rusnies y Método de ingreso (
+                      <?php if ($solicitud['estadoSolicitud']==null) {?>
+                    Sin solicitud registrada.
+                    <?php }else{ ?>
+                    <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
+                    <?php }?>) -> 5 fotos.
                   </div>
                 </div>
               </div>

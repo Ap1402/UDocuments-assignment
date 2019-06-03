@@ -105,7 +105,7 @@
 				// Fin - Cargar estas lineas
 			})
 			.catch(function (err) {
-				console.log(err);
+				//console.log(err);
 			});
 	});
 
@@ -199,8 +199,8 @@
 						//crea el div (preview de la imagen)
 						createThumbnail(file, i, thumbnail_id);
 
-						// console.log(thumbnail_id);
-						// console.log(file.files[i]);
+						// //console.log(thumbnail_id);
+						// //console.log(file.files[i]);
 
 						// agregael id con el archivo al formData	
 						// id de formData debe ser igual a thumbnail_id

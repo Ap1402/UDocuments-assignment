@@ -3,8 +3,8 @@
 $(document).on('click', '.close-button-db span', function (e) {
 
   var target = this;
-  // console.log(target.dataset.path);
-  // console.log(target.dataset.cedula);
+  // //console.log(target.dataset.path);
+  // //console.log(target.dataset.cedula);
 
   var file_path = target.dataset.path;
   var cedula = target.dataset.cedula;
@@ -16,10 +16,10 @@ $(document).on('click', '.close-button-db span', function (e) {
   var filenameWithExtension = file_path.replace(/^.*[\\\/]/, '');
 
   // Expone nombre-archivo.png
-  console.log(filenameWithExtension);
+  //console.log(filenameWithExtension);
 
   var deleteImage = function (filenameWithExtension, cedula, target) {
-    var r = confirm("Esta seguro que desea eliminar este archivo?. Tenga en cuenta que este cambio es ¡PERMANENTE!. ");
+    var r = confirm("Esta seguro que desea eliminar este archivo?. Tenga en cuenta que este cambio es PERMANENTE. ");
     if (r == true) {
       $.ajax({
         type: 'POST',
@@ -31,11 +31,11 @@ $(document).on('click', '.close-button-db span', function (e) {
       })
         .done(function (response) {
 
-          console.log(response);
+          //console.log(response);
 
           if (target.parentNode.classList.contains('close-button-db')) {
             target.parentNode.parentNode.remove();
-            alert('La imagen ' + filenameWithExtension + ' fue permanentemente eliminada de manera exitosa');
+            alert('La imagen ' + filenameWithExtension + ' fue permanentemente eliminada.');
           }
 
         })
