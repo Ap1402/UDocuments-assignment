@@ -6,14 +6,17 @@ session_start();
 $usuario = filter_var($_SESSION['username'], FILTER_SANITIZE_STRING);
 $contrasena = filter_var($_POST['contrasena'], FILTER_SANITIZE_STRING);
 
-$consulta = "SELECT * FROM `administradores` WHERE usuario='" . $usuario . "'";
+$consulta = "SELECT administradores.*, rol_admin.respaldo_bd
+            FROM administradores LEFT JOIN rol_admin ON rol_admin.id = administradores.rol
+                WHERE administradores.usuario ='$usuario'";
+
 $resultado = mysqli_query($conexion, $consulta);
 $datos = mysqli_fetch_array($resultado);
 
 $userBD = $datos['usuario'];
 $passwordBD = $datos['contrasena'];
 
-if (!($usuario == $userBD and password_verify($contrasena, $passwordBD) and $datos['rol'] == 3)) {
+if (!($usuario == $userBD and password_verify($contrasena, $passwordBD) and $datos['respaldo_bd'] == 1)) {
     return print_r(json_encode([
         'message' => 'La contraseña no es correcta o no tiene los privilegios para realizar esta accion'
     ]));
