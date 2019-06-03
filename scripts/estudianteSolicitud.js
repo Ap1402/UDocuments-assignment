@@ -50,7 +50,7 @@ $(document).ready(function () {
 
                 if (datosRecibidos.admin==0){
                     setTimeout(function(){
-                        location.reload();
+                        $(location).attr('href','page-student-edit-solicitud.php');
                     }, 5000); 
                 };
 
