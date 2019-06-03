@@ -98,9 +98,9 @@
 				clearFormDataAndThumbnails();
 				success.innerText = data.message;
 				// Fin - Cargar estas lineas
-				setTimeout(function () {
-					location.reload();
-				}, 5000); 
+				// setTimeout(function () {
+				// 	location.reload();
+				// }, 5000); 
 			})
 			.catch(function (err) {
 				//console.log(err);

@@ -38,9 +38,9 @@ $(document).ready(function () {
                 $('#exito').text(datosRecibidos.message);
                 $('html, body').animate( { scrollTop : 0 }, 800 );
                 
-                setTimeout(function(){
-                    location.reload();
-                }, 5000); 
+                // setTimeout(function(){
+                //     location.reload();
+                // }, 5000); 
                 
                 $('#exito').show();
                 $('#exito').text(datosRecibidos.message);
