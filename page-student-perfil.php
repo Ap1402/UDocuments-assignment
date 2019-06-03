@@ -207,7 +207,7 @@
               </div>
 
               <div class="col-sm-12 col-md-6 align-self-center text-sm-center mb-4">
-<div class="px-5">
+<div class="px-2">
                 <div class="flex-fill my-auto py-1">
 
                   <div class="text-gray-900">
@@ -1316,16 +1316,26 @@
   
   <script src="vendor/chart.js/Chart.min.js"></script>
   <script src="js/lightbox-plus-jquery.js"></script> 
+  <?php if($rol>0){ ?>
   <script src="scripts/editAdminPassSelf.js"></script>
+  <script>
+    // ---------------------- Sin conflictos con lightbox
+    $(window).on("load", function () {
+          $("#btnEditarSelf").on("click", function (e) {
+            e.preventDefault();
+            jQuery.noConflict();
+            $("#editarAdminSelfModal").modal("toggle");
+          });
+          });
+  </script>
+  <?php }; ?>
+  <?php if($rol == 0){ ?>
+  <script src="scripts/editAlumnoPassSelf.js"></script>
+  <?php }; ?>
 
   <script>
 // ---------------------- Evitando conflictos con lightbox
 $(window).on("load", function () {
-    $("#btnEditarSelf").on("click", function (e) {
-        e.preventDefault();
-        jQuery.noConflict();
-        $("#editarAdminSelfModal").modal("toggle");
-    });
     $("#btnEditarBoth").on("click", function (e) {
         e.preventDefault();
         jQuery.noConflict();
@@ -1355,15 +1365,9 @@ $(window).on("load", function () {
 
 
   <!-- Imprimir Areas Especeficas -->
-  <script>
-    document.querySelector("#btnImprimirConstancia").addEventListener("click", function () {
-      var divHeader = document.querySelector("#imprimirConstanciaHeader");
-      var divTitle = document.querySelector("#imprimirConstanciaTitle");
-      var divBody = document.querySelector("#imprimirConstanciaBody");
-      var divFooter = document.querySelector("#imprimirConstanciaFooter");
-      imprimirElemento(divHeader, divTitle, divBody, divFooter);
-    });
-
+ 
+<?php if ($rol == 0) {?>
+<script>
     document.querySelector("#btnImprimirConstancia2").addEventListener("click", function () {
     var divHeader = document.querySelector("#imprimirConstanciaHeader");
     var divTitle = document.querySelector("#imprimirConstanciaTitle");
@@ -1371,7 +1375,16 @@ $(window).on("load", function () {
     var divFooter = document.querySelector("#imprimirConstanciaFooter");
     imprimirElemento(divHeader, divTitle, divBody, divFooter);
     });
-
+</script>
+<?php };?>
+<script>
+  document.querySelector("#btnImprimirConstancia").addEventListener("click", function () {
+  var divHeader = document.querySelector("#imprimirConstanciaHeader");
+  var divTitle = document.querySelector("#imprimirConstanciaTitle");
+  var divBody = document.querySelector("#imprimirConstanciaBody");
+  var divFooter = document.querySelector("#imprimirConstanciaFooter");
+  imprimirElemento(divHeader, divTitle, divBody, divFooter);
+  });
     function imprimirElemento(divHeader, divTitle, divBody, divFooter) {
       var ventana = window.open('', 'PRINT', 'height=700,width=600');
       ventana.document.write('<html><head><title>' + 'Constancia de archivo digital de la Universidad José Antonio Páez' + '</title>');

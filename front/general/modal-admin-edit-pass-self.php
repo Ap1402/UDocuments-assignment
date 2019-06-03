@@ -1,3 +1,4 @@
+<?php if ($rol > 0 && isset($_SESSION['id_admin'])) { ?>
       <!-- Modal EDITAR ADMIN SELF-->
 
       <div class="modal fade" id="editarAdminSelfModal" tabindex="-1" role="dialog"
@@ -92,7 +93,7 @@
         </div>
       </div>
       <!-- /.Modal EDITAR ADMIN SELF-->
-
+    <?php };?>
       <!-- Modal EDITAR ALUMNO BOTH-->
 
       <div class="modal fade" id="editarAlumnoBothModal" tabindex="-1" role="dialog"

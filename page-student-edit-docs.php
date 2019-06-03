@@ -366,18 +366,28 @@ while ($row = mysqli_fetch_assoc($result)) {
   <script src="js/front/file-upload-edit.js"></script>
 
   <script src="js/front/deleteImage.js"></script>
+  <?php if($rol>0){ ?>
   <script src="scripts/editAdminPassSelf.js"></script>
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    });
+  </script>
+  <?php }; ?>
+  <?php if($rol == 0){ ?>
+  <script src="scripts/editAlumnoPassSelf.js"></script>
+  <?php }; ?>
 
   <script>
 // ---------------------- Evitando conflictos con lightbox
 $(window).on("load", function () {
   jQuery.noConflict(); 
   $('#advertenciaModal').modal('show');
-    $("#btnEditarSelf").on("click", function (e) {
-        e.preventDefault();
-        jQuery.noConflict();
-        $("#editarAdminSelfModal").modal("toggle");
-    });
     $("#btnEditarBoth").on("click", function (e) {
         e.preventDefault();
         jQuery.noConflict();

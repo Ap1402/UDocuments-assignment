@@ -113,8 +113,8 @@
 
   <!-- Page level custom scripts -->
   <script src="scripts/datos.js"></script>
+  <?php if($rol>0){ ?>
   <script src="scripts/editAdminPassSelf.js"></script>
-
   <script>
 // ---------------------- Sin conflictos con lightbox
 $(window).on("load", function () {
@@ -123,6 +123,16 @@ $(window).on("load", function () {
         
         $("#editarAdminSelfModal").modal("toggle");
     });
+    });
+  </script>
+  <?php }; ?>
+  <?php if($rol == 0){ ?>
+  <script src="scripts/editAlumnoPassSelf.js"></script>
+  <?php }; ?>
+  
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
     $("#btnEditarBoth").on("click", function (e) {
         e.preventDefault();
         

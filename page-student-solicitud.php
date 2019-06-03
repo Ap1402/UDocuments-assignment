@@ -182,8 +182,8 @@
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
   <script src="js/sb-admin-2.js"></script>
+  <?php if($rol>0){ ?>
   <script src="scripts/editAdminPassSelf.js"></script>
-
   <script>
 // ---------------------- Sin conflictos con lightbox
 $(window).on("load", function () {
@@ -192,6 +192,16 @@ $(window).on("load", function () {
         
         $("#editarAdminSelfModal").modal("toggle");
     });
+  });
+  </script>
+  <?php }; ?>
+  <?php if($rol == 0){ ?>
+  <script src="scripts/editAlumnoPassSelf.js"></script>
+  <?php }; ?>
+
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
     $("#btnEditarBoth").on("click", function (e) {
         e.preventDefault();
         

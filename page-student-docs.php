@@ -171,13 +171,7 @@ if ($porcentaje == 100) {
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
-                  <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <?= ($solicitud['estadoSolicitud']==0 || $solicitud['estadoSolicitud']==null) ? '<i class="fas fa-minus-circle"></i>' : '<i class="fas fa-check-circle"></i>'?>
-                    <strong>Solicitud: </strong> <?=$solicitud['nombre_solicitud'].' - '.$solicitud['nombre']?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      &times;
-                    </button>
-                  </div>
+                  
                   <select id="seleccion" name="seleccion" class="form-control">
                     <option disabled selected value="">Elija el documento a subir</option>
                     <option value="1">Cédula</option>
@@ -297,16 +291,26 @@ if ($porcentaje == 100) {
   <script src="js/lightbox-plus-jquery.js"></script>
 
   <script src="js/front/file-upload.js"></script>
+  <?php if($rol>0){ ?>
   <script src="scripts/editAdminPassSelf.js"></script>
+  <script>
+    // ---------------------- Sin conflictos con lightbox
+    $(window).on("load", function () {
+          $("#btnEditarSelf").on("click", function (e) {
+            e.preventDefault();
+            jQuery.noConflict();
+            $("#editarAdminSelfModal").modal("toggle");
+          });
+          });
+  </script>
+  <?php }; ?>
+  <?php if($rol == 0){ ?>
+  <script src="scripts/editAlumnoPassSelf.js"></script>
+  <?php }; ?>
 
   <script>
 // ---------------------- Evitando conflictos con lightbox
 $(window).on("load", function () {
-    $("#btnEditarSelf").on("click", function (e) {
-        e.preventDefault();
-        jQuery.noConflict();
-        $("#editarAdminSelfModal").modal("toggle");
-    });
     $("#btnEditarBoth").on("click", function (e) {
         e.preventDefault();
         jQuery.noConflict();

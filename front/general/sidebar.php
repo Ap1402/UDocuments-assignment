@@ -11,7 +11,9 @@ if ($rol > 0 && isset($_GET['ida'])) {
   $ida = $_GET['ida']; // id_alumno
 
   include 'back/conexion.php';
-  $sql_alumno = "SELECT p_nombre, p_apellido, cedula, documento, ultActualizacion FROM alumnos
+  $sql_alumno = "SELECT p_nombre, p_apellido, alumnos.cedula, documento, ultActualizacion, check_datos, porcentaje, estadoSolicitud FROM alumnos 
+INNER JOIN documentos ON alumnos.documento=documentos.id_documento 
+INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
                  WHERE id_alumno = '$ida';";
 
   $result_alumno = mysqli_query($conexion, $sql_alumno);
@@ -22,6 +24,9 @@ if ($rol > 0 && isset($_GET['ida'])) {
     $ci = $row_alumno['cedula'];
     $idd = $row_alumno['documento'];
     ($row_alumno['ultActualizacion'] == '0000-00-00') ? $datosLlenados = 0 : $datosLlenados = 1;
+    $porcentaje = $row_alumno['porcentaje'];
+    $check_datos = $row_alumno['check_datos'];
+    $estadoSolicitud = $row_alumno['estadoSolicitud'];
   }
 }
 ?>
@@ -285,7 +290,29 @@ if ($rol > 0 && isset($_GET['ida'])) {
 
   <!-- ============================== Solo para ALUMNOS ============================== -->
 
-  <?php if ($rol == 0) { 
+  <?php if ($rol == 0) {
+
+if (isset($_SESSION['id'])) {
+    $ida = $_SESSION['id']; // id_alumno
+
+    include 'back/conexion.php';
+    $sql_alumno = "SELECT alumnos.cedula, documento, ultActualizacion, check_datos, porcentaje, estadoSolicitud FROM alumnos
+INNER JOIN documentos ON alumnos.documento=documentos.id_documento
+INNER JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
+                 WHERE id_alumno = '$ida';";
+
+    $result_alumno = mysqli_query($conexion, $sql_alumno);
+    if ($result_alumno->num_rows > 0) {
+        $row_alumno = mysqli_fetch_assoc($result_alumno);
+        $ci = $row_alumno['cedula'];
+        $idd = $row_alumno['documento'];
+        ($row_alumno['ultActualizacion'] == '0000-00-00') ? $datosLlenados = 0 : $datosLlenados = 1;
+        $porcentaje = $row_alumno['porcentaje'];
+        $check_datos = $row_alumno['check_datos'];
+        $estadoSolicitud = $row_alumno['estadoSolicitud'];
+    }
+}
+ 
     ?>
 
     <!-- Divider -->
@@ -303,19 +330,24 @@ if ($rol > 0 && isset($_GET['ida'])) {
     <?php } ?>
 
     <?php if ($_SESSION['datosLlenados'] == 1) {    ?>
+
+      <?php if ($porcentaje != 100) {    ?>
       <!-- Nav Item - Documentos -->
       <li class="nav-item">
         <a id="sdstudentDocs" class="nav-link" href="page-student-docs.php">
           <i class="far fa-folder-open"></i>
           <span>Documentos</span></a>
       </li>
+      <?php };?>
 
+       <?php if ($estadoSolicitud != 1) {    ?>
       <!-- Nav Item - Solicitud -->
       <li class="nav-item">
         <a id="sdstudentSolicitud" class="nav-link" href="page-student-solicitud.php">
           <i class="fas fa-vote-yea"></i>
           <span>Crear Solicitud</span></a>
       </li>
+      <?php };?>
 
       <!-- Nav Item - Edicion Datos/Documentos -->
       <li class="nav-item">
@@ -325,9 +357,9 @@ if ($rol > 0 && isset($_GET['ida'])) {
         </a>
         <div id="collapseStudentEdit" class="collapse" aria-labelledby="headingStudentEdit" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="page-student-edit-datos.php">Datos</a>
-            <a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>
-            <a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>
+            <?= ($check_datos != 1) ? '<a class="collapse-item" href="page-student-edit-datos.php">Datos</a>' : '' ?>
+            <?= ($porcentaje != 100) ? '<a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>' : '' ?>
+            <?= ($estadoSolicitud != 1) ? '<a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>' : '' ?>
             <a id="btnEditarBoth3" class="collapse-item" href="#">Correo / Contraseña</a>
           </div>
         </div>
