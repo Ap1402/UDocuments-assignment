@@ -8,12 +8,12 @@ include 'getDatosForm.php';
 if (isset($_SESSION['cedula'])) {
     $id = $_SESSION['id'];
     $cedula = $_SESSION['cedula'];
+    $isAdmin= 0;
 } else {
-    // $id = $_GET['ida'];
-    // $cedula = $_GET['ci'];
     // ci= cedula / ida=id_alumnos
     $cedula = filter_var($_POST['ci'], FILTER_SANITIZE_NUMBER_INT);
     $id = filter_var($_POST['ida'], FILTER_SANITIZE_NUMBER_INT);
+    $isAdmin= 1;
 }
 
 //Actualizacion de datos tabla alumno
@@ -42,9 +42,11 @@ $actualizarDIREC = "INSERT INTO direcciones (alumno, estado, ciudad, municipio, 
 $result = mysqli_query($conexion, $actualizarDIREC);
 
 $_SESSION['datosLlenados'] = 1;
+
 return print_r(json_encode(
     [
         'message' => 'Datos guardados correctamente',
         'exito' => true,
+        'admin'=> $isAdmin
     ]
 ));

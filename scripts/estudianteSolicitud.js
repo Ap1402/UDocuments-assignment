@@ -47,9 +47,12 @@ $(document).ready(function () {
                 $('#exito').text(datosRecibidos.message);
                 $('html, body').animate( { scrollTop : 0 }, 800 );
 
-                // setTimeout(function () {
-                //     location.reload();
-                // }, 5000); 
+
+                if (datosRecibidos.admin==0){
+                    setTimeout(function(){
+                        location.reload();
+                    }, 5000); 
+                };
 
             }
             

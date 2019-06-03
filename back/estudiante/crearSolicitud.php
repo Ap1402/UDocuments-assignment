@@ -9,8 +9,11 @@ $tipoSolicitud = filter_var($_POST['nombre_solicitud'], FILTER_SANITIZE_STRING);
 
 if (isset($_POST['idEstudiante'])) {
     $ida = $_POST['idEstudiante'];
+    $isAdmin= 1;
+
 } else {
     $ida = $_SESSION['id'];
+    $isAdmin= 0;
 }
 
 $sql = "SELECT 1 FROM solicitudes WHERE alumno='$ida' AND estadoSolicitud=0 LIMIT 1";
@@ -27,4 +30,4 @@ VALUES('$ida','$fecha','0','$tipoSolicitud','$carreraSolicitud','$turnoSolicitud
 $result = mysqli_query($conexion, $crearSQL);
 
 
-return print_r(json_encode(['message' => 'Solicitud creada correctamente para este alumno', 'exito' => TRUE]));
+return print_r(json_encode(['message' => 'Solicitud creada correctamente para este alumno', 'exito' => TRUE, 'admin'=>$isAdmin]));

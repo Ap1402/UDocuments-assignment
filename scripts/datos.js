@@ -23,6 +23,7 @@ $(document).ready(function () {
 
         })
         .done(function(datosRecibidos){
+
             if(!datosRecibidos.exito){
                 $('#exito').hide();
 
@@ -37,11 +38,13 @@ $(document).ready(function () {
                 $('#exito').show();
                 $('#exito').text(datosRecibidos.message);
                 $('html, body').animate( { scrollTop : 0 }, 800 );
-                
-                // setTimeout(function(){
-                //     location.reload();
-                // }, 5000); 
-                
+
+                if (datosRecibidos.admin==0){
+                    setTimeout(function(){
+                        $(location).attr('href','page-student-edit-datos.php');
+                    }, 5000); 
+                };
+
                 $('#exito').show();
                 $('#exito').text(datosRecibidos.message);
 
