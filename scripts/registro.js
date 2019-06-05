@@ -6,6 +6,34 @@ $(document).ready(function () {
 
     'use strict';
 
+    $('#contrasena2').keyup(function () {
+        var contrasena2 = $('#contrasena2').val();
+        var contrasena = $('#contrasena').val();
+        if (contrasena2 == contrasena) {
+            $('#enviar').prop("disabled", false);
+            $('#resultado').hide();
+
+        } else {
+            $('#enviar').prop("disabled", true);
+            $('#resultado').show();
+            $('#resultado').text('Las contraseñas deben coincidir');
+        }
+    });
+
+    $('#contrasena').keyup(function () {
+        var contrasena2 = $('#contrasena2').val();
+        var contrasena = $('#contrasena').val();
+        if (contrasena2 == contrasena) {
+            $('#enviar').prop("disabled", false);
+            $('#resultado').hide();
+
+        } else {
+            $('#enviar').prop("disabled", true);
+            $('#resultado').show();
+            $('#resultado').text('Las contraseñas deben coincidir');
+        }
+    });
+
     $('#registroForm')[0].addEventListener('submit', function (event) {
         if ($('#registroForm')[0].checkValidity() === false) {
             event.preventDefault();

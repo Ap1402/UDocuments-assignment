@@ -67,7 +67,7 @@
 
           <ul class="nav nav-tabs nav-justified" role="tablist">
             <li class="nav-item">
-              <a class="nav-link font-weight-bolder" href="#solicitudesAlumno" role="tab" data-toggle="tab">Solicitudes</a>
+              <a class="nav-link font-weight-bolder" href="#solicitudesAlumno" role="tab" data-toggle="tab">Permisos admin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link font-weight-bolder active" href="#carrerasAdmin" role="tab" data-toggle="tab">Carreras</a>

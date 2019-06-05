@@ -359,7 +359,7 @@ LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
         <div id="collapseStudentEdit" class="collapse" aria-labelledby="headingStudentEdit" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <?= ($check_datos != 1) ? '<a class="collapse-item" href="page-student-edit-datos.php">Datos</a>' : '' ?>
-            <?= ($porcentaje != 100 && $estadoSolicitud != null && $ultActDoc!='0000-00-00') ? '<a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>' : '' ?>
+            <?= ($porcentaje != 100 && $estadoSolicitud != null) ? '<a class="collapse-item" href="page-student-edit-docs.php">Documentos</a>' : '' ?>
             <?= ($estadoSolicitud != 1 && $estadoSolicitud != null) ? '<a class="collapse-item" href="page-student-edit-solicitud.php">Solicitud</a>' : '' ?>
             <a id="btnEditarBoth3" class="collapse-item" href="#">Correo / Contraseña</a>
           </div>
