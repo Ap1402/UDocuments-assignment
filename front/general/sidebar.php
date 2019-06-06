@@ -269,7 +269,7 @@ LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
 
       <li class="nav-item">
         <a id="sdEditCarAdmin" class="nav-link" href="page-admin-edit-solicitudes.php">
-          <i class="fas fa-list-alt"></i>
+          <i class="fas fa-cogs"></i>
           <span>Herramientas admin</span></a>
       </li>
     <?php } ?>
@@ -337,7 +337,7 @@ LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
       <li class="nav-item">
         <a id="sdstudentDocs" class="nav-link" href="page-student-docs.php">
           <i class="far fa-folder-open"></i>
-          <span>Documentos</span></a>
+          <span>Cargar documentos</span></a>
       </li>
       <?php };?>
 

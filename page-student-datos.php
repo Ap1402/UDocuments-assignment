@@ -54,7 +54,7 @@
           <div class="d-sm-flex col-sm-12 col-xl-10 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Datos del alumno<br><small class="text-muted"> asegúrese de rellenar
                 correctamente sus datos</small></h1>
-            <a class="d-none d-sm-inline-block"><i class="fas fa-user-edit fa-2x text-gray-300"></i></a>
+            <a class="d-none d-sm-inline-block"><i class="fas fa-file-alt fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
 

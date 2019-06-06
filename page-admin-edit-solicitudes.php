@@ -60,7 +60,7 @@
           <!-- Título de página -->
           <div class="d-sm-flex align-items-center justify-content-between mb-2 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Herramientas Admin </h1>
-
+            <a class="d-none d-sm-inline-block"><i class="fas fa-cogs fa-2x text-gray-300"></i></a>
           </div>
           <!-- /.Título de página -->
 
