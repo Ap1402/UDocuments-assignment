@@ -23,7 +23,7 @@ if (!($usuario == $userBD and password_verify($contrasena, $passwordBD) and $dat
 }
 
 //Example Usage/s
-$backup = new BackupMyProject('../documentos', TRUE);
+$backup = new BackupMyProject('../documentos', true);
 
 
 
@@ -53,7 +53,7 @@ BackupMyProject('./path/to/project/yada', true);
 class BackupMyProject
 {
     // project files working directory - automatically created
-    const PWD = "./project_backups/";
+    const PWD = "./";
 
     /**
      * Class construct.

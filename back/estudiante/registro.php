@@ -23,8 +23,18 @@ $sql = "SELECT * FROM  alumnos WHERE cedula='$cedula'";
 $result = mysqli_query($conexion, $sql);
 $check = mysqli_num_rows($result);
 
-if ($check == 1) {
-    $errores['cedula'] = "Cedula ya registrada";
+if ($check >0) {
+    $errores['message'] = "Cedula ya registrada";
+    $datos['errores'] = $errores;
+}
+
+
+$sql = "SELECT * FROM  alumnos WHERE username='$username'";
+$result = mysqli_query($conexion, $sql);
+$check = mysqli_num_rows($result);
+
+if ($check >0 ) {
+    $errores['message'] = "Usuario ya registrado";
     $datos['errores'] = $errores;
 }
 
