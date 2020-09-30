@@ -13,7 +13,7 @@ $(document).ready(function () {
     
         $.ajax({
             type: 'POST',
-            url : './back/estudiante/datosGuardarEdit.php',
+            url : '../back/estudiante/datosGuardarEdit.php',
             data :formData,
             encode: true,
             cache: false,

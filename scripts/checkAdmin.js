@@ -46,7 +46,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: './back/admin/backCheck.php',
+            url: '../back/admin/backCheck.php',
             data: datosEnviados,
             dataType: 'json',
             encode: true

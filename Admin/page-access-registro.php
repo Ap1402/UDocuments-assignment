@@ -11,16 +11,8 @@
 
   <title>Control de estudios / SAD - Registro</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
+  <?php require '../Layouts/HeaderLinks.php'; ?>
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="css/font.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,7 +21,7 @@
     <nav
       class="navbar navbar-expand navbar-light bg-white align-items-center justify-content-center topbar mb-4 px-5 static-top shadow">
       <a class="navbar-brand align-items-center" href="#">
-        <img src="img/varias/logo_ujap_peq.png" width="35" height="40" class="d-inline-block align-items-center" alt="">
+        <img src="../img/varias/logo_ujap_peq.png" width="35" height="40" class="d-inline-block align-items-center" alt="">
         <b>
           Control de estudios / SAD
         </b>
@@ -203,20 +195,20 @@
   </div>
 
   <!-- Footer -->
-  <?php require 'front/general/footer.php'; ?>
+  <?php require '../front/general/footer.php'; ?>
   <!-- End of Footer -->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="../js/sb-admin-2.min.js"></script>
 
-  <script src="scripts/registro.js"></script>
+  <script src="../scripts/registro.js"></script>
 
   <script type="text/javascript">
     function mostrarPassword() {

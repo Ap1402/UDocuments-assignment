@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: './back/estudiante/editAlumno.php',
+            url: '../back/estudiante/editAlumno.php',
             data: formData,
             encode: true,
             cache: false,

@@ -12,18 +12,18 @@
   <title> Editar - Datos del alumno </title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="css/font.css" rel="stylesheet">
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/font.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
 
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link href="css/dash.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/dash.css" rel="stylesheet">
 
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 
 </head>
 
@@ -33,7 +33,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require 'front/general/sidebar.php';?>
+    <?php require '../front/general/sidebar.php';?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -43,7 +43,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php';?>
+        <?php require '../front/general/navbar.php';?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -57,7 +57,7 @@
   equivoco en tal parte que si lo puede corregir o que se yo.
 -->
           <?php
-include 'back/conexion.php';
+include '../back/conexion.php';
 
 if (isset($_GET['ci'])) {
     $cedula = $_GET['ci'];
@@ -186,7 +186,7 @@ $nac_postal = $datosDirecc['postal_hab'];
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php';?>
+      <?php require '../front/general/footer.php';?>
       <!-- End of Footer -->
 
     </div>
@@ -201,23 +201,23 @@ $nac_postal = $datosDirecc['postal_hab'];
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php';?>
+  <?php require '../front/general/modal-logout.php';?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <?php require '../front/general/modal-admin-edit-pass-self.php'; ?>
   <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="scripts/editDatos.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../scripts/editDatos.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
-  <script src="js/sb-admin-2.js"></script>
-  <script src="scripts/editAdminPassSelf.js"></script>
+  <script src="../js/sb-admin-2.js"></script>
+  <script src="../scripts/editAdminPassSelf.js"></script>
 
   <script>
 // ---------------------- Sin conflictos con lightbox

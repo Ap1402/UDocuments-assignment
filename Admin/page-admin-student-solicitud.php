@@ -2,14 +2,13 @@
 <html lang="es">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Editar - Solicitud de ingreso </title>
+  <title> Solicitud de ingreso </title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
@@ -50,61 +49,17 @@
         <!-- Contenido Variable - Todo lo demas es fijo -->
         <div id="page-student-edit-solicitud" class="container-fluid">
 
-            <?php
+          <?php
 
 include 'back/conexion.php';
 
 // ------------ Obtener la id del alumno dependiendo la sesion
-if (isset($_GET['ida']) && ($rol > 0)) {
+if (isset($_GET['ida'])) {
     $ida = $_GET['ida'];
 };
-// ------------ /.Obtener la id del alumno dependiendo la sesion
-
-$sql_sol = "SELECT carrera, turno, solicitudes.tipo, tipo_solicitud.nombre_solicitud as nombreSolicitud, carreras.nombre as carreraNombre FROM solicitudes
-          LEFT JOIN tipo_solicitud ON solicitudes.tipo=tipo_solicitud.tipo
-          LEFT JOIN carreras ON carreras.codigo=solicitudes.carrera
-              WHERE solicitudes.alumno = $ida;";
-
-$result_sol = mysqli_query($conexion, $sql_sol);
-if ($result_sol->num_rows > 0) {
-    $row_sol = mysqli_fetch_assoc($result_sol);
-    
-    $carrera = $row_sol['carrera'];
-    $tipo = $row_sol['tipo']; // metodo_ingreso
-    $nombre_solicitud = $row_sol['nombreSolicitud'];
-    $turno = $row_sol['turno'];
-    $carreraNombre = $row_sol['carreraNombre'];
-    $mensaje = '';
-} else {
-    $mensaje = "Este alumno no tiene ninguna solicitud";
-    $carrera = '';
-    $tipo = ''; // metodo_ingreso
-    $nombre_solicitud = '';
-    $turno = '';
-    $carreraNombre = '';
-};
-
-
-switch ($turno) {
-    case 1:
-        $turno_name = 'Mañana';
-        break;
-    case 2:
-        $turno_name = 'Tarde';
-        break;
-    case 3:
-        $turno_name = 'Noche';
-        break;
-    default:
-        $turno_name = '';
-        break;
-};
-
-$verificar_check = 0; // verificar si fue o no chequeado por control de estudios
-
 ?>
 <!-- Título de página -->
-<div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
+          <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
             <h1 class="h3 mb-0 text-gray-800">Editar - Solicitud de ingreso</h1>
             <a class="d-none d-sm-inline-block"><i class="fas fa-vote-yea fa-2x text-gray-300"></i></a>
           </div>
@@ -116,35 +71,14 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
               <div class="card-body">
                 <div class="p-4">
                   <form id="solicitudForm" method="POST" class="user needs-validation" novalidate>
+                  <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div>
                   <input id="idEstudiante" name="idEstudiante" value="<?php echo $ida?>" hidden>
-                 <div class="alert alert-success" role="alert" id="exito" style="display: none;"></div> 
-                  <?php
-// ---------------Hacer si el alumno no tiene ninguna solicitud
-if ($mensaje != '') {
-
-    ?>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <strong>Advertencia!</strong>
-                    Este alumno no tiene ninguna solicitud.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      &times;
-                    </button>
-                  </div>
-  <?php
-}
-;
-// --------------- /.Hacer si el alumno no tiene ninguna solicitud
-?>                  
-
                     <div class="form-group row">
                       <div class="col-sm-6 my-auto">
-                        <label class="pl-2"><small>Carrera</small></label><br>
-                        <select id="carrera" name="carrera" class="form-control" data-toggle="tooltip"
-                          data-placement="top" title="Carrera"
-                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option  value="<?php echo $carrera ?>"><?php echo $carreraNombre ?></option>
-                            <?php 
+                         <label class="pl-2"><small>Carrera</small></label><br>
+                        <select id="carrera" name="carrera" class="form-control" required>
+                          <option disabled selected value="">Carrera</option>
+                          <?php 
                             include 'back/conexion.php';
 
                             $sql = "SELECT * FROM carreras WHERE estatus=1";
@@ -165,38 +99,37 @@ if ($mensaje != '') {
                         </div>
                       </div>
                       <div class="col-sm-6 my-auto">
-                        <label class="pl-2"><small>Turno</small></label><br>
-                        <select id="turno" name="turno" class="form-control" data-toggle="tooltip" data-placement="top"
-                          title="Turno"
-                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option disabled="disabled" selected value="<?php echo $turno ?>"><?php echo $turno_name ?>
-                          </option>
+                         <label class="pl-2"><small>Turno</small></label><br>
+                        <select id="turno" name="turno" class="form-control" required>
+                          <option disabled="disabled" selected value="">Seleccionar turno</option>
 
                         </select>
                         <div class="invalid-feedback">
                           Por favor seleccione una opción.
                         </div>
                       </div>
+
+
+
                     </div>
 
                     <div class="form-group row">
                       <div class="col my-auto">
-                        <label class="pl-2"><small>Método de ingreso</small></label><br>
-                        <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" data-toggle="tooltip"
-                          data-placement="top" title="Método de ingreso"
-                          <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
-                          <option value="<?php echo $tipo ?>"><?php echo $nombre_solicitud ?></option>
-                          <?php
+                         <label class="pl-2"><small>Método de ingreso</small></label><br>
+                        <select id="nombre_solicitud" name="nombre_solicitud" class="form-control" required>
+                          <option disabled selected value="">Método de ingreso</option>
+                          <?php 
                             $sql2 = "SELECT * FROM tipo_solicitud WHERE activa=1";
                             $result2 = mysqli_query($conexion, $sql2);
 
-                            if ($result2->num_rows > 0) {
+                            if ($result2->num_rows > 0) {                
                               while ($row2 = mysqli_fetch_assoc($result2)) {
-                          ?>
-                                <option value="<?=$row2['tipo'];?>"> <?=$row2['nombre_solicitud'];?></option>
+                            ?>
+                                <option value="<?= $row2['tipo']; ?>"> <?= $row2['nombre_solicitud']; ?></option>
 
                           <?php
                               };
+                            
                             };
                           ?>
                         </select>
@@ -210,8 +143,8 @@ if ($mensaje != '') {
                     </div>
                     <br>
 
-                    <button id="editSol" type="submit" class="btn btn-primary btn-user btn-block">
-                      Guardar cambios
+                    <button id="enviarSol" type="submit" class="btn btn-primary btn-user btn-block">
+                      Guardar
                     </button>
 
                   </form>
@@ -229,7 +162,7 @@ if ($mensaje != '') {
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require '../front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -244,22 +177,23 @@ if ($mensaje != '') {
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php'; ?>
+  <?php require '../front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <?php require '../front/general/modal-admin-edit-pass-self.php'; ?>
   <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
-  <script src="js/sb-admin-2.js"></script>
-  <script src="scripts/editAdminPassSelf.js"></script>
+  <script src="../js/sb-admin-2.js"></script>
+  <script src="../scripts/estudianteSolicitud.js"> </script>
+  <script src="../scripts/editAdminPassSelf.js"></script>
 
   <script>
 // ---------------------- Sin conflictos con lightbox
@@ -312,7 +246,6 @@ $(window).on("load", function () {
       });
     });
   </script>
-<script src="scripts/modificarSolicitudEstudiante.js"> </script>
 
 </body>
 

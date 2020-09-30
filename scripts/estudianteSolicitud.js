@@ -25,7 +25,7 @@ $(document).ready(function () {
     
         $.ajax({
             type: 'POST',
-            url : './back/estudiante/crearSolicitud.php',
+            url : '../back/estudiante/crearSolicitud.php',
             data :formData,
             encode: true,
             cache: false,

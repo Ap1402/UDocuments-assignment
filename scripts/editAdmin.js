@@ -27,7 +27,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: './back/admin/editAdmin.php',
+            url: '../back/admin/editAdmin.php',
             data: formData,
             encode: true,
             cache: false,

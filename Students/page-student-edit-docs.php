@@ -3,30 +3,14 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+ 
 
+  <?php require '../Layouts/HeaderLinks.php'; ?>
   <title> Editar - Documentos </title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
+  <link href="../css/file-upload.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="css/font.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link href="css/dash.css" rel="stylesheet">
-
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/file-upload.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/lightbox.css">
+  <link rel="stylesheet" href="../css/lightbox.css">
 
 
 </head>
@@ -37,7 +21,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require 'front/general/sidebar.php'; ?>
+    <?php require '../front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -47,7 +31,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php'; ?>
+        <?php require '../front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -66,7 +50,7 @@ include 'back/conexion.php';
 
 // ------------ Obtener la id del documento
 if (isset($_SESSION['docId'])) {
-  $ida = $_SESSION['id'];
+    $ida = $_SESSION['id'];
     $idd = $_SESSION['docId'];
     $cedula = $_SESSION['cedula'];
 
@@ -75,7 +59,6 @@ if (isset($_SESSION['docId'])) {
   $idd=$_GET['idd'];
   $cedula=$_GET['ci'];
 }
-
 
 $sqlSolicitud = "SELECT tipo_solicitud.tipo AS tipoSolicitud, solicitudes.tipo, carrera, nombre, nombre_solicitud, estadoSolicitud FROM solicitudes 
 LEFT JOIN tipo_solicitud ON solicitudes.tipo=tipo_solicitud.tipo 
@@ -111,7 +94,7 @@ $porcentaje = $row['porcentaje'];
 // -------- /Porcentaje de Documentos
 
 // Iniciando valores
-$path_general = 'back/documentos/';
+$path_general = '../back/documentos/';
 
 $partida=$path_general.$row['partida'];
 $foto= $path_general.$row['foto'];
@@ -145,18 +128,6 @@ $notas= array();
 while ($row = mysqli_fetch_assoc($result)) {
   array_push($notas, $path_general.$row['nota']);
 };
-
-
-
-
-
-
-// rura de la imagen (ruta completa ejemplo: back/Documentos/12345678/nirvana.jpg )
-
-
-
-
-
 
 ?>
           <!-- Título de página -->
@@ -201,8 +172,8 @@ while ($row = mysqli_fetch_assoc($result)) {
             <div class="card shadow mb-4">
               <div class="card-body">
                 <div class="px-4 py-2">
-
-                  <!-- Modal -->
+                  
+                   <!-- Modal -->
                   <div class="modal fade" id="advertenciaModal" tabindex="-1" role="dialog" aria-labelledby="advertenciaModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -230,21 +201,30 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <option disabled selected value="">
                       <?php echo ($porcentaje == 100) ? 'Todos los ducumentos han sido validados' : 'Elija el documento a editar' ?>
                     </option>
-                     <?php echo ($check_cedula == 0) ? '<option value="1">Cédula</option>' : '<option value="1">Cédula (Validado)</option>' ?>
-                     <?php echo ($check_foto == 0) ? '<option value="2">Foto tipo carnet</option>' : '<option value="2">Foto tipo carnet (Validado)</option>' ?>
-                     <?php echo ($check_notas == 0) ? '<option value="3">Notas certificadas de bachillerato (1er a 5to)</option>' : '<option value="3">Notas certificadas de bachillerato (1er a 5to) (Validado)</option>' ?>
-                     <?php echo ($check_fondo == 0) ? '<option value="4">Título de bachillerato autenticado</option>' : '<option value="4">Título de bachillerato autenticado (Validado)</option>' ?>
-                     <?php echo ($check_rusnies == 0) ? '<option value="5">Resultado del RUSNIES</option>' : '<option value="5">Resultado del RUSNIES (Validado)</option>' ?>
-                     <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '<option value="6">Partida de nacimiento (Validado)</option>' ?>
-                     <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '<option value="7">Método de ingreso (Validado)</option>' ?>
-                     <?php echo ($check_certificado_s == 0) ? '<option value="8">Certificado de Salud</option>' : '<option value="8">Certificado de Salud (Validado)</option>' ?>
+                     <?php echo ($check_cedula == 0) ? '<option value="1">Cédula</option>' : '' ?>
+                     <?php echo ($check_foto == 0) ? '<option value="2">Foto tipo carnet</option>' : '' ?>
+                     <?php echo ($check_notas == 0) ? '<option value="3">Notas certificadas de bachillerato (1er a 5to)</option>' : '' ?>
+                     <?php echo ($check_fondo == 0) ? '<option value="4">Título de bachillerato autenticado</option>' : '' ?>
+                     <?php echo ($check_rusnies == 0) ? '<option value="5">Resultado del RUSNIES</option>' : '' ?>
+                     <?php echo ($check_partida == 0) ? '<option value="6">Partida de nacimiento</option>' : '' ?>  
+
+                     <?php 
+                  if (isset($solicitud)){
+                  
+                  if($solicitud['tipo']==4 or $solicitud['tipo']==5 ){?>
+                    <?php echo ($check_metodo == 0) ? '<option value="7">Método de ingreso</option>' : '' ?>
+                    <?php }; ?>
+                    <?php if($solicitud['carrera']==10){?>
+                    <?php echo ($check_certificado_s == 0) ? '<option value="8">Certificado de Salud</option>' : '' ?>
+
+                    <?php }} ?>
                   </select>
                   <form id="documentosEditForm" method="POST" class="user needs-validation" novalidate>
                     <div class="alert alert-success" role="alert" id="exito" hidden></div>
                     <!--
 					Los archivos relacionados estan:
 									*server.php
-									*js/front/file-upload.js
+									*js/../front/file-upload.js
 				-->
 
                     <!-- Foto -->
@@ -273,7 +253,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <!-- End of Foto -->
 
                     <div id="preload" class="preload">
-                      <img src="img/images/preload.gif" alt="preload">
+                      <img src="../img/images/preload.gif" alt="preload">
                     </div>
 
                     <br>
@@ -334,7 +314,7 @@ while ($row = mysqli_fetch_assoc($result)) {
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require '../front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -349,43 +329,49 @@ while ($row = mysqli_fetch_assoc($result)) {
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php'; ?>
+  <?php require '../front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <?php require '../front/general/modal-admin-edit-pass-self.php'; ?>
   <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
-  <script src="js/sb-admin-2.js"></script>
+  <script src="../js/sb-admin-2.js"></script>
 
-  <script src="js/lightbox-plus-jquery.js"></script>
+  <script src="../js/lightbox-plus-jquery.js"></script>
 
+  <script src="../js/front/file-upload-edit.js"></script>
 
-
-
-
-  <script src="js/front/file-upload-edit.js"></script>
-
-  <script src="js/front/deleteImage.js"></script>
-  <script src="scripts/editAdminPassSelf.js"></script>
+  <script src="../js/front/deleteImage.js"></script>
+  <?php if($rol>0){ ?>
+  <script src="../scripts/editAdminPassSelf.js"></script>
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
+    $("#btnEditarSelf").on("click", function (e) {
+        e.preventDefault();
+        jQuery.noConflict();
+        $("#editarAdminSelfModal").modal("toggle");
+    });
+    });
+  </script>
+  <?php }; ?>
+  <?php if($rol == 0){ ?>
+  <script src="../scripts/editAlumnoPassSelf.js"></script>
+  <?php }; ?>
 
   <script>
 // ---------------------- Evitando conflictos con lightbox
 $(window).on("load", function () {
   jQuery.noConflict(); 
   $('#advertenciaModal').modal('show');
-    $("#btnEditarSelf").on("click", function (e) {
-        e.preventDefault();
-        jQuery.noConflict();
-        $("#editarAdminSelfModal").modal("toggle");
-    });
     $("#btnEditarBoth").on("click", function (e) {
         e.preventDefault();
         jQuery.noConflict();
@@ -425,7 +411,7 @@ if (num == 1) {
   var cedula = <?php echo json_encode($cedulaFoto) ?>;
   
   //var path = path.replace(/\//g, '/');
-if (cedula!='back/documentos/'){
+if (cedula!='../back/documentos/'){
   $.get(cedula)
     .done(function() {
       var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
@@ -449,7 +435,7 @@ if (num == 2) {
   var foto = <?php echo json_encode($foto) ?>;
 
     //var path = path.replace(/\//g, '/');
-    if (foto!='back/documentos/'){
+    if (foto!='../back/documentos/'){
       $.get(foto)
     .done(function() {
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
@@ -479,7 +465,7 @@ if (num == 3) {
 
 
   var notas = <?php echo json_encode($notas) ?>;
-  if (notas!='back/documentos/'){
+  if (notas!='../back/documentos/'){
 
   notas.forEach(function(path, index){
     //var path = path.replace(/\//g, '/');
@@ -503,7 +489,7 @@ if (num == 4) {
   var fondo = <?php echo json_encode($fondo) ?>;
   
     //var path = path.replace(/\//g, '/');
-    if (fondo!='back/documentos/'){
+    if (fondo!='../back/documentos/'){
       $.get(fondo)
     .done(function() {
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
@@ -531,7 +517,7 @@ if (num == 5) {
 
 
   var rusnies = <?php echo json_encode($rusnies) ?>;
-  if (rusnies!='back/documentos/'){
+  if (rusnies!='../back/documentos/'){
 
   rusnies.forEach(function(path, index){
     //var path = path.replace(/\//g, '/');
@@ -554,7 +540,7 @@ if (num == 6) {
   var partida = <?php echo json_encode($partida) ?>;
   
   //var path = path.replace(/\//g, '/');
-  if (partida!='back/documentos/'){
+  if (partida!='../back/documentos/'){
 
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+
 'style="background-image: url('+ partida +')">'+
@@ -579,7 +565,7 @@ if (num == 7) {
   $("input").prop('multiple', true);
 
   var metodoPrueba = <?php echo json_encode($metodo) ?>;
-  if (cedula!='back/documentos/'){
+  if (cedula!='../back/documentos/'){
 
   metodoPrueba.forEach(function(path, index){
     //var path = path.replace(/\//g, '/');
@@ -605,7 +591,7 @@ if (num == 8) {
 var certificado = <?php echo json_encode($certificado) ?>;
 
   //var path = path.replace(/\//g, '/');
-  if (certificado!='back/documentos/'){
+  if (certificado!='../back/documentos/'){
     $.get(certificado)
   .done(function() {
 var str = '<div class="thumbnail" data-id="<?php echo (str_shuffle("AaBbCcDdEeFfGgHhIiJjKkLlMm0123456789_"))?>"'+

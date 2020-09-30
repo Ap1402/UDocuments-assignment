@@ -443,7 +443,7 @@
   <div class="alert alert-danger" role="alert" id="resultado" style="display: none"></div>
 
   <div id="preload" class="preload">
-    <img src="img/images/preload.gif" alt="preload">
+    <img src="../img/images/preload.gif" alt="preload">
   </div>
 
   <div style="overflow:auto;">

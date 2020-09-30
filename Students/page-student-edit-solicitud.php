@@ -3,27 +3,12 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  
+  <?php require '../Layouts/HeaderLinks.php'; ?>
 
   <title> Editar - Solicitud de ingreso </title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="css/font.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link href="css/dash.css" rel="stylesheet">
-
-  <link href="css/style.css" rel="stylesheet">
 
 </head>
 
@@ -33,7 +18,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require 'front/general/sidebar.php'; ?>
+    <?php require '../front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -43,7 +28,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php'; ?>
+        <?php require '../front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -52,7 +37,7 @@
 
           <?php
 
-include 'back/conexion.php';
+include '../back/conexion.php';
 
 // ------------ Obtener la id del alumno dependiendo la sesion
 if (isset($_SESSION['id'])) {
@@ -125,7 +110,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
                           <?php echo ($verificar_check == 0) ? 'required' : 'readonly disabled' ?>>
                           <option  value="<?php echo $carrera ?>"><?php echo $carreraNombre ?></option>
                             <?php 
-                            include 'back/conexion.php';
+                            include '../back/conexion.php';
 
                             $sql = "SELECT * FROM carreras WHERE estatus=1";
                             $result = mysqli_query($conexion, $sql);
@@ -209,7 +194,7 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require '../front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -224,23 +209,23 @@ $verificar_check = 0; // verificar si fue o no chequeado por control de estudios
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php'; ?>
+  <?php require '../front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <?php require '../front/general/modal-admin-edit-pass-self.php'; ?>
   <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
-  <script src="js/sb-admin-2.js"></script>
+  <script src="../js/sb-admin-2.js"></script>
   <?php if($rol>0){ ?>
-  <script src="scripts/editAdminPassSelf.js"></script>
+  <script src="../scripts/editAdminPassSelf.js"></script>
   <script>
 // ---------------------- Sin conflictos con lightbox
 $(window).on("load", function () {
@@ -253,7 +238,7 @@ $(window).on("load", function () {
   </script>
   <?php }; ?>
   <?php if($rol == 0){ ?>
-  <script src="scripts/editAlumnoPassSelf.js"></script>
+  <script src="../scripts/editAlumnoPassSelf.js"></script>
   <?php }; ?>
 
   <script>
@@ -302,7 +287,7 @@ $(window).on("load", function () {
       });
     });
   </script>
-<script src="scripts/modificarSolicitudEstudiante.js"> </script>
+<script src="../scripts/modificarSolicitudEstudiante.js"> </script>
 
 </body>
 

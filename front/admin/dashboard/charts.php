@@ -1,5 +1,5 @@
 <?php
-include 'back/conexion.php';
+include '../back/conexion.php';
 
 $meses = [];
 $reg_meses = [];

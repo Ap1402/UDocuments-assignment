@@ -212,7 +212,7 @@
         "destroy": true,
         "ajax": {
           "method": "POST",
-          "url": "back/admin/tablaUtilidades/tablaAdmin.php"
+          "url": "../back/admin/tablaUtilidades/tablaAdmin.php"
 
         },
         responsive: {
@@ -314,7 +314,7 @@
             "min": min,
             "max": max
           },
-          "url": "back/admin/tablaUtilidades/buscar.php"
+          "url": "../back/admin/tablaUtilidades/buscar.php"
         },
         responsive: {
           details: {
@@ -411,7 +411,7 @@
           "data": {
             "buscarActualMes": ''
           },
-          "url": "back/admin/tablaUtilidades/buscar.php"
+          "url": "../back/admin/tablaUtilidades/buscar.php"
         }, ///-------------------------------------------
 
         responsive: {

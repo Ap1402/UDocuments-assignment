@@ -210,7 +210,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require '../front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -225,25 +225,25 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php'; ?>
+  <?php require '../front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
    <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <?php require '../front/general/modal-admin-edit-pass-self.php'; ?>
   <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
-  <script src="js/sb-admin-2.js"></script>
+  <script src="../js/sb-admin-2.js"></script>
   
-  <script src="scripts/editAdminPassSelf.js"></script>
+  <script src="../scripts/editAdminPassSelf.js"></script>
 
-  <script src="scripts/registro.js"></script>
+  <script src="../scripts/registro.js"></script>
 
   <script>
 // ---------------------- Sin conflictos con lightbox

@@ -113,7 +113,7 @@
 
                   <div class="alert alert-success" role="alert" id="exitoAlumnoBoth" style="display: none;"></div>
                   <?php
-                  include 'back/conexion.php';
+                  include '../back/conexion.php';
                   if (isset($_SESSION['id'])) {
                     $idaBoth=$_SESSION['id'];
                     $correoAlumnoBoth = $_SESSION['correo'];

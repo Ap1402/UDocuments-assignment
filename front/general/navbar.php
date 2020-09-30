@@ -14,7 +14,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <span id="usernameActual" class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username']?></span>
                 <!-- <i class="fas fa-user-circle"></i> -->
-                <img class="img-profile rounded-circle" src="img/varias/user-icon.svg">
+                <img class="img-profile rounded-circle" src="../img/varias/user-icon.svg">
               </a>              
               <!-- Dropdown - Perfil de usuario -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

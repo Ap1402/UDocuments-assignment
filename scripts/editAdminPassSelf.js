@@ -71,7 +71,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: './back/admin/editAdminSelf.php',
+            url: '../back/admin/editAdminSelf.php',
             data: formData,
             encode: true,
             cache: false,
@@ -130,7 +130,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: './back/estudiante/editAlumno.php',
+            url: '../back/estudiante/editAlumno.php',
             data: formData,
             encode: true,
             cache: false,

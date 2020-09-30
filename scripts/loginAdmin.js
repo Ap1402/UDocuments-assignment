@@ -25,7 +25,7 @@ $(document).ready(function () {
         
             $.ajax({
                 type: 'POST',
-                url : './back/admin/loginAdmin.php',
+                url : 'back/admin/loginAdmin.php',
                 data :formData,
                 encode: true,
                 cache: false,
@@ -37,7 +37,7 @@ $(document).ready(function () {
             .done(function(echo){
                 //console.log(echo);
                 if(echo==1){
-                    $(location).attr('href','page-admin-table.php');
+                    $(location).attr('href','./Admin/page-admin-table.php');
                 }else{
                     $('#resultadoLogAdmin').show();
                     $('#resultadoLogAdmin').text('Usuario o contraseña incorrecta');

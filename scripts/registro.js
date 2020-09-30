@@ -62,7 +62,7 @@ $(document).ready(function () {
         };
         $.ajax({
             type: 'POST',
-            url: './back/estudiante/registro.php',
+            url: '../back/estudiante/registro.php',
             data: datosEnviados,
             dataType: 'json',
             encode: true

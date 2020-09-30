@@ -25,7 +25,7 @@ function ejecutarAjaxLog(event){
 
     $.ajax({
         type: 'POST',
-        url : './back/estudiante/login.php',
+        url : 'back/estudiante/login.php',
         data :formData,
         encode: true,
         cache: false,
@@ -38,9 +38,9 @@ function ejecutarAjaxLog(event){
         if(echo.exito){
             $('#resultado').hide();
             if(echo.datosLlenados){
-             $(location).attr('href','page-student-edit-datos.php');   
+             $(location).attr('href','./Students/page-student-edit-datos.php');   
             }else{
-                $(location).attr('href', 'page-student-datos.php');
+                $(location).attr('href', './Studentspage-student-datos.php');
             }
             
         }else{

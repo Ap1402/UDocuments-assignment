@@ -1,5 +1,5 @@
 <?php
-include 'back/conexion.php';
+include '../back/conexion.php';
 
 $sql_pendientes = "SELECT COUNT(*) FROM documentos WHERE (porcentaje < 100)";
 

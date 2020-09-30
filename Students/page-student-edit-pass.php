@@ -3,27 +3,12 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+
+  <?php require '../Layouts/HeaderLinks.php'; ?>
 
   <title> Editar (Correo / Contraseña) </title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="css/font.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link href="css/dash.css" rel="stylesheet">
-
-  <link href="css/style.css" rel="stylesheet">
 
 </head>
 
@@ -33,7 +18,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require 'front/general/sidebar.php'; ?>
+    <?php require '../front/general/sidebar.php';?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -43,7 +28,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php'; ?>
+        <?php require '../front/general/navbar.php';?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -51,25 +36,26 @@
         <div id="page-student-edit-pass" class="container-fluid">
 
           <?php
-          include 'back/conexion.php';
+include '../back/conexion.php';
 
-          if (isset($_SESSION['cedula'])) {
-            $cedula = $_SESSION['cedula'];
-          } else {
-            $cedula = $_GET['ci'];
-          }
+if (isset($_SESSION['cedula'])) {
+    $cedula = $_SESSION['cedula'];
+}else{
+  $cedula = $_GET['ci'];
 
-          $consulta = "SELECT id_alumno, cedula, correo FROM `alumnos` WHERE cedula='" . $cedula . "'";
-          $resultado = mysqli_query($conexion, $consulta);
-          $datos = mysqli_fetch_array($resultado);
+}
 
-          $id = $datos['id_alumno'];
-          $correo = $datos['correo'];
+$consulta = "SELECT id_alumno, cedula, correo FROM `alumnos` WHERE cedula='" . $cedula . "'";
+$resultado = mysqli_query($conexion, $consulta);
+$datos = mysqli_fetch_array($resultado);
+
+$id = $datos['id_alumno'];
+$correo = $datos['correo'];
 
 
-          $verificar_check = 1; // verificar si fue o no chequeado por control de estudios
+$verificar_check = 1; // verificar si fue o no chequeado por control de estudios
 
-          ?>
+?>
 
           <!-- Título de página -->
           <div class="d-sm-flex col-sm-12 col-md-10 col-lg-8 align-items-center justify-content-between mb-4 mx-auto">
@@ -160,7 +146,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require '../front/general/footer.php';?>
       <!-- End of Footer -->
 
     </div>
@@ -175,23 +161,23 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php'; ?>
+  <?php require '../front/general/modal-logout.php';?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <?php require '../front/general/modal-admin-edit-pass-self.php'; ?>
   <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
-  <script src="js/sb-admin-2.js"></script>
-  <script src="scripts/editAdminPassSelf.js"></script>
-
+  <script src="../js/sb-admin-2.js"></script>
+  <?php if($rol>0){ ?>
+  <script src="../scripts/editAdminPassSelf.js"></script>
   <script>
 // ---------------------- Sin conflictos con lightbox
 $(window).on("load", function () {
@@ -200,6 +186,16 @@ $(window).on("load", function () {
         
         $("#editarAdminSelfModal").modal("toggle");
     });
+    });
+  </script>
+  <?php }; ?>
+  <?php if($rol == 0){ ?>
+  <script src="../scripts/editAlumnoPassSelf.js"></script>
+  <?php }; ?>
+
+  <script>
+// ---------------------- Sin conflictos con lightbox
+$(window).on("load", function () {
     $("#btnEditarBoth").on("click", function (e) {
         e.preventDefault();
         
@@ -220,83 +216,83 @@ $(window).on("load", function () {
 </script>
 
 
-  <script type="text/javascript">
-    function mostrarPassword() {
-      var pass = document.getElementById("contrasena");
-      var pass2 = document.getElementById("contrasena2");
-      if (pass.type == "password") {
-        pass.type = "text";
-        pass2.type = "text";
-        $('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
-      } else {
-        pass.type = "password";
-        pass2.type = "password";
-        $('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
-      }
-    }
-  </script>
-  <script>
-    $(document).ready(function() {
+ <script type="text/javascript">
+		function mostrarPassword() {
+			var pass = document.getElementById("contrasena");
+			var pass2 = document.getElementById("contrasena2");
+			if (pass.type == "password") {
+				pass.type = "text";
+				pass2.type = "text";
+				$('i#showpass,i#showpass2').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+			} else {
+				pass.type = "password";
+				pass2.type = "password";
+				$('i#showpass,i#showpass2').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+			}
+		}
+	</script>
 
-      // $('#datosForm').on('submit',ejecutarAjaxLog);
+<script>
+$(document).ready(function () {
 
-      // ----------------- Form Validation -------------------
+// $('#datosForm').on('submit',ejecutarAjaxLog);
 
-      'use strict';
+// ----------------- Form Validation -------------------
 
-      $('#passEditForm')[0].addEventListener('submit', function(event) {
-        if ($('#passEditForm')[0].checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          ejecutarAjaxLog(event);
-        }
-        $('#passEditForm')[0].classList.add('was-validated');
-      }, false);
+'use strict';
 
-      // ----------------- /Form Validation -------------------
-
-
-
-      function ejecutarAjaxLog(event) {
-
-        var formData = new FormData(document.getElementById("passEditForm"));
-
-
-        $.ajax({
-            type: 'POST',
-            url: './back/estudiante/editAlumno.php',
-            data: formData,
-            encode: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            dataType: 'json',
-
-          })
-          .done(function(datosRecibidos) {
-            if (!datosRecibidos.exito) {
-              $('#exito').hide();
-
-              $('#resultado').show();
-              $('#resultado').text(datosRecibidos.message);
-            } else {
-              $('#resultado').hide();
-
-              $('#exito').show();
-              $('#exito').text(datosRecibidos.message);
-              $('html, body').animate({
-                scrollTop: 0
-              }, 800);
-
-            }
-
-          });
-
+$('#passEditForm')[0].addEventListener('submit', function (event) {
+    if ($('#passEditForm')[0].checkValidity() === false) {
         event.preventDefault();
-      };
+        event.stopPropagation();
+    } else {
+        ejecutarAjaxLog(event);
+    }
+    $('#passEditForm')[0].classList.add('was-validated');
+}, false);
+
+// ----------------- /Form Validation -------------------
+
+
+
+function ejecutarAjaxLog(event){
+
+    var formData = new FormData(document.getElementById("passEditForm"));
+
+
+    $.ajax({
+        type: 'POST',
+        url : '../back/estudiante/editAlumno.php',
+        data :formData,
+        encode: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType : 'json',
+
+    })
+    .done(function(datosRecibidos){
+        if(!datosRecibidos.exito){
+            $('#exito').hide();
+
+            $('#resultado').show();
+            $('#resultado').text(datosRecibidos.message);
+        }else{
+            $('#resultado').hide();
+
+            $('#exito').show();
+            $('#exito').text(datosRecibidos.message);
+            $('html, body').animate( { scrollTop : 0 }, 800 );
+
+        }
+        
     });
-  </script>
+
+    event.preventDefault();
+};
+});
+</script>
+
 </body>
 
 </html>

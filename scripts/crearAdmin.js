@@ -50,7 +50,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: './back/admin/crearAdmin.php',
+            url: '../back/admin/crearAdmin.php',
             data: formData,
             encode: true,
             cache: false,

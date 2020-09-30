@@ -10,25 +10,25 @@
   <meta name="author" content="">
 
   <title> Tabla de Carreras / Solicitud </title>
-  <?php require 'back/admin/restriccionAcceso.php'; ?>
+  <?php require '../back/admin/restriccionAcceso.php'; ?>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="img/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../img/images/favicon.ico" type="image/x-icon">
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="css/font.css" rel="stylesheet">
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/font.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
 
-  <link href="css/sb-admin-2.css" rel="stylesheet">
-  <link href="css/dash.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/dash.css" rel="stylesheet">
 
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/jquery.datatable.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/jquery.datatable.min.css" rel="stylesheet">
 
-  <link href="css/responsive.dataTables.min.css" rel="stylesheet">
-  <link href="css/tableShow.css" rel="stylesheet">
+  <link href="../css/responsive.dataTables.min.css" rel="stylesheet">
+  <link href="../css/tableShow.css" rel="stylesheet">
 
 </head>
 
@@ -38,7 +38,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php require_once 'front/general/sidebar.php'; ?>
+    <?php require_once '../front/general/sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -48,7 +48,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php require 'front/general/navbar.php'; ?>
+        <?php require '../front/general/navbar.php'; ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -113,7 +113,7 @@
                   </thead>
                   <tbody>
                     <?php
-                    include 'back/conexion.php';
+                    include '../back/conexion.php';
 
                     $sql = "SELECT * FROM tipo_solicitud";
 
@@ -193,7 +193,7 @@
       <!-- /.Modal de advertencia de cambios -->
 
       <!-- Footer -->
-      <?php require 'front/general/footer.php'; ?>
+      <?php require '../front/general/footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -208,37 +208,37 @@
   </a>
 
   <!-- Logout Modal-->
-  <?php require 'front/general/modal-logout.php'; ?>
+  <?php require '../front/general/modal-logout.php'; ?>
   <!-- End of Logout Modal-->
   <!-- Edit Admin Self Modal-->
-  <?php require 'front/general/modal-admin-edit-pass-self.php'; ?>
+  <?php require '../front/general/modal-admin-edit-pass-self.php'; ?>
   <!-- End of Edit Admin Self Modal-->
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages / carga automaticamente dashboard.php-->
-  <script src="js/sb-admin-2.js"></script>
+  <script src="../js/sb-admin-2.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="../vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/front/table.js"></script>
-  <script src="scripts/editAdminPassSelf.js"></script>
+  <script src="../js/demo/datatables-demo.js"></script>
+  <script src="../js/../front/table.js"></script>
+  <script src="../scripts/editAdminPassSelf.js"></script>
 
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/jquery.dataTables.responsive.min.js"></script>
-  <script src="vendor/datatables/dataTables.fixedHeader.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.responsive.min.js"></script>
+  <script src="../vendor/datatables/dataTables.fixedHeader.min.js"></script>
 
   <script>
     // ---------------------- Sin conflictos con lightbox
@@ -275,7 +275,7 @@
 
         "ajax": {
           "method": "POST",
-          "url": "back/admin/tablaUtilidades/tabla_carreras.php"
+          "url": "../back/admin/tablaUtilidades/tabla_carreras.php"
 
         },
         rowId: 'codigo',
@@ -434,7 +434,7 @@
 
         $.ajax({
             type: 'POST',
-            url: './back/admin/backCarrera.php',
+            url: '../back/admin/backCarrera.php',
             data: datosEnviados
           })
           .done(function(data) {
@@ -463,7 +463,7 @@
 
         $.ajax({
             type: 'POST',
-            url: './back/admin/backSolicitud.php',
+            url: '../back/admin/backSolicitud.php',
             data: datosEnviadosS
           })
           .done(function(dataS) {

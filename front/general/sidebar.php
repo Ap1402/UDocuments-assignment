@@ -1,6 +1,6 @@
 <!-- Control de sesion -->
 <?php
-include 'back/sessionController.php';
+include '../back/sessionController.php';
 ?>
 <!-- End of Control de sesion -->
 
@@ -10,7 +10,7 @@ $rol = $_SESSION['rol']; // Limitar los enlaces del sidebar de acuerdo al rol
 if ($rol > 0 && isset($_GET['ida'])) {
   $ida = $_GET['ida']; // id_alumno
 
-  include 'back/conexion.php';
+  include '../back/conexion.php';
   $sql_alumno = "SELECT p_nombre, p_apellido, alumnos.cedula, documento, ultActualizacion, check_datos, porcentaje, estadoSolicitud FROM alumnos 
 LEFT JOIN documentos ON alumnos.documento=documentos.id_documento 
 LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
@@ -37,7 +37,7 @@ LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
   <!-- Sidebar - Brand -->
   <a id="sidebar-brand-header" class="sidebar-brand d-flex align-items-center justify-content-center py-3">
     <div class="sidebar-brand-icon">
-      <img src="img/varias/logo_ujap_peq.png" width="30%" height="10%" class="d-inline-block align-items-center" alt="">
+      <img src="../img/varias/logo_ujap_peq.png" width="30%" height="10%" class="d-inline-block align-items-center" alt="">
     </div>
   </a>
 
@@ -295,7 +295,7 @@ LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
 if (isset($_SESSION['id'])) {
     $ida = $_SESSION['id']; // id_alumno
 
-    include 'back/conexion.php';
+    include '../back/conexion.php';
     $sql_alumno = "SELECT alumnos.cedula, documento, ultActualizacion, check_datos, porcentaje, estadoSolicitud, ultActDoc FROM alumnos
 LEFT JOIN documentos ON alumnos.documento=documentos.id_documento
 LEFT JOIN solicitudes ON alumnos.id_alumno=solicitudes.alumno
